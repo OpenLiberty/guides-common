@@ -9,7 +9,7 @@
 ////
 == Getting Started
 
-The fastest way to work through this guide is to clone the git repository and use the provided starting project. To do this, run the following commands:
+The fastest way to work through this guide is to clone the git repository and use the starting project that is provided in the `start` directory. To do this, run the following commands:
 
 [subs="attributes"]
 ----
