@@ -1,0 +1,88 @@
+// INSTRUCTION: Please remove all comments that start INSTRUCTION prior to commit. Most comments should be removed, although not the copyright.
+// INSTRUCTION: The copyright statement must appear at the top of the file
+//
+// Copyright (c) 2017 IBM Corporation and others.
+// Licensed under Creative Commons Attribution-NoDerivatives
+// 4.0 International (CC BY-ND 4.0)
+//   https://creativecommons.org/licenses/by-nd/4.0/
+//
+// Contributors:
+//     IBM Corporation
+//
+:page-layout: guide
+// INSTRUCTION: The project id is the part of the git repository after the guide- and must be specified
+:projectid: github repo name without the guide- prefix
+// INSTRUCTION: Provide an estimate of how long the guide will take to go through.
+:page-duration: 15 minutes
+// INSTRUCTION: Provide the date when the guide is published.
+:page-date: YYYY-MM-DD
+// INSTRUCTION: Provide a description for the guide index page.
+:page-description: Learn how to create a REST service with JAX-RS, JSON-P, and Open Liberty.
+// INSTUCTION: Please provide relevant tags, try to avoid inventing new ones, tags where there is 1 guide for the tag isn't useful.
+:page-tags: ['REST', 'Getting Started']
+// INSTRUCTION: Specify the slug in the website. This must be unique.
+:page-permalink: /guides/rest-service
+// INSTRUCTION: You should have this to source the common page elements, clone git@github.com:OpenLiberty/guides-common.git
+:common-includes: https://raw.githubusercontent.com/OpenLiberty/guides-common/master
+// INSTRUCTION: You can't have a new line between the attributes and the title.
+// The details of what to fill in for this template are in the comments. So, read the source for this template to see the comments.
+//
+// Example title: Creating a RESTful web service
+= Title of guide, starting with a gerund (Creating, Administering, and so on)
+
+// Start the introduction with "You'll explore how to..." or something similarly catchy:
+You'll explore how to....
+// Write up to two sentences and fifty words, with meaningful information on what the user can accomplish with this guide.
+// Do not start the introduction with "This guide...".
+
+// See the REST guide at as an exemplar guide.
+// https://openliberty.io/guides/rest-intro.html
+// https://github.com/OpenLiberty/guide-rest-intro
+
+
+== What you'll learn
+// Write about what the user will learn in a meaningful intro paragraph.
+// Follow the intro paragraph with more details of what the user will learn, but still keep it brief compared to the overall guide.
+
+// You'll next add the various sections that are needed for a particular guide.
+
+
+== Getting Started
+// Add this getting started section to your guide if it is applicable. Use the following include to pull in the git clone instructions from the guides-common repo.
+
+include::{common-includes}/gitclone.adoc[]
+
+
+== Building the application
+// Add this Building the application section to your guide if it is applicable.
+// Put this section in the appropriate order in your guide.
+// Use the following include to pull in the Maven build instructions from the guides-common repo.
+
+include::{common-includes}/mvnbuild.adoc[]
+
+
+== Section title for this section, starting with a gerund like Creating, Building, etc
+// Start each additional section title with a meaningful gerund such as Creating, Building, Testing, Configuring, or Administering.
+// Follow the gerund with a meaningful noun phrase. For example: Creating a JAX-RS application
+// Have as many sections and section titles as needed.
+
+// What to add for each section:
+// We'll be writing these sections by following a flow similar to technical blog posts or college textbooks so that the user thinks about the content.
+// Start each section with a meaningful description about what the user is doing in the section.
+// Include code snippets.
+// Avoid making all the documentation a series of steps and tasks, bullets, or numbered lists.
+// Use tick marks around directories, files, values, class names, method names, and so on.
+
+
+
+
+== Great work! You're done!
+// Include this "Great work! You're done!" section in all guides.
+// Briefly describe what the user accomplished in the guide.
+
+
+// Include the below from the guides-common repo to tell users how they can contribute to the guide
+include::{common-includes}/finish.adoc[]
+
+// Do NOT create a section on what to do next.
+// Instead, related guides will be pulled in and displayed in the side bar as a list. You do not need to do anything to pull in these guides.
