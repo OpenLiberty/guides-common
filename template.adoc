@@ -14,8 +14,8 @@
 :projectid: github repo name without the guide- prefix
 // INSTRUCTION: Provide an estimate of how long the guide will take to go through.
 :page-duration: 15 minutes
-// INSTRUCTION: Provide the date when the guide is published.
-:page-date: YYYY-MM-DD
+// INSTRUCTION: Provide the date when the guide is published.  Format is YYYY-MM-DD.
+:page-releasedate: 2017-11-17
 // INSTRUCTION: Provide a description for the guide index page.
 :page-description: Learn how to create a REST service with JAX-RS, JSON-P, and Open Liberty.
 // INSTUCTION: Please provide relevant tags, try to avoid inventing new ones, tags where there is 1 guide for the tag isn't useful.
