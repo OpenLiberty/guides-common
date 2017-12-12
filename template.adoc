@@ -20,6 +20,8 @@
 :page-description: Learn how to create a REST service with JAX-RS, JSON-P, and Open Liberty.
 // INSTUCTION: Please provide relevant tags, try to avoid inventing new ones, tags where there is 1 guide for the tag isn't useful.
 :page-tags: ['REST', 'Getting Started']
+// INSTRUCTION: Specify the unique name of the guide that is used in the permalink.  For example below, it is rest-service
+:page-related-guides: ['']
 // INSTRUCTION: Specify the slug in the website. This must be unique.
 :page-permalink: /guides/rest-service
 // INSTRUCTION: You should have this to source the common page elements, clone git@github.com:OpenLiberty/guides-common.git
