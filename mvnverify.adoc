@@ -1,0 +1,24 @@
+////
+ Copyright (c) 2017 IBM Corporation and others.
+ Licensed under Creative Commons Attribution-NoDerivatives
+ 4.0 International (CC BY-ND 4.0)
+   https://creativecommons.org/licenses/by-nd/4.0/
+
+ Contributors:
+     IBM Corporation
+////
+=== Running the tests
+
+If the server is still running from the previous steps, stop it first using the Maven `liberty:stop-server` goal:
+
+```
+mvn liberty:stop-server
+```
+
+Then, verify that the tests pass using the Maven `verify` goal:
+
+```
+mvn verify
+```
+
+It may take some time before build is complete. If the tests pass, you will see a similar output to the following:
