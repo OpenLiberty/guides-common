@@ -89,6 +89,13 @@ include::{common-includes}/mvnstart.adoc[]
 // Use tick marks around directories, files, values, class names, method names, and so on.
 
 
+// Include this section if appropriate
+== Running the tests
+
+include::{common-includes}/gitclone.adoc[]
+
+// Including a listing block with test results here
+
 
 
 == Great work! You're done!
