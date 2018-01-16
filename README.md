@@ -1,5 +1,5 @@
 # Writing guides guidelines
-In this repository you will a variety of common files and resources for writing the guides.
+In this repository you will find a variety of common files and resources for writing the guides.
 
 The common files include:
 - `LICENSE`
