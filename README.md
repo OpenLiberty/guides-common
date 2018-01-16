@@ -13,4 +13,4 @@ without having to restart the server.
 
 For additional instructions including formatting, styling, etc. of the guides, visit the Wiki located in this repository.
 
-[NOTE] Please pay close attention to the "Getting started" Wiki page. It contains important information that will not only help you make decisions when writing your guides but will also help keep all the guides concise and clean.
+**Please pay close attention to the "Getting started" Wiki page. It contains important information that will not only help you make decisions when writing your guides but will also help keep all the guides concise and clean.**
