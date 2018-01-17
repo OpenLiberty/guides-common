@@ -56,7 +56,6 @@ include::{common-includes}/gitclone.adoc[]
 // This is a subsection of the "Getting started" section above. It should briefly walk the user through
 // how to setup everything in the "finish" directory and try out the finished version of what
 // they will be building.
-// Example: https://openliberty.io/guides/microprofile-intro.html
 === Try what you'll build
 
 
@@ -64,18 +63,19 @@ include::{common-includes}/gitclone.adoc[]
 // Add this section to your guide if it is applicable.
 // Put this section in the appropriate order in your guide.
 == Building and running the application
+
 // Use the following include to pull in the Maven build instructions from the guides-common repo.
 include::{common-includes}/mvnbuild.adoc[]
 
-// In between you should state where you application can be found now that its running (ie. what urls)
-// Example: https://openliberty.io/guides/microprofile-intro.html
+// In between here, you should state where you application can be found now that its running (ie. what urls)
 
 // Use the following include to pull in the Liberty start/stop server instructions from the guides-common repo.
-include::{common-includes}/mvnstart.adoc[]
+include::{common-includes}/mvnpackage.adoc[]
 
 
 == Section title for this section, starting with a gerund like Creating, Building, etc
-// Read the general rules of thumb to help you with formatting these next few sections: https://github.com/OpenLiberty/guides-common/wiki/Rules-of-thumb-for-formatting
+// Read the wiki for the general rules of thumb to help you with formatting these next few sections:
+// https://github.com/OpenLiberty/guides-common/wiki/Rules-of-thumb-for-formatting
 
 // Start each additional section title with a meaningful gerund such as Creating, Building, Testing, Configuring, or Administering.
 // Follow the gerund with a meaningful noun phrase. For example: Creating a JAX-RS application
@@ -92,19 +92,21 @@ include::{common-includes}/mvnstart.adoc[]
 // Include this section if appropriate
 == Running the tests
 
-include::{common-includes}/gitclone.adoc[]
-
 // Including a listing block with test results here
 
+// OPTIONAL: after listing the test results, mention a simple change a user can make/introduce that
+// will cause the tests to fail. Be brief and don't give the users all of the instructions. At this
+// point, they should be comfortable enough to figure it out on their own.
 
 
 == Great work! You're done!
 
-// Don't write anything in this section
+// Briefly summarize what the user achieved in this guide (1-2 sentences).
 
+// OPTIONAL: briefly state what the user could do next now that they've learned the technologies in this guide.
 
 // Include the below from the guides-common repo to tell users how they can contribute to the guide
 include::{common-includes}/finish.adoc[]
 
-// Do NOT create a section on what to do next.
-// Instead, related guides will be pulled in and displayed in the side bar as a list. You do not need to do anything to pull in these guides.
+// DO NO CREATE ANYMORE SECTIONS AT THIS POINT
+// Related guides will be added in automatically here if you included them in ":page-related-guides"

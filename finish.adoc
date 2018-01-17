@@ -1,5 +1,6 @@
 == Contribute to this guide
 
-Is something missing or needs to be fixed? Raise an https://github.com/OpenLiberty/guide-{projectid}/issues[issue], or send us a https://github.com/OpenLiberty/guide-{projectId}/pulls[pull request].
+Is something missing or needs to be fixed? Raise an https://github.com/OpenLiberty/guide-{projectid}/issues[issue],
+or send us a https://github.com/OpenLiberty/guide-{projectId}/pulls[pull request].
 
 https://github.com/OpenLiberty/guide-{projectId}[View this guide on github].

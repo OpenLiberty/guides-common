@@ -9,9 +9,20 @@
 ////
 == Building and running the application
 
-To build the application and run it inside Open Liberty, execute the following Maven goals from the
-command line:
+To build the application, run the `install` Maven goal from the command line:
 
 ```
-mvn install liberty:start-server
+mvn install
 ```
+
+This goal builds the application and creates a `.war` file in the target directory. The goal also
+configures and installs Open Liberty into the `target/liberty/wlp` directory.
+
+Next, run the `liberty:start-server` Maven goal:
+
+```
+mvn liberty:start-server
+```
+
+This goal starts an Open Liberty server instance. Your Maven `pom.xml` is already configured to start
+the application in this server instance.
