@@ -93,6 +93,9 @@ include::{common-includes}/mvnpackage.adoc[]
 // Include this section if appropriate
 == Running the tests
 
+// Include this for info on how to run the tests
+include::{common-includes}/mvnverify.adoc[]
+
 // Including a listing block with test results here
 
 // OPTIONAL: after listing the test results, mention a simple change a user can make/introduce that
