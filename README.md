@@ -2,8 +2,9 @@
 In this repository you will find a variety of common files and resources for writing the guides.
 
 The common files include:
-- `LICENSE`
+- `LICENSE` (to be placed in every guide).
 - `template.adoc` guide template.
+- `.gitignore` common gitignore file (you should copy it into your guide repository. Feel free to edit it).
 - `gitclone.adoc` to place near the start of each guide for instructions on how to clone the guide repository and get started.
 - `finish.adoc` to place at the end of each guide.
 - `mvnbuild.adoc` to place near the end of the guide for maven build instructions.
