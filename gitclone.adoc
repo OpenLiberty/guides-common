@@ -9,8 +9,7 @@
 ////
 == Getting started
 
-The fastest way to work through this guide is to clone its Git repository and use the provided projects
-inside. To do this, run the following commands:
+The fastest way to work through this guide is to clone the Git repository and use the projects that are provided inside:
 
 [subs="attributes"]
 ----
@@ -18,9 +17,6 @@ git clone https://github.com/openliberty/guide-{projectid}.git
 cd guide-{projectid}
 ----
 
-The `start` directory contains the starting project for this guide. Use this directory as the starting
-point for the guide.
+The `start` directory contains the starting project that you can use to begin.
 
-The `finish` directory contains the finished project for this guide. This is what you'll end up with
-once you have worked through the guide. Feel free to run whats in this directory to give yourself a
-better idea of what you will be building.
+The `finish` directory contains the finished project, which is what you will build.
