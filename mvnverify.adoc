@@ -9,13 +9,13 @@
 ////
 === Running the tests
 
-If the server is still running from the previous steps, stop it first using the Maven `liberty:stop-server` goal:
+If the server is still running from the previous steps, stop it first using the Maven `liberty:stop-server` goal in the `start` directory:
 
 ```
 mvn liberty:stop-server
 ```
 
-Then, verify that the tests pass using the Maven `verify` goal in the `start` directory:
+Then, verify that the tests pass using the Maven `verify` goal:
 
 ```
 mvn verify
