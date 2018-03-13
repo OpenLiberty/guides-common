@@ -9,7 +9,7 @@
 ////
 === Running the tests
 
-If the server is still running from the previous steps, stop it first using the Maven `liberty:stop-server` goal in the `start` directory:
+If the server is still running from the previous steps, stop it first using the Maven liberty:stop-server goal from command line in the `start` directory:
 
 ```
 mvn liberty:stop-server
