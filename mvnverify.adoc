@@ -15,7 +15,7 @@ If the server is still running from the previous steps, stop it first using the 
 mvn liberty:stop-server
 ```
 
-Then, verify that the tests pass using the Maven `verify` goal:
+Then, verify that the tests pass using the Maven `verify` goal in the `start` directory:
 
 ```
 mvn verify
