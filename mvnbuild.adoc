@@ -9,7 +9,7 @@
 ////
 == Building and running the application
 
-To build the application, run the Maven `install` goal from the command line:
+To build the application, run the Maven `install` goal from the command line in the `start` directory:
 
 ```
 mvn install
