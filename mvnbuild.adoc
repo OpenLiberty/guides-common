@@ -9,7 +9,7 @@
 ////
 == Building and running the application
 
-To build the application, run the `install` Maven goal from the command line:
+To build the application, run the Maven `install` goal from the command line:
 
 ```
 mvn install
@@ -18,7 +18,7 @@ mvn install
 This goal builds the application and creates a `.war` file in the target directory. The goal also
 configures and installs Open Liberty into the `target/liberty/wlp` directory.
 
-Next, run the `liberty:start-server` Maven goal:
+Next, run the Maven `liberty:start-server` goal:
 
 ```
 mvn liberty:start-server
