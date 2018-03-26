@@ -1,0 +1,7 @@
+After you are done checking out the application, stop the Open Liberty server:
+
+```
+mvn liberty:stop-server
+```
+
+Now, navigate back to the `start` directory to begin.
