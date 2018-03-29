@@ -58,10 +58,10 @@ include::{common-includes}/gitclone.adoc[]
 // they will be building.
 === Try what you'll build
 
-// This is a paragraph telling the users to run a maven goal for building and running the application.
 include::{common-includes}/tryintro.adoc[]
 
-// This is a sentence telling the users to run a maven goal for stopping the application.
+// Describe what user expects to see after running the complete version of the application.
+
 include::{common-includes}/tryend.adoc[]
 
 // Add this section to your guide if it is applicable.
