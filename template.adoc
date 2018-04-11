@@ -58,11 +58,11 @@ include::{common-includes}/gitclone.adoc[]
 // they will be building.
 === Try what you'll build
 
-include::{common-includes}/tryintro.adoc[]
+include::{common-includes}/tryoutintro.adoc[]
 
 // Describe what user expects to see after running the complete version of the application.
 
-include::{common-includes}/tryend.adoc[]
+include::{common-includes}/tryoutend.adoc[]
 
 // Add this section to your guide if it is applicable.
 // Put this section in the appropriate order in your guide.
