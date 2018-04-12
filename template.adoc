@@ -56,7 +56,7 @@ include::{common-includes}/gitclone.adoc[]
 // This is a subsection of the "Getting started" section above. It should briefly walk the user through
 // how to setup everything in the "finish" directory and try out the finished version of what
 // they will be building.
-
+//=== Try what you’ll build
 include::{common-includes}/trywhatyoubuild-intro.adoc[]
 
 // Describe what user expects to see after running the complete version of the application.
