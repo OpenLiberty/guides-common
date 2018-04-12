@@ -57,11 +57,11 @@ include::{common-includes}/gitclone.adoc[]
 // how to setup everything in the "finish" directory and try out the finished version of what
 // they will be building.
 
-include::{common-includes}/tryoutintro.adoc[]
+include::{common-includes}/trywhatyoubuild-intro.adoc[]
 
 // Describe what user expects to see after running the complete version of the application.
 
-include::{common-includes}/tryoutend.adoc[]
+include::{common-includes}/trywhatyoubuild-end.adoc[]
 
 // Add this section to your guide if it is applicable.
 // Put this section in the appropriate order in your guide.
