@@ -63,6 +63,8 @@ include::{common-includes}/trywhatyoubuild-intro.adoc[]
 
 include::{common-includes}/trywhatyoubuild-end.adoc[]
 
+//Suggest readers to navigate to the `start` directory in the section where user starts working with the implementation.
+
 // Add this section to your guide if it is applicable.
 // Put this section in the appropriate order in your guide.
 == Building and running the application
