@@ -7,11 +7,12 @@
  Contributors:
      IBM Corporation
 ////
-If you make changes to the code, use the Maven `package` goal to rebuild the application and have the
-running Open Liberty server pick them up automatically:
+If you make changes to the code, use the Maven `compiule` goal to rebuild the application and have the
+running Open Liberty server pick them up automatically. Make sure your application is using loose config 
+for this to work:
 
 ```
-mvn package
+mvn compile
 ```
 
 To stop the Open Liberty server, run the Maven `liberty:stop-server` goal:
