@@ -8,7 +8,7 @@ The common files include:
 - `gitclone.adoc` to place near the start of each guide for instructions on how to clone the guide repository and get started.
 - `finish.adoc` to place at the end of each guide.
 - `mvnbuild.adoc` to place near the end of the guide for maven build instructions.
-- `mvnpackage.adoc` to place in the building section of the guide for instructions on how to repackage everything
+- `mvncompile.adoc` to place in the building section of the guide for instructions on how to repackage everything
 without having to restart the server.
 - `mvnverify.adoc` to place near the end of the guide for instructions on how to run the tests.
 
