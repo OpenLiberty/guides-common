@@ -17,6 +17,6 @@ git clone https://github.com/openliberty/guide-{projectid}.git
 cd guide-{projectid}
 ----
 
-The `start` directory contains the starting project that you can use to begin.
+The `start` directory contains the starting project that you will build upon.
 
 The `finish` directory contains the finished project, which is what you will build.
