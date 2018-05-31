@@ -75,7 +75,7 @@ include::{common-includes}/mvnbuild.adoc[]
 // In between here, you should state where you application can be found now that its running (ie. what urls)
 
 // Use the following include to pull in the Liberty start/stop server instructions from the guides-common repo.
-include::{common-includes}/mvnpackage.adoc[]
+include::{common-includes}/mvncompile.adoc[]
 
 
 == Section title for this section, starting with a gerund like Creating, Building, etc
