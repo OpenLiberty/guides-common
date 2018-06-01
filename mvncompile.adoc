@@ -7,7 +7,7 @@
  Contributors:
      IBM Corporation
 ////
-If you make changes to the code, use the Maven `compiule` goal to rebuild the application and have the
+If you make changes to the code, use the Maven `compile` goal to rebuild the application and have the
 running Open Liberty server pick them up automatically. Make sure your application is using loose config 
 for this to work:
 
