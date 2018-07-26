@@ -10,4 +10,4 @@
 == Guide Attribution
 
 // Specify where the guide is attributed to.
-CC BY-ND 4.0
+{doctitle} is licensed under CC BY-ND 4.0 
