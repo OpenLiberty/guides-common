@@ -1,14 +1,14 @@
 # Outline to convert a static guide to the multipane design:
 
-## 1.Create a multipane branch
+## 1. Create a multipane branch
 Important: do not deliver this to the master branch while testing it because it will affect the guide on openliberty.io before it's polished. https://qa-guides.mybluemix.net/ will clone the branch 'multipane' for testing, and then when all of the guides are converted to the new design we can deliver the changes to master.
 
 ## 2. Change the layout from 'guide' to 'guide-multipane'
 
 ## 3. Include entire source code files
-Add the file includes in the asciidoc for files that you want to appear on the right column, with role="code_column" specified for each file. The files included with role="code_column" will be shown in full screen view while the files included already in the guide will be shown in the mobile/single column view where there is no code column.
+Add the file includes in the asciidoc for files that you want to appear on the right column, with role="code_column" specified for each file. The files included with role="code_column" will be shown in full screen view while the files included already in the guide will be shown in the mobile/single column view where there is no code column. The code column on the right is exactly 90 characters per line and remains a constant width when resizing the width of the browser, so that the code can be written once and always work. The guide column grows and shrinks according to the width of the browser.
 
-The file name should be provided above the file include.
+The file name should be provided above the file include. The linenums attribute is important for the hotspots (described below) to work.
 
 ----
 SystemApplication.java
