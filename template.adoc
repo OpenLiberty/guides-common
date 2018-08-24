@@ -22,6 +22,21 @@
 :page-tags: ['REST', 'Getting Started']
 // INSTRUCTION: Specify the unique name of the guide that is used in the permalink.  For example below, it is rest-service
 :page-related-guides: ['']
+
+// INSTRUCTION: Set 'basic', 'microprofile', 'none' 
+:page-guide-category: microprofile
+
+// INSTRUCTION: 
+// Requirement: Must define :page-guide-category:
+// Places the guide into the essentials section of a category
+:page-essential: false
+
+// INSTRUCTION: 
+// Requirement: Must have :page-essential: true
+// Number is used to sort guide from left (lowest number) to right (highest number) in 
+// the essentials section of a category
+:page-essential-order: 3
+
 // INSTRUCTION: Specify the slug in the website. This must be unique.
 :page-permalink: /guides/rest-service
 // INSTRUCTION: You should have this to source the common page elements, clone git@github.com:OpenLiberty/guides-common.git
