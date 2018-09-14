@@ -39,12 +39,11 @@ Create the JAX-RS application class in the src/main/java/io/openliberty/guides/r
 ----
 
 ## 4. Hotspots
-Code on the right can be highlighted when hovering over certain "hotspots" in the guide. These hotspots can be just text or also a code command, and can be specified using the role='hotspot'. To specify what lines to highlight when hovering over the hotspot, place highlight_lines=<start line>-<end line> above the block in the asciidoc.
+Code on the right can be highlighted when hovering over certain "hotspots" in the guide. These hotspots can be just text or also a code command, and can be specified using the role='hotspot'. To specify what lines to highlight when hovering over the hotspot, use the role="hotspot=<start line>-<end line>" in the attributes of the code block:
 
 Text hotspot example:
 ----
-highlight_lines=1-12
-[role="hotspot"]
+[role="hotspot=1-12"]
 -----
 EndpointTest.java
 -----
@@ -53,15 +52,21 @@ EndpointTest.java
 
 Code command hotspot example:
 ----
-highlight_lines=1-12
-[role="code_command hotspot"]
+[role="code_command hotspot=1-12"]
 -----
 Edit the `src/main/liberty/config/server.xml` file to update the placeholder text to be:
 -----
 ----
 
-This will highlight the lines 1-12 on the right column when hovering over this block. In mobile view, instead of the code column on the right being shown, these lines will be shown instead (right after where the hotspot is).
+Inline hotspot example:
+----
+The [hotspot=1-5]@Inject annotation indicates a dependency injection.
+You are injecting your InventoryManager bean into the InventoryResource class.
+This injects the bean in its specified context (application-scoped) and makes all of its functionalities
+available without the need of instantiating it yourself.
+----
 
+This will highlight the lines 1-12 on the right column when hovering over this block. In mobile view, instead of the code column on the right being shown, these lines will be shown instead (right after where the hotspot is).
 
 ## 5. Styling included files
 For the Getting started / Maven and other included asciidocs that need to be styled, add [role='command'] above it to style it as a command.
