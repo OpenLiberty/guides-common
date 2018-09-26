@@ -1,0 +1,30 @@
+////
+ Copyright (c) 2018 IBM Corporation and others.
+ Licensed under Creative Commons Attribution-NoDerivatives
+ 4.0 International (CC BY-ND 4.0)
+   https://creativecommons.org/licenses/by-nd/4.0/
+
+ Contributors:
+     IBM Corporation
+////
+== Prerequisites
+
+Before you begin, make sure to have the following tools installed:
+
+First, you will need a containerization software for building containers. {kube} supports a variety
+of container types. You will use `Docker` in this guide. For installation instructions, see https://docs.docker.com/install/.
+
+****
+[system]#*{win} | {mac}*#
+
+You will use the Docker Desktop, where a local {kube} environment is pre-installed and enabled. Make sure you have the `Docker` version with the Docker Desktop support.
+
+- Setup Docker for Windows as described at https://docs.docker.com/docker-for-windows/#kubernetes.
+- Setup Docker for Mac as described at https://docs.docker.com/docker-for-mac/#kubernetes.
+- After following one of the sets of instructions, ensure that {kube} (not Swarm) is selected as the orchestrator.
+
+[system]#*{linux}*#
+
+You will use `Minikube` as a single-node {kube} cluster that runs locally in a virtual machine.
+For Minikube installation instructions see https://github.com/kubernetes/minikube. Make sure to read the "Requirements" section as different operating systems require different prerequisites to get Minikube running.
+****
