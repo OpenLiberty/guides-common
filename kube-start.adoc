@@ -1,0 +1,58 @@
+////
+ Copyright (c) 2017 IBM Corporation and others.
+ Licensed under Creative Commons Attribution-NoDerivatives
+ 4.0 International (CC BY-ND 4.0)
+   https://creativecommons.org/licenses/by-nd/4.0/
+
+ Contributors:
+     IBM Corporation
+////
+== Starting and preparing your cluster for deployment
+
+Start up your {kube} cluster.
+
+****
+[system]#*{win} | {mac}*#
+
+Start your Docker Desktop environment.
+
+[system]#*{linux}*#
+
+Run the following command from a command line:
+
+```
+minikube start
+```
+
+Later, when you no longer need your cluster, you can stop it with `minikube stop` and delete it completely
+with `minikube delete`.
+****
+
+Next, validate that you have a healthy kubernetes environment by running the following command from the command line:
+```
+kubectl get nodes
+```
+
+This should return a `Ready` status for the master node.
+
+****
+[system]#*{win} | {mac}*#
+
+You do not need to do any other step.
+
+[system]#*{linux}*#
+
+Run the following command to configure the Docker CLI to use Minikube's Docker daemon.
+By running this command, you will be able to interact with Minikube's Docker daemon and build new
+images directly to it from your host machine:
+
+```
+eval $(minikube docker-env)
+```
+
+When you no longer want to use Minikube's Docker daemon, run the following command to point back to your host:
+
+```
+eval $(minikube docker-env -u)
+```
+****
