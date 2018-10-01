@@ -29,4 +29,4 @@ You will use `Minikube` as a single-node {kube} cluster that runs locally in a v
 For Minikube installation instructions see https://github.com/kubernetes/minikube. Make sure to read the "Requirements" section as different operating systems require different prerequisites to get Minikube running.
 ****
 
-Please note that while Minikube is also available on Mac and Windows, we discourage using it for the purposes of this guide since Docker Desktop provides a simplified setup process on Mac and Windows.
+Please note that while Minikube is also available on Mac and Windows, for the purposes of this guide use Docker Desktop on Mac and Windows. For Linux use Minikube. This is because Docker Desktop provides a simplified setup process.
