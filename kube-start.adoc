@@ -12,11 +12,11 @@
 Start up your {kube} cluster.
 
 ****
-[system]#*{win} | {mac}*#
+[system]#*{win} | {mac}* -- _Docker Desktop_#
 
 Start your Docker Desktop environment.
 
-[system]#*{linux}*#
+[system]#*{linux}* -- _Minikube_#
 
 Run the following command from a command line:
 
@@ -36,11 +36,11 @@ kubectl get nodes
 This should return a `Ready` status for the master node.
 
 ****
-[system]#*{win} | {mac}*#
+[system]#*{win} | {mac}* -- _Docker Desktop_#
 
 You do not need to do any other step.
 
-[system]#*{linux}*#
+[system]#*{linux}* -- _Minikube_#
 
 Run the following command to configure the Docker CLI to use Minikube's Docker daemon.
 By running this command, you will be able to interact with Minikube's Docker daemon and build new
