@@ -39,5 +39,5 @@ sudo groupadd docker
 sudo usermod -aG docker $USER
 ```
 
-This allows you to run `mvn package` and various `docker` commands without root permissions.
+Logout then login again for the changes to take effect. This allows you to run `mvn package` and various `docker` commands without root permissions.
 ****
