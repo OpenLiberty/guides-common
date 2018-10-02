@@ -46,10 +46,4 @@ images directly to it from your host machine:
 ```
 eval $(minikube docker-env)
 ```
-
-When you no longer want to use Minikube's Docker daemon, run the following command to point back to your host:
-
-```
-eval $(minikube docker-env -u)
-```
 ****
