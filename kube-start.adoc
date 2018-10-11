@@ -25,7 +25,8 @@ minikube start
 ```
 ****
 
-Next, validate that you have a healthy kubernetes environment by running the following command from the command line:
+Next, validate that you have a healthy {kube} environment by running the following command from the command line.
+
 ```
 kubectl get nodes
 ```
@@ -40,7 +41,7 @@ You do not need to do any other step.
 [system]#*{linux}*#
 
 Run the following command to configure the Docker CLI to use Minikube's Docker daemon.
-By running this command, you will be able to interact with Minikube's Docker daemon and build new
+After running this command, you will be able to interact with Minikube's Docker daemon and build new
 images directly to it from your host machine:
 
 ```
