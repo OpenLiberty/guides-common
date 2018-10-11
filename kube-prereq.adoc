@@ -17,10 +17,10 @@ of container types. You will use `Docker` in this guide. For installation instru
 ****
 [system]#*{win} | {mac}*#
 
-You will use the Docker Desktop, where a local {kube} environment is pre-installed and enabled. If you do not see the Kubernetes tab then you have an older version of Docker Desktop, upgrade to the latest version.
+Use the Docker Desktop, where a local {kube} environment is pre-installed and enabled. If you do not see the {kube} tab then you have an older version of Docker Desktop; upgrade to the latest version.
 
-- Setup Docker for Windows as described at https://docs.docker.com/docker-for-windows/#kubernetes.
-- Setup Docker for Mac as described at https://docs.docker.com/docker-for-mac/#kubernetes.
+- Set up Docker for Windows as described at https://docs.docker.com/docker-for-windows/#kubernetes.
+- Set up Docker for Mac as described at https://docs.docker.com/docker-for-mac/#kubernetes.
 - After following one of the sets of instructions, ensure that {kube} (not Swarm) is selected as the orchestrator.
 
 [system]#*{linux}*#
