@@ -19,8 +19,14 @@ Start your Docker Desktop environment.
 
 Run the following command from a command line:
 
+[subs="attributes"]
 ```
+ifdef::minikube-start[]
+{minikube-start}
+endif::[]
+ifndef::minikube-start[]
 minikube start
+endif::[]
 ```
 ****
 
