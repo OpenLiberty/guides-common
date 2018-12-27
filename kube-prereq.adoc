@@ -18,7 +18,7 @@ First, you will need a containerization software for building containers. {kube}
 
 Use Docker Desktop, where a local {kube} environment is pre-installed and enabled. If you do not see the {kube} tab then you have an older version of Docker Desktop; upgrade to the latest version.
 
-- Set up Docker for Windows as described at https://docs.docker.com/docker-for-windows/#kubernetes[Docker for Windows].
+ - Set up  https://docs.docker.com/docker-for-windows/#kubernetes[Docker for Windows].
 - Set up Docker for Mac as described at https://docs.docker.com/docker-for-mac/#kubernetes[Docker for Mac].
 - After following one of the sets of instructions, ensure that {kube} (not Swarm) is selected as the orchestrator in Docker Preferences.
 
