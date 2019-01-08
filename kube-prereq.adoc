@@ -25,5 +25,5 @@ Use Docker Desktop, where a local {kube} environment is pre-installed and enable
 [system]#*{linux}*#
 
 You will use `Minikube` as a single-node {kube} cluster that runs locally in a virtual machine.
-For Minikube installation instructions see the https://github.com/kubernetes/minikube[minikube installation instructions]. Make sure to read the "Requirements" section as different operating systems require different prerequisites to get Minikube running.
+For Minikube installation instructions see the https://github.com/kubernetes/minikube#installation[minikube installation instructions]. Make sure to read the https://github.com/kubernetes/minikube#requirements[Requirements] section as different operating systems require different prerequisites to get Minikube running.
 ****
