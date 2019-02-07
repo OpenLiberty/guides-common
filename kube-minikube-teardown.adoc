@@ -18,20 +18,20 @@ Nothing more needs to be done for Docker Desktop.
 
 Perform the following steps to return your environment to a clean state.
 
-1. Point the Docker daemon back to your local machine:
-
+. Point the Docker daemon back to your local machine:
++
 ```
 eval $(minikube docker-env -u)
 ```
 
-2. Stop your Minikube cluster:
-
+. Stop your Minikube cluster:
++
 ```
 minikube stop
 ```
 
-3. Delete your cluster:
-
+. Delete your cluster:
++
 ```
 minikube delete
 ```
