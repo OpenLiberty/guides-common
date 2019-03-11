@@ -15,6 +15,10 @@ Start your {kube} cluster.
 
 Start your Docker Desktop environment.
 
+ifdef::docker-desktop-description[]
+{docker-desktop-description}
+endif::[]
+
 [system]#*{linux}*#
 
 Run the following command from a command line:
@@ -28,6 +32,10 @@ ifndef::minikube-start[]
 minikube start
 endif::[]
 ```
+
+ifdef::minikube-description[]
+{minikube-description}
+endif::[]
 ****
 
 Next, validate that you have a healthy {kube} environment by running the following command from the command line.
