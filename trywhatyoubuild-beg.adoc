@@ -1,0 +1,11 @@
+To try out the application, first navigate to the `finish` directory and then run the following Maven goals to build the application and run it inside Open Liberty:
+[role='command']
+```
+mvn install
+```
+
+Next, run the Maven `liberty:start-server` goal:
+[role='command']
+```
+mvn liberty:start-server
+```
