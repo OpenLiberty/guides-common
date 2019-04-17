@@ -1,5 +1,5 @@
 ////
- Copyright (c) 2018 IBM Corporation and others.
+ Copyright (c) 2019 IBM Corporation and others.
  Licensed under Creative Commons Attribution-NoDerivatives
  4.0 International (CC BY-ND 4.0)
    https://creativecommons.org/licenses/by-nd/4.0/
@@ -9,7 +9,7 @@
 
 ****
 [system]#*{win}*#
-Ensure that on the Docker for Windows _General Setting_ page, the option is set to `Expose daemon on 
-tcp://localhost:2375 without TLS`. This is required by the `dockerfile-maven` part of 
-the build.
+On the Docker for Windows _General Setting_ page, ensure that the option `Expose daemon on 
+tcp://localhost:2375 without TLS` is enabled. This is required by the `dockerfile-maven` 
+part of the build.
 ****
