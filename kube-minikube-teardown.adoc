@@ -20,18 +20,21 @@ Perform the following steps to return your environment to a clean state.
 
 . Point the Docker daemon back to your local machine:
 +
+[role=command]
 ```
 eval $(minikube docker-env -u)
 ```
 
 . Stop your Minikube cluster:
 +
+[role=command]
 ```
 minikube stop
 ```
 
 . Delete your cluster:
 +
+[role=command]
 ```
 minikube delete
 ```
