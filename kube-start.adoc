@@ -11,16 +11,39 @@
 Start your {kube} cluster.
 
 ****
-[system]#*{win} | {mac}*#
+[.tab_link]
+[#windows_link]
+`*WINDOWS*`
+[.tab_link]
+[#mac_link]
+`*MAC*`
+[.tab_link]
+[#linux_link]
+`*LINUX*`
 
+[.tab_content]
+[#windows_section]
+--
 Start your Docker Desktop environment.
 
 ifdef::docker-desktop-description[]
 {docker-desktop-description}
 endif::[]
+--
 
-[system]#*{linux}*#
+[.tab_content]
+[#mac_section]
+--
+Start your Docker Desktop environment.
 
+ifdef::docker-desktop-description[]
+{docker-desktop-description}
+endif::[]
+--
+
+[.tab_content]
+[#linux_section]
+--
 Run the following command from a command line:
 
 [subs="attributes"]
@@ -36,7 +59,8 @@ endif::[]
 ifdef::minikube-description[]
 {minikube-description}
 endif::[]
-****
+--
+
 
 Next, validate that you have a healthy {kube} environment by running the following command from the command line.
 
