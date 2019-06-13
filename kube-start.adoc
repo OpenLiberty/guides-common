@@ -26,7 +26,7 @@ Start your {kube} cluster.
 Start your Docker Desktop environment.
 
 ```
-- ifdef::docker-desktop-description[]
+ifdef::docker-desktop-description[]
 {docker-desktop-description}
 endif::[]
 ```
@@ -39,7 +39,7 @@ endif::[]
 Start your Docker Desktop environment.
 
 ```
-- ifdef::docker-desktop-description[]
+ifdef::docker-desktop-description[]
 {docker-desktop-description}
 endif::[]
 ```
@@ -56,16 +56,14 @@ Run the following command from a command line:
 ```
 
 ```
-- ifdef::minikube-start[]
+ifdef::minikube-start[]
 {minikube-start}
 endif::[]
 ifndef::minikube-start[]
 minikube start
 endif::[]
-```
 
-```
-- ifdef::minikube-description[]
+ifdef::minikube-description[]
 {minikube-description}
 endif::[]
 ```
@@ -94,25 +92,25 @@ This command should return a `Ready` status for the master node.
 [.tab_content]
 [#windows_section]
 --
-- You do not need to do any other step.
+You do not need to do any other step.
 --
 
 
 [.tab_content]
 [#mac_section]
 --
-- You do not need to do any other step.
+You do not need to do any other step.
 --
 
 
 [.tab_content]
 [#linux_section]
 --
-- Run the following command to configure the Docker CLI to use Minikube's Docker daemon.
+Run the following command to configure the Docker CLI to use Minikube's Docker daemon.
 After you run this command, you will be able to interact with Minikube's Docker daemon and build new
 images directly to it from your host machine:
 
 ```
-- eval $(minikube docker-env)
+eval $(minikube docker-env)
 ```
 --
