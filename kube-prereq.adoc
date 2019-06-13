@@ -64,7 +64,7 @@ Complete the setup for your operating system:
 [#linux_section]
 --
 ```
-You will use `Minikube` as a single-node {kube} cluster that runs locally in a virtual machine.
+- You will use `Minikube` as a single-node {kube} cluster that runs locally in a virtual machine.
 For Minikube installation instructions see the https://github.com/kubernetes/minikube#installation[minikube installation instructions^]. Make sure to pay attention to the requirements as they vary by platform.
 ```
 --
