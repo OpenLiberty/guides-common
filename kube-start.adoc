@@ -8,6 +8,7 @@
 ////
 == Starting and preparing your cluster for deployment
 
+****
 Start your {kube} cluster.
 
 [.tab_link]
@@ -68,7 +69,7 @@ ifdef::minikube-description[]
 endif::[]
 ```
 --
-
+****
 
 Next, validate that you have a healthy {kube} environment by running the following command from the command line.
 
