@@ -10,7 +10,6 @@
 
 Start your {kube} cluster.
 
-****
 [.tab_link]
 [#windows_link]
 `*WINDOWS*`
