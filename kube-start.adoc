@@ -46,13 +46,32 @@ kubectl get nodes
 
 This command should return a `Ready` status for the master node.
 
-****
-[system]#*{win} | {mac}*#
 
+[.tab_link]
+[#windows_link]
+`*WINDOWS*`
+[.tab_link]
+[#mac_link]
+`*MAC*`
+[.tab_link]
+[#linux_link]
+`*LINUX*`
+
+[.tab_content]
+[#windows_section]
+--
 You do not need to do any other step.
+--
 
-[system]#*{linux}*#
+[.tab_content]
+[#mac_section]
+--
+You do not need to do any other step.
+--
 
+[.tab_content]
+[#linux_section]
+--
 Run the following command to configure the Docker CLI to use Minikube's Docker daemon.
 After you run this command, you will be able to interact with Minikube's Docker daemon and build new
 images directly to it from your host machine:
@@ -60,4 +79,4 @@ images directly to it from your host machine:
 ```
 eval $(minikube docker-env)
 ```
-****
+--
