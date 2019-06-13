@@ -31,6 +31,7 @@ ifdef::docker-desktop-description[]
 endif::[]
 --
 
+
 [.tab_content]
 [#mac_section]
 --
@@ -40,6 +41,7 @@ ifdef::docker-desktop-description[]
 {docker-desktop-description}
 endif::[]
 --
+
 
 [.tab_content]
 [#linux_section]
@@ -59,7 +61,7 @@ endif::[]
 ifdef::minikube-description[]
 {minikube-description}
 endif::[]
-
+--
 
 
 Next, validate that you have a healthy {kube} environment by running the following command from the command line.
@@ -70,7 +72,6 @@ kubectl get nodes
 
 This command should return a `Ready` status for the master node.
 
-****
 
 [.tab_link]
 [#windows_link]
@@ -88,11 +89,13 @@ This command should return a `Ready` status for the master node.
 You do not need to do any other step.
 --
 
+
 [.tab_content]
 [#mac_section]
 --
 You do not need to do any other step.
 --
+
 
 [.tab_content]
 [#linux_section]
@@ -104,4 +107,4 @@ images directly to it from your host machine:
 ```
 eval $(minikube docker-env)
 ```
-
+--
