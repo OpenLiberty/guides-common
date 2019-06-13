@@ -70,6 +70,7 @@ kubectl get nodes
 
 This command should return a `Ready` status for the master node.
 
+****
 
 [.tab_link]
 [#windows_link]
