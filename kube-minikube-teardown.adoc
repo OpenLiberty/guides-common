@@ -8,14 +8,34 @@
      IBM Corporation
 ////
 
+[.tab_link]
+[#windows_link]
+`*WINDOWS*`
+[.tab_link]
+[#mac_link]
+`*MAC*`
+[.tab_link]
+[#linux_link]
+`*LINUX*`
 
-****
-[system]#*{win} | {mac}*#
 
+[.tab_content]
+[#windows_section]
+--
 Nothing more needs to be done for Docker Desktop.
+--
 
-[system]#*{linux}*#
 
+[.tab_content]
+[#mac_section]
+--
+Nothing more needs to be done for Docker Desktop.
+--
+
+
+[.tab_content]
+[#linux_section]
+--
 Perform the following steps to return your environment to a clean state.
 
 . Point the Docker daemon back to your local machine:
@@ -36,5 +56,8 @@ minikube stop
 minikube delete
 ```
 
-****
+
+
+
+
 
