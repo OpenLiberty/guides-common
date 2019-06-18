@@ -22,7 +22,7 @@ Start your {kube} cluster.
 `*LINUX*`
 
 [.tab_content]
-[#windows_section]
+[#windows_section1]
 --
 //Start your Docker Desktop environment.
 ```
@@ -34,7 +34,7 @@ endif::[]
 
 
 [.tab_content]
-[#mac_section]
+[#mac_section1]
 --
 //Start your Docker Desktop environment.
 ```
@@ -46,7 +46,7 @@ endif::[]
 
 
 [.tab_content]
-[#linux_section]
+[#linux_section1]
 --
 //Run the following command from a command line:
 ```
