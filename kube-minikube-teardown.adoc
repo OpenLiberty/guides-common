@@ -9,7 +9,6 @@
 ////
 
 {nbsp} +
-
 [.tab_link]
 [#windows9_link]
 `*WINDOWS*`
@@ -58,6 +57,7 @@ minikube stop
 minikube delete
 ```
 --
+{nbsp} +
 
 
 
