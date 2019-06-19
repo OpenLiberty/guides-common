@@ -57,7 +57,6 @@ minikube stop
 minikube delete
 ```
 --
-{nbsp} +
 
 
 
