@@ -11,6 +11,7 @@
 
 Start your {kube} cluster.
 
+****
 [.tab_link]
 [#windows1_link]
 `*WINDOWS*`
@@ -26,11 +27,9 @@ Start your {kube} cluster.
 --
 Start your Docker Desktop environment.
 
-----
 ifdef::docker-desktop-description[]
 {docker-desktop-description}
 endif::[]
-----
 --
 
 [.tab_content]
@@ -38,11 +37,9 @@ endif::[]
 --
 Start your Docker Desktop environment.
 
-----
 ifdef::docker-desktop-description[]
 {docker-desktop-description}
 endif::[]
-----
 --
 
 
@@ -111,3 +108,4 @@ images directly to it from your host machine:
 eval $(minikube docker-env)
 ```
 --
+****
