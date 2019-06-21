@@ -26,22 +26,23 @@ Start your {kube} cluster.
 --
 Start your Docker Desktop environment.
 
+----
 ifdef::docker-desktop-description[]
 {docker-desktop-description}
 endif::[]
-
+----
 --
-
 
 [.tab_content]
 [#mac1_section1]
 --
 Start your Docker Desktop environment.
 
+----
 ifdef::docker-desktop-description[]
 {docker-desktop-description}
 endif::[]
-
+----
 --
 
 
