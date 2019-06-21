@@ -11,7 +11,6 @@
 
 Start your {kube} cluster.
 
-****
 [.tab_link]
 [#windows1_link]
 `*WINDOWS*`
@@ -60,7 +59,6 @@ endif::[]
 ifdef::minikube-description[]
 {minikube-description}
 endif::[]
-
 --
 
 
@@ -108,4 +106,3 @@ images directly to it from your host machine:
 eval $(minikube docker-env)
 ```
 --
-****
