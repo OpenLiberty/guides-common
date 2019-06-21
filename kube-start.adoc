@@ -25,11 +25,11 @@ Start your {kube} cluster.
 [#windows1_section]
 --
 Start your Docker Desktop environment.
-```
+
 ifdef::docker-desktop-description[]
 {docker-desktop-description}
 endif::[]
-```
+
 --
 
 
@@ -37,11 +37,11 @@ endif::[]
 [#mac1_section1]
 --
 Start your Docker Desktop environment.
-```
+
 ifdef::docker-desktop-description[]
 {docker-desktop-description}
 endif::[]
-```
+
 --
 
 
@@ -51,7 +51,7 @@ endif::[]
 Run the following command from a command line:
 
 [subs="attributes"]
-```
+
 ifdef::minikube-start[]
 {minikube-start}
 endif::[]
@@ -62,7 +62,7 @@ endif::[]
 ifdef::minikube-description[]
 {minikube-description}
 endif::[]
-```
+
 --
 
 
