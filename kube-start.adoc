@@ -32,7 +32,7 @@ endif::[]
 --
 
 [.tab_content]
-[#mac1_section1]
+[#mac1_section]
 --
 Start your Docker Desktop environment.
 
@@ -43,7 +43,7 @@ endif::[]
 
 
 [.tab_content]
-[#linux1_section1]
+[#linux1_section]
 --
 Run the following command from a command line:
 
