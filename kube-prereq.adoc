@@ -15,17 +15,17 @@ First, you will need a containerization software for building containers. {kube}
  of container types. You will use `Docker` in this guide. For installation instructions, refer to the https://docs.docker.com/install/[official Docker documentation^].
 
 [.tab_link]
-[#windows_link]
+[.windows_link]
 Windows
 [.tab_link]
-[#mac_link]
+[.mac_link]
 Mac
 [.tab_link]
-[#linux_link]
+[.linux_link]
 Linux
 
 [.tab_content]
-[#windows_section]
+[.windows_section]
 --
 Use Docker Desktop, where a local {kube} environment is pre-installed and enabled. If you do not see the {kube} tab then you have an older version of Docker Desktop; upgrade to the latest version.
 
@@ -40,7 +40,7 @@ After following one of the sets of instructions, ensure that {kube} (not Swarm) 
 --
 
 [.tab_content]
-[#mac_section]
+[.mac_section]
 --
 Use Docker Desktop, where a local {kube} environment is pre-installed and enabled. If you do not see the {kube} tab then you have an older version of Docker Desktop; upgrade to the latest version.
 
@@ -52,6 +52,6 @@ After following one of the sets of instructions, ensure that {kube} (not Swarm) 
 --
 
 [.tab_content]
-[#linux_section]
+[.linux_section]
 You will use `Minikube` as a single-node {kube} cluster that runs locally in a virtual machine.
 For Minikube installation instructions see the https://github.com/kubernetes/minikube#installation[minikube installation instructions^]. Make sure to pay attention to the requirements as they vary by platform.
