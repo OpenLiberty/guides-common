@@ -12,13 +12,13 @@
 Start your {kube} cluster.
 
 [.tab_link]
-[#windows1_link]
+[.windows_link]
 `*WINDOWS*`
 [.tab_link]
-[#mac1_link]
+[.mac_link]
 `*MAC*`
 [.tab_link]
-[#linux1_link]
+[.linux_link]
 `*LINUX*`
 
 [.tab_content]
@@ -32,7 +32,7 @@ endif::[]
 --
 
 [.tab_content]
-[#mac1_section]
+[.mac_section]
 --
 Start your Docker Desktop environment.
 
@@ -43,7 +43,7 @@ endif::[]
 
 
 [.tab_content]
-[#linux1_section]
+[.linux_section]
 --
 Run the following command from a command line:
 
@@ -72,31 +72,31 @@ This command should return a `Ready` status for the master node.
 
 
 [.tab_link]
-[#windows2_link]
+[.windows_link]
 `*WINDOWS*`
 [.tab_link]
-[#mac2_link]
+[.mac_link]
 `*MAC*`
 [.tab_link]
-[#linux2_link]
+[.linux_link]
 `*LINUX*`
 
 [.tab_content]
-[#windows2_section]
+[.windows_section]
 --
 You do not need to do any other step.
 --
 
 
 [.tab_content]
-[#mac2_section]
+[.mac_section]
 --
 You do not need to do any other step.
 --
 
 
 [.tab_content]
-[#linux2_section]
+[.linux_section]
 --
 Run the following command to configure the Docker CLI to use Minikube's Docker daemon.
 After you run this command, you will be able to interact with Minikube's Docker daemon and build new

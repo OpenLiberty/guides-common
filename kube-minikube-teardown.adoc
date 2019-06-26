@@ -10,32 +10,32 @@
 
 {nbsp} +
 [.tab_link]
-[#windows9_link]
+[.windows_link]
 `*WINDOWS*`
 [.tab_link]
-[#mac9_link]
+[.mac_link]
 `*MAC*`
 [.tab_link]
-[#linux9_link]
+[.linux_link]
 `*LINUX*`
 
 
 [.tab_content]
-[#windows9_section]
+[.windows_section]
 --
 Nothing more needs to be done for Docker Desktop.
 --
 
 
 [.tab_content]
-[#mac9_section]
+[.mac_section]
 --
 Nothing more needs to be done for Docker Desktop.
 --
 
 
 [.tab_content]
-[#linux9_section]
+[.linux_section]
 --
 Perform the following steps to return your environment to a clean state.
 
