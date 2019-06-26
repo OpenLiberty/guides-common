@@ -47,8 +47,10 @@ endif::[]
 --
 Run the following command from a command line:
 
+[role=command]
 [subs="attributes"]
 
+```
 ifdef::minikube-start[]
 {minikube-start}
 endif::[]
@@ -59,6 +61,7 @@ endif::[]
 ifdef::minikube-description[]
 {minikube-description}
 endif::[]
+```
 --
 
 

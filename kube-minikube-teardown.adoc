@@ -44,9 +44,9 @@ Perform the following steps to return your environment to a clean state.
 ```
 eval $(minikube docker-env -u)
 ```
-
 . Stop your Minikube cluster:
 +
+
 ```
 minikube stop
 ```
