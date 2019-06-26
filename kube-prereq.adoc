@@ -20,7 +20,9 @@ Use Docker Desktop, where a local {kube} environment is pre-installed and enable
 
 Complete the setup for your operating system:
 
- - Set up  https://docs.docker.com/docker-for-windows/#kubernetes[Docker for Windows^].
+ - Set up  https://docs.docker.com/docker-for-windows/#kubernetes[Docker for Windows^]. On the Docker for Windows _General Setting_ page, ensure that the option `Expose daemon on 		
+  tcp://localhost:2375 without TLS` is enabled. This is required by the `dockerfile-maven` 		
+  part of the build.
  - Set up https://docs.docker.com/docker-for-mac/#kubernetes[Docker for Mac^].
 
 - After following one of the sets of instructions, ensure that {kube} (not Swarm) is selected as the orchestrator in Docker Preferences.
