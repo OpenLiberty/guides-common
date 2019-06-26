@@ -27,7 +27,7 @@ First, you will need a containerization software for building containers. {kube}
 
 
 [.tab_content]
-[#windows_section]
+[.windows_section]
 --
 Use Docker Desktop, where a local {kube} environment is pre-installed and enabled. If you do not see the {kube} tab then you have an older version of Docker Desktop; upgrade to the latest version.
 
