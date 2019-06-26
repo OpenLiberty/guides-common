@@ -22,7 +22,7 @@ Start your {kube} cluster.
 `*LINUX*`
 
 [.tab_content]
-[#windows1_section]
+[.windows_section]
 --
 Start your Docker Desktop environment.
 
