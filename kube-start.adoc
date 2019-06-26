@@ -58,12 +58,15 @@ ifndef::minikube-start[]
 minikube start
 endif::[]
 ```
-----
+--
+[.tab_content]
+[.linux_section]
+--
 ifdef::minikube-description[]
 {minikube-description}
 endif::[]
-----
 --
+
 
 
 Next, validate that you have a healthy {kube} environment by running the following command from the command line.
