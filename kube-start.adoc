@@ -57,11 +57,11 @@ endif::[]
 ifndef::minikube-start[]
 minikube start
 endif::[]
+```
 
 ifdef::minikube-description[]
 {minikube-description}
 endif::[]
-```
 --
 
 
