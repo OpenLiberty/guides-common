@@ -11,18 +11,14 @@
 
 Start your {kube} cluster.
 
-[.tab_link]
-[.windows_link]
+[.tab_link.windows_link]
 `*WINDOWS*`
-[.tab_link]
-[.mac_link]
+[.tab_link.mac_link]
 `*MAC*`
-[.tab_link]
-[.linux_link]
+[.tab_link.linux_link]
 `*LINUX*`
 
-[.tab_content]
-[.windows_section]
+[.tab_content.windows_section.mac_section]
 --
 Start your Docker Desktop environment.
 
@@ -30,17 +26,6 @@ ifdef::docker-desktop-description[]
 {docker-desktop-description}
 endif::[]
 --
-
-[.tab_content]
-[.mac_section]
---
-Start your Docker Desktop environment.
-
-ifdef::docker-desktop-description[]
-{docker-desktop-description}
-endif::[]
---
-
 
 [.tab_content]
 [.linux_section]
@@ -77,30 +62,18 @@ kubectl get nodes
 
 This command should return a `Ready` status for the master node.
 
-
-[.tab_link]
-[.windows_link]
+[.tab_link.windows_link]
 `*WINDOWS*`
-[.tab_link]
-[.mac_link]
+[.tab_link.mac_link]
 `*MAC*`
-[.tab_link]
-[.linux_link]
+[.tab_link.linux_link]
 `*LINUX*`
 
-[.tab_content]
+[.tab_content.windows_section.mac_section]
 [.windows_section]
 --
 You do not need to do any other step.
 --
-
-
-[.tab_content]
-[.mac_section]
---
-You do not need to do any other step.
---
-
 
 [.tab_content]
 [.linux_section]

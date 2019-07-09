@@ -9,30 +9,17 @@
 ////
 
 {nbsp} +
-[.tab_link]
-[.windows_link]
+[.tab_link.windows_link]
 `*WINDOWS*`
-[.tab_link]
-[.mac_link]
+[.tab_link.mac_link]
 `*MAC*`
-[.tab_link]
-[.linux_link]
+[.tab_link.linux_link]
 `*LINUX*`
 
-
-[.tab_content]
-[.windows_section]
+[.tab_content.windows_section.mac_section]
 --
 Nothing more needs to be done for Docker Desktop.
 --
-
-
-[.tab_content]
-[.mac_section]
---
-Nothing more needs to be done for Docker Desktop.
---
-
 
 [.tab_content]
 [.linux_section]
