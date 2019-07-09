@@ -21,8 +21,7 @@
 Nothing more needs to be done for Docker Desktop.
 --
 
-[.tab_content]
-[.linux_section]
+[.tab_content.linux_section]
 --
 Perform the following steps to return your environment to a clean state.
 

@@ -70,13 +70,11 @@ This command should return a `Ready` status for the master node.
 `*LINUX*`
 
 [.tab_content.windows_section.mac_section]
-[.windows_section]
 --
 You do not need to do any other step.
 --
 
-[.tab_content]
-[.linux_section]
+[.tab_content.linux_section]
 --
 Run the following command to configure the Docker CLI to use Minikube's Docker daemon.
 After you run this command, you will be able to interact with Minikube's Docker daemon and build new
