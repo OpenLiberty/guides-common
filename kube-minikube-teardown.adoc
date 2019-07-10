@@ -8,7 +8,6 @@
      IBM Corporation
 ////
 
-{nbsp} +
 [.tab_link.windows_link]
 `*WINDOWS*`
 [.tab_link.mac_link]
