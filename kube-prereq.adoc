@@ -11,7 +11,7 @@
 Before you begin, have the following tools installed:
 
 
-First, you need a containerization software for building containers. {kube} supports various container types. You will use `Docker` in this guide. For installation instructions, refer to the https://docs.docker.com/install/[official Docker documentation^].
+First, you need a containerization software for building containers. {kube} supports various container runtimes. You will use `Docker` in this guide. For installation instructions, refer to the https://docs.docker.com/install/[official Docker documentation^].
 
 ****
 [system]#*{win} | {mac}*#
