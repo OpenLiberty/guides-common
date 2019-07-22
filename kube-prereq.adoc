@@ -8,7 +8,7 @@
 ////
 == Prerequisites
 
-Before you begin, have following tools must be installed:
+Before you begin, the following tools must be installed:
 
 
 First, you need a containerization software for building containers. {kube} supports various container runtimes. You will use `Docker` in this guide. For Docker installation instructions, refer to the https://docs.docker.com/install/[official Docker documentation^].
