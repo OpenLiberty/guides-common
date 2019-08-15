@@ -1,0 +1,63 @@
+{
+    "prereqs": [
+        {
+            "name": "Docker",
+            "link": "https://www.docker.com/get-started",
+            "guides": [
+                "getting-started",
+                "docker",
+                "containerize",
+                "kubernetes-intro",
+                "kubernetes-microprofile-config",
+                "kubernetes-microprofile-health",
+                "istio-intro",
+                "cloud-ibm",
+                "cloud-aws",
+                "cloud-azure",
+            ]
+        },
+        {
+            "name": "Maven",
+            "link": "https://maven.apache.org/download.cgi",
+            "guides": [
+                "getting-started",
+                "maven-intro",
+                "docker",
+                "rest-intro",
+                "cdi-intro",
+                "microprofile-rest-client",
+                "microprofile-fallback",
+                "microprofile-opentracing",
+                "microprofile-openapi",
+                "microprofile-health",
+                "microprofile-metrics",
+                "microprofile-config",
+                "microprofile-jwt",
+                "bean-validation",
+                "rest-client-java",
+                "rest-client-angularjs",
+                "cors",
+                "maven-multimodules",
+                "rest-hateoas",
+                "security-intro",
+                "kubernetes-intro",
+                "kubernetes-microprofile-config",
+                "jpa-intro",
+                "kubernetes-microprofile-health",
+                "istio-intro",
+                "arquillian-managed",
+                "cloud-ibm",
+                "cloud-aws",
+                "rest-client-angular",
+                "containerize",
+                "sessions",
+                "cloud-azure"
+            ]
+        },
+        {
+            "name": "Git",
+            "link": "https://git-scm.com/book/en/v2/Getting-Started-Installing-Git",
+            "guides": ["*"]
+        }
+    ]
+}
