@@ -58,6 +58,61 @@
             "name": "Git",
             "link": "https://git-scm.com/book/en/v2/Getting-Started-Installing-Git",
             "guides": ["*"]
+        },
+        {
+            "name": "Gradle",
+            "link": "https://gradle.org/install",
+            "guides": ["gradle-intro"]
+        },
+        {
+            "name": "Zipkin",
+            "link": "https://zipkin.io/pages/quickstart.html",
+            "guides": ["microprofile-opentracing"]
+        },
+        {
+            "name": "Istio",
+            "link": https://istio.io",
+            "guides": ["istio-intro", "draft-guide-microprofile-istio-retry"]
+        },
+        {
+            "name": "kubectl",
+            "link": "https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl",
+            "guides": ["cloud-ibm", "cloud-aws"]
+        },
+        {
+            "name": "eksctl",
+            "link": "https://github.com/weaveworks/eksctl/releases",
+            "guides": ["cloud-aws"]
+        },
+        {
+            "name": "AWS CLI",
+            "link": "https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html",
+            "guides": ["cloud-aws"]
+        },
+        {
+            "name": "Python",
+            "link": "https://www.python.org/downloads/",
+            "guides": ["cloud-aws"]
+        },
+        {
+            "name": "Azure CLI",
+            "link": "https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest",
+            "guides": ["cloud-azure"]
+        },
+        {
+            "name": "Helm",
+            "link": "https://github.com/helm/helm/releases/tag/v2.13.1",
+            "guides": ["cloud-ibm"]
+        },
+        {
+            "name": "minikube",
+            "link": "https://github.com/kubernetes/minikube#installation",
+            "guides": [
+                "kubernetes-intro",
+                "kubernetes-microprofile-config",
+                "kubernetes-microprofile-health",
+                "istio-intro"
+            ]
         }
     ]
 }
