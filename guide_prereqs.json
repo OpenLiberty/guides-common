@@ -71,7 +71,7 @@
         },
         {
             "name": "Istio",
-            "link": https://istio.io",
+            "link": "https://istio.io",
             "guides": ["istio-intro", "draft-guide-microprofile-istio-retry"]
         },
         {
