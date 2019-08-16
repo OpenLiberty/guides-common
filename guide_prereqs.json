@@ -14,6 +14,8 @@
                 "cloud-ibm",
                 "cloud-aws",
                 "cloud-azure",
+                "draft-guide-microprofile-istio-retry",
+                "draft-guide-spring-boot"
             ]
         },
         {
@@ -51,7 +53,11 @@
                 "rest-client-angular",
                 "containerize",
                 "sessions",
-                "cloud-azure"
+                "cloud-azure",
+                "draft-guide-microprofile-istio-retry",
+                "draft-guide-cloud-openshift",
+                "draft-guide-spring-boot",
+                "draft-guide-microprofile-rest-client-async"
             ]
         },
         {
@@ -100,6 +106,11 @@
             "guides": ["cloud-azure"]
         },
         {
+            "name": "OpenShift CLI",
+            "link": "https://docs.openshift.com/online/getting_started/beyond_the_basics.html#btb-installing-the-openshift-cli",
+            "guides": ["draft-guide-cloud-openshift"]
+        },
+        {
             "name": "Helm",
             "link": "https://github.com/helm/helm/releases/tag/v2.13.1",
             "guides": ["cloud-ibm"]
@@ -111,7 +122,8 @@
                 "kubernetes-intro",
                 "kubernetes-microprofile-config",
                 "kubernetes-microprofile-health",
-                "istio-intro"
+                "istio-intro",
+                "draft-guide-microprofile-istio-retry"
             ]
         }
     ]
