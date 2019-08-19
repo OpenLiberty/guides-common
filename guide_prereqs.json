@@ -41,7 +41,7 @@
         },
         {
             "name": "Istio",
-            "link": "https://github.com/istio/istio/releases",
+            "link": "https://istio.io/docs/setup/kubernetes/#downloading-the-release",
             "guides": ["istio-intro", "draft-guide-microprofile-istio-retry"]
         },
         {
