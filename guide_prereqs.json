@@ -14,8 +14,8 @@
                 "cloud-ibm",
                 "cloud-aws",
                 "cloud-azure",
-                "draft-guide-microprofile-istio-retry",
-                "draft-guide-spring-boot"
+                "microprofile-istio-retry",
+                "spring-boot"
             ]
         },
         {
@@ -42,7 +42,7 @@
         {
             "name": "Istio",
             "link": "https://istio.io/docs/setup/kubernetes/#downloading-the-release",
-            "guides": ["istio-intro", "draft-guide-microprofile-istio-retry"]
+            "guides": ["istio-intro", "microprofile-istio-retry"]
         },
         {
             "name": "kubectl",
@@ -72,7 +72,7 @@
         {
             "name": "OpenShift CLI",
             "link": "https://docs.openshift.com/online/getting_started/beyond_the_basics.html#btb-installing-the-openshift-cli",
-            "guides": ["draft-guide-cloud-openshift"]
+            "guides": ["cloud-openshift"]
         },
         {
             "name": "Helm",
@@ -87,7 +87,7 @@
                 "kubernetes-microprofile-config",
                 "kubernetes-microprofile-health",
                 "istio-intro",
-                "draft-guide-microprofile-istio-retry"
+                "microprofile-istio-retry"
             ]
         }
     ]
