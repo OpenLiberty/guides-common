@@ -41,7 +41,7 @@
         },
         {
             "name": "Istio",
-            "link": "https://istio.io",
+            "link": "https://github.com/istio/istio/releases",
             "guides": ["istio-intro", "draft-guide-microprofile-istio-retry"]
         },
         {
