@@ -20,8 +20,8 @@ Use Docker Desktop, where a local {kube} environment is preinstalled and enabled
 
 Complete the setup for your operating system:
 
-  - Set up https://docs.docker.com/docker-for-windows/#kubernetes[Docker for Windows^].
-  - Set up https://docs.docker.com/docker-for-mac/#kubernetes[Docker for Mac^].
+  - Set up https://docs.docker.com/docker-for-windows/#kubernetes[Docker Desktop for Windows^].
+  - Set up https://docs.docker.com/docker-for-mac/#kubernetes[Docker Desktop for Mac^].
 
 After you complete the Docker setup instructions for your operating system, ensure that {kube} (not Swarm) is selected as the orchestrator in Docker Preferences.
 
