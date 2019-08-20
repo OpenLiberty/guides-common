@@ -36,6 +36,7 @@
                 "cloud-aws",
                 "cloud-azure",
                 "microprofile-istio-retry",
+                "sessions",
                 "spring-boot"
             ]
         },
@@ -47,6 +48,7 @@
                 "kubernetes-microprofile-config",
                 "kubernetes-microprofile-health",
                 "istio-intro",
+                "sessions",
                 "microprofile-istio-retry"
             ]
         },
