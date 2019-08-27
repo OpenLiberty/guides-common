@@ -1,22 +1,14 @@
 {
     "prereqs": [
         {
-            "name": "Docker",
-            "link": "https://www.docker.com/get-started",
-            "guides": [
-                "getting-started",
-                "docker",
-                "containerize",
-                "kubernetes-intro",
-                "kubernetes-microprofile-config",
-                "kubernetes-microprofile-health",
-                "istio-intro",
-                "cloud-ibm",
-                "cloud-aws",
-                "cloud-azure",
-                "microprofile-istio-retry",
-                "spring-boot"
-            ]
+            "name": "Java",
+            "link": "https://adoptopenjdk.net",
+            "guides": ["*"]
+        },
+        {
+            "name": "Git",
+            "link": "https://git-scm.com/book/en/v2/Getting-Started-Installing-Git",
+            "guides": ["*"]
         },
         {
             "name": "Maven",
@@ -25,70 +17,9 @@
             "exclude": ["gradle-intro"]
         },
         {
-            "name": "Git",
-            "link": "https://git-scm.com/book/en/v2/Getting-Started-Installing-Git",
-            "guides": ["*"]
-        },
-        {
             "name": "Gradle",
             "link": "https://gradle.org/install",
             "guides": ["gradle-intro"]
-        },
-        {
-            "name": "Zipkin",
-            "link": "https://zipkin.io/pages/quickstart.html",
-            "guides": ["microprofile-opentracing"]
-        },
-        {
-            "name": "Istio",
-            "link": "https://istio.io/docs/setup/kubernetes/#downloading-the-release",
-            "guides": ["istio-intro", "microprofile-istio-retry"]
-        },
-        {
-            "name": "kubectl",
-            "link": "https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl",
-            "guides": ["cloud-ibm", "cloud-aws"]
-        },
-        {
-            "name": "eksctl",
-            "link": "https://github.com/weaveworks/eksctl/releases",
-            "guides": ["cloud-aws"]
-        },
-        {
-            "name": "AWS CLI",
-            "link": "https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html",
-            "guides": ["cloud-aws"]
-        },
-        {
-            "name": "Python",
-            "link": "https://www.python.org/downloads/",
-            "guides": ["cloud-aws"]
-        },
-        {
-            "name": "Azure CLI",
-            "link": "https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest",
-            "guides": ["cloud-azure"]
-        },
-        {
-            "name": "OpenShift CLI",
-            "link": "https://docs.openshift.com/online/getting_started/beyond_the_basics.html#btb-installing-the-openshift-cli",
-            "guides": ["cloud-openshift"]
-        },
-        {
-            "name": "Helm",
-            "link": "https://github.com/helm/helm/releases/tag/v2.13.1",
-            "guides": ["cloud-ibm"]
-        },
-        {
-            "name": "minikube",
-            "link": "https://github.com/kubernetes/minikube#installation",
-            "guides": [
-                "kubernetes-intro",
-                "kubernetes-microprofile-config",
-                "kubernetes-microprofile-health",
-                "istio-intro",
-                "microprofile-istio-retry"
-            ]
         }
     ]
 }
