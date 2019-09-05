@@ -1,17 +1,14 @@
 ////
- Copyright (c) 2018 IBM Corporation and others.
+ Copyright (c) 2018, 2019 IBM Corporation and others.
  Licensed under Creative Commons Attribution-NoDerivatives
  4.0 International (CC BY-ND 4.0)
    https://creativecommons.org/licenses/by-nd/4.0/
  Contributors:
      IBM Corporation
 ////
-== Prerequisites
+== Additional prerequisites
 
-Before you begin, the following tools must be installed:
-
-
-First, you need a containerization software for building containers. {kube} supports various container runtimes. You will use `Docker` in this guide. For Docker installation instructions, refer to the official https://docs.docker.com/install/[Docker documentation^].
+Before you begin, you need a containerization software for building containers. {kube} supports various container runtimes. You will use `Docker` in this guide. For Docker installation instructions, refer to the official https://docs.docker.com/install/[Docker documentation^].
 
 ****
 [system]#*{win} | {mac}*#
