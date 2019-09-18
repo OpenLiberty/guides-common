@@ -11,6 +11,6 @@
 The fastest way to work through this guide is to clone the Git repository and use the starting project that is provided in the `start` directory. To do this, run the following commands:
 
 [subs="attributes"]
-----
+```
 git clone https://github.com/openliberty/draft-guide-{projectid}.git
-----
+```
