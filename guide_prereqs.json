@@ -2,7 +2,7 @@
     "prereqs": [
         {
             "name": "Java",
-            "link": "https://adoptopenjdk.net",
+            "link": "https://adoptopenjdk.net/?jvmVariant=openj9",
             "guides": ["*"]
         },
         {
