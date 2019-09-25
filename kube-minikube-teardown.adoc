@@ -1,5 +1,5 @@
 ////
- Copyright (c) 2018 IBM Corporation and others.
+ Copyright (c) 2018, 2019 IBM Corporation and others.
  Licensed under Creative Commons Attribution-NoDerivatives
  4.0 International (CC BY-ND 4.0)
    https://creativecommons.org/licenses/by-nd/4.0/
@@ -8,33 +8,44 @@
      IBM Corporation
 ////
 
+[.tab_link.windows_link]
+`*WINDOWS*`
+[.tab_link.mac_link]
+`*MAC*`
+[.tab_link.linux_link]
+`*LINUX*`
 
-****
-[system]#*{win} | {mac}*#
-
+[.tab_content.windows_section.mac_section]
+--
 Nothing more needs to be done for Docker Desktop.
+--
 
-[system]#*{linux}*#
-
+[.tab_content.linux_section]
+--
 Perform the following steps to return your environment to a clean state.
 
 . Point the Docker daemon back to your local machine:
 +
+[role=command]
 ```
 eval $(minikube docker-env -u)
 ```
-
 . Stop your Minikube cluster:
 +
+[role=command]
 ```
 minikube stop
 ```
 
 . Delete your cluster:
 +
+[role=command]
 ```
 minikube delete
 ```
+--
 
-****
+
+
+
 
