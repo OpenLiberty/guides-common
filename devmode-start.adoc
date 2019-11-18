@@ -4,3 +4,13 @@ Start Open Liberty in development mode, which starts the Open Liberty server and
 ```
 mvn liberty:dev
 ```
+
+After you see the following message, your application server in development mode is ready.
+
+[role="no_copy"]
+----
+Press the Enter key to run tests on demand.
+----
+
+The development mode holds your command prompt to listen for file changes.
+You need to open another command prompt to continue, or simply open the project in your editor.
