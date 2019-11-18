@@ -1,0 +1,3 @@
+== Building and running the application
+
+The Open Liberty server was started in development mode at the beginning of the guide and all the changes were automatically picked up.

@@ -1,0 +1,2 @@
+When you are done checking out the service, exit development mode by typing `q` 
+in the shell session where you ran the server, and then press the `enter/return` key.
