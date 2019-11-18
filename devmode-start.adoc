@@ -1,0 +1,6 @@
+Start Open Liberty in development mode, which starts the Open Liberty server and listens for file changes:
+
+[role=command]
+```
+mvn liberty:dev
+```
