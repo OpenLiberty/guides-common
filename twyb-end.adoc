@@ -1,0 +1,8 @@
+After you are finished checking out the application, stop the Open Liberty server by pressing `CTRL+C`
+in the shell session where you ran the server. Alternatively, you can run the `liberty:stop` goal
+from the `finish` directory in another shell session:
+
+[role='command']
+```
+mvn liberty:stop
+```
