@@ -14,28 +14,29 @@
             "guides": ["bean-validation", "cdi-intro", "jpa-intro", "microshed-testing", "rest-client-java", "rest-intro", 
                 "security-intro"],
             "visible": "true"
-
         },
         {
             "name": "MicroProfile",
             "guides": ["cdi-intro", "kubernetes-microprofile-config", "kubernetes-microprofile-health", "microprofile-config", 
                 "microprofile-fallback", "microprofile-health", "microprofile-istio-retry-fallback", "microprofile-jwt", 
                 "microprofile-metrics", "microprofile-openapi", "microprofile-opentracing", "microprofile-rest-client", 
-                "microprofile-rest-client-async", "microshed-testing", "rest-client-java", "rest-intro", "bulkhead", "circuit-breaker",
-                "microprofile-config-intro", "retry-timeout"],
+                "microprofile-rest-client-async", "microshed-testing", "rest-client-java", "rest-intro", "bulkhead", 
+                "circuit-breaker", "microprofile-config-intro", "retry-timeout"],
             "visible": "true"
         },
         {
             "name": "Kubernetes",
             "guides": ["cloud-aws", "cloud-azure", "cloud-ibm", "cloud-openshift", "istio-intro", "kubernetes-intro", 
-                "kubernetes-microprofile-config", "kubernetes-microprofile-health", "microprofile-istio-retry-fallback", "okd"],
+                "kubernetes-microprofile-config", "kubernetes-microprofile-health", "microprofile-istio-retry-fallback", 
+                "okd"],
             "visible": "true"
         },
         {
             "name": "Docker",
-            "guides": ["cloud-aws", "cloud-azure", "cloud-ibm", "cloud-openshift", "containerize", "docker", "getting-started", 
-                "istio-intro", "kubernetes-intro", "kubernetes-microprofile-config", "kubernetes-microprofile-health", 
-                "microprofile-istio-retry-fallback", "microshed-testing", "okd", "sessions", "spring-boot"],
+            "guides": ["cloud-aws", "cloud-azure", "cloud-ibm", "cloud-openshift", "containerize", "docker", 
+                "getting-started", "istio-intro", "kubernetes-intro", "kubernetes-microprofile-config", 
+                "kubernetes-microprofile-health", "microprofile-istio-retry-fallback", "microshed-testing", "okd", 
+                "sessions", "spring-boot"],
             "visible": "true"
         },
         {
@@ -49,7 +50,8 @@
         },
         {
             "name": "Microservices",
-            "guides": ["getting-started", "microprofile-opentracing", "bulkhead", "circuit-breaker", "microprofile-config-intro", "retry-timeout"]
+            "guides": ["getting-started", "microprofile-opentracing", "circuit-breaker", "microprofile-config-intro", 
+            "bulkhead", "retry-timeout"]
         },
         {
             "name": "Gradle",
@@ -127,10 +129,5 @@
             "name": "@Timeout",
             "guides": ["retry-timeout"]
         }
-
-
-
-
-
     ]
 }
