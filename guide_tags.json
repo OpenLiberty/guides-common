@@ -6,17 +6,12 @@
             "visible": "true"
         },
         {
-            "name": "Java EE",
-            "guides": ["bean-validation", "cdi-intro", "jpa-intro", "microshed-testing", "rest-client-java", "rest-intro"]
-        },
-        {
-            "name": "Jakarta EE",
+            "name": "Jakarta EE, Java EE, JEE",
             "guides": ["bean-validation", "cdi-intro", "jpa-intro", "microshed-testing", "rest-client-java", "rest-intro", 
-                "security-intro"],
-            "visible": "true"
+                "security-intro"]
         },
         {
-            "name": "MicroProfile",
+            "name": "MicroProfile, Micro Profile, MP",
             "guides": ["cdi-intro", "kubernetes-microprofile-config", "kubernetes-microprofile-health", "microprofile-config", 
                 "microprofile-fallback", "microprofile-health", "microprofile-istio-retry-fallback", "microprofile-jwt", 
                 "microprofile-metrics", "microprofile-openapi", "microprofile-opentracing", "microprofile-rest-client", 
