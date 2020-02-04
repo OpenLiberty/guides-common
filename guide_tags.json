@@ -7,14 +7,14 @@
         },
         {
             "name": "Jakarta EE",
-            "search_terms": ["Java EE", "JEE"],
+            "additional_search_terms": ["Java EE", "JEE"],
             "guides": ["bean-validation", "cdi-intro", "jpa-intro", "microshed-testing", "rest-client-java", "rest-intro", 
                 "security-intro"],
             "visible": "true"
         },
         {
             "name": "MicroProfile",
-            "search_terms": ["Micro Profile", "MP"],
+            "additional_search_terms": ["Micro Profile", "MP"],
             "guides": ["cdi-intro", "kubernetes-microprofile-config", "kubernetes-microprofile-health", "microprofile-config", 
                 "microprofile-fallback", "microprofile-health", "microprofile-istio-retry-fallback", "microprofile-jwt", 
                 "microprofile-metrics", "microprofile-openapi", "microprofile-opentracing", "microprofile-rest-client", 
