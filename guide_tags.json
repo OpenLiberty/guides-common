@@ -2,7 +2,7 @@
     "guide_tags": [
         {
             "name": "Maven",
-            "guides": ["arquillian-managed", "getting-started", "maven-intro"],
+            "guides": ["arquillian-managed", "getting-started", "maven-intro", "maven-multimodules"],
             "visible": "true"
         },
         {
@@ -26,7 +26,7 @@
             "name": "Kubernetes",
             "guides": ["cloud-aws", "cloud-azure", "cloud-ibm", "cloud-openshift", "istio-intro", "kubernetes-intro", 
                 "kubernetes-microprofile-config", "kubernetes-microprofile-health", "microprofile-istio-retry-fallback", 
-                "okd"],
+                "okd", "sessions"],
             "visible": "true"
         },
         {
@@ -86,7 +86,7 @@
         },
         {
             "name": "@Fallback",
-            "guides": ["bulkhead", "circuit-breaker"]
+            "guides": ["bulkhead", "circuit-breaker", "microprofile-fallback", "microprofile-istio-retry-fallback"]
         },
         {
             "name": "Concurrent requests",
@@ -102,23 +102,23 @@
         },
         {
             "name": "Fault Tolerance",
-            "guides": ["circuit-breaker", "retry-timeout"]
+            "guides": ["circuit-breaker", "retry-timeout", "microprofile-fallback", "microprofile-istio-retry-fallback"]
         },
         {
             "name": "Config",
-            "guides": ["microprofile-config-intro"]
+            "guides": ["microprofile-config-intro", "microprofile-config", "kubernetes-microprofile-config"]
         },
         {
             "name": "@Inject",
-            "guides": ["microprofile-config-intro"]
+            "guides": ["microprofile-config-intro", "microprofile-config", "cdi-intro"]
         },
         {
             "name": "@ConfigProperty",
-            "guides": ["microprofile-config-intro"]
+            "guides": ["microprofile-config-intro", "microprofile-config"]
         },
         {
             "name": "ConfigSource",
-            "guides": ["microprofile-config-intro"]
+            "guides": ["microprofile-config-intro", "microprofile-config"]
         },
         {
             "name": "@Retry",
