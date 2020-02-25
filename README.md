@@ -11,6 +11,7 @@ The common files include:
 - `mvncompile.adoc` to place in the building section of the guide for instructions on how to repackage everything
 without having to restart the server.
 - `mvnverify.adoc` to place near the end of the guide for instructions on how to run the tests.
+- `guide_tags.json` to store tags for the guides. Full instructions for updating guide tags can be found in the [guides-template](https://github.com/OpenLiberty/draft-guides-template#step-4-create-a-new-guide).
 
 For additional instructions including formatting, styling, etc. of the guides, visit the Wiki located in this repository.
 

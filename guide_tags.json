@@ -1,0 +1,132 @@
+{
+    "guide_tags": [
+        {
+            "name": "Maven",
+            "guides": ["arquillian-managed", "getting-started", "maven-intro", "maven-multimodules"],
+            "visible": "true"
+        },
+        {
+            "name": "Jakarta EE",
+            "additional_search_terms": ["Java EE", "JEE"],
+            "guides": ["bean-validation", "cdi-intro", "jpa-intro", "microshed-testing", "rest-client-java", "rest-intro", 
+                "security-intro"],
+            "visible": "true"
+        },
+        {
+            "name": "MicroProfile",
+            "additional_search_terms": ["Micro Profile", "MP"],
+            "guides": ["cdi-intro", "kubernetes-microprofile-config", "kubernetes-microprofile-health", "microprofile-config", 
+                "microprofile-fallback", "microprofile-health", "microprofile-istio-retry-fallback", "microprofile-jwt", 
+                "microprofile-metrics", "microprofile-openapi", "microprofile-opentracing", "microprofile-rest-client", 
+                "microprofile-rest-client-async", "microshed-testing", "rest-client-java", "rest-intro", "bulkhead", 
+                "circuit-breaker", "microprofile-config-intro", "retry-timeout"],
+            "visible": "true"
+        },
+        {
+            "name": "Kubernetes",
+            "guides": ["cloud-aws", "cloud-azure", "cloud-ibm", "cloud-openshift", "istio-intro", "kubernetes-intro", 
+                "kubernetes-microprofile-config", "kubernetes-microprofile-health", "microprofile-istio-retry-fallback", 
+                "okd", "sessions"],
+            "visible": "true"
+        },
+        {
+            "name": "Docker",
+            "guides": ["cloud-aws", "cloud-azure", "cloud-ibm", "cloud-openshift", "containerize", "docker", 
+                "getting-started", "istio-intro", "kubernetes-intro", "kubernetes-microprofile-config", 
+                "kubernetes-microprofile-health", "microprofile-istio-retry-fallback", "microshed-testing", "okd", 
+                "sessions", "spring-boot"],
+            "visible": "true"
+        },
+        {
+            "name": "Cloud",
+            "guides": ["cloud-aws", "cloud-azure", "cloud-ibm", "cloud-openshift", "okd"],
+            "visible": "true"
+        },
+        {
+            "name": "Getting Started",
+            "guides": ["getting-started", "gradle-intro", "maven-intro"]
+        },
+        {
+            "name": "Microservices",
+            "guides": ["getting-started", "microprofile-opentracing", "circuit-breaker", "microprofile-config-intro", 
+            "bulkhead", "retry-timeout"]
+        },
+        {
+            "name": "Gradle",
+            "guides": ["gradle-intro"]
+        },
+        {
+            "name": "Security",
+            "guides": ["microprofile-jwt", "security-intro"],
+            "visible": "true"
+        },
+        {
+            "name": "OpenTracing",
+            "guides": ["microprofile-opentracing"]
+        },
+        {
+            "name": "@Traced",
+            "guides": ["microprofile-opentracing"]
+        },
+        {
+            "name": "Testing",
+            "guides": ["microshed-testing"]
+        },
+        {
+            "name": "Interactive",
+            "guides": ["bulkhead", "circuit-breaker", "microprofile-config-intro", "retry-timeout"]
+        },
+        {
+            "name": "@Bulkhead",
+            "guides": ["bulkhead"]
+        },
+        {
+            "name": "@Asynchronous",
+            "guides": ["bulkhead"]
+        },
+        {
+            "name": "@Fallback",
+            "guides": ["bulkhead", "circuit-breaker", "microprofile-fallback", "microprofile-istio-retry-fallback"]
+        },
+        {
+            "name": "Concurrent requests",
+            "guides": ["bulkhead"]
+        },
+        {
+            "name": "Circuit Breaker",
+            "guides": ["circuit-breaker"]
+        },
+        {
+            "name": "@CircuitBreaker",
+            "guides": ["circuit-breaker"]
+        },
+        {
+            "name": "Fault Tolerance",
+            "guides": ["circuit-breaker", "retry-timeout", "microprofile-fallback", "microprofile-istio-retry-fallback"]
+        },
+        {
+            "name": "Config",
+            "guides": ["microprofile-config-intro", "microprofile-config", "kubernetes-microprofile-config"]
+        },
+        {
+            "name": "@Inject",
+            "guides": ["microprofile-config-intro", "microprofile-config", "cdi-intro"]
+        },
+        {
+            "name": "@ConfigProperty",
+            "guides": ["microprofile-config-intro", "microprofile-config"]
+        },
+        {
+            "name": "ConfigSource",
+            "guides": ["microprofile-config-intro", "microprofile-config"]
+        },
+        {
+            "name": "@Retry",
+            "guides": ["retry-timeout"]
+        },
+        {
+            "name": "@Timeout",
+            "guides": ["retry-timeout"]
+        }
+    ]
+}

@@ -1,0 +1,3 @@
+=== Running the tests
+
+Since you started Open Liberty in development mode at the start of the guide, press the `enter/return` key to run the tests.
