@@ -1,0 +1,4 @@
+=== What is MicroProfile Reactive Messaging?
+
+Temporal decoupling of services in a microservice-based architecture could be achieved using asynchronous communication. MicroProfile Reactive Messaging provides a way to build systems of microservices advocating responsiveness, location transparency, elasticity, resiliency to failure and temporal decoupling. This helps in enforcing asynchronous message passing between the different parts of the system. See
+https://download.eclipse.org/microprofile/microprofile-reactive-messaging-1.0/microprofile-reactive-messaging-spec.html#_microprofile_reactive_messaging[ MicroProfile Reactive Messaging Specification^] for more information.
