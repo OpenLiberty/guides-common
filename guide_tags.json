@@ -26,7 +26,7 @@
             "name": "Kubernetes",
             "guides": ["cloud-aws", "cloud-azure", "cloud-ibm", "cloud-openshift", "istio-intro", "kubernetes-intro", 
                 "kubernetes-microprofile-config", "kubernetes-microprofile-health", "microprofile-istio-retry-fallback", 
-                "okd", "sessions"],
+                "okd", "sessions", "cloud-google"],
             "visible": "true"
         },
         {
@@ -34,12 +34,12 @@
             "guides": ["cloud-aws", "cloud-azure", "cloud-ibm", "cloud-openshift", "containerize", "docker", 
                 "getting-started", "istio-intro", "kubernetes-intro", "kubernetes-microprofile-config", 
                 "kubernetes-microprofile-health", "microprofile-istio-retry-fallback", "microshed-testing", "okd", 
-                "sessions", "spring-boot"],
+                "sessions", "spring-boot", "cloud-google"],
             "visible": "true"
         },
         {
             "name": "Cloud",
-            "guides": ["cloud-aws", "cloud-azure", "cloud-ibm", "cloud-openshift", "okd"],
+            "guides": ["cloud-aws", "cloud-azure", "cloud-ibm", "cloud-openshift", "okd", "cloud-google"],
             "visible": "true"
         },
         {
