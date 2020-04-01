@@ -10,23 +10,23 @@
             },
             {
                 "subcategory_name": "RESTful service",
-                "guides": ["rest-intro", "microprofile-rest-client-async", "microprofile-jwt", "rest-hateoas", "microprofile-openapi"]
+                "guides": ["rest-intro", "microprofile-rest-client", "microprofile-rest-client-async", "rest-hateoas", "microprofile-openapi"]
             },
             {
                 "subcategory_name": "Configuration",
-                "guides": ["microprofile-config", "microprofile-config-intro"]
+                "guides": ["microprofile-config", "microprofile-config-intro", "kubernetes-microprofile-config"]
             },
             {
                 "subcategory_name": "Fault tolerance",
-                "guides": ["retry-timeout", "microprofile-fallback", "bulkhead", "circuit-breaker"]
+                "guides": ["microprofile-fallback", "microprofile-istio-retry-fallback", "retry-timeout", "bulkhead", "circuit-breaker"]
             },
             {
                 "subcategory_name": "Observability",
-                "guides": ["kubernetes-microprofile-health", "microprofile-metrics", "microprofile-open-tracing"]
+                "guides": ["microprofile-health", "kubernetes-microprofile-health", "microprofile-metrics", "microprofile-opentracing"]
             },
             {
                 "subcategory_name": "Security",
-                "guides": ["security-intro", "cors"]
+                "guides": ["security-intro", "microprofile-jwt", "cors"]
             },
             {
                 "subcategory_name": "Persistence",
@@ -34,7 +34,7 @@
             },
             {
                 "subcategory_name": "Client side",
-                "guides": ["rest-client-angularjs", "rest-client-angular"]
+                "guides": ["rest-client-java", "rest-client-angularjs", "rest-client-angular"]
             }
         ]
     },
@@ -49,7 +49,7 @@
             },
             {
                 "subcategory_name": "Test",
-                "guides": ["arquillian-managed"]
+                "guides": ["microshed-testing", "arquillian-managed"]
             }
         ]
     },
@@ -60,12 +60,16 @@
         [
             {
                 "subcategory_name": "Containerize",
-                "guides": ["containerize", "kubernetes-microprofile-config", "istio-intro", "kubernetes-intro"]
+                "guides": ["containerize", "istio-intro", "kubernetes-intro", "guide-spring-boot"]
             },
             {
                 "subcategory_name": "Cloud deployment",
-                "guides": ["cloud-aws", "cloud-azure", "cloud-ibm", "cloud-openshift"]
+                "guides": ["cloud-aws", "cloud-azure", "cloud-ibm", "cloud-openshift", "okd", "cloud-google"]
             }
         ]
+    },
+    {
+        "category_name": "Other",
+        "guides": ["bean-validation", "sessions"]
     }
 ]
