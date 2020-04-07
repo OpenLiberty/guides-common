@@ -60,7 +60,7 @@
         [
             {
                 "subcategory_name": "Containerize",
-                "guides": ["containerize", "kubernetes-intro", "istio-intro", "guide-spring-boot"]
+                "guides": ["containerize", "kubernetes-intro", "istio-intro", "spring-boot"]
             },
             {
                 "subcategory_name": "Cloud deployment",
