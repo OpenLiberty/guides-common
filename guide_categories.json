@@ -5,7 +5,7 @@
         "subcategories": 
         [
             {
-                "subcategory_name": "Getting Started",
+                "subcategory_name": "Getting started",
                 "guides": ["getting-started", "cdi-intro", "bean-validation"]
             },
             {
@@ -45,7 +45,7 @@
         [
             {
                 "subcategory_name": "Build",
-                "guides": ["maven-intro", "maven-multimodules", "gradle-intro", "docker"]
+                "guides": ["maven-intro", "gradle-intro", "maven-multimodules", "docker"]
             },
             {
                 "subcategory_name": "Test",
