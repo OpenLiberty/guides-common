@@ -127,6 +127,10 @@
         {
             "name": "@Timeout",
             "guides": ["retry-timeout"]
+        },
+        {
+            "name": "Reactive",
+            "guides": ["microprofile-reactive-messaging"]
         }
     ]
 }
