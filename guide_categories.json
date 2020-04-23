@@ -6,11 +6,15 @@
         [
             {
                 "subcategory_name": "Getting started",
-                "guides": ["getting-started", "cdi-intro", "bean-validation"]
+                "guides": ["getting-started", "cdi-intro"]
             },
             {
                 "subcategory_name": "RESTful service",
                 "guides": ["rest-intro", "microprofile-rest-client", "rest-client-java", "microprofile-openapi", "rest-hateoas", "microprofile-rest-client-async"]
+            },
+            {
+                "subcategory_name": "Reactive service",
+                "guides": ["microprofile-reactive-messaging"]
             },
             {
                 "subcategory_name": "Configuration",
@@ -26,7 +30,7 @@
             },
             {
                 "subcategory_name": "Security",
-                "guides": ["security-intro", "microprofile-jwt", "cors"]
+                "guides": ["security-intro", "microprofile-jwt", "bean-validation", "cors"]
             },
             {
                 "subcategory_name": "Persistence",
@@ -39,7 +43,7 @@
         ]
     },
     {
-        "category_name": "Build",
+        "category_name": "Build and Test",
         "category_title": "Building and testing your cloud-native application",
         "subcategories":
         [
@@ -50,6 +54,10 @@
             {
                 "subcategory_name": "Test",
                 "guides": ["microshed-testing", "arquillian-managed"]
+            },
+            {
+                "subcategory_name": "Containerize",
+                "guides": ["containerize", "spring-boot"]
             }
         ]
     },
@@ -59,8 +67,8 @@
         "subcategories":
         [
             {
-                "subcategory_name": "Containerize",
-                "guides": ["containerize", "kubernetes-intro", "istio-intro", "spring-boot"]
+                "subcategory_name": "Kubernetes",
+                "guides": ["kubernetes-intro", "istio-intro"]
             },
             {
                 "subcategory_name": "Cloud deployment",
