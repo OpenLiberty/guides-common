@@ -14,7 +14,7 @@
             },
             {
                 "subcategory_name": "Reactive service",
-                "guides": ["microprofile-reactive-messaging", "reactive-service-testing", "microprofile-reactive-messaging-rest", "microprofile-reactive-messaging-acknowledgement", "reactive-messaging-sse", "kafka-intro", "jax-rs-reactive-client"]
+                "guides": ["microprofile-reactive-messaging", "microprofile-reactive-messaging-rest", "microprofile-reactive-messaging-acknowledgement", "reactive-messaging-sse", "kafka-intro", "jax-rs-reactive-client"]
             },
             {
                 "subcategory_name": "Configuration",
@@ -57,7 +57,7 @@
             },
             {
                 "subcategory_name": "Test",
-                "guides": ["microshed-testing", "arquillian-managed"]
+                "guides": ["microshed-testing", "reactive-service-testing", "arquillian-managed"]
             },
             {
                 "subcategory_name": "Containerize",
