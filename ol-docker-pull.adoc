@@ -1,0 +1,6 @@
+Run the following command to download or update to the latest `open-liberty` Docker image:
+
+[role='command']
+```
+docker pull open-liberty
+```
