@@ -43,6 +43,11 @@
             "visible": "true"
         },
         {
+            "name": "Reactive",
+            "guides": ["microprofile-reactive-messaging", "reactive-service-testing"],
+            "visible": "true"
+        },
+        {
             "name": "Getting Started",
             "guides": ["getting-started", "gradle-intro", "maven-intro"]
         },
@@ -127,10 +132,6 @@
         {
             "name": "@Timeout",
             "guides": ["retry-timeout"]
-        },
-        {
-            "name": "Reactive",
-            "guides": ["microprofile-reactive-messaging", "reactive-service-testing"]
         }
     ]
 }
