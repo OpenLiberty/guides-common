@@ -19,7 +19,7 @@
                 "microprofile-fallback", "microprofile-health", "microprofile-istio-retry-fallback", "microprofile-jwt", 
                 "microprofile-metrics", "microprofile-openapi", "microprofile-opentracing", "microprofile-rest-client", 
                 "microprofile-rest-client-async", "microshed-testing", "rest-client-java", "rest-intro", "bulkhead", 
-                "circuit-breaker", "microprofile-config-intro", "retry-timeout", "microprofile-reactive-messaging", "microprofile-reactive-messaging-rest"],
+                "circuit-breaker", "microprofile-config-intro", "retry-timeout", "microprofile-reactive-messaging", "reactive-service-testing", "microprofile-reactive-messaging-rest"],
             "visible": "true"
         },
         {
@@ -40,6 +40,11 @@
         {
             "name": "Cloud",
             "guides": ["cloud-aws", "cloud-azure", "cloud-ibm", "cloud-openshift", "okd", "cloud-google"],
+            "visible": "true"
+        },
+        {
+            "name": "Reactive",
+            "guides": ["microprofile-reactive-messaging", "reactive-service-testing", "microprofile-reactive-messaging-rest"],
             "visible": "true"
         },
         {
@@ -70,7 +75,7 @@
         },
         {
             "name": "Testing",
-            "guides": ["microshed-testing"]
+            "guides": ["microshed-testing", "reactive-service-testing"]
         },
         {
             "name": "Interactive",
