@@ -2,9 +2,8 @@ When you run Open Liberty in dev mode, the server listens for file changes and a
 deploys your updates whenever you save a new change. Run the following goal to start in dev mode:
 
 [.tab_link.maven_link]
-`   `
+
 [.tab_link.gradle_link]
-`    `
 
 [.tab_content.maven_section]
 --
