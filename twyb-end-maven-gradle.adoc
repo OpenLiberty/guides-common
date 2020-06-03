@@ -3,11 +3,11 @@ in the shell session where you ran the server. Alternatively, you can run the `l
 from the `finish` directory in another shell session:
 
 [.tab_link.maven_link]
-
+` `
 [.tab_link.gradle_link]
+` `
 
-[.tab_content]
-[.maven_section]
+[.tab_content.maven_section]
 --
 [role='command']
 ```
@@ -15,8 +15,7 @@ mvn liberty:stop
 ```
 --
 
-[.tab_content]
-[.gradle_section]
+[.tab_content.gradle_section]
 --
 [role='command']
 ```

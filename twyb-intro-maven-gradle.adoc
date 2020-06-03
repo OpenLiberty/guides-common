@@ -7,11 +7,11 @@ To try out the application, first go to the `finish` directory and run the follo
 Maven goal to build the application and deploy it to Open Liberty:
 
 [.tab_link.maven_link]
-
+``
 [.tab_link.gradle_link]
+``
 
-[.tab_content]
-[.maven_section]
+[.tab_content.maven_section]
 --
 [role='command']
 ```
@@ -19,8 +19,7 @@ mvn liberty:run
 ```
 --
 
-[.tab_content]
-[.gradle_section]
+[.tab_content.gradle_section]
 --
 [role='command']
 ```
