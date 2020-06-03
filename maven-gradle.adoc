@@ -1,0 +1,18 @@
+Please select the build tool you interest to use, click either `Maven` or `Gradle`:
+
+[.tab_link.maven_link]
+`*Maven*`
+[.tab_link.gradle_link]
+`*Gradle*`
+
+[.tab_content]
+[.maven_section]
+--
+The guide will show you the maven commands.
+--
+
+[.tab_content]
+[.gradle_section]
+--
+The guide will show you the gradle commands.
+--
