@@ -1,0 +1,30 @@
+== Additional prerequisites
+
+Before you begin, you need a containerization software for building containers. You will use Docker in this guide. You can think of Docker like a virtual machine that runs various applications. However, unlike a typical virtual machine, you can run these applications simultaneously on a single system and independent of one another. Learn more about Docker on the https://www.docker.com/why-docker/[official Docker website^].
+
+[.tab_link.windows_link]
+`*WINDOWS*`
+[.tab_link.mac_link]
+`*MAC*`
+[.tab_link.linux_link]
+`*LINUX*`
+
+[.tab_content.windows_section]
+--
+
+Docker Desktop for Windows is the Community version of Docker for Microsoft Windows. You can download Docker Desktop for Windows from https://docs.docker.com/docker-for-windows/install/[Docker Hub^].
+
+--
+
+[.tab_content.mac_section]
+--
+
+Docker Desktop for Mac is the Community version of Docker for Mac. You can download Docker Desktop for Mac from https://hub.docker.com/editions/community/docker-ce-desktop-mac/[Docker Hub^].
+
+--
+
+[.tab_content.linux_section]
+--
+
+Docker Engine is available on a variety of Linux platforms through Docker Desktop. You can download Docker Engine for different Linux Distros from https://docs.docker.com/engine/install/#server/[official Docker installation for Linux.]
+--
