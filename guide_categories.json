@@ -30,7 +30,7 @@
             },
             {
                 "subcategory_name": "Security",
-                "guides": ["security-intro", "microprofile-jwt", "bean-validation", "cors"]
+                "guides": ["security-intro", "microprofile-jwt", "bean-validation", "cors", "social-login"]
             },
             {
                 "subcategory_name": "Persistence",
