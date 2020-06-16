@@ -1,5 +1,5 @@
 ////
- Copyright (c) 2017, 2019 IBM Corporation and others.
+ Copyright (c) 2017, 2020 IBM Corporation and others.
  Licensed under Creative Commons Attribution-NoDerivatives
  4.0 International (CC BY-ND 4.0)
    https://creativecommons.org/licenses/by-nd/4.0/
@@ -8,7 +8,7 @@
 ////
 == Getting started
 
-The fastest way to work through this guide is to clone the Git repository and use the projects that are provided inside:
+The fastest way to work through this guide is to clone the https://github.com/openliberty/guide-{projectid}.git[Git repository^] and use the projects that are provided inside:
 
 [source, role="command", subs="attributes"]
 ----
