@@ -25,6 +25,8 @@ Start your Docker Desktop environment.
 ifdef::docker-desktop-description[]
 {docker-desktop-description}
 endif::[]
+
+Ensure that Kubernetes is running on Docker Desktop and that the context is set to `docker-desktop`.
 --
 
 [.tab_content]
