@@ -42,6 +42,6 @@ After you complete the Docker setup instructions for your operating system, ensu
 [.tab_content.linux_section]
 --
 You will use `Minikube` as a single-node {kube} cluster that runs locally in a virtual machine.
-Make sure you have kubectl installed, see the https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-on-linux[kubectl installation instructions^].
+Make sure you have `kubectl` installed, see the https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-on-linux[kubectl installation instructions^].
 For Minikube installation instructions, see the https://github.com/kubernetes/minikube#installation[Minikube documentation^].
 --
