@@ -10,11 +10,11 @@
             },
             {
                 "subcategory_name": "RESTful service",
-                "guides": ["rest-intro", "microprofile-rest-client", "rest-client-java", "microprofile-openapi", "rest-hateoas", "microprofile-rest-client-async"]
+                "guides": ["rest-intro", "microprofile-rest-client", "rest-client-java", "microprofile-openapi", "rest-hateoas", "microprofile-rest-client-async", "jax-rs-reactive-client"]
             },
             {
                 "subcategory_name": "Reactive service",
-                "guides": ["microprofile-reactive-messaging", "microprofile-reactive-messaging-rest", "microprofile-reactive-messaging-acknowledgement", "reactive-messaging-sse", "kafka-intro", "jax-rs-reactive-client"]
+                "guides": ["microprofile-reactive-messaging" , "microprofile-reactive-messaging-rest", "microprofile-reactive-messaging-acknowledgement", "reactive-messaging-sse", "kafka-intro", "jax-rs-reactive-client"]
             },
             {
                 "subcategory_name": "Configuration",
