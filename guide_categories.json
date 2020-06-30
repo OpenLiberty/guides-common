@@ -14,7 +14,7 @@
             },
             {
                 "subcategory_name": "Reactive service",
-                "guides": ["microprofile-reactive-messaging"]
+                "guides": ["microprofile-reactive-messaging", "microprofile-reactive-messaging-rest", "microprofile-reactive-messaging-acknowledgement", "reactive-messaging-sse", "kafka-intro", "jax-rs-reactive-client"]
             },
             {
                 "subcategory_name": "Configuration",
@@ -30,15 +30,19 @@
             },
             {
                 "subcategory_name": "Security",
-                "guides": ["security-intro", "microprofile-jwt", "bean-validation", "cors"]
+                "guides": ["security-intro", "microprofile-jwt", "bean-validation", "cors", "social-login"]
             },
             {
                 "subcategory_name": "Persistence",
-                "guides": ["jpa-intro", "sessions"]
+                "guides": ["jpa-intro", "mongodb-intro", "sessions"]
             },
             {
                 "subcategory_name": "Client side",
-                "guides": ["rest-client-angular", "rest-client-angularjs"]
+                "guides": ["rest-client-angular", "rest-client-angularjs", "rest-client-reactjs"]
+            },
+            {
+                "subcategory_name": "To Be Categoried",
+                "guides": ["intellij"]
             }
         ]
     },
