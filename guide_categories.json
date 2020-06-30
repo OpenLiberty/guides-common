@@ -14,7 +14,7 @@
             },
             {
                 "subcategory_name": "Reactive service",
-                "guides": ["microprofile-reactive-messaging", "microprofile-reactive-messaging-rest", "microprofile-reactive-messaging-acknowledgement", "reactive-messaging-sse", "kafka-intro", "jax-rs-reactive-client"]
+                "guides": ["microprofile-reactive-messaging"]
             },
             {
                 "subcategory_name": "Configuration",
