@@ -44,7 +44,7 @@
         },
         {
             "name": "Reactive",
-            "guides": ["microprofile-reactive-messaging", "reactive-service-testing"],
+            "guides": ["microprofile-reactive-messaging", "reactive-service-testing", "jax-rs-reactive-client"],
             "visible": "true"
         },
         {
