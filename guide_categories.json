@@ -26,7 +26,7 @@
             },
             {
                 "subcategory_name": "Observability",
-                "guides": ["microprofile-metrics", "microprofile-opentracing", "microprofile-health", "kubernetes-microprofile-health"]
+                "guides": ["microprofile-metrics", "microprofile-opentracing", "microprofile-health", "kubernetes-microprofile-health", "microprofile-opentracing-jaeger"]
             },
             {
                 "subcategory_name": "Security",
