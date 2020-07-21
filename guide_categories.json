@@ -38,7 +38,7 @@
             },
             {
                 "subcategory_name": "Client side",
-                "guides": ["rest-client-angular", "rest-client-angularjs"]
+                "guides": ["rest-client-angular", "rest-client-angularjs", "rest-client-reactjs"]
             }
         ]
     },
