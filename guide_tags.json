@@ -9,7 +9,7 @@
             "name": "Jakarta EE",
             "additional_search_terms": ["Java EE", "JEE"],
             "guides": ["bean-validation", "cdi-intro", "jpa-intro", "microshed-testing", "rest-client-java", "rest-intro", 
-                "security-intro", "microprofile-reactive-messaging", "microprofile-reactive-messaging-rest"],
+                "security-intro", "microprofile-reactive-messaging", "microprofile-reactive-messaging-rest-integration"],
             "visible": "true"
         },
         {
@@ -19,7 +19,7 @@
                 "microprofile-fallback", "microprofile-health", "microprofile-istio-retry-fallback", "microprofile-jwt", 
                 "microprofile-metrics", "microprofile-openapi", "microprofile-opentracing", "microprofile-rest-client", 
                 "microprofile-rest-client-async", "microshed-testing", "rest-client-java", "rest-intro", "bulkhead", 
-                "circuit-breaker", "microprofile-config-intro", "retry-timeout", "microprofile-reactive-messaging", "reactive-service-testing", "microprofile-reactive-messaging-rest"],
+                "circuit-breaker", "microprofile-config-intro", "retry-timeout", "microprofile-reactive-messaging", "reactive-service-testing", "microprofile-reactive-messaging-rest-integration"],
             "visible": "true"
         },
         {
@@ -44,7 +44,7 @@
         },
         {
             "name": "Reactive",
-            "guides": ["microprofile-reactive-messaging", "reactive-service-testing", "microprofile-reactive-messaging-rest", "microprofile-rest-client-async", "reactive-rest-client"],
+            "guides": ["microprofile-reactive-messaging", "reactive-service-testing", "microprofile-reactive-messaging-rest-integration", "microprofile-rest-client-async", "reactive-rest-client"],
             "visible": "true"
         },
         {
@@ -54,7 +54,7 @@
         {
             "name": "Microservices",
             "guides": ["getting-started", "microprofile-opentracing", "circuit-breaker", "microprofile-config-intro", 
-            "bulkhead", "retry-timeout", "microprofile-reactive-messaging", "microprofile-reactive-messaging-rest"]
+            "bulkhead", "retry-timeout", "microprofile-reactive-messaging", "microprofile-reactive-messaging-rest-integration"]
         },
         {
             "name": "Gradle",
