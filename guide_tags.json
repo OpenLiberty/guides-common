@@ -44,7 +44,7 @@
         },
         {
             "name": "Reactive",
-            "guides": ["microprofile-reactive-messaging", "reactive-service-testing", "microprofile-reactive-messaging-rest", "reactive-rest-client"],
+            "guides": ["microprofile-reactive-messaging", "reactive-service-testing", "microprofile-reactive-messaging-rest", "microprofile-rest-client-async", "reactive-rest-client"],
             "visible": "true"
         },
         {
