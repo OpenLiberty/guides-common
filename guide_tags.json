@@ -67,11 +67,11 @@
         },
         {
             "name": "OpenTracing",
-            "guides": ["microprofile-opentracing"]
+            "guides": ["microprofile-opentracing", "microprofile-opentracing-jaeger"]
         },
         {
             "name": "@Traced",
-            "guides": ["microprofile-opentracing"]
+            "guides": ["microprofile-opentracing", "microprofile-opentracing-jaeger"]
         },
         {
             "name": "Testing",
