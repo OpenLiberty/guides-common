@@ -14,7 +14,7 @@
             },
             {
                 "subcategory_name": "Reactive service",
-                "guides": ["microprofile-reactive-messaging", "microprofile-reactive-messaging-rest-integration", "microprofile-reactive-messaging-acknowledgment"]
+                "guides": ["microprofile-reactive-messaging", "microprofile-reactive-messaging-rest-integration", "microprofile-reactive-messaging-acknowledgment", "reactive-rest-client"]
             },
             {
                 "subcategory_name": "Configuration",
