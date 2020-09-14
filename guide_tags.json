@@ -63,7 +63,7 @@
         },
         {
             "name": "Security",
-            "guides": ["microprofile-jwt", "security-intro"],
+            "guides": ["microprofile-jwt", "security-intro", "social-media-login"],
             "visible": "true"
         },
         {
