@@ -8,6 +8,7 @@ Maven goal to build the application and deploy it to Open Liberty:
 
 [role='command']
 ```
+cd finish
 mvn liberty:run
 ```
 
