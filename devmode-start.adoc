@@ -3,6 +3,7 @@ deploys your updates whenever you save a new change. Run the following goal to s
 
 [role=command]
 ```
+cd start
 mvn liberty:dev
 ```
 
