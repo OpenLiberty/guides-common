@@ -4,26 +4,7 @@
 
 == Deploying Istio
 
-First, go to the https://github.com/istio/istio/releases/latest[{istio} release page^] and download the latest stable release. Extract the archive and navigate to the directory with the extracted files. Add `istioctl` client to your path by running the following:
-
-include::{common-includes}/os-tabs.adoc[]
-
-[.tab_content.windows_section]
---
-[role=command]
-```
-cd bin
-setx /m istioctl "${pwd}"
-```
---
-
-[.tab_content.mac_section.linux_section]
---
-[role=command]
-```
-export PATH=$PWD/bin:$PATH
-```
---
+Install {istio} by following the instructions in the official https://istio.io/latest/docs/setup/getting-started[{istio} Getting started^] documentation.
 
 Run the following command to verify that `istioctl` path has been set successfully:
 
