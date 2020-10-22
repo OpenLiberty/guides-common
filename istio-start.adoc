@@ -20,7 +20,7 @@ no running Istio pods in "istio-system"
 1.7.3
 ----
 
-We will use the following command to configure the {istio} profile on {kube}
+Use the following command to configure the {istio} profile on {kube}
 [role=command]
 ```
 istioctl install --set profile=demo
