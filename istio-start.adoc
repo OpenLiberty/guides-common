@@ -1,0 +1,66 @@
+// =================================================================================================
+// Deploying Istio
+// =================================================================================================
+
+== Deploying Istio
+
+Install {istio} by following the instructions in the official https://istio.io/latest/docs/setup/getting-started[{istio} Getting started documentation^].
+
+Run the following command to verify that the `istioctl` path was set successfully:
+
+[role=command]
+```
+istioctl version
+```
+
+The output will be similar to the following example:
+[source, role="no_copy"]
+----
+no running Istio pods in "istio-system"
+1.7.3
+----
+
+Run the following command to configure the {istio} profile on {kube}:
+[role=command]
+```
+istioctl install --set profile=demo
+```
+
+The following output appears when the installation is complete:
+[source, role="no_copy"]
+----
+✔ Istio core installed
+✔ Istiod installed
+✔ Egress gateways installed
+✔ Ingress gateways installed
+✔ Installation complete
+----
+
+Verify that Istio was successfully deployed by running the following command:
+
+[role=command]
+```
+kubectl get deployments -n istio-system
+```
+
+All the values in the `AVAILABLE` column will have a value of `1` after
+the deployment is complete.
+
+[source, role="no_copy"]
+----
+NAME                     READY   UP-TO-DATE   AVAILABLE   AGE
+istio-egressgateway      1/1     1            1           2m48s
+istio-ingressgateway     1/1     1            1           2m48s
+istiod                   1/1     1            1           2m48s
+----
+ 
+Ensure that the {istio} deployments are all available before you continue. The deployments might take a few minutes to become available. If the deployments aren't available after a few minutes, then increase the amount of memory available to your {kube} cluster. On Docker Desktop, you can increase the memory from your {docker} preferences. On {minikube}, you can increase the memory by using the `--memory` flag.
+
+Finally, create the `istio-injection` label and set its value to `enabled`:
+
+[role=command]
+```
+kubectl label namespace default istio-injection=enabled
+```
+
+Adding this label enables automatic {istio} sidecar injection. Automatic injection means that sidecars are automatically injected into your pods when you deploy your application.
