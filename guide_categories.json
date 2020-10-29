@@ -72,7 +72,7 @@
             },
             {
                 "subcategory_name": "Cloud deployment",
-                "guides": ["cloud-ibm", "cloud-openshift", "okd", "operator-openshift", "cloud-aws", "cloud-azure", "cloud-google"]
+                "guides": ["cloud-ibm", "cloud-openshift", "okd", "cloud-openshift-operator", "cloud-aws", "cloud-azure", "cloud-google"]
             }
         ]
     }
