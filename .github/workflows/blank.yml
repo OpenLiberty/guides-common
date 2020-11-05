@@ -1,0 +1,38 @@
+name: Build Docker Image
+
+on:
+  repository_dispatch:
+    types: [ daily-build ]
+  schedule:
+    - cron: 0 0 * * *
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      DHE_NIGHTLY_URL: https://public.dhe.ibm.com/ibmdl/export/pub/software/openliberty/runtime/nightly
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      - name: Trigger builds
+        run: |
+          echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+          
+          yesterday=$(date -d "yesterday 13:00" '+%Y-%m-%d')
+          devBuildSize=$(curl $DHE_NIGHTLY_URL/info.json | jq '.versions | length')
+          for ((i=0; i < $devBuildSize; i++)); do
+            currentBuild = curl $DHE_NIGHTLY_URL/info.json | jq '.version | .1'
+            if [[ "$currentDevBuild" == *"$yesterday"* ]]; then
+              currentDevDriver=$(curl $DHE_NIGHTLY_URL/$currentDevBuild/info.json | jq '.driver_location'
+              # If build is from yesterday, build docker image for it and run tests
+              DEVDATE=$currentDevBuild
+              BUILDLEVEL="cl$(echo $currentDevDriver | awk -F '.zip' '{print $1}' | awk -F 'cl' '{print $2}')"
+               
+              sed -i '/&& wget/c\&& wget http://public.dhe.ibm.com/ibmdl/export/pub/software/openliberty/runtime/nightly/'$DEVDATE'/'$currentDevDriver' -U UA-Open-Liberty-Docker -O /tmp/wlp.zip \\' Dockerfile.ubuntu.adoptopenjdk8
+              sed -i '/&& sha1sum/d' Dockerfile.ubuntu.adoptopenjdk8
+
+              cat Dockerfile.ubuntu.adoptopenjdk8
+
+              docker build -t ${{ secrets.DOCKER_USERNAME }}/olguides:$BUILDLEVEL -f Dockerfile.ubuntu.adoptopenjdk8 .
+              docker push ${{ secrets.DOCKER_USERNAME }}/olguides:$BUILDLEVEL
+            fi
