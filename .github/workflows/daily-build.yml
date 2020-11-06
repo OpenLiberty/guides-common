@@ -16,23 +16,44 @@ jobs:
       - uses: actions/checkout@v2
       - name: Trigger builds
         run: |
+          git clone https://github.com/OpenLiberty/ci.docker.git
+          cd ci.docker/releases/latest/kernel-slim
+          GUIDES_TO_BUILD=(
+            'guide-maven-intro'
+          )
+          
           echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
           
           yesterday=$(date -d "yesterday 13:00" '+%Y-%m-%d')
           devBuildSize=$(curl $DHE_NIGHTLY_URL/info.json | jq '.versions | length')
+          
+          echo "Building nightly builds from $yesterday"
+          
           for ((i=0; i < $devBuildSize; i++)); do
-            currentBuild = curl $DHE_NIGHTLY_URL/info.json | jq '.version | .1'
+            currentDevBuild=$(curl $DHE_NIGHTLY_URL/info.json --silent | jq '.versions | .['$i']' | sed "s/\"//g")
+            echo $currentDevBuild
             if [[ "$currentDevBuild" == *"$yesterday"* ]]; then
-              currentDevDriver=$(curl $DHE_NIGHTLY_URL/$currentDevBuild/info.json | jq '.driver_location'
-              # If build is from yesterday, build docker image for it and run tests
+              # If build is from yesterday, build Docker image for it and run tests
+              currentDevDriver=$(curl $DHE_NIGHTLY_URL/$currentDevBuild/info.json | jq '.driver_location'  | sed "s/\"//g")
+              echo "Building from $currentDevDriver"
+              
               DEVDATE=$currentDevBuild
               BUILDLEVEL="cl$(echo $currentDevDriver | awk -F '.zip' '{print $1}' | awk -F 'cl' '{print $2}')"
-               
+             
               sed -i '/&& wget/c\&& wget http://public.dhe.ibm.com/ibmdl/export/pub/software/openliberty/runtime/nightly/'$DEVDATE'/'$currentDevDriver' -U UA-Open-Liberty-Docker -O /tmp/wlp.zip \\' Dockerfile.ubuntu.adoptopenjdk8
               sed -i '/&& sha1sum/d' Dockerfile.ubuntu.adoptopenjdk8
-
               cat Dockerfile.ubuntu.adoptopenjdk8
-
-              docker build -t ${{ secrets.DOCKER_USERNAME }}/olguides:$BUILDLEVEL -f Dockerfile.ubuntu.adoptopenjdk8 .
+              echo "Building $BUILDLEVEL from $DEVDATE"
+              docker build -q -t ${{ secrets.DOCKER_USERNAME }}/olguides:$BUILDLEVEL -f Dockerfile.ubuntu.adoptopenjdk8 .
               docker push ${{ secrets.DOCKER_USERNAME }}/olguides:$BUILDLEVEL
+              
+              # Trigger daily builds for this OL build
+              for GUIDE in "${GUIDES_TO_BUILD[@]}"; do
+                curl -X POST -q \
+                     -H "Accept: application/vnd.github.v3+json" \
+                     https://api.github.com/repos/OpenLiberty/$GUIDE/dispatches \
+                     -d "{\"event_type\":\"daily-build\", \"client_payload\": { \"dev-date\": \"$DEVDATE\", \"dev-build\": \"$currentDevDriver\" }}" \
+                     -u ${{ secrets.GH_USERNAME }}:${{ secrets.GH_TOKEN }}
+              done
             fi
+          done
