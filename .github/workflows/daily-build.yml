@@ -83,7 +83,6 @@ jobs:
           
           for ((i=0; i < $devBuildSize; i++)); do
             currentDevBuild=$(curl $DHE_NIGHTLY_URL/info.json --silent | jq '.versions | .['$i']' | sed "s/\"//g")
-            echo $currentDevBuild
             if [[ "$currentDevBuild" == *"$yesterday"* ]]; then
               # If build is from yesterday, build Docker image for it and run tests
               currentDevDriver=$(curl $DHE_NIGHTLY_URL/$currentDevBuild/info.json | jq '.driver_location'  | sed "s/\"//g")
