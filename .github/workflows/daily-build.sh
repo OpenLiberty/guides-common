@@ -7,64 +7,12 @@ do
     esac
 done
 
+GUIDES_TO_BUILD=(
+    $(python3 .github/workflows/get-repos.py)
+)
+
 git clone https://github.com/OpenLiberty/ci.docker.git
 cd ci.docker/releases/latest/kernel-slim
-
-GUIDES_TO_BUILD=(
-    'guide-rest-intro'
-    'guide-maven-intro'
-    'guide-getting-started'
-    'guide-microprofile-jwt'
-    'guide-microprofile-opentracing'
-    'guide-microprofile-config'
-    'guide-kubernetes-intro'
-    'guide-rest-client-java'
-    'guide-microprofile-rest-client'
-    'guide-microprofile-openapi'
-    'guide-jpa-intro'
-    'guide-microprofile-metrics'
-    'guide-docker'
-    'guide-rest-hateoas'
-    'guide-maven-multimodules'
-    'guide-cdi-intro'
-    'guide-rest-client-angularjs'
-    'guide-cloud-openshift'
-    'guide-microprofile-health'
-    'guide-gradle-intro'
-    'guide-istio-intro'
-    'guide-cors'
-    'guide-spring-boot'
-    'guide-arquillian-managed'
-    'guide-kubernetes-microprofile-config'
-    'guide-microprofile-fallback'
-    'guide-sessions'
-    'guide-bean-validation'
-    'guide-security-intro'
-    'guide-containerize'
-    'guide-cloud-ibm'
-    'guide-cloud-aws'
-    'guide-microprofile-reactive-messaging'
-    'guide-cloud-azure'
-    'guide-rest-client-angular'
-    'guide-microshed-testing'
-    'guide-kubernetes-microprofile-health'
-    'guide-microprofile-opentracing-jaeger'
-    'guide-microprofile-reactive-messaging-acknowledgment'
-    'guide-microprofile-istio-retry-fallback'
-    'guide-microprofile-reactive-messaging-rest-integration'
-    'guide-okd'
-    'guide-rest-client-reactjs'
-    'guide-cloud-google'
-    'guide-reactive-rest-client'
-    'guide-reactive-service-testing'
-    'guide-social-media-login'
-    'guide-cloud-openshift-operator'
-    'guide-microprofile-rest-client-async'
-    'iguide-circuit-breaker'
-    'iguide-microprofile-config-intro'
-    'iguide-bulkhead'
-    'iguide-retry-timeout'
-)
 
 echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
 
