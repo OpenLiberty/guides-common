@@ -43,7 +43,7 @@ for ((i=0; i < $devBuildSize; i++)); do
         curl -X POST -q \
             -H "Accept: application/vnd.github.v3+json" \
             -H "Authorization: token $GH_TOKEN" \
-            https://api.github.com/repos/OpenLiberty/$GUIDE/dispatches \
+            https://api.github.com/repos/test-actions/$GUIDE/dispatches \
             -d "{\"event_type\":\"daily-build\", \"client_payload\": { \"dev-date\": \"$DEVDATE\", \"dev-build\": \"$currentDevDriver\" }}"
     done
     fi
