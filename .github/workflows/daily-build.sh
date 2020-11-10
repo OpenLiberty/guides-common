@@ -1,15 +1,21 @@
 while getopts u:a:f: flag
 do
     case "${flag}" in
-        du) DOCKER_USERNAME=${OPTARG};;
-        dp) DOCKER_PASSWORD=${OPTARG};;
-        gt) GH_TOKEN=${OPTARG};;
+        -du) DOCKER_USERNAME=${OPTARG};;
+        -dp) DOCKER_PASSWORD=${OPTARG};;
+        -gt) GH_TOKEN=${OPTARG};;
     esac
 done
 
 GUIDES_TO_BUILD=(
     $(python3 .github/workflows/get-repos.py)
 )
+
+echo "Building following guides"
+for guide in $GUIDES_TO_BUILD:
+do
+  echo $guide
+done
 
 git clone https://github.com/OpenLiberty/ci.docker.git
 cd ci.docker/releases/latest/kernel-slim
