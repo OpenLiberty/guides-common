@@ -12,9 +12,9 @@ GUIDES_TO_BUILD=(
 )
 
 echo "Building following guides"
-for guide in $GUIDES_TO_BUILD;
+for GUIDE in "${GUIDES_TO_BUILD[@]}";
 do
-  echo $guide
+    echo $GUIDE
 done
 
 git clone https://github.com/OpenLiberty/ci.docker.git
@@ -46,6 +46,7 @@ for ((i=0; i < $devBuildSize; i++)); do
     
     # Trigger daily builds for this OL build
     for GUIDE in "${GUIDES_TO_BUILD[@]}"; do
+        echo "Triggering build for $GUIDE"
         curl -X POST -q \
             -H "Accept: application/vnd.github.v3+json" \
             -H "Authorization: token $GH_TOKEN" \
