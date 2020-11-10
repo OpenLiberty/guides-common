@@ -15,7 +15,9 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       - name: Trigger builds
-        run: .github/workflows/daily-build.sh \
-             -gt ${{secrets.GUIDECONVERSIONTOOL_PASSWORD}} \
+        run: |
+          chmod +x .github/workflows/daily-build.sh 
+          .github/workflows/daily-build.sh \
+             -gt ${{secrets.ACTION_TOKEN}} \
              -du ${{secrets.DOCKER_USERNAME}} \
              -dp ${{secrets.DOCKER_PASSWORD}}
