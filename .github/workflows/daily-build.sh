@@ -12,7 +12,7 @@ GUIDES_TO_BUILD=(
 )
 
 echo "Building following guides"
-for guide in $GUIDES_TO_BUILD:
+for guide in $GUIDES_TO_BUILD;
 do
   echo $guide
 done
