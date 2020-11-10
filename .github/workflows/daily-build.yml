@@ -21,4 +21,4 @@ jobs:
         run: .github/workflows/daily-build.sh \
              -gt $ACTION_TOKEN \
              -du $DOCKER_USERNAME \
-             -dp $DOCKER_PASSWORD}}
+             -dp $DOCKER_PASSWORD
