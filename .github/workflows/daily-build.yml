@@ -26,9 +26,7 @@ jobs:
         ref: refs/heads/master
     - name: Test ${{ matrix.guide }}
       run: |
+           cd ../${{ matrix.guide }}/finish
            pwd
-           ls
-           ls ..
-           cd finish
            chmod +x ../scripts/travisTest.sh
            ../scripts/travisTest.sh
