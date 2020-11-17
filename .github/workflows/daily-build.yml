@@ -9,8 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        guide: [ guide-getting-started, guide-cdi-intro ]
+        guide: [ getting-started, cdi-intro ]
         devdate: ["${{github.event.client_payload.dev-date}}"]
+        java: ["${{github.event.client_payload.java}}"]
     steps:
       - run: echo Test Build - ${{github.event.client_payload.dev-date}}
       - name: Set up JDK 1.8
@@ -21,7 +22,7 @@ jobs:
       - name: Clone ${{ matrix.guide }} repository
         uses: actions/checkout@v2
         with:
-          repository: OpenLiberty/${{ matrix.guide }}
+          repository: OpenLiberty/guide-${{ matrix.guide }}
           path: ${{ matrix.guide }}
           ref: refs/heads/master
       - name: Test ${{ matrix.guide }}
@@ -33,16 +34,16 @@ jobs:
              #../scripts/travisTest.sh
       - name: Success status
         if: ${{ success() }}
-        run: touch ${{ matrix.guide }}-${{github.event.client_payload.dev-date}}-success
+        run: touch ${{ matrix.guide }}-${{github.event.client_payload.dev-date}}-${{github.event.client_payload.java}}-success
       - name: Archive status
         if: ${{ success() }}
         uses: actions/upload-artifact@v2
         with:
-          name: ${{ matrix.guide }}-${{github.event.client_payload.dev-date}}-success
-          path: ${{ matrix.guide }}-${{github.event.client_payload.dev-date}}-success
+          name: ${{ matrix.guide }}-${{github.event.client_payload.dev-date}}-${{github.event.client_payload.java}}-success
+          path: ${{ matrix.guide }}-${{github.event.client_payload.dev-date}}-${{github.event.client_payload.java}}-success
       - name: Archive server logs if failed
         if: ${{ failure() }}
         uses: actions/upload-artifact@v2
         with:
-          name: ${{ matrix.guide }}-${{github.event.client_payload.dev-date}}-failed-service-logs
-          path: finish/target/liberty/wlp/usr/servers/guideServer/logs/
+          name: ${{ matrix.guide }}-${{github.event.client_payload.dev-date}}-${{github.event.client_payload.java}}-failed-service-logs
+          path: finish/target/liberty/wlp/usr/servers/defaultServer/logs/
