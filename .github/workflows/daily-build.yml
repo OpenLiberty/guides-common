@@ -1,4 +1,6 @@
 name: Daily build testing
+env: 
+  DEV_DATE: ${{github.event.client_payload.dev-date}} 
 
 on:
   repository_dispatch:
