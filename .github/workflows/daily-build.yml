@@ -20,6 +20,7 @@ jobs:
     - run: unset _JAVA_OPTIONS
     - uses: actions/checkout@v2
       with:
+        name: OpenLiberty/${{ matrix.guide }}
         repository: OpenLiberty/${{ matrix.guide }}
         ref: refs/heads/master
     - name: Run tests
@@ -27,6 +28,6 @@ jobs:
            echo test ${{ matrix.guide }}
            pwd
            ls
-           cd ${{ matrix.guide }}/finish
+           cd finish
            chmod +x ../scripts/travisTest.sh
            ../scripts/travisTest.sh
