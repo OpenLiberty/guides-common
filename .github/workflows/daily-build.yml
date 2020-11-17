@@ -1,12 +1,9 @@
 name: Build Docker Image
 
 on:
-  repository_dispatch:
-    types: [ daily-build ]
-  schedule:
-    - cron: 0 0 * * *
+  pull_request:
+    branches: [ master ]
 
-    
 jobs:
   build:
     runs-on: ubuntu-latest
