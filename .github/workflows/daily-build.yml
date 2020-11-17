@@ -1,4 +1,4 @@
-name: Daily build testing ${{env:dev-date}}
+name: Daily build testing
 
 on:
   repository_dispatch:
@@ -29,4 +29,4 @@ jobs:
            cd ${{ matrix.guide }}/finish
            pwd
            chmod +x ../scripts/travisTest.sh
-           ../scripts/travisTest.sh
+           #../scripts/travisTest.sh
