@@ -13,7 +13,6 @@ jobs:
     - name: Call test action
       shell: pwsh
       run: |
-          echo ${{ secrets.GK_TOKEN }}
           $uri = "https://api.github.com/repos/gkwan-ibm/guides-common/dispatches"
           $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
           $headers.Add("Authorization","token ${{ secrets.GK_TOKEN }}")
