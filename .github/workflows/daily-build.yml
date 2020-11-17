@@ -25,7 +25,6 @@ jobs:
     - name: Test ${{ matrix.guide }}
       run: |
            echo $dev-date
-           echo ${{env:dev-date}}
            cd ${{ matrix.guide }}/finish
            pwd
            chmod +x ../scripts/travisTest.sh
