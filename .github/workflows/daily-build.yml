@@ -1,0 +1,18 @@
+name: Build Docker Image
+
+on:
+  repository_dispatch:
+    types: [ daily-build ]
+  schedule:
+    - cron: 0 0 * * *
+
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+  strategy:
+    matrix:
+      guide: [ guide-getting-started, guide-cdi-intro ]
+  steps:
+      - name: Run tests
+      run: echo test ${{ matrix.guide }}
