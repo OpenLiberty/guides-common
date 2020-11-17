@@ -1,4 +1,4 @@
-name: Build Docker Image
+name: Daily build testing
 
 on:
   push:
@@ -26,6 +26,8 @@ jobs:
         ref: refs/heads/master
     - name: Test ${{ matrix.guide }}
       run: |
+           pwd
+           ls
            cd ../${{ matrix.guide }}/finish
            pwd
            chmod +x ../scripts/travisTest.sh
