@@ -1,4 +1,4 @@
-name: Daily build testing
+name: Daily build testing ${{github.event.client_payload.dev-date}}
 
 on:
   repository_dispatch:
@@ -24,7 +24,7 @@ jobs:
         ref: refs/heads/master
     - name: Test ${{ matrix.guide }}
       run: |
-           echo $dev-date
+           echo ${{github.event.client_payload.dev-date}}
            cd ${{ matrix.guide }}/finish
            pwd
            chmod +x ../scripts/travisTest.sh
