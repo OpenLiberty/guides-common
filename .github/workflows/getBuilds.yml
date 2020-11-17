@@ -13,12 +13,12 @@ jobs:
     - name: Call test action
       shell: pwsh
       run: |
-          $pat = $env:GITHUB_PAT
+          $pat = ${{secrets.ACTION_TOKEN}}
           $uri = "https://api.github.com/repos/gkwan-ibm/guides-common/dispatches"
           $base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f "", $pat)))
           $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
           $headers.Add("Authorization", ("Basic {0}" -f $base64AuthInfo))
-          $headers.Add("Accept", "application/vnd.github.everest-preview+json")
+          $headers.Add("Accept", "application/vnd.github.v3+json")
           $headers.Add("Content-Type", "application/json")
-          $body = "{`"event_type`":`"daily-build`",`"client_payload`":{`"dev-date`": `"20201117_0700`"}}"
+          $body = "{\"event_type\":\"daily-build\",\"client_payload\":{\"dev-date\": \"20201117_0700\"}}"
           Invoke-RestMethod -Uri $uri -Headers $headers -Body $body -Method POST
