@@ -1,6 +1,4 @@
 name: Daily build testing
-env: 
-  DEV_DATE: ${{github.event.client_payload.dev-date}} 
 
 on:
   repository_dispatch:
@@ -12,6 +10,7 @@ jobs:
     strategy:
       matrix:
         guide: [ guide-getting-started, guide-cdi-intro ]
+        devdate: ["${{github.event.client_payload.dev-date}}"]
     steps:
       - run: echo Test Build - ${{github.event.client_payload.dev-date}}
       - name: Set up JDK 1.8
