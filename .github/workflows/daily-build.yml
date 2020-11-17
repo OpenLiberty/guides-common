@@ -1,4 +1,4 @@
-name: Daily build testing ${{github.event.client_payload.dev-date}}
+name: Daily build testing
 
 on:
   repository_dispatch:
