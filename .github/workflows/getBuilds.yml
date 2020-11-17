@@ -13,7 +13,8 @@ jobs:
     - name: Call test action
       shell: pwsh
       run: |
-          $pat = ${{secrets.ACTION_TOKEN}}
+          echo ${{ secrets.GH_USER }}
+          $pat = "xxxx"
           $uri = "https://api.github.com/repos/gkwan-ibm/guides-common/dispatches"
           $base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f "", $pat)))
           $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
