@@ -18,5 +18,13 @@ jobs:
       with:
         java-version: 1.8
     - run: unset _JAVA_OPTIONS
+    - uses: actions/checkout@master
+      with:
+        name: OpenLiberty/${{ matrix.guide }}
+        ref: refs/heads/master
     - name: Run tests
-      run: echo test ${{ matrix.guide }}
+      run: |
+           echo test ${{ matrix.guide }}
+           cd ${{ matrix.guide }}/finish
+           chmod +x ../scripts/travisTest.sh
+           ../scripts/travisTest.sh
