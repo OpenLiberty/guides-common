@@ -20,7 +20,7 @@ jobs:
     - run: unset _JAVA_OPTIONS
     - uses: actions/checkout@master
       with:
-        name: OpenLiberty/${{ matrix.guide }}
+        repository: OpenLiberty/${{ matrix.guide }}
         ref: refs/heads/master
     - name: Run tests
       run: |
