@@ -21,13 +21,14 @@ jobs:
     - name: Clone ${{ matrix.guide }} repository
       uses: actions/checkout@v2
       with:
-        name: OpenLiberty/${{ matrix.guide }}
         repository: OpenLiberty/${{ matrix.guide }}
         path: ${{ matrix.guide }}
         ref: refs/heads/master
     - name: Test ${{ matrix.guide }}
       run: |
            pwd
+           ls
+           ls ..
            cd finish
            chmod +x ../scripts/travisTest.sh
            ../scripts/travisTest.sh
