@@ -21,7 +21,7 @@ jobs:
           $headers.Add("Accept", "application/vnd.github.everest-preview+json")
           $headers.Add("Content-Type", "application/json")
           $body = "{
-            \"event_type`": \"daily-build\",
+            \"event_type\": \"daily-build\",
             \"client_payload\": {
               \"dev-date\": \"20201117_0700\"
             }
