@@ -18,5 +18,5 @@ jobs:
           $headers.Add("Authorization","token ${{ secrets.GK_TOKEN }}")
           $headers.Add("Accept", "application/vnd.github.v3+json")
           $headers.Add("Content-Type", "application/json")
-          $body = "{`"event_type`":`"daily-build`",`"client_payload`":{`"dev-date`": `"2020-11-17_1100`"}}"
+          $body = "{`"event_type`":`"daily-build`",`"client_payload`":{`"dev-date`": `"2020-11-17_1100`", `"java`": `"1.8`"}}"
           Invoke-RestMethod -Uri $uri -Headers $headers -Body $body -Method POST
