@@ -34,10 +34,14 @@ jobs:
       - name: Success status
         if: ${{ success() }}
         run: touch ${{ matrix.guide }}-${{github.event.client_payload.dev-date}}-success
+      - name: Failed status
+        if: ${{ failure() }}
+        run: touch ${{ matrix.guide }}-${{github.event.client_payload.dev-date}}-failed
+      - name: Archive status
         uses: actions/upload-artifact@v2
         with:
-          name: ${{ matrix.guide }}-${{github.event.client_payload.dev-date}}-success
-          path: ${{ matrix.guide }}-${{github.event.client_payload.dev-date}}-success
+          name: ${{ matrix.guide }}-${{github.event.client_payload.dev-date}}
+          path: ${{ matrix.guide }}-${{github.event.client_payload.dev-date}}-*
       - name: Archive server logs if failed
         if: ${{ failure() }}
         uses: actions/upload-artifact@v2
