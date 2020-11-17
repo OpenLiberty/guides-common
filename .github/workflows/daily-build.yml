@@ -18,16 +18,16 @@ jobs:
       with:
         java-version: 1.8
     - run: unset _JAVA_OPTIONS
-    - uses: actions/checkout@v2
+    - name: Clone ${{ matrix.guide }} repository
+      uses: actions/checkout@v2
       with:
         name: OpenLiberty/${{ matrix.guide }}
         repository: OpenLiberty/${{ matrix.guide }}
+        path: ${{ matrix.guide }}
         ref: refs/heads/master
-    - name: Run tests
+    - name: Test ${{ matrix.guide }}
       run: |
-           echo test ${{ matrix.guide }}
            pwd
-           ls
            cd finish
            chmod +x ../scripts/travisTest.sh
            ../scripts/travisTest.sh
