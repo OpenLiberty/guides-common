@@ -11,5 +11,5 @@ jobs:
     matrix:
       guide: [ guide-getting-started, guide-cdi-intro ]
   steps:
-      - name: Run tests
-      run: echo test ${{ matrix.guide }}
+  - name: Run tests
+    run: echo test ${{ matrix.guide }}
