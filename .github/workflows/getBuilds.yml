@@ -13,12 +13,10 @@ jobs:
     - name: Call test action
       shell: pwsh
       run: |
-          echo ${{ secrets.GH_USER }}
-          $pat = "xxxx"
+          echo ${{ secrets.GK_TOKEN }}
           $uri = "https://api.github.com/repos/gkwan-ibm/guides-common/dispatches"
-          $base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f "", $pat)))
           $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
-          $headers.Add("Authorization", ("Basic {0}" -f $base64AuthInfo))
+          $headers.Add("Authorization","token ${{ secrets.GK_TOKEN }}")
           $headers.Add("Accept", "application/vnd.github.v3+json")
           $headers.Add("Content-Type", "application/json")
           $body = "{`"event_type`":`"daily-build`",`"client_payload`":{`"dev-date`": `"20201117_0700`"}}"
