@@ -1,4 +1,4 @@
-name: Daily build testing ${{ env.dev-date }}
+name: Daily build testing $env:dev-date
 
 on:
   repository_dispatch:
