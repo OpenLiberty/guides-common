@@ -32,14 +32,14 @@ jobs:
              chmod +x ../scripts/travisTest.sh
              #../scripts/travisTest.sh
       - name: Success status
-        if: success()
+        if: ${{ success() }}
         run: touch ${{ matrix.guide }}-${{github.event.client_payload.dev-date}}-success
         uses: actions/upload-artifact@v2
         with:
           name: ${{ matrix.guide }}-${{github.event.client_payload.dev-date}}-success
           path: ${{ matrix.guide }}-${{github.event.client_payload.dev-date}}-success
       - name: Archive server logs if failed
-        if: failure()
+        if: ${{ failure() }}
         uses: actions/upload-artifact@v2
         with:
           name: server-logs
