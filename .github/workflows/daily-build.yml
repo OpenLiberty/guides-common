@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        guide: [ getting-started, cdi-intro ]
+        guide: [ getting-started, cdi-intro, kubernetes-intro ]
         devdate: ["${{github.event.client_payload.dev-date}}"]
         java: ["${{github.event.client_payload.java}}"]
     steps:
