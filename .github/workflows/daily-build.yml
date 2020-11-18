@@ -7,33 +7,23 @@ on:
     - cron: 0 0 * * *
 
 jobs:
-  get_repos:
+  create-config-matrix:
     runs-on: ubuntu-latest
     outputs:
-      repos: ${{ steps.output-list.outputs.repos }}
+      matrix: a
     steps:
+      - uses: actions/checkout@v2
       - name: Get repos
         run: echo "REPOS=$(python3 .github/workflows/get-repos.py)" >> $GITHUB_ENV
-      - name: Output list
-        id: output-list
-        run: echo "::set-output name=repos::$REPOS"
-  get_dev_dates:
-    runs-on: ubuntu-latest
-    outputs:
-      dev-dates: ${{ steps.output-list.outputs.dates }}
-    steps:
       - name: Get dev dates
         run: echo "DATES=$(python3 .github/workflows/get-dev-dates.py)" >> $GITHUB_ENV
-      - name: Output list
-        id: output-list
-        run: echo "::set-output name=dates::$DATES"
+      - name: Create matrix
+        run: echo "::set-output name=matrix::{ \"repos\":$REPOS , \"dates\":$DATES}" 
   test:
     runs-on: ubuntu-latest
-    needs: [ get_repos, get_dev_dates ]
+    needs: [ create-config-matrix ]
     strategy:
-      matrix: 
-        repos: ${{ needs.get_repos.outputs.repos }}
-        dates: ${{ needs.get_dev_dates.outputs.dev-dates }}
+      matrix: ${{ fromJson(needs.create-config-matrix.outputs.matrix) }}
     steps:
       - name: Test
         run: echo "${{ matrix.repos }} - ${{ matrix.dates }}"
