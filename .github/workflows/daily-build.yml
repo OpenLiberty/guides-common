@@ -42,7 +42,7 @@ jobs:
     needs: get-dates
     strategy:
       matrix:
-        dates: ${{ needs.get-dates.outputs.dates }}
+        dates: ${{ fromJson(needs.get-dates.outputs.dates) }}
     env:
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
