@@ -19,8 +19,8 @@ jobs:
         run: echo "DATES=$(python3 .github/workflows/get-dev-dates.py)" >> $GITHUB_ENV
       - name: Create matrix
         run: |
-          echo { \"repos\":$REPOS , \"dates\":$DATES }
-          echo "::set-output name=matrix::{ \"repos\":$REPOS , \"dates\":$DATES }" 
+          matrix="{ \"repos\":$REPOS , \"dates\":$DATES }"
+          echo "::set-output name=matrix::$matrix" 
   test:
     runs-on: ubuntu-latest
     needs: [ create-config-matrix ]
