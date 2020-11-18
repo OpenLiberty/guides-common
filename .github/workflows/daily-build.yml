@@ -31,7 +31,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [ get_repos, get_dev_dates ]
     strategy:
-      matrix: ${{ fromJson( "{ ${{needs.get_repos.outputs.repos}}, ${{needs.get_dev_dates.outputs.dev-dates}} }" ) }}
+      matrix: ${{ fromJson( \{ needs.get_repos.outputs.repos, needs.get_dev_dates.outputs.dev-dates \} ) }}
     steps:
       - name: Test
         run: echo "${{ matrix.repos }} - ${{ matrix.dates }}"
