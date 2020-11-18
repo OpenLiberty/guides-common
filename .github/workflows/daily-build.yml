@@ -3,8 +3,6 @@ name: Daily build testing
 on:
   repository_dispatch:
     types: [ daily-build ]
-  schedule:
-    - cron: 0 0 * * *
 
 jobs:
   create-config-matrix:
@@ -26,6 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [ create-config-matrix ]
     strategy:
+      max-parallel: 5
       matrix: ${{ fromJson(needs.create-config-matrix.outputs.matrix) }}
     steps:
       - name: Test
