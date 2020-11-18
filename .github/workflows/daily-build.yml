@@ -17,7 +17,7 @@ jobs:
   get-dates:
     runs-on: ubuntu-latest
     outputs:
-      dates: ${{ steps.create-list.outputs.repos }}
+      dates: ${{ steps.create-list.outputs.dates }}
     steps: 
       - uses: actions/checkout@v2
       - name: Get dev dates
