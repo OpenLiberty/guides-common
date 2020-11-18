@@ -3,10 +3,23 @@ name: Daily build testing
 on:
   repository_dispatch:
     types: [ daily-build ]
+  schedule:
+    - cron: 0 0 * * *
 
 jobs:
+  get_repos:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.output-matrix.outputs.matrix }}
+    steps:
+      - name: Get repos
+        run: echo "REPOS=$(python3 .github/workflows/get-repos.py)" >> $GITHUB_ENV
+      - name: Output matrix
+        id: output-matrix
+        run: echo "::set-output name=matrix::{ \"repos\":[$REPOS] }"
   build:
     runs-on: ubuntu-latest
+    needs: [ get_repos ]
     env:
       CHANGE_MINIKUBE_NONE_USER: true
     strategy:
