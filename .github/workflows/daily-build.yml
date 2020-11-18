@@ -16,7 +16,7 @@ jobs:
         run: echo "REPOS=$(python3 .github/workflows/get-repos.py)" >> $GITHUB_ENV
       - name: Output list
         id: output-list
-        run: echo "::set-output name=repos::\"repos\":[$REPOS]"
+        run: echo "::set-output name=repos::$REPOS"
   get_dev_dates:
     runs-on: ubuntu-latest
     outputs:
@@ -26,12 +26,14 @@ jobs:
         run: echo "DATES=$(python3 .github/workflows/get-dev-dates.py)" >> $GITHUB_ENV
       - name: Output list
         id: output-list
-        run: echo "::set-output name=dates::\"dates\":[$DATES]"
+        run: echo "::set-output name=dates::$DATES"
   test:
     runs-on: ubuntu-latest
     needs: [ get_repos, get_dev_dates ]
     strategy:
-      matrix: ${{ fromJson( \{ needs.get_repos.outputs.repos, needs.get_dev_dates.outputs.dev-dates \} ) }}
+      matrix: 
+        repos: ${{ needs.get_repos.outputs.repos }}
+        dates: ${{ needs.get_dev_dates.outputs.dev-dates }}
     steps:
       - name: Test
         run: echo "${{ matrix.repos }} - ${{ matrix.dates }}"
