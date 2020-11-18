@@ -27,11 +27,11 @@ jobs:
           repository: OpenLiberty/guide-${{ matrix.guide }}
           path: ${{ matrix.guide }}
           ref: refs/heads/gh-actions
-      - name: Setup ${{ matrix.guide }}
+      - name: Setup
         run: |
              chmod +x ${{ matrix.guide }}/scripts/*.sh
              if [ -f ${{ matrix.guide }}/scripts/testSetup.sh ]; then
-               ./${{ matrix.guide }}/scripts/testSetup.sh 
+               sudo ./${{ matrix.guide }}/scripts/testSetup.sh 
              fi
       - name: Update pom.xml and Dockerfile
         run: echo update pom.xml and Dockerfile
@@ -40,7 +40,7 @@ jobs:
              echo ${{github.event.client_payload.dev-date}}
              cd ${{ matrix.guide }}/finish
              chmod +x ../scripts/travisTest.sh
-             ../scripts/travisTest.sh
+             sudo ../scripts/travisTest.sh
       - name: Success status
         if: ${{ success() }}
         run: touch ${{ matrix.guide }}-${{github.event.client_payload.dev-date}}-${{github.event.client_payload.java}}-success
@@ -55,10 +55,10 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: ${{ matrix.guide }}-${{github.event.client_payload.dev-date}}-${{github.event.client_payload.java}}-failed-service-logs
-          path: finish/target/liberty/wlp/usr/servers/defaultServer/logs/
-      - name: Post test ${{ matrix.guide }}
+          path: ${{ matrix.guide }}/finish/target/liberty/wlp/usr/servers/defaultServer/logs/
+      - name: Post test
         if: ${{ always() }}
         run: |
              if [ -f ${{ matrix.guide }}/scripts/postTest.sh ]; then
-               ./${{ matrix.guide }}/scripts/postTest.sh 
+               sudo ./${{ matrix.guide }}/scripts/postTest.sh 
              fi
