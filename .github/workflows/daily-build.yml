@@ -5,24 +5,70 @@ on:
     types: [ daily-build ]
 
 jobs:
+  get-repos:
+    runs-on: ubuntu-latest
+    outputs:
+      repos: ${{ steps.create-list.outputs.repos }}
+    steps: 
+      - uses: actions/checkout@v2
+      - name: Get repos
+        id: create-list
+        run: echo "::set-output name=repos::$(python3 .github/workflows/get-repos.py)"
+  get-dates:
+    runs-on: ubuntu-latest
+    outputs:
+      dates: ${{ steps.create-list.outputs.repos }}
+    steps: 
+      - uses: actions/checkout@v2
+      - name: Get dev dates
+        id: create-list
+        run: echo "::set-output name=dates::$(python3 .github/workflows/get-dev-dates.py)"
   create-config-matrix:
     runs-on: ubuntu-latest
+    needs: [ get-repos, get-dates ]
+    env:
+      REPOS: ${{ needs.get-repos.outputs.repos }}
+      DATES: ${{ needs.get-dates.outputs.dates }}
     outputs:
       matrix: ${{ steps.create-matrix.outputs.matrix }}
     steps:
-      - uses: actions/checkout@v2
-      - name: Get repos
-        run: echo "REPOS=$(python3 .github/workflows/get-repos.py)" >> $GITHUB_ENV
-      - name: Get dev dates
-        run: echo "DATES=$(python3 .github/workflows/get-dev-dates.py)" >> $GITHUB_ENV
       - name: Create matrix
         id: create-matrix
         run: |
           matrix="{ \"repos\":$REPOS , \"dates\":$DATES }"
           echo "::set-output name=matrix::$matrix" 
+  build-docker-image:
+    runs-on: ubuntu-latest
+    needs: get-dates
+    strategy:
+      matrix:
+        dates: ${{ needs.get-dates.outputs.dates }}
+    env:
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      DHE_URL: http://public.dhe.ibm.com/ibmdl/export/pub/software/openliberty/runtime/nightly
+    steps:
+      - name: Clone ${{ matrix.guide }} repository
+        uses: actions/checkout@v2
+        with:
+          repository: OpenLiberty/ci.docker
+          path: ci.docker
+      - name: Docker login
+        run: echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+      - name: Build Docker image for ${{ matrix.dates }}
+        run: |
+          cd ci.docker/releases/latest/kernel-slim
+          currentDevDriver=$(curl $DHE_NIGHTLY_URL/${{ matrix.dates }}/info.json | jq '.driver_location'  | sed "s/\"//g")
+          buildLevel="cl$(echo $currentDevDriver | awk -F '.zip' '{print $1}' | awk -F 'cl' '{print $2}')"
+          sed -i '/&& wget/c\&& wget '$DHE_URL'/'${{ matrix.dates }}'/'$currentDevDriver' -U UA-Open-Liberty-Docker -O /tmp/wlp.zip \\' Dockerfile.ubuntu.adoptopenjdk8
+          sed -i '/&& sha1sum/d' Dockerfile.ubuntu.adoptopenjdk8
+          cat Dockerfile.ubuntu.adoptopenjdk8
+          echo "Building $buildLevel from ${{ matrix.dates }}"
+          docker build -q -t $DOCKER_USERNAME/olguides:$BUILDLEVEL -f Dockerfile.ubuntu.adoptopenjdk8 .
+          docker push $DOCKER_USERNAME/olguides:$BUILDLEVEL
   test:
     runs-on: ubuntu-latest
-    needs: [ create-config-matrix ]
+    needs: [ build-docker-image, create-config-matrix ]
     strategy:
       max-parallel: 5
       matrix: ${{ fromJson(needs.create-config-matrix.outputs.matrix) }}
