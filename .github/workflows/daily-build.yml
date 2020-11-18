@@ -58,7 +58,7 @@ jobs:
       - name: Build Docker image for ${{ matrix.dates }}
         run: |
           cd ci.docker/releases/latest/kernel-slim
-          currentDevDriver=$(curl $DHE_NIGHTLY_URL/${{ matrix.dates }}/info.json | jq '.driver_location'  | sed "s/\"//g")
+          currentDevDriver=$(curl $DHE_URL/${{ matrix.dates }}/info.json | jq '.driver_location'  | sed "s/\"//g")
           buildLevel="cl$(echo $currentDevDriver | awk -F '.zip' '{print $1}' | awk -F 'cl' '{print $2}')"
           sed -i '/&& wget/c\&& wget '$DHE_URL'/'${{ matrix.dates }}'/'$currentDevDriver' -U UA-Open-Liberty-Docker -O /tmp/wlp.zip \\' Dockerfile.ubuntu.adoptopenjdk8
           sed -i '/&& sha1sum/d' Dockerfile.ubuntu.adoptopenjdk8
