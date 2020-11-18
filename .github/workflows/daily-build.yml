@@ -18,7 +18,9 @@ jobs:
       - name: Get dev dates
         run: echo "DATES=$(python3 .github/workflows/get-dev-dates.py)" >> $GITHUB_ENV
       - name: Create matrix
-        run: echo "::set-output name=matrix::{ \"repos\":$REPOS , \"dates\":$DATES}" 
+        run: |
+          echo { \"repos\":$REPOS , \"dates\":$DATES }
+          echo "::set-output name=matrix::{ \"repos\":$REPOS , \"dates\":$DATES }" 
   test:
     runs-on: ubuntu-latest
     needs: [ create-config-matrix ]
@@ -33,7 +35,7 @@ jobs:
       CHANGE_MINIKUBE_NONE_USER: true
     strategy:
       matrix:
-        guide: [ getting-started, cdi-intro, kubernetes-intro ]
+        guide: [  ]
         devdate: ["${{github.event.client_payload.dev-date}}"]
         java: ["${{github.event.client_payload.java}}"]
     steps:
