@@ -63,8 +63,8 @@ jobs:
           sed -i '/&& sha1sum/d' Dockerfile.ubuntu.adoptopenjdk8
           cat Dockerfile.ubuntu.adoptopenjdk8
           echo "Building ${{ matrix.builds.build_level }} from ${{ matrix.builds.date }}"
-          docker build -q -t $DOCKER_USERNAME/olguides:${{ matrix.builds.build_level }} -f Dockerfile.ubuntu.adoptopenjdk8 .
-          docker push $DOCKER_USERNAME/olguides:${{ matrix.builds.build_level }}
+          # docker build -q -t $DOCKER_USERNAME/olguides:${{ matrix.builds.build_level }} -f Dockerfile.ubuntu.adoptopenjdk8 .
+          # docker push $DOCKER_USERNAME/olguides:${{ matrix.builds.build_level }}
   test-guide:
     runs-on: ubuntu-latest
     needs: [ build-docker-image, create-config-matrix ]
@@ -79,7 +79,7 @@ jobs:
           path: ${{ matrix.repos }}
           ref: refs/heads/gh-actions
       - name: Set permissions
-        run: chmod +x ${{ matrix.guide }}/scripts/*.sh
+        run: chmod +x ${{ matrix.repos }}/scripts/*.sh
       - name: Run tests for ${{ matrix.repos }}
         run: |
           cd ${{ matrix.repos }}/finish
@@ -94,4 +94,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: server-logs
-          path: finish/target/liberty/wlp/usr/servers/guideServer/logs/
+          path: ${{ matrix.repos }}/finish/target/liberty/wlp/usr/servers/guideServer/logs/
