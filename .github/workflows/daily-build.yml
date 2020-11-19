@@ -14,7 +14,7 @@ jobs:
       - name: Get repos
         id: create-list
         # run: echo "::set-output name=repos::$(python3 .github/workflows/get-repos.py)"
-        run: echo "::set-output name=repos::[guide-maven-intro]"
+        run: echo "::set-output name=repos::[ 'guide-maven-intro' ]"
   get-builds:
     runs-on: ubuntu-latest
     outputs:
@@ -80,7 +80,7 @@ jobs:
           ref: refs/heads/gh-actions
       - name: Set permissions
         run: chmod +x ${{ matrix.guide }}/scripts/*.sh
-      - name: Run test
+      - name: Run tests for ${{ matrix.repos }}
         run: |
           cd ${{ matrix.repos }}/finish
           sudo ../scripts/dailyBuild.sh --date ${{ matrix.builds.date }} --driver ${{ matrix.builds.driver_location }} --build ${{ matrix.builds.build_level }}
