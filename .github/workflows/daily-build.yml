@@ -13,7 +13,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: Get repos
         id: create-list
-        run: echo "::set-output name=repos::$(python3 .github/workflows/get-repos.py)"
+        # run: echo "::set-output name=repos::$(python3 .github/workflows/get-repos.py)"
+        run: echo "::set-output name=repos::[guide-maven-intro]"
   get-builds:
     runs-on: ubuntu-latest
     outputs:
@@ -64,12 +65,33 @@ jobs:
           echo "Building ${{ matrix.builds.build_level }} from ${{ matrix.builds.date }}"
           docker build -q -t $DOCKER_USERNAME/olguides:${{ matrix.builds.build_level }} -f Dockerfile.ubuntu.adoptopenjdk8 .
           docker push $DOCKER_USERNAME/olguides:${{ matrix.builds.build_level }}
-  test:
+  test-guide:
     runs-on: ubuntu-latest
     needs: [ build-docker-image, create-config-matrix ]
     strategy:
       max-parallel: 5
       matrix: ${{ fromJson(needs.create-config-matrix.outputs.matrix) }}
     steps:
-      - name: Test
-        run: echo "${{ matrix.repos }} - ${{ matrix.builds }}"
+      - name: Clone ${{ matrix.repos }}
+        uses: actions/checkout@v2
+        with:
+          repository: OpenLiberty/${{ matrix.repos }}
+          path: ${{ matrix.repos }}
+          ref: refs/heads/gh-actions
+      - name: Set permissions
+        run: chmod +x ${{ matrix.guide }}/scripts/*.sh
+      - name: Run test
+        run: |
+          cd ${{ matrix.repos }}/finish
+          sudo ../scripts/dailyBuild.sh --date ${{ matrix.builds.date }} --driver ${{ matrix.builds.driver_location }} --build ${{ matrix.builds.build_level }}
+      - name: Post tests
+        if: always()
+        run: |
+          logsPath=$(find . -name "console.log");
+          cat $logsPath | grep Launching
+      - name: Archive server logs if failed
+        if: failure()
+        uses: actions/upload-artifact@v2
+        with:
+          name: server-logs
+          path: finish/target/liberty/wlp/usr/servers/guideServer/logs/
