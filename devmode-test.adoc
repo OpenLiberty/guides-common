@@ -1,3 +1,3 @@
 === Running the tests
 
-Since you started Open Liberty in dev mode, press the enter/return key to run the tests.
+Because you started Open Liberty in dev mode, press the enter/return key to run the tests.
