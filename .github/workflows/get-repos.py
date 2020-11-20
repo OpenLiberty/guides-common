@@ -27,4 +27,4 @@ if __name__ == "__main__":
             if published_guide_name(repo_name):
                 output.append(repo_name)
 
-    print(' '.join(output))
+    print(output)

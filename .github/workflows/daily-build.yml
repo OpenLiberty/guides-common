@@ -1,24 +1,100 @@
-name: Build Docker Image
+
+name: Daily build testing
 
 on:
   repository_dispatch:
     types: [ daily-build ]
   schedule:
-    - cron: 0 0 * * *
+    cron: 0 0 * * *
 
 jobs:
-  build:
+  get-repos:
     runs-on: ubuntu-latest
-    env:
-      DHE_NIGHTLY_URL: https://public.dhe.ibm.com/ibmdl/export/pub/software/openliberty/runtime/nightly
-      ACTION_TOKEN: ${{secrets.ACTION_TOKEN}}
-      DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
-      DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    outputs:
+      repos: ${{ steps.create-list.outputs.repos }}
+    steps: 
       - uses: actions/checkout@v2
-      - name: Trigger builds
-        run: .github/workflows/daily-build.sh \
-             -gt $ACTION_TOKEN \
-             -du $DOCKER_USERNAME \
-             -dp $DOCKER_PASSWORD
+      - name: Get repos
+        id: create-list
+        # run: echo "::set-output name=repos::$(python3 .github/workflows/get-repos.py)"
+        run: echo "::set-output name=repos::[ 'guide-maven-intro' ]"
+  get-builds:
+    runs-on: ubuntu-latest
+    outputs:
+      builds: ${{ steps.create-list.outputs.builds }}
+    steps: 
+      - uses: actions/checkout@v2
+      - name: Get builds
+        id: create-list
+        run: echo "::set-output name=builds::$(python3 .github/workflows/get-builds.py)"
+  create-config-matrix:
+    runs-on: ubuntu-latest
+    needs: [ get-repos, get-builds ]
+    env:
+      REPOS: ${{ needs.get-repos.outputs.repos }}
+      BUILDS: ${{ needs.get-builds.outputs.builds }}
+    outputs:
+      matrix: ${{ steps.create-matrix.outputs.matrix }}
+    steps:
+      - name: Create matrix
+        id: create-matrix
+        run: |
+          matrix="{ \"repos\":$REPOS , \"builds\":$BUILDS }"
+          echo "::set-output name=matrix::$matrix" 
+  build-docker-image:
+    runs-on: ubuntu-latest
+    needs: get-builds
+    strategy:
+      matrix:
+        builds: ${{ fromJson(needs.get-builds.outputs.builds) }}
+    env:
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      DHE_URL: http://public.dhe.ibm.com/ibmdl/export/pub/software/openliberty/runtime/nightly
+    steps:
+      - name: Clone ci.docker repository
+        uses: actions/checkout@v2
+        with:
+          repository: OpenLiberty/ci.docker
+          path: ci.docker
+      - name: Docker login
+        run: echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+      - name: Build Docker image for ${{ matrix.builds.date }}
+        run: |
+          cd ci.docker/releases/latest/kernel-slim
+          sed -i '/&& wget/c\&& wget '$DHE_URL'/'${{ matrix.builds.date }}'/'${{ matrix.builds.driver_location }}' -U UA-Open-Liberty-Docker -O /tmp/wlp.zip \\' Dockerfile.ubuntu.adoptopenjdk8
+          sed -i '/&& sha1sum/d' Dockerfile.ubuntu.adoptopenjdk8
+          cat Dockerfile.ubuntu.adoptopenjdk8
+          echo "Building ${{ matrix.builds.build_level }} from ${{ matrix.builds.date }}"
+          # docker build -q -t $DOCKER_USERNAME/olguides:${{ matrix.builds.build_level }} -f Dockerfile.ubuntu.adoptopenjdk8 .
+          # docker push $DOCKER_USERNAME/olguides:${{ matrix.builds.build_level }}
+  test-guide:
+    runs-on: ubuntu-latest
+    needs: [ build-docker-image, create-config-matrix ]
+    strategy:
+      max-parallel: 5
+      matrix: ${{ fromJson(needs.create-config-matrix.outputs.matrix) }}
+    steps:
+      - name: Clone ${{ matrix.repos }}
+        uses: actions/checkout@v2
+        with:
+          repository: OpenLiberty/${{ matrix.repos }}
+          path: ${{ matrix.repos }}
+          ref: refs/heads/gh-actions
+      - name: Set permissions
+        run: chmod +x ${{ matrix.repos }}/scripts/*.sh
+      - name: Run tests for ${{ matrix.repos }}
+        working-directory: ${{ matrix.repos }}/finish
+        run: sudo ../scripts/dailyBuild.sh -t ${{ matrix.builds.date }} -d ${{ matrix.builds.driver_location }} -b ${{ matrix.builds.build_level }}
+      - name: Post tests
+        working-directory: ${{ matrix.repos }}
+        if: always()
+        run: |
+          logsPath=$(sudo find . -name "console.log");
+          sudo cat $logsPath | grep Launching
+      - name: Archive server logs if failed
+        if: failure()
+        uses: actions/upload-artifact@v2
+        with:
+          name: server-logs
+          path: ${{ matrix.repos }}/finish/target/liberty/wlp/usr/servers/guideServer/logs/
