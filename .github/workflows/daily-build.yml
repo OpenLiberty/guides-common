@@ -75,8 +75,8 @@ jobs:
         with:
           repository: OpenLiberty/ci.docker
           path: ci.docker
-      - name: Docker login
-        run: echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+      #- name: Docker login
+      #  run: echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
       - name: Build Docker image for ${{ matrix.builds.date }}
         run: |
           cd ci.docker/releases/latest/kernel-slim
