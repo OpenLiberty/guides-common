@@ -1,8 +1,11 @@
+
 name: Daily build testing
 
 on:
   repository_dispatch:
     types: [ daily-build ]
+  schedule:
+    cron: 0 0 * * *
 
 jobs:
   get-repos:
