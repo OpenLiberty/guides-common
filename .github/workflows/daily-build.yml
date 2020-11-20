@@ -42,7 +42,7 @@ jobs:
       - name: Use input list
         if: ${{ github.event_name == 'workflow_dispatch'}}
         id: use-list
-        run: echo ::set-output name=builds::'[{ "date":"${{github.events.inputs.date}}", "driver_location":"${{github.events.inputs.driver}}", "build_level":"${{github.events.inputs.build}}"}]'
+        run: echo ::set-output name=builds::'[{ "date":"${{github.event.inputs.date}}", "driver_location":"${{github.event.inputs.driver}}", "build_level":"${{github.events.input.build}}"}]'
   create-config-matrix:
     runs-on: ubuntu-latest
     needs: [ get-repos, get-builds ]
