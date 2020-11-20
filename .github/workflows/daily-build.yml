@@ -2,6 +2,8 @@
 name: Daily build testing
 
 on:
+  pull_request:
+    branches: [ qa ]
   workflow_dispatch:
     inputs:
       date:
@@ -28,7 +30,7 @@ jobs:
       - name: Get repos
         id: create-list
         # run: echo "::set-output name=repos::$(python3 .github/workflows/get-repos.py)"
-        run: echo "::set-output name=repos::[ 'guide-maven-intro' ]"
+        run: echo "::set-output name=repos::[ 'guide-getting-started' ]"
   get-builds:
     runs-on: ubuntu-latest
     outputs:
