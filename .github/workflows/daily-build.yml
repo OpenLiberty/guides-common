@@ -2,6 +2,17 @@
 name: Daily build testing
 
 on:
+  workflow_dispatch:
+    inputs:
+      date:
+        description: Dev date
+        required: true
+      driver:
+        description: Driver location
+        required: true
+      build:
+        description: Build level
+        required: true
   repository_dispatch:
     types: [ daily-build ]
   schedule:
@@ -21,12 +32,17 @@ jobs:
   get-builds:
     runs-on: ubuntu-latest
     outputs:
-      builds: ${{ steps.create-list.outputs.builds }}
+      builds: ${{ steps.create-list.outputs.builds }} ${{ steps.use-list.outputs.builds }}
     steps: 
       - uses: actions/checkout@v2
       - name: Get builds
+        if: ${{ github.event_name != 'workflow_dispatch'}}
         id: create-list
         run: echo "::set-output name=builds::$(python3 .github/workflows/get-builds.py)"
+      - name: Use input list
+        if: ${{ github.event_name == 'workflow_dispatch'}}
+        id: use-list
+        run: echo ::set-output name=builds::'[{ "date":"${{github.events.inputs.date}}", "driver_location":"${{github.events.inputs.driver}}", "build_level":"${{github.events.inputs.build}}"}]'
   create-config-matrix:
     runs-on: ubuntu-latest
     needs: [ get-repos, get-builds ]
