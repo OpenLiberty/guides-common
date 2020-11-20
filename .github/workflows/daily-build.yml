@@ -81,13 +81,13 @@ jobs:
       - name: Set permissions
         run: chmod +x ${{ matrix.repos }}/scripts/*.sh
       - name: Run tests for ${{ matrix.repos }}
-        run: |
-          cd ${{ matrix.repos }}/finish
-          sudo ../scripts/dailyBuild.sh -t ${{ matrix.builds.date }} -d ${{ matrix.builds.driver_location }} -b ${{ matrix.builds.build_level }}
+        working-directory: ${{ matrix.repos }}/finish
+        run: sudo ../scripts/dailyBuild.sh -t ${{ matrix.builds.date }} -d ${{ matrix.builds.driver_location }} -b ${{ matrix.builds.build_level }}
       - name: Post tests
+        working-directory: ${{ matrix.repos }}
         if: always()
         run: |
-          logsPath=$(find . -name "console.log");
+          logsPath=$(sudo find . -name "console.log");
           cat $logsPath | grep Launching
       - name: Archive server logs if failed
         if: failure()
