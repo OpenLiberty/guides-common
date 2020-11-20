@@ -12,7 +12,7 @@ cd finish
 mvn liberty:run
 ```
 
-After you see the following message, your application server is ready.
+After you see the following message, your application server is ready:
 
 [role="no_copy"]
 ----
