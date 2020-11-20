@@ -66,8 +66,8 @@ jobs:
           sed -i '/&& sha1sum/d' Dockerfile.ubuntu.adoptopenjdk8
           cat Dockerfile.ubuntu.adoptopenjdk8
           echo "Building ${{ matrix.builds.build_level }} from ${{ matrix.builds.date }}"
-          docker build -q -t $DOCKER_USERNAME/olguides:${{ matrix.builds.build_level }} -f Dockerfile.ubuntu.adoptopenjdk8 .
-          docker push $DOCKER_USERNAME/olguides:${{ matrix.builds.build_level }}
+          # docker build -q -t $DOCKER_USERNAME/olguides:${{ matrix.builds.build_level }} -f Dockerfile.ubuntu.adoptopenjdk8 .
+          # docker push $DOCKER_USERNAME/olguides:${{ matrix.builds.build_level }}
   test-guide:
     runs-on: ubuntu-latest
     needs: [ build-docker-image, create-config-matrix ]
