@@ -83,7 +83,7 @@ jobs:
       - name: Run tests for ${{ matrix.repos }}
         run: |
           cd ${{ matrix.repos }}/finish
-          sudo ../scripts/dailyBuild.sh --date ${{ matrix.builds.date }} --driver ${{ matrix.builds.driver_location }} --build ${{ matrix.builds.build_level }}
+          sudo ../scripts/dailyBuild.sh -t ${{ matrix.builds.date }} -d ${{ matrix.builds.driver_location }} -b ${{ matrix.builds.build_level }}
       - name: Post tests
         if: always()
         run: |
