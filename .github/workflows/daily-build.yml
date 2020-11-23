@@ -2,8 +2,8 @@
 name: Daily build testing
 
 on:
-  pull_request:
-    branches: [ qa ]
+  repository_dispatch:
+    types: [ daily-build ]
   workflow_dispatch:
     inputs:
       date:
@@ -15,8 +15,6 @@ on:
       build:
         description: Build level
         required: true
-  repository_dispatch:
-    types: [ daily-build ]
   schedule:
     - cron: 0 0 * * *
 
@@ -92,6 +90,9 @@ jobs:
     strategy:
       max-parallel: 5
       matrix: ${{ fromJson(needs.create-config-matrix.outputs.matrix) }}
+    env:
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
     steps:
       - name: Clone ${{ matrix.repos }}
         uses: actions/checkout@v2
@@ -101,6 +102,8 @@ jobs:
           ref: refs/heads/gh-actions
       - name: Set permissions
         run: chmod +x ${{ matrix.repos }}/scripts/*.sh
+      - name: Docker login
+        run: echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
       - name: Run tests for ${{ matrix.repos }}
         working-directory: ${{ matrix.repos }}/finish
         run: sudo ../scripts/dailyBuild.sh -t ${{ matrix.builds.date }} -d ${{ matrix.builds.driver_location }} -b ${{ matrix.builds.build_level }}
