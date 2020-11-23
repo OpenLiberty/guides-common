@@ -1,4 +1,3 @@
-
 name: Daily build testing
 
 on:
@@ -17,6 +16,10 @@ on:
         required: true
   schedule:
     - cron: 0 0 * * *
+
+env:
+  DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+  DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
 jobs:
   get-repos:
@@ -42,7 +45,7 @@ jobs:
       - name: Use input list
         if: ${{ github.event_name == 'workflow_dispatch'}}
         id: use-list
-        run: echo ::set-output name=builds::'[{ "date":"${{github.event.inputs.date}}", "driver_location":"${{github.event.inputs.driver}}", "build_level":"${{github.events.input.build}}"}]'
+        run: echo ::set-output name=builds::'[{ "date":"${{github.event.inputs.date}}", "driver_location":"${{github.event.inputs.driver}}", "build_level":"${{github.event.inputs.build}}"}]'
   create-config-matrix:
     runs-on: ubuntu-latest
     needs: [ get-repos, get-builds ]
@@ -64,8 +67,6 @@ jobs:
       matrix:
         builds: ${{ fromJson(needs.get-builds.outputs.builds) }}
     env:
-      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       DHE_URL: http://public.dhe.ibm.com/ibmdl/export/pub/software/openliberty/runtime/nightly
     steps:
       - name: Clone ci.docker repository
@@ -90,9 +91,6 @@ jobs:
     strategy:
       max-parallel: 5
       matrix: ${{ fromJson(needs.create-config-matrix.outputs.matrix) }}
-    env:
-      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
     steps:
       - name: Clone ${{ matrix.repos }}
         uses: actions/checkout@v2
@@ -106,7 +104,11 @@ jobs:
         run: echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
       - name: Run tests for ${{ matrix.repos }}
         working-directory: ${{ matrix.repos }}/finish
-        run: sudo ../scripts/dailyBuild.sh -t ${{ matrix.builds.date }} -d ${{ matrix.builds.driver_location }} -b ${{ matrix.builds.build_level }}
+        env:
+          BUILDLEVEL: ${{ matrix.builds.build_level }}
+          DEVDATE: ${{ matrix.builds.date }}
+          DRIVER: ${{ matrix.builds.driver_location }}
+        run: sudo ../scripts/dailyBuild.sh -t $DEVDATE -d $DRIVER -b $BUILDLEVEL -u $DOCKER_USERNAME
       - name: Post tests
         working-directory: ${{ matrix.repos }}
         if: always()
