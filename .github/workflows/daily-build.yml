@@ -31,7 +31,7 @@ jobs:
       - name: Get repos
         id: create-list
         # run: echo "::set-output name=repos::$(python3 .github/workflows/get-repos.py)"
-        run: echo "::set-output name=repos::[ 'guide-getting-started', 'guide-maven-intro', 'guide-cloud-ibm' ]"
+        run: echo "::set-output name=repos::[ 'guide-getting-started', 'guide-maven-intro', 'guide-cloud-ibm', 'guide-microprofile-config' ]"
   get-builds:
     runs-on: ubuntu-latest
     outputs:
