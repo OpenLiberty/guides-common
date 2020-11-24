@@ -58,7 +58,7 @@ jobs:
       - name: Create matrix
         id: create-matrix
         run: |
-          matrix="{ \"repos\":$REPOS , \"builds\":$BUILDS }"
+          matrix="{ \"repos\":$REPOS , \"builds\":$BUILDS, \"jdk\":[ 8, 11 ] }"
           echo "::set-output name=matrix::$matrix" 
   build-docker-image:
     runs-on: ubuntu-latest
@@ -92,6 +92,10 @@ jobs:
       max-parallel: 5
       matrix: ${{ fromJson(needs.create-config-matrix.outputs.matrix) }}
     steps:
+      - name: Set up JDK ${{ matrix.jdk }}
+        uses: actions/setup-java@v1
+        with:
+          java-version: ${{ matrix.jdk }}
       - name: Clone ${{ matrix.repos }}
         uses: actions/checkout@v2
         with:
