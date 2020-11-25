@@ -15,7 +15,6 @@ on:
         description: Build level
         required: true
 
-
 env:
   DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
   DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
@@ -30,7 +29,7 @@ jobs:
       - name: Get repos
         id: create-list
         # run: echo "::set-output name=repos::$(python3 .github/workflows/get-repos.py)"
-        run: echo "::set-output name=repos::[ 'guide-cloud-ibm' ]"
+        run: echo "::set-output name=repos::[ 'guide-getting-started', 'guide-maven-intro', 'guide-microprofile-config', 'guide-cloud-ibm' ]"
   test-guide:
     needs: [ get-guide-repos ]
     runs-on: ubuntu-latest
