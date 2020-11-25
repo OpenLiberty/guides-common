@@ -1,4 +1,4 @@
-Run the following command to download or update to the latest `openliberty/open-liberty:kernel-java8-openj9-ubi` Docker image:
+Run the following command to download or update to the latest Open Liberty Docker image:
 
 [role='command']
 ```
