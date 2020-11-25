@@ -14,15 +14,14 @@ on:
       build:
         description: Build level
         required: true
-  schedule:
-    - cron: 0 0 * * *
+
 
 env:
   DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
   DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
 jobs:
-  get-repos:
+  get-guide-repos:
     runs-on: ubuntu-latest
     outputs:
       repos: ${{ steps.create-list.outputs.repos }}
@@ -31,68 +30,18 @@ jobs:
       - name: Get repos
         id: create-list
         # run: echo "::set-output name=repos::$(python3 .github/workflows/get-repos.py)"
-        run: echo "::set-output name=repos::[ 'guide-getting-started', 'guide-maven-intro', 'guide-cloud-ibm', 'guide-microprofile-config' ]"
-  get-builds:
-    runs-on: ubuntu-latest
-    outputs:
-      builds: ${{ steps.create-list.outputs.builds }} ${{ steps.use-list.outputs.builds }}
-    steps: 
-      - uses: actions/checkout@v2
-      - name: Get builds
-        if: ${{ github.event_name != 'workflow_dispatch'}}
-        id: create-list
-        run: echo "::set-output name=builds::$(python3 .github/workflows/get-builds.py)"
-      - name: Use input list
-        if: ${{ github.event_name == 'workflow_dispatch'}}
-        id: use-list
-        run: echo ::set-output name=builds::'[{ "date":"${{github.event.inputs.date}}", "driver_location":"${{github.event.inputs.driver}}", "build_level":"${{github.event.inputs.build}}"}]'
-  create-config-matrix:
-    runs-on: ubuntu-latest
-    needs: [ get-repos, get-builds ]
-    env:
-      REPOS: ${{ needs.get-repos.outputs.repos }}
-      BUILDS: ${{ needs.get-builds.outputs.builds }}
-    outputs:
-      matrix: ${{ steps.create-matrix.outputs.matrix }}
-    steps:
-      - name: Create matrix
-        id: create-matrix
-        run: |
-          matrix="{ \"repos\":$REPOS , \"builds\":$BUILDS, \"jdk\":[ 8, 11 ] }"
-          echo "::set-output name=matrix::$matrix" 
-  build-docker-image:
-    runs-on: ubuntu-latest
-    needs: get-builds
-    strategy:
-      matrix:
-        builds: ${{ fromJson(needs.get-builds.outputs.builds) }}
-    env:
-      DHE_URL: http://public.dhe.ibm.com/ibmdl/export/pub/software/openliberty/runtime/nightly
-    steps:
-      - name: Clone ci.docker repository
-        uses: actions/checkout@v2
-        with:
-          repository: OpenLiberty/ci.docker
-          path: ci.docker
-      - name: Docker login
-        run: echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
-      - name: Build Docker image for ${{ matrix.builds.date }}
-        run: |
-          cd ci.docker/releases/latest/kernel-slim
-          sed -i '/&& wget/c\&& wget '$DHE_URL'/'${{ matrix.builds.date }}'/'${{ matrix.builds.driver_location }}' -U UA-Open-Liberty-Docker -O /tmp/wlp.zip \\' Dockerfile.ubuntu.adoptopenjdk8
-          sed -i '/&& sha1sum/d' Dockerfile.ubuntu.adoptopenjdk8
-          cat Dockerfile.ubuntu.adoptopenjdk8
-          echo "Building ${{ matrix.builds.build_level }} from ${{ matrix.builds.date }}"
-          docker build -q -t $DOCKER_USERNAME/olguides:${{ matrix.builds.build_level }} -f Dockerfile.ubuntu.adoptopenjdk8 .
-          docker push $DOCKER_USERNAME/olguides:${{ matrix.builds.build_level }}
+        run: echo "::set-output name=repos::[ 'guide-cloud-ibm' ]"
   test-guide:
+    needs: [ get-guide-repos ]
     runs-on: ubuntu-latest
-    needs: [ build-docker-image, create-config-matrix ]
+    continue-on-error: true
     strategy:
       max-parallel: 5
-      matrix: ${{ fromJson(needs.create-config-matrix.outputs.matrix) }}
+      matrix:
+        repos: ${{ fromJson(needs.get-guide-repos.outputs.repos) }}
+        jdk: [ 8, 11 ]
     steps:
-      - name: Set up JDK ${{ matrix.jdk }}
+      - name: Setup JDK ${{ matrix.jdk }}
         uses: actions/setup-java@v1
         with:
           java-version: ${{ matrix.jdk }}
@@ -109,19 +58,23 @@ jobs:
       - name: Run tests for ${{ matrix.repos }}
         working-directory: ${{ matrix.repos }}/finish
         env:
-          BUILDLEVEL: ${{ matrix.builds.build_level }}
-          DEVDATE: ${{ matrix.builds.date }}
-          DRIVER: ${{ matrix.builds.driver_location }}
-        run: sudo ../scripts/dailyBuild.sh -t $DEVDATE -d $DRIVER -b $BUILDLEVEL -u $DOCKER_USERNAME
+          BUILDLEVEL: ${{ github.event.client_payload.build-level }}${{ github.event.inputs.build }}
+          DEVDATE: ${{ github.event.client_payload.dev-date }}${{ github.event.inputs.date }}
+          DRIVER: ${{ github.event.client_payload.driver-location }}${{ github.event.inputs.driver }}
+        run: ../scripts/dailyBuild.sh -t $DEVDATE -d $DRIVER -b $BUILDLEVEL -u $DOCKER_USERNAME
       - name: Post tests
         working-directory: ${{ matrix.repos }}
         if: always()
         run: |
           logsPath=$(sudo find . -name "console.log");
-          sudo cat $logsPath | grep Launching
+          if [ -z "$logsPath" ]
+            then docker images
+            else sudo cat $logsPath | grep Launching
+          fi
       - name: Archive server logs if failed
         if: failure()
         uses: actions/upload-artifact@v2
         with:
           name: server-logs
-          path: ${{ matrix.repos }}/finish/target/liberty/wlp/usr/servers/guideServer/logs/
+          path: ${{ matrix.repos }}/finish/target/liberty/wlp/usr/servers/defaultServer/logs/
+  
