@@ -29,7 +29,7 @@ jobs:
       - name: Get repos
         id: create-list
         # run: echo "::set-output name=repos::$(python3 .github/workflows/get-repos.py)"
-        run: echo "::set-output name=repos::[ 'guide-getting-started', 'guide-maven-intro', 'guide-microprofile-config', 'guide-cloud-ibm', 'guide-kubernetes-intro', 'guide-jpa-intro', 'guide-gradle-intro' ]"
+        run: echo "::set-output name=repos::[ 'guide-getting-started', 'guide-maven-intro', 'guide-microprofile-config', 'guide-cloud-ibm', 'guide-kubernetes-intro', 'guide-jpa-intro', 'guide-gradle-intro', 'guide-istio-intro' ]"
   test-guide:
     needs: [ get-guide-repos ]
     runs-on: ubuntu-latest
@@ -49,7 +49,6 @@ jobs:
         with:
           repository: OpenLiberty/${{ matrix.repos }}
           path: ${{ matrix.repos }}
-          ref: refs/heads/gh-actions
       - name: Set permissions
         run: chmod +x ${{ matrix.repos }}/scripts/*.sh
       - name: Docker login
