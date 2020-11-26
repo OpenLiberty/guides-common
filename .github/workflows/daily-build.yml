@@ -29,7 +29,7 @@ jobs:
       - name: Get repos
         id: create-list
         # run: echo "::set-output name=repos::$(python3 .github/workflows/get-repos.py)"
-        run: echo "::set-output name=repos::[ 'guide-getting-started', 'guide-maven-intro', 'guide-microprofile-config', 'guide-cloud-ibm', 'guide-kubernetes-intro', 'guide-jpa-intro', 'guide-gradle-intro', 'guide-istio-intro' ]"
+        run: echo "::set-output name=repos::[ 'guide-getting-started', 'guide-maven-intro', 'guide-microprofile-config', 'guide-cloud-ibm', 'guide-kubernetes-intro', 'guide-istio-intro', 'guide-microprofile-reactive-messaging', 'guide-jpa-intro', 'guide-gradle-intro', 'guide-cloud-openshift-operator', 'guide-microprofile-jwt', 'guide-social-media-login', 'guide-sessions' ]"
   test-guide:
     needs: [ get-guide-repos ]
     runs-on: ubuntu-latest
