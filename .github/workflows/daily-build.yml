@@ -18,6 +18,7 @@ on:
 env:
   DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
   DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+  CHANGE_MINIKUBE_NONE_USER: true
 
 jobs:
   get-guide-repos:
@@ -30,6 +31,10 @@ jobs:
         id: create-list
         # run: echo "::set-output name=repos::$(python3 .github/workflows/get-repos.py)"
         run: echo "::set-output name=repos::[ 'guide-getting-started', 'guide-maven-intro', 'guide-microprofile-config', 'guide-cloud-ibm', 'guide-kubernetes-intro', 'guide-istio-intro', 'guide-microprofile-reactive-messaging', 'guide-jpa-intro', 'guide-gradle-intro', 'guide-cloud-openshift-operator', 'guide-microprofile-jwt', 'guide-social-media-login', 'guide-sessions' ]"
+      - name: Starting daily build tests for ${{ github.event.client_payload.build-level }}${{ github.event.inputs.build }}
+        run: |
+          echo "Build level: "
+          echo ${{ github.event.client_payload.build-level }}${{ github.event.inputs.build }}
   test-guide:
     needs: [ get-guide-repos ]
     runs-on: ubuntu-latest
@@ -49,24 +54,25 @@ jobs:
         with:
           repository: OpenLiberty/${{ matrix.repos }}
           path: ${{ matrix.repos }}
+          ref: refs/heads/gh-actions
       - name: Set permissions
         run: chmod +x ${{ matrix.repos }}/scripts/*.sh
       - name: Docker login
-        run: echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+        run: echo $DOCKER_PASSWORD | sudo docker login -u $DOCKER_USERNAME --password-stdin
       - name: Run tests for ${{ matrix.repos }}
         working-directory: ${{ matrix.repos }}/finish
         env:
           BUILDLEVEL: ${{ github.event.client_payload.build-level }}${{ github.event.inputs.build }}
           DEVDATE: ${{ github.event.client_payload.dev-date }}${{ github.event.inputs.date }}
           DRIVER: ${{ github.event.client_payload.driver-location }}${{ github.event.inputs.driver }}
-        run: ../scripts/dailyBuild.sh -t $DEVDATE -d $DRIVER -b $BUILDLEVEL -u $DOCKER_USERNAME
+        run: sudo ../scripts/dailyBuild.sh -t $DEVDATE -d $DRIVER -b $BUILDLEVEL -u $DOCKER_USERNAME
       - name: Post tests
         working-directory: ${{ matrix.repos }}
         if: always()
         run: |
           logsPath=$(sudo find . -name "console.log");
           if [ -z "$logsPath" ]
-            then docker images
+            then sudo docker images
             else sudo cat $logsPath | grep Launching
           fi
       - name: Archive server logs if failed
@@ -75,4 +81,3 @@ jobs:
         with:
           name: server-logs
           path: ${{ matrix.repos }}/finish/target/liberty/wlp/usr/servers/defaultServer/logs/
-  
