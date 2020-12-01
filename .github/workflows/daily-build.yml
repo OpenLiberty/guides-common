@@ -14,6 +14,10 @@ on:
       build:
         description: Build level
         required: true
+      guide:
+        description: Guide to build
+        default: "all"
+        required: true
 
 env:
   DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
@@ -28,8 +32,13 @@ jobs:
     steps: 
       - uses: actions/checkout@v2
       - name: Get repos
+        if: ${{ github.event.inputs.guide == 'all' }}
         id: create-list
         run: echo "::set-output name=repos::$(python3 .github/workflows/get-repos.py)"
+      - name: Set repo
+        if: ${{ github.event.inputs.guide != 'all' }}
+        id: input-guide
+        run: echo "::set-output name=repo::[ '${{ github.event.inputs.guide }}' ]"
   build-level:
     runs-on: ubuntu-latest
     steps:
