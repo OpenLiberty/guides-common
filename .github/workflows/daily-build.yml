@@ -49,8 +49,8 @@ jobs:
   test-guide:
     needs: [ get-guide-repos ]
     runs-on: ubuntu-latest
-    continue-on-error: true
     strategy:
+      fail-fast: false
       max-parallel: 5
       matrix:
         repos: ${{ fromJson(needs.get-guide-repos.outputs.repos) }}
