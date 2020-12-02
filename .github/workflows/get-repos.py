@@ -7,7 +7,7 @@ HEADERS = {
 }
 
 def published_guide_name(name):
-    return "guide-" in name and "draft" not in name and "archived" not in name
+    return "guide-" == name[:6] or "draft-guide-" == name[:12]
 
 if __name__ == "__main__":
     output = []
