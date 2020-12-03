@@ -4,16 +4,6 @@ import datetime
 import re
 import json
 
-denylist = re.compile('we|our|blacklist|whitelist|master|slave')
-
-
-def create_denylist(denylist):
-    deny_dict = json.loads(denylist)
-    regex_string = ''
-    for word in deny_dict[deny_dict.keys()[0]]:
-        regex_string += word+'|'
-    return re.compile(regex_string)
-
 
 def java_checker(file):
     """
@@ -55,14 +45,18 @@ if __name__ == "__main__":
     parser.add_argument('infile', nargs='*',
                         type=argparse.FileType('r'), default=sys.stdin)
     args = parser.parse_args()
-    denylist = json.loads(args.deny[0].read())['deny']
-    for word in denylist:
-        print(word)
-    print(denylist)
+
+    if args.deny is not None:
+        deny_list = json.loads(args.deny[0].read())
+        deny = re.compile('|'.join(map(re.escape, deny_list)))
+    if args.warn is not None:
+        warning_list = json.loads(args.warn[0].read())
+        warn = re.compile('|'.join(map(re.escape, warning_list)))
+
     for file in args.infile:
         file_extension = file.name.split('/')[-1].split('.')[-1]
         if file_extension is 'adoc':
-            adoc_check(file)
+            adoc_checker(file)
 
         elif file_extension is 'java':
             java_checker(file)
