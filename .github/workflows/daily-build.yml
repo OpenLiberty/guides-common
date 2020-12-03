@@ -32,11 +32,11 @@ jobs:
     steps: 
       - uses: actions/checkout@v2
       - name: Get repos
-        if: ${{ github.event.inputs.guide == 'all' }}
+        if: ${{ github.event_name == 'repository_dispatch' || github.event_name == 'workflow_dispatch' && github.event.inputs.guide == 'all' }}
         id: create-list
         run: echo "::set-output name=repos::$(python3 .github/workflows/get-repos.py)"
       - name: Set repo
-        if: ${{ github.event.inputs.guide != 'all' }}
+        if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.guide != 'all' }}
         id: input-guide
         run: echo "::set-output name=repo::[ '${{ github.event.inputs.guide }}' ]"
   build-level:
