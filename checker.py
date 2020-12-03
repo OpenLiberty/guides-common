@@ -14,6 +14,9 @@ def java_checker(file):
         "license": False,
         "line_too_long": line,
     }
+    # // Copyright (c) 2018, 2009 IBM Corporation and others.
+    license_re = re.compile(
+        "[/]{2}[ ]*[Cc]opyright[ ]*[(][Cc][)][ ]*([,]{0,1}[ ]*[0-9]{4}){1,2}[ ]*IBM Coporation and others.")
     pass
 
 
@@ -26,12 +29,20 @@ def adoc_checker(file):
         "release_date": False,
 
     }
+    release_date_re = re.compile(
+        ":page-releasedate:[ ]*([0-9]{4}[-][0-9]{2}[-][0-9]{2})")
     pass
 
 
 def html_checker(file):
     """
     Checks html file for license
+    """
+    pass
+
+
+def check_vocabulary(file, deny_list, warning_list):
+    """
     """
     pass
 
