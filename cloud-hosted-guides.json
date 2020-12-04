@@ -1,0 +1,8 @@
+{
+   "lablelText": "Alternatively, try our cloud hosted version of this guide",
+   "buttonText": "Launch cloud hosted version",
+   "skillNeworkUrl": "https://openliberty.skillsnetwork.site/quicklab",
+   "guides": [ 
+       "getting-started", "cdi-intro", "microprofile-reactive-messaging"
+   ] 
+}
