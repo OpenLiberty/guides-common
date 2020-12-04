@@ -1,8 +1,8 @@
 {
    "labelText": "Alternatively, try our cloud hosted version of this guide",
    "buttonText": "Launch cloud hosted version",
-   "skillNeworkUrl": "https://openliberty.skillsnetwork.site/quicklab/cloud-hosted-guide-{projectid}",
-   "stagingSkillNeworkUrl": "https://labs.cognitiveclass.ai/tools/theiadocker/lab/tree?md_instructions_url=https://cf-course-data-staging.s3.us-east.cloud-object-storage.appdomain.cloud/cloud-hosted-guide-{projectid}/instructions.md",
+   "skillNetworkUrl": "https://openliberty.skillsnetwork.site/quicklab/cloud-hosted-guide-{projectid}",
+   "stagingSkillNetworkUrl": "https://labs.cognitiveclass.ai/tools/theiadocker/lab/tree?md_instructions_url=https://cf-course-data-staging.s3.us-east.cloud-object-storage.appdomain.cloud/cloud-hosted-guide-{projectid}/instructions.md",
    "guides": [ 
        "getting-started", "cdi-intro", "microprofile-opentracing"
    ] 
