@@ -9,7 +9,7 @@
             "name": "Jakarta EE",
             "additional_search_terms": ["Java EE", "JEE"],
             "guides": ["bean-validation", "cdi-intro", "jpa-intro", "microshed-testing", "rest-client-java", "rest-intro", 
-                "security-intro", "microprofile-reactive-messaging", "microprofile-reactive-messaging-rest-integration"],
+                "security-intro", "microprofile-reactive-messaging", "microprofile-reactive-messaging-rest-integration", "reactive-messaging-sse"],
             "visible": "true"
         },
         {
@@ -20,7 +20,8 @@
                 "microprofile-metrics", "microprofile-openapi", "microprofile-opentracing", "microprofile-opentracing-jaeger", "microprofile-rest-client", 
                 "microprofile-rest-client-async", "microshed-testing", "rest-client-java", "rest-intro", "bulkhead", 
                 "circuit-breaker", "microprofile-config-intro", "retry-timeout", 
-                "microprofile-reactive-messaging", "reactive-service-testing", "microprofile-reactive-messaging-rest-integration", "microprofile-reactive-messaging-acknowledgment"],
+                "microprofile-reactive-messaging", "reactive-service-testing", "microprofile-reactive-messaging-rest-integration", "microprofile-reactive-messaging-acknowledgment",
+                "reactive-messaging-sse"],
             "visible": "true"
         },
         {
@@ -45,7 +46,7 @@
         },
         {
             "name": "Reactive",
-            "guides": ["microprofile-reactive-messaging", "microprofile-reactive-messaging-rest-integration", "microprofile-reactive-messaging-acknowledgment", "reactive-service-testing", "microprofile-rest-client-async", "reactive-rest-client"],
+            "guides": ["microprofile-reactive-messaging", "microprofile-reactive-messaging-rest-integration", "microprofile-reactive-messaging-acknowledgment", "reactive-service-testing", "microprofile-rest-client-async", "reactive-rest-client", "reactive-messaging-sse"],
             "visible": "true"
         },
         {
