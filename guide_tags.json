@@ -17,9 +17,10 @@
             "additional_search_terms": ["Micro Profile", "MP"],
             "guides": ["cdi-intro", "kubernetes-microprofile-config", "kubernetes-microprofile-health", "microprofile-config", 
                 "microprofile-fallback", "microprofile-health", "microprofile-istio-retry-fallback", "microprofile-jwt", 
-                "microprofile-metrics", "microprofile-openapi", "microprofile-opentracing", "microprofile-rest-client", 
+                "microprofile-metrics", "microprofile-openapi", "microprofile-opentracing", "microprofile-opentracing-jaeger", "microprofile-rest-client", 
                 "microprofile-rest-client-async", "microshed-testing", "rest-client-java", "rest-intro", "bulkhead", 
-                "circuit-breaker", "microprofile-config-intro", "retry-timeout", "microprofile-reactive-messaging", "reactive-service-testing", "microprofile-reactive-messaging-rest-integration",
+                "circuit-breaker", "microprofile-config-intro", "retry-timeout", 
+                "microprofile-reactive-messaging", "reactive-service-testing", "microprofile-reactive-messaging-rest-integration", "microprofile-reactive-messaging-acknowledgment",
                 "reactive-messaging-sse"],
             "visible": "true"
         },
@@ -68,11 +69,11 @@
         },
         {
             "name": "OpenTracing",
-            "guides": ["microprofile-opentracing"]
+            "guides": ["microprofile-opentracing", "microprofile-opentracing-jaeger"]
         },
         {
             "name": "@Traced",
-            "guides": ["microprofile-opentracing"]
+            "guides": ["microprofile-opentracing", "microprofile-opentracing-jaeger"]
         },
         {
             "name": "Testing",
