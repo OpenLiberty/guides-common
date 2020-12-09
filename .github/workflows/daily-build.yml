@@ -91,3 +91,17 @@ jobs:
         with:
           name: server-logs
           path: ${{ matrix.repos }}/finish/target/liberty/wlp/usr/servers/defaultServer/logs/
+  slack-alert:
+    needs: [test-guide]
+    runs-on: ubuntu-latest
+    env:
+      BUILDLEVEL: ${{ github.event.client_payload.build-level }}${{ github.event.inputs.build }}
+      DEVDATE: ${{ github.event.client_payload.dev-date }}${{ github.event.inputs.date }}
+      DRIVER: ${{ github.event.client_payload.driver-location }}${{ github.event.inputs.driver }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: send-status
+        run: |
+          python3 .github/workflows/slack-alert.py ${{ env.BUILDLEVEL }} ${{ env.DRIVER }} ${{ env.DEVDATE }} ${{ needs.test-guide.result }} \
+          ${{ github.repository }} ${{ github.run_id }} ${{ secrets.SLACK_HOOK }} 
+          echo ${{ needs.test-guide.result }}
