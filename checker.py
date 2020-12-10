@@ -25,9 +25,11 @@ def java_checker(file):
         "license_message": "",
         "line_too_long": lines,
     }
+    output = ''
 
     license_re = re.compile(
         "[Cc]opyright[ ]*[(][Cc][)][ ]*([0-9]{4})([,][ ]*([0-9]{4})){0,1}[ ]*")
+    # check if its not there what do we do?
     for line_num, line in enumerate(file):
         if len(line) > 88:
             lines.append(line_num + 1)
@@ -36,15 +38,17 @@ def java_checker(file):
             if result:
                 years = result.groups()
                 if years[-1] != today.year:
-                    checks["license_message"] += "Update the license to the current year.\n"
-                if len(years) > 1 and years[0] >= years[-1]:
-                    checks["license_message"] += "Invalid years in license\n"
+                    checks["license_message"] += "[ERROR] Update the license to the current year.\n"
+                if len(years) > 1 and int(years[0]) >= int(years[-1]):
+                    checks["license_message"] += "[ERROR] Invalid years in license\n"
                 checks["license"] = False
-    print(checks["license_message"])
+
+    if checks['license_message']:
+        output += f"{checks['license_message']}\n"
     if checks["line_too_long"]:
-        print("The following lines are longer than 88 characters:")
-        print(checks["line_too_long"])
-    pass
+        output += f"[ERROR] The following lines are longer than 88 characters:\n"
+        output += f"{checks['line_too_long']}\n"
+    return output
 
 
 def adoc_checker(file):
@@ -52,7 +56,7 @@ def adoc_checker(file):
     Checks adoc file for style and license
     """
     lines = []
-    output = ""
+    output = ''
     checks = {
         "license": True,
         "release_date": True,
@@ -60,6 +64,8 @@ def adoc_checker(file):
     }
     license_re = re.compile(
         "[Cc]opyright[ ]*[(][Cc][)][ ]*([0-9]{4})([,][ ]*([0-9]{4})){0,1}[ ]*")
+    # check if its not there what do we do?
+    # we want it to start with //
     release_date_re = re.compile(
         ":page-releasedate:[ ]*([0-9]{4}[-][0-9]{2}[-][0-9]{2})")
 
@@ -71,37 +77,62 @@ def adoc_checker(file):
             if result:
                 years = result.groups()
                 if years[-1] != today.year:
-                    output += "Update the license to the current year.\n"
-                if len(years) > 1 and years[0] >= years[-1]:
-                    output += "Invalid years in license\n"
+                    output += "[ERROR] Update the license to the current year.\n"
+                if len(years) > 1 and years[0] >= years[-1]:  # bug here
+                    output += "[ERROR] Invalid years in license\n"
                 checks["license"] = False
         if checks["release_date"]:
             result = release_date_re.search(line)
             if result:
                 date = result.groups()
                 if not valid(date[-1]):
-                    output += f"Release date is invalid: {date[0]} at line {line_num + 1}\n"
-                    output += "The date should be in the form YYYY-MM-DD\n"
+                    output += f"[ERROR] Release date is invalid: {date[0]} at line {line_num + 1}\n"
+                    output += "[ERROR] The date should be in the form YYYY-MM-DD\n"
 
-    print(output)
+    if checks['license']:
+        output += '[ERROR] Add a license with the current year.\n'
+    if checks['release_date']:
+        output += '[ERROR] Add a release date.\n'  # do we want this?
+
     if checks["lines"]:
-        print("The following lines are longer than 120 characters:")
-        print(checks["lines"])
-        print("Consider wrapping text to improve readability.")
-    pass
+        output += "[WARNING] The following lines are longer than 120 characters:"
+        output += f"{checks['lines']}\n"
+        output += "[WARNING] Consider wrapping text to improve readability."
+    return output
 
 
 def html_checker(file):
     """
     Checks html file for license
     """
-    pass
+    return ''
 
 
 def check_vocabulary(file, deny_list, warning_list):
     """
     """
-    pass
+    file.seek(0)
+    deny_occurrence, warning_occurrence = {}, {}
+    deny = re.compile('|'.join(map(re.escape, deny_list)))
+    warn = re.compile('|'.join(map(re.escape, warning_list)))
+    output = ''
+    for line_num, line in enumerate(file):
+        line = re.sub('[^0-9a-zA-Z]+', ' ', line).split()
+        a = list(filter(lambda word: deny.fullmatch(word), line))
+        b = list(filter(lambda word: warn.fullmatch(word), line))
+        if a:
+            deny_occurrence[line_num] = a
+        if b:
+            warning_occurrence[line_num] = b
+    if deny_occurrence:
+        output += '[ERROR] The following words must be changed.\n'
+        for line in deny_occurrence.keys():
+            output += f'[ERROR] Line {line}: {deny_occurrence[line]}\n'
+    if warning_occurrence:
+        output += '[WARNING] The following words should ideally be changed.\n'
+        for line in warning_occurrence.keys():
+            output += f'[WARNING] Line {line}: {warning_occurrence[line]}\n'
+    return output
 
 
 if __name__ == "__main__":
@@ -113,25 +144,36 @@ if __name__ == "__main__":
     parser.add_argument('infile', nargs='*',
                         type=argparse.FileType('r'), default=sys.stdin)
     args = parser.parse_args()
-
+    # check if var exist and NON empty
     if args.deny is not None:
-        deny_list = json.loads(args.deny[0].read())
-        deny = re.compile('|'.join(map(re.escape, deny_list)))
+        try:
+            deny_list = json.loads(args.deny[0].read())
+        except:
+            deny_list = []
     if args.warn is not None:
-        warning_list = json.loads(args.warn[0].read())
-        warn = re.compile('|'.join(map(re.escape, warning_list)))
+        try:
+            warning_list = json.loads(args.warn[0].read())
+        except:
+            Warning_list = []
+    # print(warning_list)
 
     for file in args.infile:
         file_extension = file.name.split('/')[-1].split('.')[-1]
-
+        output = ''
         if file_extension == 'adoc':
-            adoc_checker(file)
-
+            output += adoc_checker(file)
         elif file_extension == 'java':
-            java_checker(file)
-
+            output += java_checker(file)
         elif file_extension == 'html':
-            html_checker(file)
-
+            output += html_checker(file)
         else:
-            print('its something else')
+            print("It's something else")
+            sys.exit(0)
+
+        output += check_vocabulary(file, deny_list, warning_list)
+
+        if output != '':
+            print(output.rstrip())
+            sys.exit(1)
+        else:
+            sys.exit(0)
