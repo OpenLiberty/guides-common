@@ -93,6 +93,7 @@ jobs:
           path: ${{ matrix.repos }}/finish/target/liberty/wlp/usr/servers/defaultServer/logs/
   slack-alert:
     needs: [test-guide]
+    if: failure()
     runs-on: ubuntu-latest
     env:
       BUILDLEVEL: ${{ github.event.client_payload.build-level }}${{ github.event.inputs.build }}
