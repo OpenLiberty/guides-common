@@ -5,14 +5,14 @@ on:
     types: [ daily-build ]
   workflow_dispatch:
     inputs:
+      build:
+        description: Build level
+        required: true
       date:
         description: Dev date
         required: true
       driver:
         description: Driver location
-        required: true
-      build:
-        description: Build level
         required: true
       guide:
         description: Guide to build
