@@ -2,7 +2,7 @@
    "buttonText": "Launch cloud-hosted version",
    "tooltipText": "Or, get started without installing anything: ",
    "skillNetworkUrl": "https://openliberty.skillsnetwork.site/quicklab/cloud-hosted-guide-{projectid}",
-   "stagingSkillNetworkUrl": "https://labs.cognitiveclass.ai/tools/theiadocker/lab/tree?md_instructions_url=https://cf-course-data-staging.s3.us-east.cloud-object-storage.appdomain.cloud/cloud-hosted-guide-{projectid}/instructions.md",
+   "stagingSkillNetworkUrl": "https://openliberty.skillsnetwork.site/quicklab/cloud-hosted-guide-{projectid}-staging",
    "guides": [ 
        "getting-started", "cdi-intro", "rest-intro", 
        "containerize", "microprofile-config", "microprofile-fallback", "microprofile-rest-client"
