@@ -5,6 +5,6 @@ Open a terminal window:
 Navigate to the **/home/project** directory:
 
 ```
-pwd
+cd /home/project
 ```
 {: codeblock}
