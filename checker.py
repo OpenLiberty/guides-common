@@ -29,7 +29,6 @@ def java_checker(file):
 
     license_re = re.compile(
         "[Cc]opyright[ ]*[(][Cc][)][ ]*([0-9]{4})([,][ ]*([0-9]{4})){0,1}[ ]*")
-    # check if its not there what do we do?
     for line_num, line in enumerate(file):
         if len(line) > 88:
             lines.append(line_num + 1)
@@ -43,6 +42,8 @@ def java_checker(file):
                     checks["license_message"] += f"[ERROR] [LINE {line_num}] Invalid years in license\n"
                 checks["license"] = False
 
+    if checks['license']:
+        output += f"[ERROR] Add a license with the current year.\n"
     if checks['license_message']:
         output += f"{checks['license_message']}"
     if checks["line_too_long"]:
@@ -64,8 +65,7 @@ def adoc_checker(file):
     }
     license_re = re.compile(
         "[Cc]opyright[ ]*[(][Cc][)][ ]*([0-9]{4})([,][ ]*([0-9]{4})){0,1}[ ]*")
-    # check if its not there what do we do?
-    # we want it to start with //
+
     release_date_re = re.compile(
         ":page-releasedate:[ ]*([0-9]{4}[-][0-9]{2}[-][0-9]{2})")
 
@@ -127,11 +127,11 @@ def check_vocabulary(file, deny_list, warning_list):
     if deny_occurrence:
         output += '[ERROR] The following words must be changed.\n'
         for line in deny_occurrence.keys():
-            output += f'[ERROR] Line {line}: {deny_occurrence[line]}\n'
+            output += f'[ERROR] [LINE {line}] {deny_occurrence[line]}\n'
     if warning_occurrence:
         output += '[WARNING] The following words should ideally be changed.\n'
         for line in warning_occurrence.keys():
-            output += f'[WARNING] Line {line}: {warning_occurrence[line]}\n'
+            output += f'[WARNING] [LINE {line}] {warning_occurrence[line]}\n'
     return output
 
 
@@ -171,7 +171,7 @@ if __name__ == "__main__":
 
         output += check_vocabulary(file, deny_list, warning_list)
 
-        if output != '':
+        if output != '' and 'ERROR' in output:
             print(output.rstrip())
             sys.exit(1)
         else:
