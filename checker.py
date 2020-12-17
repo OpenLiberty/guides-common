@@ -112,7 +112,28 @@ def html_checker(file):
     """
     Checks html file for license
     """
-    return ''
+    output = ''
+    license_re = re.compile(
+        "[Cc]opyright[ ]*[(][Cc][)][ ]*([0-9]{4})([,][ ]*([0-9]{4})){0,1}[ ]*")
+    checks = {
+        "license": True,
+    }
+    for line_num, line in enumerate(file):
+        if checks['license']:
+            result = license_re.search(line)
+            if result:
+                years = result.groups()
+                if years[-1] != None:
+                    if years[-1] != today.year:
+                        output += f"[ERROR] [LINE {line_num + 1}] Update the license to the current year.\n"
+                    if years[0] >= years[-1]:
+                        output += f"[ERROR] [LINE {line_num + 1}] Invalid years in license\n"
+                else:
+                    if years[0] != today.year:
+                        output += f"[ERROR] [LINE {line_num + 1}] Update the license to the current year.\n"
+                checks["license"] = False
+                break
+    return output
 
 
 def check_vocabulary(file, deny_list, warning_list):
