@@ -161,7 +161,7 @@ if __name__ == "__main__":
         try:
             warning_list = json.loads(args.warn[0].read())
         except:
-            Warning_list = []
+            warning_list = []
 
     for file in args.infile:
         file_extension = file.name.split('/')[-1].split('.')[-1]
