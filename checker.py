@@ -38,13 +38,13 @@ def java_checker(file):
             if result:
                 years = result.groups()
                 if years[-1] != today.year:
-                    checks["license_message"] += "[ERROR] Update the license to the current year.\n"
-                if len(years) > 1 and int(years[0]) >= int(years[-1]):
-                    checks["license_message"] += "[ERROR] Invalid years in license\n"
+                    checks["license_message"] += f"[ERROR] [LINE {line_num}] Update the license to the current year.\n"
+                if years[-1] != None and int(years[0]) >= int(years[-1]):
+                    checks["license_message"] += f"[ERROR] [LINE {line_num}] Invalid years in license\n"
                 checks["license"] = False
 
     if checks['license_message']:
-        output += f"{checks['license_message']}\n"
+        output += f"{checks['license_message']}"
     if checks["line_too_long"]:
         output += f"[ERROR] The following lines are longer than 88 characters:\n"
         output += f"{checks['line_too_long']}\n"
@@ -77,17 +77,17 @@ def adoc_checker(file):
             if result:
                 years = result.groups()
                 if years[-1] != today.year:
-                    output += "[ERROR] Update the license to the current year.\n"
+                    output += f"[ERROR] [LINE {line_num}] Update the license to the current year.\n"
                 if len(years) > 1 and years[0] >= years[-1]:  # bug here
-                    output += "[ERROR] Invalid years in license\n"
+                    output += f"[ERROR] [LINE {line_num}] Invalid years in license\n"
                 checks["license"] = False
         if checks["release_date"]:
             result = release_date_re.search(line)
             if result:
                 date = result.groups()
                 if not valid(date[-1]):
-                    output += f"[ERROR] Release date is invalid: {date[0]} at line {line_num + 1}\n"
-                    output += "[ERROR] The date should be in the form YYYY-MM-DD\n"
+                    output += f"[ERROR] [LINE {line_num}] Release date is invalid: {date[0]} at line {line_num + 1}\n"
+                    output += f"[ERROR] [LINE {line_num}] The date should be in the form YYYY-MM-DD\n"
 
     if checks['license']:
         output += '[ERROR] Add a license with the current year.\n'
@@ -118,12 +118,12 @@ def check_vocabulary(file, deny_list, warning_list):
     output = ''
     for line_num, line in enumerate(file):
         line = re.sub('[^0-9a-zA-Z]+', ' ', line).split()
-        a = list(filter(lambda word: deny.fullmatch(word), line))
-        b = list(filter(lambda word: warn.fullmatch(word), line))
-        if a:
-            deny_occurrence[line_num] = a
-        if b:
-            warning_occurrence[line_num] = b
+        matched_deny = list(filter(lambda word: deny.fullmatch(word), line))
+        matched_warning = list(filter(lambda word: warn.fullmatch(word), line))
+        if matched_deny:
+            deny_occurrence[line_num] = matched_deny
+        if matched_warning:
+            warning_occurrence[line_num] = matched_warning
     if deny_occurrence:
         output += '[ERROR] The following words must be changed.\n'
         for line in deny_occurrence.keys():
@@ -144,7 +144,7 @@ if __name__ == "__main__":
     parser.add_argument('infile', nargs='*',
                         type=argparse.FileType('r'), default=sys.stdin)
     args = parser.parse_args()
-    # check if var exist and NON empty
+
     if args.deny is not None:
         try:
             deny_list = json.loads(args.deny[0].read())
@@ -155,7 +155,6 @@ if __name__ == "__main__":
             warning_list = json.loads(args.warn[0].read())
         except:
             Warning_list = []
-    # print(warning_list)
 
     for file in args.infile:
         file_extension = file.name.split('/')[-1].split('.')[-1]
@@ -167,7 +166,7 @@ if __name__ == "__main__":
         elif file_extension == 'html':
             output += html_checker(file)
         else:
-            print("It's something else")
+            print("No checker yet.")
             sys.exit(0)
 
         output += check_vocabulary(file, deny_list, warning_list)
