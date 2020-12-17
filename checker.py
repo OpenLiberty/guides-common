@@ -36,10 +36,14 @@ def java_checker(file):
             result = license_re.search(line)
             if result:
                 years = result.groups()
-                if years[-1] != today.year:
-                    checks["license_message"] += f"[ERROR] [LINE {line_num}] Update the license to the current year.\n"
-                if years[-1] != None and int(years[0]) >= int(years[-1]):
-                    checks["license_message"] += f"[ERROR] [LINE {line_num}] Invalid years in license\n"
+                if years[-1] != None:
+                    if years[-1] != today.year:
+                        checks["license_message"] += f"[ERROR] [LINE {line_num + 1}] Update the license to the current year.\n"
+                    if int(years[0]) >= int(years[-1]):
+                        checks["license_message"] += f"[ERROR] [LINE {line_num + 1}] Invalid years in license\n"
+                else:
+                    if years[0] != today.year:
+                        checks["license_message"] += f"[ERROR] [LINE {line_num + 1}] Update the license to the current year.\n"
                 checks["license"] = False
 
     if checks['license']:
@@ -76,24 +80,27 @@ def adoc_checker(file):
             result = license_re.search(line)
             if result:
                 years = result.groups()
-                if years[-1] != today.year:
-                    output += f"[ERROR] [LINE {line_num}] Update the license to the current year.\n"
-                if len(years) > 1 and years[0] >= years[-1]:  # bug here
-                    output += f"[ERROR] [LINE {line_num}] Invalid years in license\n"
+                if years[-1] != None:
+                    if years[-1] != today.year:
+                        output += f"[ERROR] [LINE {line_num + 1}] Update the license to the current year.\n"
+                    if years[0] >= years[-1]:
+                        output += f"[ERROR] [LINE {line_num + 1}] Invalid years in license\n"
+                else:
+                    if years[0] != today.year:
+                        output += f"[ERROR] [LINE {line_num + 1}] Update the license to the current year.\n"
                 checks["license"] = False
         if checks["release_date"]:
             result = release_date_re.search(line)
             if result:
                 date = result.groups()
                 if not valid(date[-1]):
-                    output += f"[ERROR] [LINE {line_num}] Release date is invalid: {date[0]} at line {line_num + 1}\n"
-                    output += f"[ERROR] [LINE {line_num}] The date should be in the form YYYY-MM-DD\n"
+                    output += f"[ERROR] [LINE {line_num + 1}] Release date is invalid: {date[0]} + 1\n"
+                    output += f"[ERROR] [LINE {line_num + 1}] The date should be in the form YYYY-MM-DD\n"
 
     if checks['license']:
         output += '[ERROR] Add a license with the current year.\n'
     if checks['release_date']:
-        output += '[ERROR] Add a release date.\n'  # do we want this?
-
+        output += '[ERROR] Add a release date.\n'
     if checks["lines"]:
         output += "[WARNING] The following lines are longer than 120 characters:\n"
         output += f"[WARNING] {checks['lines']}\n"
@@ -127,11 +134,11 @@ def check_vocabulary(file, deny_list, warning_list):
     if deny_occurrence:
         output += '[ERROR] The following words must be changed.\n'
         for line in deny_occurrence.keys():
-            output += f'[ERROR] [LINE {line}] {deny_occurrence[line]}\n'
+            output += f'[ERROR] [LINE {line + 1}] {deny_occurrence[line]}\n'
     if warning_occurrence:
         output += '[WARNING] The following words should ideally be changed.\n'
         for line in warning_occurrence.keys():
-            output += f'[WARNING] [LINE {line}] {warning_occurrence[line]}\n'
+            output += f'[WARNING] [LINE {line + 1}] {warning_occurrence[line]}\n'
     return output
 
 
