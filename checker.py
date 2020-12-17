@@ -95,9 +95,9 @@ def adoc_checker(file):
         output += '[ERROR] Add a release date.\n'  # do we want this?
 
     if checks["lines"]:
-        output += "[WARNING] The following lines are longer than 120 characters:"
-        output += f"{checks['lines']}\n"
-        output += "[WARNING] Consider wrapping text to improve readability."
+        output += "[WARNING] The following lines are longer than 120 characters:\n"
+        output += f"[WARNING] {checks['lines']}\n"
+        output += "[WARNING] Consider wrapping text to improve readability.\n"
     return output
 
 
