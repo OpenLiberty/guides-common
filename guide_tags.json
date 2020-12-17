@@ -9,7 +9,8 @@
             "name": "Jakarta EE",
             "additional_search_terms": ["Java EE", "JEE"],
             "guides": ["bean-validation", "cdi-intro", "jpa-intro", "microshed-testing", "rest-client-java", "rest-intro", 
-                "security-intro", "microprofile-reactive-messaging", "microprofile-reactive-messaging-rest-integration", "reactive-messaging-sse"],
+                "security-intro", "microprofile-reactive-messaging", "microprofile-reactive-messaging-rest-integration", "reactive-messaging-sse",
+                "mongodb-intro"],
             "visible": "true"
         },
         {
@@ -21,7 +22,7 @@
                 "microprofile-rest-client-async", "microshed-testing", "rest-client-java", "rest-intro", "bulkhead", 
                 "circuit-breaker", "microprofile-config-intro", "retry-timeout", 
                 "microprofile-reactive-messaging", "reactive-service-testing", "microprofile-reactive-messaging-rest-integration", "microprofile-reactive-messaging-acknowledgment",
-                "reactive-messaging-sse"],
+                "reactive-messaging-sse", "mongodb-intro"],
             "visible": "true"
         },
         {
