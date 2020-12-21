@@ -2,7 +2,7 @@ import json
 import requests
 
 BASE_REPO_URL = "https://api.github.com/orgs/OpenLiberty/repos"
-JSON_PATH = ".github/workflows/good-drafts.json"
+JSON_PATH = ".github/workflows/drafts-to-test.json"
 
 HEADERS = {
     "Accept": "application/vnd.github.v3+json"

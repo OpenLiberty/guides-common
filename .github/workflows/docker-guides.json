@@ -1,0 +1,21 @@
+[
+    "guide-docker",
+    "guide-microprofile-reactive-messaging",
+    "guide-microprofile-reactive-messaging-acknowledgment",
+    "guide-microprofile-reactive-messaging-rest-integration",
+    "guide-reactive-rest-client",
+    "guide-kubernetes-intro",
+    "guide-kubernetes-microprofile-health",
+    "guide-kubernetes-microprofile-config",
+    "guide-cloud-openshift",
+    "guide-microprofile-istio-retry-fallback",
+    "guide-cloud-google",
+    "guide-cloud-aws",
+    "guide-cloud-ibm",
+    "guide-okd",
+    "guide-istio-intro",
+    "guide-getting-started",
+    "guide-sessions",
+    "guide-spring-boot",
+    "guide-microprofile-rest-client-async"
+]

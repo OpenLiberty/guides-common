@@ -1,0 +1,88 @@
+name: Test Docker Daily Build
+
+on:
+  repository_dispatch:
+    types: [ docker-image-test ]
+
+env:
+  DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+  DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+  CHANGE_MINIKUBE_NONE_USER: true
+
+jobs:
+  get-repos:
+    runs-on: ubuntu-latest
+    outputs:
+      repos: ${{ steps.create-list.outputs.repos }}
+    steps: 
+      - uses: actions/checkout@v2
+      - name: Get repos
+        id: create-list
+        run: echo "::set-output name=repos::$(python3 .github/workflows/get-docker-guides.py)"
+  test-guide:
+    needs: [ get-repos ]
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 5
+      matrix:
+        repos: ${{ fromJson(needs.get-repos.outputs.repos) }}
+        jdk: [ 8, 11 ]
+    steps:
+      - name: Setup JDK ${{ matrix.jdk }}
+        uses: actions/setup-java@v1
+        with:
+          java-version: ${{ matrix.jdk }}
+      - name: Clone ${{ matrix.repos }}
+        uses: actions/checkout@v2
+        with:
+          repository: OpenLiberty/${{ matrix.repos }}
+          path: ${{ matrix.repos }}
+          ref: refs/heads/gh-actions
+      - name: Set permissions
+        run: chmod +x ${{ matrix.repos }}/scripts/*.sh
+      - name: Docker login
+        run: echo $DOCKER_PASSWORD | sudo docker login -u $DOCKER_USERNAME --password-stdin
+      - name: Run tests for ${{ matrix.repos }}
+        working-directory: ${{ matrix.repos }}/finish
+        env:
+          BUILDLEVEL: ${{ github.event.client_payload.build-level }}
+          DEVDATE: ${{ github.event.client_payload.dev-date }}
+        run: sudo ../scripts/dockerImageTest.sh -t $DEVDATE -d $DRIVER
+      - name: Post tests
+        working-directory: ${{ matrix.repos }}
+        if: always()
+        run: |
+          logsPath=$(sudo find . -name "console.log");
+          if [ -z "$logsPath" ]
+            then 
+              logsPath=$(sudo find . -name "messages.log");
+              if [ -z "$logsPath" ]
+                then sudo docker images
+                else
+                  sudo cat $logsPath | grep product
+                  sudo cat $logsPath | grep java.runtime
+              fi
+            else sudo cat $logsPath | grep Launching
+          fi
+      - name: Archive server logs if failed
+        if: failure()
+        uses: actions/upload-artifact@v2
+        with:
+          name: server-logs
+          path: ${{ matrix.repos }}/finish/target/liberty/wlp/usr/servers/defaultServer/logs/
+  slack-alert:
+    needs: [ test-guide ]
+    if: failure()
+    runs-on: ubuntu-latest
+    env:
+      BUILDLEVEL: ${{ github.event.client_payload.build-level }}
+      DEVDATE: ${{ github.event.client_payload.dev-date }}
+      DRIVER: ${{ github.event.client_payload.driver-location }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: send-status
+        run: |
+          python3 .github/workflows/slack-alert.py ${{ env.BUILDLEVEL }} ${{ env.DRIVER }} ${{ env.DEVDATE }} ${{ needs.test-guide.result }} \
+          ${{ github.repository }} ${{ github.run_id }} ${{ secrets.SLACK_HOOK }} 
+          echo ${{ needs.test-guide.result }}
