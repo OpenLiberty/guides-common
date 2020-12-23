@@ -3,7 +3,6 @@
 ##  Superlinter configs  ##
 ## Dockerfile Lint rules ##
 ###########################
-###########################
 
 #################################
 # Default is 'on' for all rules #
