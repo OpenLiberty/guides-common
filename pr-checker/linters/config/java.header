@@ -1,4 +1,4 @@
-^// tag::copyright[]$
+^// tag::copyright\[\]$
 ^/\*{79}$
 ^ \* Copyright \(c\) (\d\d\d\d, )?\d\d\d\d IBM Corporation and others.$
 ^ \* All rights reserved. This program and the accompanying materials$
@@ -9,4 +9,4 @@
 ^ \* Contributors:$
 ^ \*     IBM Corporation - Initial implementation$
 ^ \*{79}/$
-^// end::copyright[]$
+^// end::copyright\[\]$
