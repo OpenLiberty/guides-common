@@ -68,9 +68,10 @@ jobs:
                -X POST $URI
       - name: Trigger Docker image tests
         run: |
-          docker pull "openliberty/daily:latest"
+          docker pull "openliberty/daily:latest" -q
           IMAGEBUILDLEVEL=$(docker inspect --format "{{ index .Config.Labels \"org.opencontainers.image.revision\"}}" openliberty/daily:latest)
-          if [ IMAGEBUILDLEVEL == ${{ matrix.builds.build_level }} ]
+          echo $IMAGEBUILDLEVEL
+          if [ $IMAGEBUILDLEVEL == ${{ matrix.builds.build_level }} ]
           then
             curl -H "Accept: $ACCEPT_HEADER" \
                  -H "Authorization: token $GH_TOKEN" \
