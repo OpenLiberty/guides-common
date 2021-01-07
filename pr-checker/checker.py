@@ -15,47 +15,6 @@ def valid(date_text):
     return True
 
 
-def java_checker(file):
-    """
-    Checks java file for style and license
-    """
-    lines = []
-    checks = {
-        "license": True,
-        "license_message": "",
-        "line_too_long": lines,
-    }
-    output = ''
-
-    license_re = re.compile(
-        "[Cc]opyright[ ]*[(][Cc][)][ ]*([0-9]{4})([,][ ]*([0-9]{4})){0,1}[ ]*")
-    for line_num, line in enumerate(file):
-        if len(line) > 88:
-            lines.append(line_num + 1)
-        if checks["license"]:
-            result = license_re.search(line)
-            if result:
-                years = result.groups()
-                if years[-1] != None:
-                    if years[-1] != today.year:
-                        checks["license_message"] += f"[ERROR] [LINE {line_num + 1}] Update the license to the current year.\n"
-                    if int(years[0]) >= int(years[-1]):
-                        checks["license_message"] += f"[ERROR] [LINE {line_num + 1}] Invalid years in license\n"
-                else:
-                    if years[0] != today.year:
-                        checks["license_message"] += f"[ERROR] [LINE {line_num + 1}] Update the license to the current year.\n"
-                checks["license"] = False
-
-    if checks['license']:
-        output += f"[ERROR] Add a license with the current year.\n"
-    if checks['license_message']:
-        output += f"{checks['license_message']}"
-    if checks["line_too_long"]:
-        output += f"[ERROR] The following lines are longer than 88 characters:\n"
-        output += f"{checks['line_too_long']}\n"
-    return output
-
-
 def adoc_checker(file):
     """
     Checks adoc file for style and license
@@ -189,15 +148,12 @@ if __name__ == "__main__":
         output = ''
         if file_extension == 'adoc':
             output += adoc_checker(file)
-        elif file_extension == 'java':
-            output += java_checker(file)
+            output += check_vocabulary(file, deny_list, warning_list)
         elif file_extension == 'html':
             output += html_checker(file)
         else:
             print("No checker yet.")
             sys.exit(0)
-
-        output += check_vocabulary(file, deny_list, warning_list)
 
         if output != '' and 'ERROR' in output:
             print(output.rstrip())
