@@ -67,34 +67,6 @@ def adoc_checker(file):
     return output
 
 
-def html_checker(file):
-    """
-    Checks html file for license
-    """
-    output = ''
-    license_re = re.compile(
-        "[Cc]opyright[ ]*[(][Cc][)][ ]*([0-9]{4})([,][ ]*([0-9]{4})){0,1}[ ]*")
-    checks = {
-        "license": True,
-    }
-    for line_num, line in enumerate(file):
-        if checks['license']:
-            result = license_re.search(line)
-            if result:
-                years = result.groups()
-                if years[-1] != None:
-                    if years[-1] != today.year:
-                        output += f"[ERROR] [LINE {line_num + 1}] Update the license to the current year.\n"
-                    if years[0] >= years[-1]:
-                        output += f"[ERROR] [LINE {line_num + 1}] Invalid years in license\n"
-                else:
-                    if years[0] != today.year:
-                        output += f"[ERROR] [LINE {line_num + 1}] Update the license to the current year.\n"
-                checks["license"] = False
-                break
-    return output
-
-
 def check_vocabulary(file, deny_list, warning_list):
     """
     """
@@ -143,20 +115,16 @@ if __name__ == "__main__":
         except:
             warning_list = []
 
-    for file in args.infile:
-        file_extension = file.name.split('/')[-1].split('.')[-1]
-        output = ''
-        if file_extension == 'adoc':
-            output += adoc_checker(file)
-            output += check_vocabulary(file, deny_list, warning_list)
-        elif file_extension == 'html':
-            output += html_checker(file)
-        else:
-            print("No checker yet.")
-            sys.exit(0)
+    file_extensions = map(lambda f: f.name.split(
+        '/')[-1].split('.')[-1], args.infile)
+    output = ''
 
-        if output != '' and 'ERROR' in output:
-            print(output.rstrip())
-            sys.exit(1)
-        else:
-            sys.exit(0)
+    for i, f in enumerate(file_extensions):
+        if f == 'adoc':
+            output += adoc_checker(args.infile[i])
+            output += check_vocabulary(args.infile[i], deny_list, warning_list)
+    if output != '' and 'ERROR' in output:
+        print(output.rstrip())
+        sys.exit(1)
+    else:
+        sys.exit(0)
