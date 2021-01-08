@@ -89,7 +89,7 @@
   <!-- Checks for Headers                                -->
   <!-- See https://checkstyle.org/config_header.html   -->
   <module name="RegexpHeader">
-    <property name="headerFile" value="guides-common/pr-checker/linters/config/java.header"/>
+    <property name="headerFile" value="tools/pr-checker/linters/config/java.header"/>
     <property name="fileExtensions" value="java"/>
  </module>
 
