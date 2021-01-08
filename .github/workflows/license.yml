@@ -1,0 +1,35 @@
+name: License Update
+on:
+  workflow_dispatch:
+
+  schedule:
+    - cron: 0 0 1 1 *
+jobs:
+  Update-year:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: qa
+      - name: Change file
+        run: |
+          git push origin --delete license-update
+          sed -i "3s/.*/^ \\\* Copyright \\\(c\\\) (\\\d\\\d\\\d\\\d, )?`date +"%Y"` IBM Corporation and others.$/" \
+          pr-checker/linters/config/java.header
+          cat pr-checker/linters/config/java.header
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add pr-checker/linters/config/java.header
+          git commit -m "Update license year"
+          git push origin qa:license-update
+      - name: Make PR
+        uses: actions/github-script@v3
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+        run: |
+          github.pulls.create({
+            ${{ github.repository_owner }},
+            ${{ github.event.repository.name }},
+            license-update,
+            qa,
+            })
