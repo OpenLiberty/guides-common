@@ -3,7 +3,8 @@ name: Pre-Daily Build Actions
 on:
   workflow_dispatch:
   schedule:
-    - cron: 0 0 * * *
+    # 6 AM UTC or 1 AM EST
+    - cron: 0 6 * * *
 
 env:
   DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
