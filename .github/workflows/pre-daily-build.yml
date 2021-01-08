@@ -55,8 +55,8 @@ jobs:
     strategy:
       matrix: ${{ fromJson(needs.get-builds.outputs.matrix) }}
     env:
-      GH_TOKEN: ${{ secrets.GK_TOKEN }}
-      URI: "https://api.github.com/repos/gkwan-ibm/guides-common/dispatches"
+      GH_TOKEN: ${{ secrets.GB_TOKEN }}
+      URI: "https://api.github.com/repos/OpenLiberty/guides-common/dispatches"
       ACCEPT_HEADER: "application/vnd.github.v3+json"
       CONTENT_TYPE: "application/json"
       PAYLOAD: '{ "dev-date": "${{ matrix.builds.date }}", "driver-location": "${{ matrix.builds.driver_location }}", "build-level": "${{ matrix.builds.build_level }}"}'
