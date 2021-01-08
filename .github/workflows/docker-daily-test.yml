@@ -3,6 +3,21 @@ name: Test Docker Daily Build
 on:
   repository_dispatch:
     types: [ docker-image-test ]
+  workflow_dispatch:
+    inputs:
+      build:
+        description: Build level
+        required: true
+      date:
+        description: Dev date
+        required: true
+      driver:
+        description: Driver location
+        required: true
+      guide:
+        description: Guide to build
+        default: "all"
+        required: true
 
 env:
   DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
@@ -13,12 +28,17 @@ jobs:
   get-repos:
     runs-on: ubuntu-latest
     outputs:
-      repos: ${{ steps.create-list.outputs.repos }}
+      repos: ${{ steps.create-list.outputs.repos }}${{ steps.input-guide.outputs.repo }}
     steps: 
       - uses: actions/checkout@v2
       - name: Get repos
+        if: ${{ github.event_name == 'repository_dispatch' || github.event_name == 'workflow_dispatch' && github.event.inputs.guide == 'all' }}
         id: create-list
         run: echo "::set-output name=repos::$(python3 .github/workflows/get-docker-guides.py)"
+      - name: Set repo
+        if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.guide != 'all' }}
+        id: input-guide
+        run: echo "::set-output name=repo::[ '${{ github.event.inputs.guide }}' ]"
   test-guide:
     needs: [ get-repos ]
     runs-on: ubuntu-latest
@@ -46,8 +66,8 @@ jobs:
       - name: Run tests for ${{ matrix.repos }}
         working-directory: ${{ matrix.repos }}/finish
         env:
-          BUILDLEVEL: ${{ github.event.client_payload.build-level }}
-          DEVDATE: ${{ github.event.client_payload.dev-date }}
+          DEVDATE: ${{ github.event.client_payload.dev-date }}${{ github.event.inputs.date }}
+          DRIVER: ${{ github.event.client_payload.driver-location }}${{ github.event.inputs.driver }}
         run: sudo ../scripts/dockerImageTest.sh -t $DEVDATE -d $DRIVER
       - name: Post tests
         working-directory: ${{ matrix.repos }}
@@ -76,9 +96,9 @@ jobs:
     if: failure()
     runs-on: ubuntu-latest
     env:
-      BUILDLEVEL: ${{ github.event.client_payload.build-level }}
-      DEVDATE: ${{ github.event.client_payload.dev-date }}
-      DRIVER: ${{ github.event.client_payload.driver-location }}
+      BUILDLEVEL: ${{ github.event.client_payload.build-level }}${{ github.event.inputs.build }}
+      DEVDATE: ${{ github.event.client_payload.dev-date }}${{ github.event.inputs.date }}
+      DRIVER: ${{ github.event.client_payload.driver-location }}${{ github.event.inputs.driver }}
     steps:
       - uses: actions/checkout@v2
       - name: send-status
