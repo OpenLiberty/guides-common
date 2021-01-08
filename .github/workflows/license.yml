@@ -26,10 +26,10 @@ jobs:
         uses: actions/github-script@v3
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
-        run: |
-          github.pulls.create({
-            ${{ github.repository_owner }},
-            ${{ github.event.repository.name }},
-            license-update,
-            qa,
-            })
+          script: |
+            github.pulls.create({
+              ${{ github.repository_owner }},
+              ${{ github.event.repository.name }},
+              license-update,
+              qa,
+              })
