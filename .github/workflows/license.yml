@@ -12,7 +12,7 @@ jobs:
         with:
           ref: qa
           token: ${{ secrets.ADMIN_TOKEN }}
-      - name: Change file
+      - name: Update file
         run: |
           git ls-remote --exit-code --heads origin license-update && git push origin --delete license-update
           sed -i "3s/.*/^ \\\* Copyright \\\(c\\\) (\\\d\\\d\\\d\\\d, )?`date +"%Y"` IBM Corporation and others.$/" \
@@ -23,7 +23,7 @@ jobs:
           git add pr-checker/linters/config/java.header
           git commit -m "Update license year"
           git push origin qa:license-update
-      - name: Make PR
+      - name: Create pull request
         uses: actions/github-script@v3
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
