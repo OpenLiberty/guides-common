@@ -1,7 +1,7 @@
 name: License Update
 on:
-  workflow_dispatch:
-  pull_request:
+  workflow_dispatch: # remove 
+  pull_request: # remove
   schedule:
     - cron: 0 0 1 1 *
 jobs:
