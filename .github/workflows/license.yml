@@ -22,7 +22,7 @@ jobs:
           git config user.email github-actions@github.com
           git add pr-checker/linters/config/java.header
           git commit -m "Update license year"
-          git push origin qa:license-update
+          git push origin pr-checker:license-update #change pr-checker to qa
       - name: Create pull request
         uses: actions/github-script@v3
         with:
