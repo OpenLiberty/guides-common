@@ -1,10 +1,10 @@
-Open a terminal window:
+Open a command-line session:
 
 > [Terminal -> New Terminal]
 
-Navigate to the **/home/project** folder:
+Navigate to the **/home/project** directory:
 
 ```
-pwd
+cd /home/project
 ```
 {: codeblock}
