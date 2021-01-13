@@ -51,6 +51,7 @@ def adoc_checker(file):
         if checks["release_date"]:
             result = release_date_re.search(line)
             if result:
+                checks["release_date"] = False
                 date = result.groups()
                 if not valid(date[-1]):
                     output += f"[ERROR] [LINE {line_num + 1}] Release date is invalid: {date[0]} + 1\n"
