@@ -1,0 +1,3 @@
+=== What is Kafka?
+
+https://kafka.apache.org/[Apache Kafka^] is a stream-processing platform that manages communication in distributed systems. Communication is message-oriented, and follows the publish-subscribe model. Kafka allows for real-time stream processing and distributed, replicated storage of streams and messages. Kafka Producer is a client or a program, which produces the message and pushes it to the Topic. Whereas Kafka Consumer is a client or a program, which consumes the published messages from the Producer.
