@@ -1,3 +1,6 @@
+#!/bin/sh
+set -o pipefail
+
 repo=$1
 pr_number=$2
 URL="https://api.github.com/repos/$repo/pulls/$pr_number/files"
