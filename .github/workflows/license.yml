@@ -1,6 +1,5 @@
 name: License Update
 on:
-  workflow_dispatch: # remove 
   schedule:
     - cron: 0 0 1 1 *
 jobs:
@@ -10,7 +9,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           token: ${{ secrets.ADMIN_TOKEN }}
-          ref: pr-checker #change to qa
+          ref: qa
       - name: Update file
         run: |
           git ls-remote --exit-code --heads origin license-update && git push origin --delete license-update
