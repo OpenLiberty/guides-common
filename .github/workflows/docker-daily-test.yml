@@ -39,6 +39,13 @@ jobs:
         if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.guide != 'all' }}
         id: input-guide
         run: echo "::set-output name=repo::[ '${{ github.event.inputs.guide }}' ]"
+  build-level:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Starting daily build tests for ${{ github.event.client_payload.build-level }}${{ github.event.inputs.build }}
+        run: |
+          echo "Build level: "
+          echo ${{ github.event.client_payload.build-level }}${{ github.event.inputs.build }}
   test-guide:
     needs: [ get-repos ]
     runs-on: ubuntu-latest
