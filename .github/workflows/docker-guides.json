@@ -3,7 +3,6 @@
     "guide-cloud-aws",
     "guide-cloud-ibm",
     "guide-cloud-openshift",
-    "guide-cloud-openshift-operator",
     "guide-docker",
     "guide-getting-started",
     "guide-istio-intro",
