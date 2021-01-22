@@ -65,7 +65,6 @@ jobs:
         with:
           repository: OpenLiberty/${{ matrix.repos }}
           path: ${{ matrix.repos }}
-          ref: refs/heads/master
       - name: Set permissions
         run: chmod +x ${{ matrix.repos }}/scripts/*.sh
       - name: Docker login
