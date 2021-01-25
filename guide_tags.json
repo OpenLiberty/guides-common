@@ -78,7 +78,7 @@
         },
         {
             "name": "Testing",
-            "guides": ["microshed-testing", "reactive-service-testing"]
+            "guides": ["microshed-testing", "reactive-service-testing", "contract-testing"]
         },
         {
             "name": "Interactive",
