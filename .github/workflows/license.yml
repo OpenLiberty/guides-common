@@ -30,7 +30,7 @@ jobs:
               owner: "${{ github.repository_owner }}",
               repo: "${{ github.event.repository.name }}",
               head: "${{ github.repository_owner }}:license-update",
-              base: "qa",
+              base: "staging",
               title: "Updating License Year",
               body: "Updating license year in java header",
               })
