@@ -9,7 +9,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           token: ${{ secrets.ADMIN_TOKEN }}
-          ref: qa
+          ref: staging
       - name: Update file
         run: |
           git ls-remote --exit-code --heads origin license-update && git push origin --delete license-update
