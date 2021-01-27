@@ -40,12 +40,12 @@ def adoc_checker(file):
             if result:
                 years = result.groups()
                 if years[-1] != None:
-                    if years[-1] != today.year:
+                    if years[-1] != str(today.year):
                         output += f"[ERROR] [LINE {line_num + 1}] Update the license to the current year.\n"
                     if years[0] >= years[-1]:
                         output += f"[ERROR] [LINE {line_num + 1}] Invalid years in license\n"
                 else:
-                    if years[0] != today.year:
+                    if years[0] != str(today.year):
                         output += f"[ERROR] [LINE {line_num + 1}] Update the license to the current year.\n"
                 checks["license"] = False
         if checks["release_date"]:
@@ -77,13 +77,16 @@ def check_vocabulary(file, deny_list, warning_list):
     warn = re.compile('|'.join(map(re.escape, warning_list)))
     output = ''
     for line_num, line in enumerate(file):
-        line = re.sub('[^0-9a-zA-Z]+', ' ', line).split()
-        matched_deny = list(filter(lambda word: deny.fullmatch(word), line))
-        matched_warning = list(filter(lambda word: warn.fullmatch(word), line))
-        if matched_deny:
-            deny_occurrence[line_num] = matched_deny
-        if matched_warning:
-            warning_occurrence[line_num] = matched_warning
+        if ':common-includes:' not in line:
+            line = re.sub('[^0-9a-zA-Z]+', ' ', line).split()
+            matched_deny = list(
+                filter(lambda word: deny.fullmatch(word), line))
+            matched_warning = list(
+                filter(lambda word: warn.fullmatch(word), line))
+            if matched_deny:
+                deny_occurrence[line_num] = matched_deny
+            if matched_warning:
+                warning_occurrence[line_num] = matched_warning
     if deny_occurrence:
         output += '[ERROR] The following words must be changed.\n'
         for line in deny_occurrence.keys():
@@ -124,8 +127,11 @@ if __name__ == "__main__":
         if f == 'adoc':
             output += adoc_checker(args.infile[i])
             output += check_vocabulary(args.infile[i], deny_list, warning_list)
-    if output != '' and 'ERROR' in output:
+    if output != '':
         print(output.rstrip())
-        sys.exit(1)
+        if 'ERROR' in output:
+            sys.exit(1)
+        else:
+            sys.exit(0)
     else:
         sys.exit(0)
