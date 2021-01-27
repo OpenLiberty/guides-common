@@ -3,7 +3,7 @@
    "buttonText": "Launch cloud-hosted version",
    "tooltipText": "Or, get started without installing anything: ",
    "skillNetworkUrl": "https://openliberty.skillsnetwork.site/quicklab/cloud-hosted-guide-{projectid}",
-   "stagingSkillNetworkUrl": "https://openliberty.skillsnetwork.site/quicklab/cloud-hosted-guide-{projectid}-staging",
+   "stagingSkillNetworkUrl": "https://openliberty.skillsnetwork.site/quicklab/cloud-hosted-guide-{projectid}",
    "guides": [ 
        "getting-started", "cdi-intro", "rest-intro", "microprofile-rest-client"
    ] 
