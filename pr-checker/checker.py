@@ -15,7 +15,7 @@ def valid(date_text):
     return True
 
 
-def adoc_checker(file):
+def adoc_checker(file, valid_tags):
     """
     Checks adoc file for style and license
     """
@@ -24,6 +24,7 @@ def adoc_checker(file):
     checks = {
         "license": True,
         "release_date": True,
+        "page_tags": True,
         "lines": lines
     }
     license_re = re.compile(
@@ -31,6 +32,7 @@ def adoc_checker(file):
 
     release_date_re = re.compile(
         ":page-releasedate:[ ]*([0-9]{4}[-][0-9]{2}[-][0-9]{2})")
+    tags_re = re.compile(":page-tags: *\[(.*)\]")
 
     for line_num, line in enumerate(file):
         if len(line) > 120:
@@ -56,7 +58,21 @@ def adoc_checker(file):
                 if not valid(date[-1]):
                     output += f"[ERROR] [LINE {line_num + 1}] Release date is invalid: {date[0]} + 1\n"
                     output += f"[ERROR] [LINE {line_num + 1}] The date should be in the form YYYY-MM-DD\n"
-
+        if checks["page_tags"]:
+            result = tags_re.search(line)
+            if result:
+                tags = result.groups()
+                invalid_tags = []
+                if len(tags) != 0:
+                    tags = list(str(tags[0]).split(','))
+                    for tag in tags:
+                        if tag.strip(" '") not in valid_tags:
+                            invalid_tags.append(tag)
+                            output += f"[ERROR] [LINE {line_num + 1}] {tag} is an invalid tag\n"
+                    if len(invalid_tags) > 0:
+                        output += f"[ERROR] [LINE {line_num +1}] List of valid tags: {valid_tags}\n"
+                        output += f"[ERROR] [LINE {line_num +1}] Note that these tags are case sensitve\n"
+                checks["page_tags"] = False
     if checks['license']:
         output += '[ERROR] Add a license with the current year.\n'
     if checks['release_date']:
@@ -104,6 +120,8 @@ if __name__ == "__main__":
                         type=argparse.FileType('r'))
     parser.add_argument('--warn', nargs=1,
                         type=argparse.FileType('r'))
+    parser.add_argument('--tags', nargs=1,
+                        type=argparse.FileType('r'))
     parser.add_argument('infile', nargs='*',
                         type=argparse.FileType('r'), default=sys.stdin)
     args = parser.parse_args()
@@ -118,6 +136,13 @@ if __name__ == "__main__":
             warning_list = json.loads(args.warn[0].read())
         except:
             warning_list = []
+    if args.tags is not None:
+        try:
+            tags = list(map(lambda tag: tag['name'], json.loads(
+                args.tags[0].read())["guide_tags"]))
+        except:
+            print("something went wrong")
+            tags = []
 
     file_extensions = map(lambda f: f.name.split(
         '/')[-1].split('.')[-1], args.infile)
@@ -125,7 +150,7 @@ if __name__ == "__main__":
 
     for i, f in enumerate(file_extensions):
         if f == 'adoc':
-            output += adoc_checker(args.infile[i])
+            output += adoc_checker(args.infile[i], tags)
             output += check_vocabulary(args.infile[i], deny_list, warning_list)
     if output != '':
         print(output.rstrip())
