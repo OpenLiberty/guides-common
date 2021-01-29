@@ -8,11 +8,10 @@
 ////
 == Getting started
 
-Open a command-line session:
+To open a new command-line session,
+select **Terminal** > **New Terminal** from the menu of the IDE.
 
-> [Terminal -> New Terminal]
-
-Navigate to the **/home/project** directory:
+Run the following command to navigate to the **/home/project** directory:
 
 ```
 cd /home/project
