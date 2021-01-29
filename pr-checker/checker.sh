@@ -14,4 +14,4 @@ else
     echo "::set-output name=canSkip::false"
 fi
 
-python3 tools/pr-checker/checker.py --deny tools/pr-checker/deny_list.json --warn tools/pr-checker/warning_list.json $(echo $FILES | jq '.[]' | tr -d '"')
+python3 tools/pr-checker/checker.py --deny tools/pr-checker/deny_list.json --warn tools/pr-checker/warning_list.json --tags tools/guide_tags.json $(echo $FILES | jq '.[]' | tr -d '"')
