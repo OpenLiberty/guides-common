@@ -155,6 +155,8 @@
     <module name="IllegalInstantiation" />
     <module name="InnerAssignment" />
     <module name="MagicNumber" />
+      <property name="severity" value="warning"/>
+    </module>
     <module name="MissingSwitchDefault" />
     <module name="MultipleVariableDeclarations" />
     <module name="SimplifyBooleanExpression" />
@@ -167,6 +169,8 @@
     <!-- See https://checkstyle.org/config_misc.html -->
     <module name="ArrayTypeStyle" />
     <module name="FinalParameters" />
+      <property name="severity" value="warning"/>
+    </module >
     <module name="TodoComment" />
     <module name="UpperEll" />
 
