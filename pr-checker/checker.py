@@ -130,18 +130,24 @@ if __name__ == "__main__":
         try:
             deny_list = json.loads(args.deny[0].read())
         except:
+            e = sys.exc_info()[0]
+            print("something went wrong with deny list parsing", e)
             deny_list = []
     if args.warn is not None:
         try:
             warning_list = json.loads(args.warn[0].read())
         except:
+            e = sys.exc_info()[0]
+            print("something went wrong with warning list parsing", e)
             warning_list = []
     if args.tags is not None:
         try:
-            tags = list(map(lambda tag: tag['name'], json.loads(
+            tags = list(filter(lambda tag: 'visible' in tag and tag['visible'] == 'true', json.loads(
                 args.tags[0].read())["guide_tags"]))
+            tags = list(map(lambda tag: tag['name'], tags))
         except:
-            print("something went wrong")
+            e = sys.exc_info()[0]
+            print("something went wrong with tags parsing", e)
             tags = []
 
     file_extensions = map(lambda f: f.name.split(
