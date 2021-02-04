@@ -99,7 +99,6 @@
     <module name="ConstantName" />
     <module name="LocalFinalVariableName" />
     <module name="LocalVariableName" />
-    <module name="MemberName" />
     <module name="MethodName" />
     <module name="PackageName" />
     <module name="ParameterName" />
@@ -151,7 +150,6 @@
     <!-- See https://checkstyle.org/config_coding.html -->
     <module name="EmptyStatement" />
     <module name="EqualsHashCode" />
-    <module name="HiddenField" />
     <module name="IllegalInstantiation" />
     <module name="InnerAssignment" />
     <module name="MagicNumber" >
