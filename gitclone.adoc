@@ -6,6 +6,9 @@
  Contributors:
      IBM Corporation
 ////
+
+:cloud-hosted: true
+
 == Getting started
 
 The fastest way to work through this guide is to clone the https://github.com/openliberty/guide-{projectid}.git[Git repository^] and use the projects that are provided inside:
