@@ -83,14 +83,14 @@ jobs:
           if [ -z "$logsPath" ]
             then 
               logsPath=$(sudo find . -name "messages.log");
-              if [ -z "$logsPath" ]
-                then sudo docker images
-                else
+              if [ ! -z "$logsPath" ]
+                then
                   sudo cat $logsPath | grep product
                   sudo cat $logsPath | grep java.runtime
               fi
             else sudo cat $logsPath | grep Launching
-          fi
+          fi;
+          sudo docker images
       - name: Archive server logs if failed
         if: failure()
         uses: actions/upload-artifact@v2
