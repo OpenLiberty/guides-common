@@ -5,6 +5,10 @@
    "stagingSkillNetworkUrl": "https://openliberty.skillsnetwork.site/quicklab/cloud-hosted-guide-{projectid}-staging",
    "guides": [ 
        "getting-started", "cdi-intro", "rest-intro", 
-       "containerize", "microprofile-config", "microprofile-fallback", "microprofile-rest-client"
+       "containerize", "microprofile-config", "microprofile-fallback", "microprofile-rest-client",
+       "microshed-testing", "kubernetes-intro", "microprofile-health", "microprofile-reactive-messaging", "reactive-service-testing",
+       "microprofile-opentracing-jaeger",
+       "microprofile-istio-retry-fallback", "microprofile-jwt", "microprofile-metrics", "microprofile-openapi", 
+       "microprofile-reactive-messaging-acknowledgment", "microprofile-reactive-messaging-rest-integration", "microprofile-rest-client-async"
    ] 
 }
