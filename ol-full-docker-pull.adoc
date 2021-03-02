@@ -1,0 +1,6 @@
+Run the following command to download or update to the latest Open Liberty Docker image:
+
+[role='command']
+```
+docker pull openliberty/open-liberty:full-java8-openj9-ubi
+```
