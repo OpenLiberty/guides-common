@@ -66,7 +66,7 @@ def adoc_checker(file, valid_tags):
                 if len(tags) != 0:
                     tags = list(str(tags[0]).split(','))
                     for tag in tags:
-                        if tag.strip(" '") not in valid_tags:
+                        if tag.strip(" '\"") not in valid_tags:
                             invalid_tags.append(tag)
                             output += f"[ERROR] [LINE {line_num + 1}] {tag} is an invalid tag\n"
                     if len(invalid_tags) > 0:
