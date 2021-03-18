@@ -33,10 +33,15 @@ def adoc_checker(file, valid_tags):
     release_date_re = re.compile(
         ":page-releasedate:[ ]*([0-9]{4}[-][0-9]{2}[-][0-9]{2})")
     tags_re = re.compile(":page-tags: *\[(.*)\]")
+    list_re = re.compile("^\s*- ")
 
     for line_num, line in enumerate(file):
         if len(line) > 120:
             lines.append(line_num + 1)
+        # checks '- ' and suggest to switch to '* '
+        list_match = list_re.match(line)
+        if list_match != None:
+            output += f"[ERROR] [LINE {line_num + 1}] Use '* ' to enumerate items instead of '- '.\n"
         if checks["license"]:
             result = license_re.search(line)
             if result:
