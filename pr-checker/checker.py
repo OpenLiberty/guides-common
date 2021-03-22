@@ -33,7 +33,7 @@ def adoc_checker(file, valid_tags):
     release_date_re = re.compile(
         ":page-releasedate:[ ]*([0-9]{4}[-][0-9]{2}[-][0-9]{2})")
     tags_re = re.compile(":page-tags: *\[(.*)\]")
-    list_re = re.compile("^\s*- ")
+    list_re = re.compile("^- ")
 
     for line_num, line in enumerate(file):
         if len(line) > 120:
