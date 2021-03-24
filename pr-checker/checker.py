@@ -41,7 +41,7 @@ def adoc_checker(file, valid_tags):
         # checks '- ' and suggest to switch to '* '
         list_match = list_re.match(line)
         if list_match != None:
-            output += f"[ERROR] [LINE {line_num + 1}] Use '* ' to enumerate items instead of '- '.\n"
+            output += f"[WARNING] [LINE {line_num + 1}] Use '* ' to enumerate items instead of '- '.\n"
         if checks["license"]:
             result = license_re.search(line)
             if result:
