@@ -83,7 +83,7 @@ def adoc_checker(file, valid_tags, rules):
         output += f"[{rules['release_date']['log-level']}] Add a release date.\n"
     if rules['line-length']['lines']:
         output += f"[{rules['line-length']['log-level']}] The following lines are longer than 120 characters:\n"
-        output += f"[{rules['line-length']['log-level']}] {rules['lines']}\n"
+        output += f"[{rules['line-length']['log-level']}] {rules['line-length']['lines']}\n"
         output += f"[{rules['line-length']['log-level']}] Consider wrapping text to improve readability.\n"
     return output
 
@@ -158,7 +158,7 @@ if __name__ == "__main__":
             tags = []
     if args.rules is not None and args.repo is not None:
         try:
-            repo = args.repo.split('/')[-1]
+            repo = args.repo[0].split('/')[-1]
             rules = dict(map(lambda rule: (rule[0], {'check': repo not in rule[1]['exception'], 'log-level': rule[1]['log-level']}),
                              json.loads(args.rules[0].read()).items()))
         except:
