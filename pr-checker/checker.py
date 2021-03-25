@@ -15,18 +15,13 @@ def valid(date_text):
     return True
 
 
-def adoc_checker(file, valid_tags):
+def adoc_checker(file, valid_tags, rules):
     """
     Checks adoc file for style and license
     """
     lines = []
     output = ''
-    checks = {
-        "license": True,
-        "release_date": True,
-        "page_tags": True,
-        "lines": lines
-    }
+    rules['line-length']['lines'] = lines
     license_re = re.compile(
         "[Cc]opyright[ ]*[(][Cc][)][ ]*([0-9]{4})([,][ ]*([0-9]{4})){0,1}[ ]*")
 
@@ -39,31 +34,34 @@ def adoc_checker(file, valid_tags):
         if len(line) > 120:
             lines.append(line_num + 1)
         # checks '- ' and suggest to switch to '* '
-        list_match = list_re.match(line)
-        if list_match != None:
-            output += f"[ERROR] [LINE {line_num + 1}] Use '* ' to enumerate items instead of '- '.\n"
-        if checks["license"]:
+        if rules['-']['check']:
+            list_match = list_re.match(line)
+            if list_match != None:
+                output += f"[{rules['-']['log-level']}] [LINE {line_num + 1}] Use '* ' to enumerate items instead of '- '.\n"
+        if rules['license']['check']:
             result = license_re.search(line)
             if result:
                 years = result.groups()
                 if years[-1] != None:
                     if years[-1] != str(today.year):
-                        output += f"[ERROR] [LINE {line_num + 1}] Update the license to the current year.\n"
+                        output += f"[{rules['license']['log-level']}] [LINE {line_num + 1}] Update the license to the current year.\n"
                     if years[0] >= years[-1]:
-                        output += f"[ERROR] [LINE {line_num + 1}] Invalid years in license\n"
+                        output += f"[{rules['license']['log-level']}] [LINE {line_num + 1}] Invalid years in license\n"
                 else:
                     if years[0] != str(today.year):
-                        output += f"[ERROR] [LINE {line_num + 1}] Update the license to the current year.\n"
-                checks["license"] = False
-        if checks["release_date"]:
+                        output += f"[{rules['license']['log-level']}] [LINE {line_num + 1}] Update the license to the current year.\n"
+                rules['license']['check'] = False
+                rules['license']['found'] = True
+        if rules['release_date']['check']:
             result = release_date_re.search(line)
             if result:
-                checks["release_date"] = False
                 date = result.groups()
                 if not valid(date[-1]):
-                    output += f"[ERROR] [LINE {line_num + 1}] Release date is invalid: {date[0]} + 1\n"
-                    output += f"[ERROR] [LINE {line_num + 1}] The date should be in the form YYYY-MM-DD\n"
-        if checks["page_tags"]:
+                    output += f"[{rules['release_date']['log-level']}] [LINE {line_num + 1}] Release date is invalid: {date[0]} + 1\n"
+                    output += f"[{rules['release_date']['log-level']}] [LINE {line_num + 1}] The date should be in the form YYYY-MM-DD\n"
+                rules['release_date']['check'] = False
+                rules['release_date']['found'] = True
+        if rules['page_tags']['check']:
             result = tags_re.search(line)
             if result:
                 tags = result.groups()
@@ -73,19 +71,20 @@ def adoc_checker(file, valid_tags):
                     for tag in tags:
                         if tag.strip(" '\"") not in valid_tags:
                             invalid_tags.append(tag)
-                            output += f"[ERROR] [LINE {line_num + 1}] {tag} is an invalid tag\n"
+                            output += f"[{rules['page_tags']['log-level']}] [LINE {line_num + 1}] {tag} is an invalid tag\n"
                     if len(invalid_tags) > 0:
-                        output += f"[ERROR] [LINE {line_num +1}] List of valid tags: {valid_tags}\n"
-                        output += f"[ERROR] [LINE {line_num +1}] Note that these tags are case sensitve\n"
-                checks["page_tags"] = False
-    if checks['license']:
-        output += '[ERROR] Add a license with the current year.\n'
-    if checks['release_date']:
-        output += '[ERROR] Add a release date.\n'
-    if checks["lines"]:
-        output += "[WARNING] The following lines are longer than 120 characters:\n"
-        output += f"[WARNING] {checks['lines']}\n"
-        output += "[WARNING] Consider wrapping text to improve readability.\n"
+                        output += f"[{rules['page_tags']['log-level']}] [LINE {line_num +1}] List of valid tags: {valid_tags}\n"
+                        output += f"[{rules['page_tags']['log-level']}] [LINE {line_num +1}] Note that these tags are case sensitve\n"
+                rules['page_tags']['check'] = False
+
+    if not rules['license']['found']:
+        output += f"[{rules['license']['log-level']}] Add a license with the current year.\n"
+    if not rules['release_date']['found']:
+        output += f"[{rules['release_date']['log-level']}] Add a release date.\n"
+    if rules['line-length']['lines']:
+        output += f"[{rules['line-length']['log-level']}] The following lines are longer than 120 characters:\n"
+        output += f"[{rules['line-length']['log-level']}] {rules['lines']}\n"
+        output += f"[{rules['line-length']['log-level']}] Consider wrapping text to improve readability.\n"
     return output
 
 
@@ -127,6 +126,9 @@ if __name__ == "__main__":
                         type=argparse.FileType('r'))
     parser.add_argument('--tags', nargs=1,
                         type=argparse.FileType('r'))
+    parser.add_argument('--rules', nargs=1,
+                        type=argparse.FileType('r'))
+    parser.add_argument('--repo', nargs=1, type=str)
     parser.add_argument('infile', nargs='*',
                         type=argparse.FileType('r'), default=sys.stdin)
     args = parser.parse_args()
@@ -148,12 +150,28 @@ if __name__ == "__main__":
     if args.tags is not None:
         try:
             tags = list(filter(lambda tag: 'visible' in tag and tag['visible'] == 'true', json.loads(
-                args.tags[0].read())["guide_tags"]))
+                args.tags[0].read())['guide_tags']))
             tags = list(map(lambda tag: tag['name'], tags))
         except:
             e = sys.exc_info()[0]
             print("something went wrong with tags parsing", e)
             tags = []
+    if args.rules is not None and args.repo is not None:
+        try:
+            repo = args.repo.split('/')[-1]
+            rules = dict(map(lambda rule: (rule[0], {'check': repo not in rule[1]['exception'], 'log-level': rule[1]['log-level']}),
+                             json.loads(args.rules[0].read()).items()))
+        except:
+            e = sys.exc_info()[0]
+            print("something went wrong with repo and rule parsing", e)
+            repo = ''
+            rules = {
+                "license": {'check': True, 'log-level': 'ERROR'},
+                "release_date": {'check': True, 'log-level': 'ERROR'},
+                "page_tags": {'check': True, 'log-level': 'ERROR'},
+                "-": {'check': True, 'log-level': 'ERROR'},
+                "line-length": {'check': True, 'log-level': 'WARNING'},
+            }
 
     file_extensions = map(lambda f: f.name.split(
         '/')[-1].split('.')[-1], args.infile)
@@ -161,7 +179,7 @@ if __name__ == "__main__":
 
     for i, f in enumerate(file_extensions):
         if f == 'adoc':
-            output += adoc_checker(args.infile[i], tags)
+            output += adoc_checker(args.infile[i], tags, rules)
             output += check_vocabulary(args.infile[i], deny_list, warning_list)
     if output != '':
         print(output.rstrip())
