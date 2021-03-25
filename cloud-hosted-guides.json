@@ -1,5 +1,5 @@
 {
-   "buttonText": "Run in Cloud",
+   "buttonText": "Run in cloud",
    "buttonLabel": "Or, ",
    "tooltipText": "Or, ",
    "skillNetworkUrl": "https://openliberty.skillsnetwork.site/quicklab/cloud-hosted-guide-{projectid}",
