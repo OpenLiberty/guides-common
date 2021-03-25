@@ -1,6 +1,7 @@
 {
-   "buttonText": "Launch cloud-hosted version",
-   "tooltipText": "Or, get started without installing anything: ",
+   "buttonText": "Run in Cloud",
+   "buttonLabel": "Or, ",
+   "tooltipText": "Or, ",
    "skillNetworkUrl": "https://openliberty.skillsnetwork.site/quicklab/cloud-hosted-guide-{projectid}",
    "stagingSkillNetworkUrl": "https://openliberty.skillsnetwork.site/quicklab/cloud-hosted-guide-{projectid}-staging",
    "guides": [ 
