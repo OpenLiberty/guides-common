@@ -1,7 +1,7 @@
 {
    "buttonText": "Run in cloud",
    "buttonLabel": "Or, ",
-   "tooltipText": "Start the cloud-hosted version of this guide\&#13;on the IBM Developer Skills Network.",
+   "tooltipText": "Start the cloud-hosted version of this guide\non the IBM Developer Skills Network.",
    "skillNetworkUrl": "https://openliberty.skillsnetwork.site/quicklab/cloud-hosted-guide-{projectid}",
    "stagingSkillNetworkUrl": "https://openliberty.skillsnetwork.site/quicklab/cloud-hosted-guide-{projectid}-staging",
    "guides": [ 
