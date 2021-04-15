@@ -2,7 +2,7 @@
     "-": {
         "log-level": "ERROR",
         "exception": [
-            "guide-microprofile-openapi"
+            "guide-microprofile-openapi", "guide-cloud-openshift-operator"
         ],
         "regex": "TO-DO add functionality to add new rules directly into this file"
     },
