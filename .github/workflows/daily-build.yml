@@ -49,7 +49,7 @@ jobs:
           echo   date:   ${{ github.event.inputs.date }}
           echo   driver: ${{ github.event.inputs.driver }}
           echo   guide:  ${{ github.event.inputs.guide }}
-          echo "Build level: ${{ github.event.client_payload.build-level }}${{ github.event.inputs.build }}
+          echo "Build level: ${{ github.event.client_payload.build-level }}${{ github.event.inputs.build }}"
   test-guide:
     needs: [ get-guide-repos ]
     runs-on: ubuntu-latest
