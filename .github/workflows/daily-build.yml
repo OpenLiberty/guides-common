@@ -44,8 +44,12 @@ jobs:
     steps:
       - name: Starting daily build tests for ${{ github.event.client_payload.build-level }}${{ github.event.inputs.build }}
         run: |
-          echo "Build level: "
-          echo ${{ github.event.client_payload.build-level }}${{ github.event.inputs.build }}
+          echo "Inputs: "
+          echo   build:  ${{ github.event.inputs.build }}
+          echo   date:   ${{ github.event.inputs.date }}
+          echo   driver: ${{ github.event.inputs.driver }}
+          echo   guide:  ${{ github.event.inputs.guide }}
+          echo "Build level: ${{ github.event.client_payload.build-level }}${{ github.event.inputs.build }}
   test-guide:
     needs: [ get-guide-repos ]
     runs-on: ubuntu-latest
