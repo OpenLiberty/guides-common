@@ -42,7 +42,7 @@
         },
         {
             "name": "Cloud",
-            "guides": ["cloud-aws", "cloud-azure", "cloud-ibm", "cloud-openshift", "okd", "cloud-openshift-operator", "cloud-google"],
+            "guides": ["cloud-aws", "cloud-azure", "cloud-ibm", "cloud-openshift", "okd", "cloud-openshift-operator", "cloud-google", "crc-openshift"],
             "visible": "true"
         },
         {
