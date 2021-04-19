@@ -14,5 +14,12 @@ After you see the following message, your application server in dev mode is read
 *    Liberty is running in dev mode.
 ----
 
+// static guide instructions:
+ifndef::cloud-hosted[]
 Dev mode holds your command-line session to listen for file changes. Open another command-line session to continue, 
 or open the project in your editor.
+endif::[]
+// cloud-hosted guide instructions:
+ifdef::cloud-hosted[]
+Open another command-line session by selecting **Terminal > New Terminal** from the menu of the IDE.
+endif::[]
