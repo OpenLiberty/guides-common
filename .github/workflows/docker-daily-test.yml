@@ -18,6 +18,10 @@ on:
         description: Guide to build
         default: "all"
         required: true
+      jdk_level:
+        description: JDK level to test
+        default: "[ 11 ]"
+        required: true
 
 env:
   DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
@@ -44,8 +48,13 @@ jobs:
     steps:
       - name: Starting daily build tests for ${{ github.event.client_payload.build-level }}${{ github.event.inputs.build }}
         run: |
-          echo "Build level: "
-          echo ${{ github.event.client_payload.build-level }}${{ github.event.inputs.build }}
+          echo "Inputs: "
+          echo   build:     ${{ github.event.inputs.build }}
+          echo   date:      ${{ github.event.inputs.date }}
+          echo   driver:    ${{ github.event.inputs.driver }}
+          echo   guide:     ${{ github.event.inputs.guide }}
+          echo   jdk_level: ${{ github.event.inputs.jdk_level }}
+          echo "Build level: ${{ github.event.client_payload.build-level }}${{ github.event.inputs.build }}"
   test-guide:
     needs: [ get-repos ]
     runs-on: ubuntu-latest
@@ -54,7 +63,7 @@ jobs:
       max-parallel: 5
       matrix:
         repos: ${{ fromJson(needs.get-repos.outputs.repos) }}
-        jdk: [ 11 ]
+        jdk: ${{ github.event.inputs.jdk_level }}
     steps:
       - name: Setup JDK ${{ matrix.jdk }}
         uses: actions/setup-java@v1
