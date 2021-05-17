@@ -53,7 +53,7 @@ jobs:
           echo   date:      ${{ github.event.inputs.date }}
           echo   driver:    ${{ github.event.inputs.driver }}
           echo   guide:     ${{ github.event.inputs.guide }}
-          echo   jdk_level: ${{ github.event.inputs.jdk_level }}
+          echo   jdk_level: ${{ github.event.client_payload.jdk }}${{ github.event.inputs.jdk_level }}
           echo "Build level: ${{ github.event.client_payload.build-level }}${{ github.event.inputs.build }}"
   test-guide:
     needs: [ get-repos ]
@@ -63,7 +63,7 @@ jobs:
       max-parallel: 5
       matrix:
         repos: ${{ fromJson(needs.get-repos.outputs.repos) }}
-        jdk: ${{ github.event.inputs.jdk_level }}
+        jdk: ${{ github.event.client_payload.jdk }}${{ github.event.inputs.jdk_level }}
     steps:
       - name: Setup JDK ${{ matrix.jdk }}
         uses: actions/setup-java@v1
