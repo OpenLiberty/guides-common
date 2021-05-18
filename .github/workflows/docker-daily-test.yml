@@ -20,7 +20,7 @@ on:
         required: true
       jdk_level:
         description: JDK level to test
-        default: "[ 11 ]"
+        default: "11"
         required: true
 
 env:
