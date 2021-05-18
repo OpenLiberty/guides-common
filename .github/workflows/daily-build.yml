@@ -63,7 +63,7 @@ jobs:
       max-parallel: 5
       matrix:
         repos: ${{ fromJson(needs.get-guide-repos.outputs.repos) }}
-        jdk: ${{ github.event.client_payload.jdk }}${{ github.event.inputs.jdk_level }}
+        jdk: [ "${{ github.event.client_payload.jdk }}${{ github.event.inputs.jdk_level }}" ]
     steps:
       - name: Setup JDK ${{ matrix.jdk }}
         uses: actions/setup-java@v1
