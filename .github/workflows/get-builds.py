@@ -15,15 +15,17 @@ if __name__ == "__main__":
     if "versions" in builds:
         for build in builds["versions"]:
             if date_to_get in build:
-                info = requests.get(f'{BASE_DHE_URL}/{build}/info.json').json()
-                if "driver_location" in info:
-                    driver_location = info["driver_location"]
-                    build_level = driver_location[driver_location.find("cl") : driver_location.find(".zip")]
-                    build_info = {
-                        "date": build, 
-                        "driver_location": driver_location, 
-                        "build_level": build_level
-                    }
-                    yesterdays_builds.append(build_info)
+                build_info = requests.get(f'{BASE_DHE_URL}/{build}/info.json')  
+                if build_info.ok:
+                    info = build_info.json()
+                    if "driver_location" in info:
+                        driver_location = info["driver_location"]
+                        build_level = driver_location[driver_location.find("cl") : driver_location.find(".zip")]
+                        build_info = {
+                            "date": build, 
+                            "driver_location": driver_location, 
+                            "build_level": build_level
+                        }
+                        yesterdays_builds.append(build_info)
     
     print(yesterdays_builds)
