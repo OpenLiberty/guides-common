@@ -20,4 +20,4 @@ The `start` directory contains the starting project that you will build upon.
 
 The `finish` directory contains the finished project that you will build.
 
-Before you begin, make sure you have all the necessary  [.prerequisites]prerequisites.
+Before you begin, make sure you have all the necessary [.prerequisites]prerequisites.
