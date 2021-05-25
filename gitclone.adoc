@@ -10,7 +10,7 @@
 
 The fastest way to work through this guide is to clone the https://github.com/openliberty/guide-{projectid}.git[Git repository^] and use the projects that are provided inside:
 
-[source, role="command", subs="attributes"]
+[source#git_clone, role="command", subs="attributes"]
 ----
 git clone https://github.com/openliberty/guide-{projectid}.git
 cd guide-{projectid}
