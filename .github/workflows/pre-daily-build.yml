@@ -15,6 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       matrix: ${{ steps.create-matrix.outputs.matrix }}
+      empty: ${{ steps.create-matrix.outputs.empty }}
     steps: 
       - uses: actions/checkout@v2
       - name: Get build matrix
@@ -25,9 +26,23 @@ jobs:
           echo $BUILDS
           matrix="{ \"builds\":$BUILDS }"
           echo "::set-output name=matrix::$matrix" 
+          if [ $BUILDS = "[]" ]
+          then
+            echo "::set-output name=empty::true"
+          else
+            echo "::set-output name=empty::false"
+          fi
+  no-builds:
+    runs-on: ubuntu-latest
+    needs: get-builds
+    if: ${{ needs.get-builds.outputs.empty == 'true' }}
+    steps:
+      - name: No builds found
+        run: echo "No builds found for $(date -d 'yesterday' '+%Y-%m-%d')"
   build-docker-image:
     runs-on: ubuntu-latest
     needs: get-builds
+    if: ${{ needs.get-builds.outputs.empty == 'false' }}
     strategy:
       matrix: ${{ fromJson(needs.get-builds.outputs.matrix) }}
     env:
@@ -52,6 +67,7 @@ jobs:
   trigger-builds:
     runs-on: ubuntu-latest
     needs: [ build-docker-image, get-builds ]
+    if: ${{ needs.get-builds.outputs.empty == 'false' }}
     strategy:
       matrix: ${{ fromJson(needs.get-builds.outputs.matrix) }}
     env:
@@ -59,7 +75,7 @@ jobs:
       URI: "https://api.github.com/repos/OpenLiberty/guides-common/dispatches"
       ACCEPT_HEADER: "application/vnd.github.v3+json"
       CONTENT_TYPE: "application/json"
-      PAYLOAD: '{ "dev-date": "${{ matrix.builds.date }}", "driver-location": "${{ matrix.builds.driver_location }}", "build-level": "${{ matrix.builds.build_level }}"}'
+      PAYLOAD: '{ "dev-date": "${{ matrix.builds.date }}", "driver-location": "${{ matrix.builds.driver_location }}", "build-level": "${{ matrix.builds.build_level }}", "jdk": "11" }'
     steps:
       - name: Trigger daily builds
         run: |
