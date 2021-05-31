@@ -111,9 +111,7 @@
     <module name="IllegalImport" />
     <!-- defaults to sun.* packages -->
     <module name="RedundantImport" />
-    <module name="UnusedImports">
-      <property name="processJavadoc" value="false" />
-    </module>
+
 
     <!-- Checks for Size Violations.                    -->
     <!-- See https://checkstyle.org/config_sizes.html -->
