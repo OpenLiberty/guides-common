@@ -76,7 +76,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: OpenLiberty/${{ matrix.repos }}
-          ref: ${{ github.event.inputs.build }}
+          ref: ${{ github.event.inputs.branch }}
           path: ${{ matrix.repos }}
       - name: Set permissions
         run: chmod +x ${{ matrix.repos }}/scripts/*.sh
