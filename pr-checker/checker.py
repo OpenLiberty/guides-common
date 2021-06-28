@@ -72,7 +72,7 @@ def adoc_checker(file, valid_tags, rules):
                     for tag in tags:
                         if tag.strip(" '\"") not in valid_tags:
                             invalid_tags.append(tag)
-                            output += f"[{rules['page_tags']['log-level']}] [LINE {line_num + 1}] {tag} is an invalid tag.\n"
+                            output += f"[{rules['page_tags']['log-level']}] [LINE {line_num + 1}] {tag} is an invalid tag\n"
                     if len(invalid_tags) > 0:
                         output += f"[{rules['page_tags']['log-level']}] [LINE {line_num +1}] List of valid tags: {valid_tags}\n"
                         output += f"[{rules['page_tags']['log-level']}] [LINE {line_num +1}] Note that these tags are case sensitve\n"
