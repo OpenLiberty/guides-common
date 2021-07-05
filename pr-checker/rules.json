@@ -21,5 +21,9 @@
     "line-length": {
         "log-level": "WARNING",
         "exception": []
+    },
+    "file_tags": {
+        "log-level": "ERROR",
+        "exception": []
     }
 }

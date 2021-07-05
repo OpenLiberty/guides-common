@@ -29,6 +29,7 @@ def adoc_checker(file, valid_tags, rules):
         ":page-releasedate:[ ]*([0-9]{4}[-][0-9]{2}[-][0-9]{2})")
     tags_re = re.compile(":page-tags: *\[(.*)\]")
     list_re = re.compile("^- ")
+    file_tags_re = re.compile("^.*(hide_tags=).*(tags=).*$")
 
     for line_num, line in enumerate(file):
         if len(line) > 120:
@@ -76,6 +77,10 @@ def adoc_checker(file, valid_tags, rules):
                         output += f"[{rules['page_tags']['log-level']}] [LINE {line_num +1}] List of valid tags: {valid_tags}\n"
                         output += f"[{rules['page_tags']['log-level']}] [LINE {line_num +1}] Note that these tags are case sensitve\n"
                 rules['page_tags']['check'] = False
+        if rules['file_tags']['check']:
+            result = file_tags_re.search(line)
+            if result:
+                output += f"[{rules['file_tags']['log-level']}] [LINE {line_num +1}] Define 'tags' in front of 'hide_tags'\n"
 
     if not rules['license']['found']:
         output += f"[{rules['license']['log-level']}] Add a license with the current year.\n"
@@ -171,6 +176,7 @@ if __name__ == "__main__":
                 "page_tags": {'check': True, 'log-level': 'ERROR'},
                 "-": {'check': True, 'log-level': 'ERROR'},
                 "line-length": {'check': True, 'log-level': 'WARNING'},
+                "file_tags": {'check': True, 'log-level': 'ERROR'},
             }
 
     file_extensions = map(lambda f: f.name.split(
