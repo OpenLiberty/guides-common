@@ -2,5 +2,6 @@
     "blacklist",
     "whitelist",
     "slave",
-    "OpenLiberty"
+    "OpenLiberty ",
+    " OpenLiberty"
 ]
