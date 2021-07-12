@@ -5,12 +5,10 @@
    "skillNetworkUrl": "https://openliberty.skillsnetwork.site/quicklab/cloud-hosted-guide-{projectid}",
    "stagingSkillNetworkUrl": "https://ol-staging.skillsnetwork.site/quicklab/cloud-hosted-guide-{projectid}-staging",
    "guides": [ 
-       "getting-started", "cdi-intro", "rest-intro", 
-       "microprofile-config", "microprofile-fallback", "microprofile-rest-client",
-       "containerize", "microshed-testing", "kubernetes-intro", "microprofile-health", "microprofile-reactive-messaging", "reactive-service-testing",
-       "microprofile-opentracing-jaeger",
-       "microprofile-istio-retry-fallback", "microprofile-jwt", "microprofile-metrics", "microprofile-openapi", 
-       "microprofile-reactive-messaging-acknowledgment", "microprofile-reactive-messaging-rest-integration", "microprofile-rest-client-async",
-       "rest-client-java", 
+       "rest-client-java", "getting-started", "microprofile-openapi", "rest-intro", "microprofile-rest-client-async",
+       "containerize", "microprofile-rest-client", "kubernetes-intro", "microprofile-health", "microprofile-jwt",
+       "microprofile-config", "microprofile-fallback", "microprofile-metrics", "microprofile-opentracing", "microprofile-opentracing-jaeger",
+       "cdi-intro", "microshed-testing",
+       "microprofile-reactive-messaging", "reactive-service-testing", "microprofile-reactive-messaging-acknowledgment", "microprofile-reactive-messaging-rest-integration", 
    ] 
 }
