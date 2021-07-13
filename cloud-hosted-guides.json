@@ -7,7 +7,7 @@
    "guides": [ 
        "rest-client-java", "getting-started", "microprofile-openapi", "rest-intro", "microprofile-rest-client-async",
        "containerize", "microprofile-rest-client", "kubernetes-intro", "microprofile-health", "microprofile-jwt",
-       "cdi-intro", "microshed-testing",
+       "cdi-intro", "microshed-testing", "docker",
        "microprofile-config", "microprofile-fallback", "microprofile-metrics", "microprofile-opentracing", "microprofile-opentracing-jaeger",
        "microprofile-reactive-messaging", "reactive-service-testing", "microprofile-reactive-messaging-acknowledgment", "microprofile-reactive-messaging-rest-integration" 
    ] 
