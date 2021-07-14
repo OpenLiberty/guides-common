@@ -27,11 +27,10 @@ Namespace
 sn-labs-yourname
 ```
 
-Store the namespace name in a variable.
-Use the namespace name that was obtained from the previous command.
+Run the following command to store the namespace name in a variable.
 
 ```
-NAMESPACE_NAME={namespace_name}
+NAMESPACE_NAME=`bx cr namespace-list | grep sn-labs- | sed 's/ //g'`
 ```
 {: codeblock}
 
