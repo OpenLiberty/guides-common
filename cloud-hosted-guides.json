@@ -3,8 +3,8 @@
    "buttonText": "Run in cloud",
    "buttonLabel": "Or, ",
    "tooltipText": "Start the cloud-hosted version of this guide \ron the IBM Developer Skills Network.",
-   "skillNetworkUrl": "https://openliberty.skillsnetwork.site/quicklab/cloud-hosted-guide-{projectid}",
-   "stagingSkillNetworkUrl": "https://ol-staging.skillsnetwork.site/quicklab/cloud-hosted-guide-{projectid}-staging",
+   "skillNetworkUrl": "https://openliberty.skillsnetwork.site/guided_projects/cloud-hosted-guide-{projectid}",
+   "stagingSkillNetworkUrl": "https://ol-staging.skillsnetwork.site/guided_projects/cloud-hosted-guide-{projectid}-staging",
    "guides": [
        "rest-client-java", "getting-started", "microprofile-openapi", "rest-intro", "microprofile-rest-client-async",
        "containerize", "microprofile-rest-client", "kubernetes-intro", "microprofile-health", "microprofile-jwt",
