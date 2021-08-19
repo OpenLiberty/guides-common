@@ -137,7 +137,7 @@
             "guides": ["retry-timeout"]
         },
         {
-            "name": "RunInCloud",
+            "name": "Run in cloud",
                "guides": [ 
                    "rest-client-java", "getting-started", "microprofile-openapi", "rest-intro", "microprofile-rest-client-async",
                    "containerize", "microprofile-rest-client", "kubernetes-intro", "microprofile-health", "microprofile-jwt",
