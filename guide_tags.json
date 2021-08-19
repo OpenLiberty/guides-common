@@ -138,7 +138,6 @@
         },
         {
             "name": "Run in cloud",
-            "additional_search_terms": ["RunInCloud"],
             "guides": [ 
                 "rest-client-java", "getting-started", "microprofile-openapi", "rest-intro", "microprofile-rest-client-async",
                 "containerize", "microprofile-rest-client", "kubernetes-intro", "microprofile-health", "microprofile-jwt",
