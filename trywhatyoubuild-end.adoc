@@ -1,5 +1,13 @@
 After you are done checking out the application, stop the Open Liberty server:
 
-```
-mvn liberty:stop-server
-```
+
+[source, role="maven_section command"]
+----
+./mvnw liberty:stop
+----
+
+[source, role="gradle_section command"]
+----
+cd finish
+./gradlew libertyStop
+----
