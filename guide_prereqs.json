@@ -1,16 +1,6 @@
 {
     "prereqs": [
         {
-            "name": "Java SDK",
-            "link": "https://adoptopenjdk.net/?jvmVariant=openj9",
-            "guides": ["*"]
-        },
-        {
-            "name": "Git",
-            "link": "https://git-scm.com/book/en/v2/Getting-Started-Installing-Git",
-            "guides": ["*"]
-        },
-        {
             "name": "Maven",
             "link": "https://maven.apache.org/download.cgi",
             "guides": ["*"],
@@ -20,6 +10,16 @@
             "name": "Gradle",
             "link": "https://gradle.org/install",
             "guides": ["gradle-intro", "cdi-intro"]
+        },
+        {
+            "name": "Java SDK",
+            "link": "https://adoptopenjdk.net/?jvmVariant=openj9",
+            "guides": ["*"]
+        },
+        {
+            "name": "Git",
+            "link": "https://git-scm.com/book/en/v2/Getting-Started-Installing-Git",
+            "guides": ["*"]
         }
     ]
 }
