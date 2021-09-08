@@ -9,7 +9,7 @@
         {
             "name": "Gradle",
             "link": "https://gradle.org/install",
-            "guides": ["gradle-intro", "cdi-intro"]
+            "guides": ["gradle-intro", "cdi-intro", "kubernetes-intro"]
         },
         {
             "name": "Java SDK",
