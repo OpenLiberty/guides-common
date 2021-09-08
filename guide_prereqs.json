@@ -19,7 +19,7 @@
         {
             "name": "Gradle",
             "link": "https://gradle.org/install",
-            "guides": ["gradle-intro"]
+            "guides": ["gradle-intro", "cdi-intro"]
         }
     ]
 }
