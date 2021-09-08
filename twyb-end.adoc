@@ -1,8 +1,13 @@
 After you are finished checking out the application, stop the Open Liberty server by pressing `CTRL+C`
-in the command-line session where you ran the server. Alternatively, you can run the `liberty:stop` goal
+in the command-line session where you ran the server. Alternatively, you can run the `stop` goal
 from the `finish` directory in another shell session:
 
-[role='command']
-```
-mvn liberty:stop
-```
+[source, role="maven_section command"]
+----
+./mvnw liberty:stop
+----
+
+[source, role="gradle_section command"]
+----
+./gradlew libertyStop
+----
