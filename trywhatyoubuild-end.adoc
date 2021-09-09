@@ -1,25 +1,23 @@
 After you are done checking out the application, stop the Open Liberty server:
 
+include::{common-includes}/os-tabs.adoc[]
 [.tab_content.windows_section]
 --
 [source, role="maven_section command"]
 ----
 mvnw liberty:stop
 ----
-
 [source, role="gradle_section command"]
 ----
 gradlew libertyStop
 ----
 --
-
 [.tab_content.mac_section.linux_section]
 --
 [source, role="maven_section command"]
 ----
 ./mvnw liberty:stop
 ----
-
 [source, role="gradle_section command"]
 ----
 ./gradlew libertyStop
