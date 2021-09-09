@@ -9,7 +9,6 @@ mvnw liberty:stop
 
 [source, role="gradle_section command"]
 ----
-cd finish
 gradlew libertyStop
 ----
 --
@@ -23,7 +22,6 @@ gradlew libertyStop
 
 [source, role="gradle_section command"]
 ----
-cd finish
 ./gradlew libertyStop
 ----
 --
