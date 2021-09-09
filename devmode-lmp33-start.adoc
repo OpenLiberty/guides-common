@@ -1,26 +1,24 @@
 When you run Open Liberty in development mode, known as dev mode, the server listens for file changes and automatically recompiles and 
 deploys your updates whenever you save a new change. Run the following goal to start Open Liberty in dev mode:
 
+include::{common-includes}/os-tabs.adoc[]
 [.tab_content.windows_section]
 --
 [source, role="maven_section command"]
 ----
 mvnw liberty:dev
 ----
-
 [source, role="gradle_section command"]
 ----
 gradlew libertyDev
 ----
 --
-
 [.tab_content.mac_section.linux_section]
 --
 [source, role="maven_section command"]
 ----
 ./mvnw liberty:dev
 ----
-
 [source, role="gradle_section command"]
 ----
 ./gradlew libertyDev
