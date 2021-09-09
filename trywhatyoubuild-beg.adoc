@@ -4,6 +4,21 @@ The `finish` directory in the root of this guide contains the finished applicati
 
 To try out the application, first go to the `finish` directory and run the following goal to build the application inside Open Liberty:
 
+[.tab_content.windows_section]
+--
+[source, role="maven_section command"]
+----
+mvnw install
+----
+
+[source, role="gradle_section command"]
+----
+gradlew install
+----
+--
+
+[.tab_content.mac_section.linux_section]
+--
 [source, role="maven_section command"]
 ----
 ./mvnw install
@@ -13,9 +28,25 @@ To try out the application, first go to the `finish` directory and run the follo
 ----
 ./gradlew install
 ----
+--
 
 Next, run the `start` goal to start the application inside Open Liberty:
 
+[.tab_content.windows_section]
+--
+[source, role="maven_section command"]
+----
+mvnw liberty:start
+----
+
+[source, role="gradle_section command"]
+----
+gradlew libertyStart
+----
+--
+
+[.tab_content.mac_section.linux_section]
+--
 [source, role="maven_section command"]
 ----
 ./mvnw liberty:start
@@ -25,3 +56,4 @@ Next, run the `start` goal to start the application inside Open Liberty:
 ----
 ./gradlew libertyStart
 ----
+--
