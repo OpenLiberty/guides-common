@@ -2,6 +2,7 @@
    "buttonText": "Run in cloud",
    "buttonLabel": "Or, ",
    "tooltipText": "Start the cloud-hosted version of this guide \ron the IBM Developer Skills Network.",
+
    "skillNetworkUrl": "https://openliberty.skillsnetwork.site/guided_projects/cloud-hosted-guide-{projectid}",
    "stagingSkillNetworkUrl": "https://ol-staging.skillsnetwork.site/guided_projects/cloud-hosted-guide-{projectid}-staging",
    "guides": [ 
@@ -10,5 +11,15 @@
        "cdi-intro", "microshed-testing", "docker",
        "microprofile-config", "microprofile-fallback", "microprofile-metrics", "microprofile-opentracing", "microprofile-opentracing-jaeger",
        "microprofile-reactive-messaging", "reactive-service-testing", "microprofile-reactive-messaging-acknowledgment", "microprofile-reactive-messaging-rest-integration" 
-   ] 
+   ],
+
+   "skillNetworkDomain": "https://openliberty.skillsnetwork.site",
+   "stagingSkillNetworkDomain": "https://ol-staging.skillsnetwork.site",
+   "courses" : {
+     "kubernetes-intro"               : "/courses/course-v1:IBM+GPXX0HZ2EN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX0HZ2EN+v1/courseware/e11a7005c0ed4adb8bbabd47a5bba868/c390971373024e7aa861ca2be858b8a4",
+     "kubernetes-microprofile-health" : "/courses/course-v1:IBM+GPXX0QU9EN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX0QU9EN+v1/courseware/e11a7005c0ed4adb8bbabd47a5bba868/c390971373024e7aa861ca2be858b8a4",
+     "kubernetes-microprofile-config" : "/courses/course-v1:IBM+GPXX07YGEN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX07YGEN+v1/courseware/e11a7005c0ed4adb8bbabd47a5bba868/aa7eef74275340f6b2d3270b0dc3ecba",
+     "microprofile-health"            : "/courses/course-v1:IBM+GPXX0QTEEN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX0QTEEN+v1/courseware/d3723c440ecb4c5fb7044e3ca545baf8/6c78997596a349a190e1758454e2fd3d",
+     "microprofile-config"            : "/courses/course-v1:IBM+GPXX08WYEN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX08WYEN+v1/courseware/e11a7005c0ed4adb8bbabd47a5bba868/c390971373024e7aa861ca2be858b8a4"
+   }
 }
