@@ -42,7 +42,7 @@
             },
             {
                 "subcategory_name": "To Be Categoried",
-                "guides": ["intellij", "graphql-intro"]
+                "guides": ["intellij", "microprofile-graphql"]
             }
         ]
     },
