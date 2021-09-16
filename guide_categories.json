@@ -41,7 +41,7 @@
                 "guides": ["rest-client-angular", "rest-client-angularjs", "rest-client-reactjs"]
             },
             {
-                "subcategory_name": "To Be Categoried",
+                "subcategory_name": "To Be Categorized",
                 "guides": ["intellij", "microprofile-graphql"]
             }
         ]
