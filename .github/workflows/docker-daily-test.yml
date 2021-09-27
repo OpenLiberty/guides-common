@@ -83,7 +83,7 @@ jobs:
         env:
           DEVDATE: ${{ github.event.client_payload.dev-date }}${{ github.event.inputs.date }}
           DRIVER: ${{ github.event.client_payload.driver-location }}${{ github.event.inputs.driver }}
-        run: sudo ../scripts/dockerImageTest.sh -t $DEVDATE -d $DRIVER
+        run: sudo -E ../scripts/dockerImageTest.sh -t $DEVDATE -d $DRIVER
       - name: Post tests
         working-directory: ${{ matrix.repos }}
         if: always()
