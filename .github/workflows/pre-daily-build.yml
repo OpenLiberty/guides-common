@@ -59,10 +59,10 @@ jobs:
         run: |
           cd ci.docker/releases/latest/kernel-slim
           sed -i '/&& wget -q \$LIBERTY_DOWNLOAD_URL/c\&& wget '$DHE_URL'/'${{ matrix.builds.date }}'/'${{ matrix.builds.driver_location }}' -U UA-Open-Liberty-Docker -O /tmp/wlp.zip \\' Dockerfile.ubuntu.adoptopenjdk8
-          sed -i '/&& sha1sum/d' Dockerfile.ubuntu.adoptopenjdk8
-          cat Dockerfile.ubuntu.adoptopenjdk8
+          sed -i '/&& sha1sum/d' Dockerfile.ubuntu.openjdk8
+          cat Dockerfile.ubuntu.openjdk8
           echo "Building ${{ matrix.builds.build_level }} from ${{ matrix.builds.date }}"
-          docker build -q -t $DOCKER_USERNAME/olguides:${{ matrix.builds.build_level }} -f Dockerfile.ubuntu.adoptopenjdk8 .
+          docker build -q -t $DOCKER_USERNAME/olguides:${{ matrix.builds.build_level }} -f Dockerfile.ubuntu.openjdk8 .
           docker push $DOCKER_USERNAME/olguides:${{ matrix.builds.build_level }}
   trigger-builds:
     runs-on: ubuntu-latest
