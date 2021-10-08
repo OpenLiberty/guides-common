@@ -74,7 +74,7 @@ rules:
   missing_tag: on
 
   # Base images should not use the latest tag
-  latest_tag: on
+  latest_tag: off
 
   # This command has extra arguments and will be ignored
   extra_args: on
