@@ -30,7 +30,7 @@ def adoc_checker(file, valid_tags, rules):
     tags_re = re.compile(":page-tags: *\[(.*)\]")
     list_re = re.compile("^- ")
     file_tags_re = re.compile("^.*(hide_tags=).*(tags=).*$")
-    hotspot_re = re.compile("\[(hotspot(=[^ =\n]+)? ?)+(file(=[0-9]+)?)?\]`[^`\n]*`")
+    hotspot_re = re.compile("\[(hotspot(=[^ =\n]+)? ?)+( file(=[0-9]+)?)?\]`[^`\n]*`")
 
     for line_num, line in enumerate(file):
         if len(line) > 120:
