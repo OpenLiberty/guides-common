@@ -25,5 +25,9 @@
     "file_tags": {
         "log-level": "ERROR",
         "exception": []
+    },
+    "hotspots": {
+        "log-level": "ERROR",
+        "exception": []
     }
 }
