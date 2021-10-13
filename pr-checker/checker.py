@@ -30,6 +30,7 @@ def adoc_checker(file, valid_tags, rules):
     tags_re = re.compile(":page-tags: *\[(.*)\]")
     list_re = re.compile("^- ")
     file_tags_re = re.compile("^.*(hide_tags=).*(tags=).*$")
+    hotspot_re = re.compile("\[(hotspot(=[^ =\n]+)? ?)+( file(=[0-9]+)?)?\]`[^`\n]*`")
 
     for line_num, line in enumerate(file):
         if len(line) > 120:
@@ -81,6 +82,13 @@ def adoc_checker(file, valid_tags, rules):
             result = file_tags_re.search(line)
             if result:
                 output += f"[{rules['file_tags']['log-level']}] [LINE {line_num +1}] Define 'tags' in front of 'hide_tags'\n"
+        if rules['hotspots']['check']:
+            result = hotspot_re.findall(line)
+            hotspots = line.count("[hotspot")
+            if len(result) != hotspots:
+                output += f"[{rules['hotspots']['log-level']}] [LINE {line_num +1}] Improperly formatted hotspot on this line\n"
+                output += f"[{rules['hotspots']['log-level']}] [LINE {line_num +1}] Note that a hotspot should not be split between lines\n"
+
 
     if not rules['license']['found']:
         output += f"[{rules['license']['log-level']}] Add a license with the current year.\n"
