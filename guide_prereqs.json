@@ -1,8 +1,8 @@
 {
     "prereqs": [
         {
-            "name": "Java",
-            "link": "https://adoptopenjdk.net/?jvmVariant=openj9",
+            "name": "Java SDK",
+            "link": "https://developer.ibm.com/languages/java/semeru-runtimes/downloads",
             "guides": ["*"]
         },
         {
