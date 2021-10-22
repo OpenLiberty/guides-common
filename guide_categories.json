@@ -39,6 +39,10 @@
             {
                 "subcategory_name": "Client side",
                 "guides": ["rest-client-angular", "rest-client-angularjs", "rest-client-reactjs"]
+            },
+            {
+                "subcategory_name": "REST alternatives",
+                "guides": ["microprofile-graphql"]
             }
         ]
     },

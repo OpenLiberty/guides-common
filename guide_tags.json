@@ -22,7 +22,7 @@
                 "microprofile-rest-client-async", "microshed-testing", "rest-client-java", "rest-intro", "bulkhead", 
                 "circuit-breaker", "microprofile-config-intro", "retry-timeout", 
                 "microprofile-reactive-messaging", "reactive-service-testing", "microprofile-reactive-messaging-rest-integration", "microprofile-reactive-messaging-acknowledgment",
-                "reactive-messaging-sse", "mongodb-intro"],
+                "reactive-messaging-sse", "mongodb-intro", "microprofile-graphql"],
             "visible": "true"
         },
         {
@@ -144,7 +144,8 @@
                 "containerize", "microprofile-rest-client", "kubernetes-intro", "microprofile-health", "microprofile-jwt",
                 "cdi-intro", "microshed-testing", "docker",
                 "microprofile-config", "microprofile-fallback", "microprofile-metrics", "microprofile-opentracing", "microprofile-opentracing-jaeger",
-                "microprofile-reactive-messaging", "reactive-service-testing", "microprofile-reactive-messaging-acknowledgment", "microprofile-reactive-messaging-rest-integration" 
+                "microprofile-reactive-messaging", "reactive-service-testing", "microprofile-reactive-messaging-acknowledgment", "microprofile-reactive-messaging-rest-integration",
+                "contract-testing", "kubernetes-microprofile-health", "kubernetes-microprofile-config", "reactive-messaging-sse", "reactive-rest-client"
             ]
         }
     ]
