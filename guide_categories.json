@@ -13,6 +13,10 @@
                 "guides": ["rest-intro", "microprofile-rest-client", "rest-client-java", "microprofile-openapi", "rest-hateoas", "microprofile-rest-client-async"]
             },
             {
+                "subcategory_name": "REST alternatives",
+                "guides": ["microprofile-graphql"]
+            },
+            {
                 "subcategory_name": "Reactive service",
                 "guides": ["microprofile-reactive-messaging", "microprofile-reactive-messaging-rest-integration", "microprofile-reactive-messaging-acknowledgment", "reactive-rest-client", "reactive-messaging-sse"]
             },
@@ -39,10 +43,6 @@
             {
                 "subcategory_name": "Client side",
                 "guides": ["rest-client-angular", "rest-client-angularjs", "rest-client-reactjs"]
-            },
-            {
-                "subcategory_name": "REST alternatives",
-                "guides": ["microprofile-graphql"]
             }
         ]
     },
