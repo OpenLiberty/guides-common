@@ -11,7 +11,7 @@
        "cdi-intro", "microshed-testing", "docker",
        "microprofile-config", "microprofile-fallback", "microprofile-metrics", "microprofile-opentracing", "microprofile-opentracing-jaeger",
        "microprofile-reactive-messaging", "reactive-service-testing", "microprofile-reactive-messaging-acknowledgment", "microprofile-reactive-messaging-rest-integration",
-       "reactive-messaging-sse", "reactive-rest-client", "spring-boot"
+       "reactive-messaging-sse", "reactive-rest-client", "spring-boot", "bean-validation"
    ],
 
    "skillNetworkDomain": "https://openliberty.skillsnetwork.site",
@@ -44,6 +44,7 @@
      "microprofile-reactive-messaging-rest-integration" : "/courses/course-v1:IBM+GPXX0UMSEN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX0UMSEN+v1/courseware/guided_project/guided_project",
      "reactive-messaging-sse"          : "/courses/course-v1:IBM+GPXX0WRDEN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX0WRDEN+v1/courseware/guided_project/guided_project/",
      "reactive-rest-client"            : "/courses/course-v1:IBM+GPXX0ZG0EN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX0ZG0EN+v1/courseware/guided_project/guided_project/",
-     "spring-boot"                     : "/courses/course-v1:IBM+GPXX0Z2PEN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX0Z2PEN+v1/courseware/guided_project/guided_project"
+     "spring-boot"                     : "/courses/course-v1:IBM+GPXX0Z2PEN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX0Z2PEN+v1/courseware/guided_project/guided_project",
+     "bean-validation"                 : "/courses/course-v1:IBM+GPXX0A1YEN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX0A1YEN+v1/courseware/guided_project/guided_project"
    }
 }
