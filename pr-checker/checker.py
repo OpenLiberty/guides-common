@@ -106,16 +106,13 @@ def check_vocabulary(file, deny_list, warning_list):
     """
     file.seek(0)
     deny_occurrence, warning_occurrence = {}, {}
-    deny = re.compile('|'.join(map(re.escape, deny_list)))
-    warn = re.compile('|'.join(map(re.escape, warning_list)))
+    deny = re.compile('|'.join(deny_list), re.IGNORECASE)
+    warn = re.compile('|'.join(warning_list), re.IGNORECASE)
     output = ''
     for line_num, line in enumerate(file):
         if ':common-includes:' not in line:
-            line = re.sub('[^0-9a-zA-Z]+', ' ', line).split()
-            matched_deny = list(
-                filter(lambda word: deny.fullmatch(word), line))
-            matched_warning = list(
-                filter(lambda word: warn.fullmatch(word), line))
+            matched_deny = deny.findall(line)
+            matched_warning = warn.findall(line)
             if matched_deny:
                 deny_occurrence[line_num] = matched_deny
             if matched_warning:
