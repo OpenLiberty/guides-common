@@ -61,7 +61,7 @@
             },
             {
                 "subcategory_name": "Test",
-                "guides": ["microshed-testing", "reactive-service-testing", "arquillian-managed", "contract-testing"]
+                "guides": ["microshed-testing", "reactive-service-testing", "contract-testing", "arquillian-managed"]
             },
             {
                 "subcategory_name": "Containerize",
@@ -80,7 +80,7 @@
             },
             {
                 "subcategory_name": "Cloud deployment",
-                "guides": ["cloud-ibm", "cloud-openshift", "okd", "cloud-openshift-operator", "crc-openshift", "cloud-aws", "cloud-azure", "cloud-google"]
+                "guides": ["cloud-ibm", "cloud-openshift", "okd", "cloud-openshift-operator", "openshift-codeready-containers", "cloud-aws", "cloud-azure", "cloud-google"]
             }
         ]
     }

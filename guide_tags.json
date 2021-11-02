@@ -29,7 +29,7 @@
             "name": "Kubernetes",
             "guides": ["cloud-aws", "cloud-azure", "cloud-ibm", "cloud-openshift", "istio-intro", "kubernetes-intro", 
                 "kubernetes-microprofile-config", "kubernetes-microprofile-health", "microprofile-istio-retry-fallback", 
-                "okd", "sessions", "cloud-google"],
+                "okd", "openshift-codeready-containers", "sessions", "cloud-google"],
             "visible": "true"
         },
         {
@@ -37,12 +37,13 @@
             "guides": ["cloud-aws", "cloud-azure", "cloud-ibm", "cloud-openshift", "containerize", "docker", 
                 "getting-started", "istio-intro", "kubernetes-intro", "kubernetes-microprofile-config", 
                 "kubernetes-microprofile-health", "microprofile-istio-retry-fallback", "microshed-testing", "okd", 
-                "sessions", "spring-boot", "cloud-google"],
+                "openshift-codeready-containers", "sessions", "spring-boot", "cloud-google"],
             "visible": "true"
         },
         {
             "name": "Cloud",
-            "guides": ["cloud-aws", "cloud-azure", "cloud-ibm", "cloud-openshift", "okd", "cloud-openshift-operator", "cloud-google", "crc-openshift"],
+            "guides": ["cloud-aws", "cloud-azure", "cloud-ibm", "cloud-openshift", "okd", "cloud-openshift-operator", "openshift-codeready-containers", 
+                       "cloud-google"],
             "visible": "true"
         },
         {
@@ -78,7 +79,7 @@
         },
         {
             "name": "Testing",
-            "guides": ["microshed-testing", "reactive-service-testing"]
+            "guides": ["microshed-testing", "reactive-service-testing", "contract-testing"]
         },
         {
             "name": "Interactive",
@@ -145,7 +146,8 @@
                 "microprofile-config", "microprofile-fallback", "microprofile-metrics", "microprofile-opentracing", "microprofile-opentracing-jaeger",
                 "microprofile-reactive-messaging", "reactive-service-testing", "microprofile-reactive-messaging-acknowledgment", "microprofile-reactive-messaging-rest-integration",
                 "contract-testing", "kubernetes-microprofile-health", "kubernetes-microprofile-config", "reactive-messaging-sse", "reactive-rest-client"
-            ]
+            ],
+            "visible": "true"
         }
     ]
 }
