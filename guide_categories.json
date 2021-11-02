@@ -65,7 +65,7 @@
             },
             {
                 "subcategory_name": "Containerize",
-                "guides": ["containerize", "spring-boot"]
+                "guides": ["containerize", "containerize-podman", "spring-boot"]
             }
         ]
     },
