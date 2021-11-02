@@ -18,7 +18,7 @@
             },
             {
                 "subcategory_name": "Reactive service",
-                "guides": ["microprofile-reactive-messaging", "microprofile-reactive-messaging-rest-integration", "microprofile-reactive-messaging-acknowledgment", "reactive-rest-client", "reactive-messaging-sse"]
+                "guides": ["microprofile-reactive-messaging", "microprofile-reactive-messaging-rest-integration", "microprofile-reactive-messaging-acknowledgment", "reactive-rest-client", "reactive-messaging-sse", "kafka-intro"]
             },
             {
                 "subcategory_name": "Configuration",
@@ -43,6 +43,10 @@
             {
                 "subcategory_name": "Client side",
                 "guides": ["rest-client-angular", "rest-client-angularjs", "rest-client-reactjs"]
+            },
+            {
+                "subcategory_name": "To Be Categorized",
+                "guides": ["intellij"]
             }
         ]
     },
