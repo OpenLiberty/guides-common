@@ -159,7 +159,7 @@
                 "openliberty-operator-intro", "openliberty-operator-openshift",
                 "security-intro", "mongodb-intro"
             ],
-            "visible": "false"
+            "visible": "true"
         }
     ]
 }
