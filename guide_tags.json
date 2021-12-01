@@ -145,7 +145,8 @@
                 "cdi-intro", "microshed-testing", "docker",
                 "microprofile-config", "microprofile-fallback", "microprofile-metrics", "microprofile-opentracing", "microprofile-opentracing-jaeger",
                 "microprofile-reactive-messaging", "reactive-service-testing", "microprofile-reactive-messaging-acknowledgment", "microprofile-reactive-messaging-rest-integration",
-                "contract-testing", "kubernetes-microprofile-health", "kubernetes-microprofile-config", "reactive-messaging-sse", "reactive-rest-client"
+                "contract-testing", "kubernetes-microprofile-health", "kubernetes-microprofile-config", "reactive-messaging-sse", "reactive-rest-client",
+                "spring-boot", "arquillian-managed", "bean-validation"
             ],
             "visible": "true"
         }
