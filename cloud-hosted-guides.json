@@ -11,7 +11,7 @@
        "microprofile-config", "microprofile-fallback", "microprofile-metrics", "microprofile-opentracing", "microprofile-opentracing-jaeger",
        "microprofile-reactive-messaging", "reactive-service-testing", "microprofile-reactive-messaging-acknowledgment", "microprofile-reactive-messaging-rest-integration",
        "reactive-messaging-sse", "reactive-rest-client", "spring-boot", "bean-validation", "cors", "arquillian-managed", "jpa-intro", "microprofile-graphql",
-       "maven-intro", "rest-client-angular", "rest-client-angularjs", "rest-client-reactjs", "rest-hateoas"
+       "maven-intro", "rest-client-angular", "rest-client-angularjs", "rest-client-reactjs", "rest-hateoas", "maven-multimodules"
    ],
 
    "skillNetworkDomain": "https://openliberty.skillsnetwork.site",
@@ -55,5 +55,6 @@
      "rest-client-angularjs"           : "/courses/course-v1:IBM+GPXX0RL8EN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX0RL8EN+v1/courseware/guided_project/guided_project/",
      "rest-client-reactjs"             : "/courses/course-v1:IBM+GPXX0G81EN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX0G81EN+v1/courseware/guided_project/guided_project/",
      "rest-hateoas"                    : "/courses/course-v1:IBM+GPXX0MP0EN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX0MP0EN+v1/courseware/guided_project/guided_project/"       
+     "maven-multimodules"              : "/courses/course-v1:IBM+GPXX0J71EN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX0J71EN+v1/courseware/guided_project/guided_project/"
    }
 }
