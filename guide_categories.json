@@ -76,7 +76,7 @@
         [
             {
                 "subcategory_name": "Kubernetes",
-                "guides": ["kubernetes-intro", "istio-intro"]
+                "guides": ["kubernetes-intro", "openliberty-operator-intro", "istio-intro"]
             },
             {
                 "subcategory_name": "Cloud deployment",
