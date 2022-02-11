@@ -1,0 +1,46 @@
+// Copyright (c) 2022 IBM Corporation and others.
+// Licensed under Creative Commons Attribution-NoDerivatives
+// 4.0 International (CC BY-ND 4.0)
+//   https://creativecommons.org/licenses/by-nd/4.0/
+//
+// Contributors:
+//     IBM Corporation
+
+ifdef::cloud-hosted[]
+
+::page{title="Logging into your cluster**"}
+
+For this guide, you will use a container registry on IBM Cloud to deploy to Kubernetes.
+Get the name of your namespace with the following command:
+
+```
+bx cr namespace-list
+```
+
+Look for output that is similar to the following:
+
+```
+Listing namespaces for account 'QuickLabs - IBM Skills Network' in registry 'us.icr.io'...
+
+Namespace
+sn-labs-yourname
+```
+
+Run the following command to store the namespace name in a variable.
+
+```
+NAMESPACE_NAME=`bx cr namespace-list | grep sn-labs- | sed 's/ //g'`
+```
+
+Verify that the variable contains your namespace name:
+
+```
+echo $NAMESPACE_NAME
+```
+
+Log in to the registry with the following command:
+```
+bx cr login
+```
+
+endif::[]
