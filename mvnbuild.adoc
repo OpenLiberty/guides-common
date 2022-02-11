@@ -1,5 +1,5 @@
 ////
- Copyright (c) 2017 IBM Corporation and others.
+ Copyright (c) 2017, 2022 IBM Corporation and others.
  Licensed under Creative Commons Attribution-NoDerivatives
  4.0 International (CC BY-ND 4.0)
    https://creativecommons.org/licenses/by-nd/4.0/
@@ -14,8 +14,7 @@ To build the application, run the Maven `install` phase from the active command-
 mvn install
 ```
 
-This command builds the application and creates a `.war` file in the target directory. It also
-configures and installs Open Liberty into the `target/liberty/wlp` directory.
+This command builds the application and creates a `.war` file in the target directory. It also configures and installs Open Liberty into the `target/liberty/wlp` directory.
 
 Next, run the Maven `liberty:start-server` goal:
 
@@ -23,5 +22,4 @@ Next, run the Maven `liberty:start-server` goal:
 mvn liberty:start-server
 ```
 
-This goal starts an Open Liberty server instance. Your Maven `pom.xml` is already configured to start
-the application in this server instance.
+This goal starts an Open Liberty server instance. Your Maven `pom.xml` is already configured to start the application in this server instance.
