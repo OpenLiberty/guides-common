@@ -8,7 +8,7 @@
 
 ifdef::cloud-hosted[]
 
-::page{title="Logging into your cluster**"}
+::page{title="Logging into your cluster"}
 
 For this guide, you will use a container registry on IBM Cloud to deploy to Kubernetes.
 Get the name of your namespace with the following command:
