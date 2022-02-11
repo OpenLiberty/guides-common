@@ -1,2 +1,1 @@
-When you are done checking out the service, exit dev mode by pressing `CTRL+C` in the command-line session
-where you ran the server, or by typing `q` and then pressing the `enter/return` key.
+When you are done checking out the service, exit dev mode by pressing `CTRL+C` in the command-line session where you ran the server, or by typing `q` and then pressing the `enter/return` key.
