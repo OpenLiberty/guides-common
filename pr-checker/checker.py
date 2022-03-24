@@ -32,6 +32,8 @@ def adoc_checker(file, valid_tags, rules):
     file_tags_re = re.compile("^.*(hide_tags=).*(tags=).*$")
     hotspot_re = re.compile("\[(hotspot(=[^ =\n]+)? ?)+( file(=[0-9]+)?)?\]`[^`\n]*`")
 
+    print("SKIP_LIST=", $ENV{'SKIP_LIST'});
+    
     for line_num, line in enumerate(file):
         if len(line) > 120:
             lines.append(line_num + 1)
