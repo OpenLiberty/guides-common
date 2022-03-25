@@ -3,6 +3,7 @@ import sys
 from datetime import date, datetime
 import re
 import json
+import os
 
 today = date.today()
 
@@ -32,7 +33,8 @@ def adoc_checker(file, valid_tags, rules):
     file_tags_re = re.compile("^.*(hide_tags=).*(tags=).*$")
     hotspot_re = re.compile("\[(hotspot(=[^ =\n]+)? ?)+( file(=[0-9]+)?)?\]`[^`\n]*`")
 
-    print("SKIP_LIST=$ENV{'SKIP_LIST'}\n");
+    skip_list = os.environ['SKIP_LIST']
+    print("SKIP_LIST={skip_list}\n");
     
     for line_num, line in enumerate(file):
         if len(line) > 120:
