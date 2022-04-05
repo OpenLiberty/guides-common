@@ -55,6 +55,8 @@
      "rest-client-angularjs"           : "/courses/course-v1:IBM+GPXX0RL8EN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX0RL8EN+v1/courseware/guided_project/guided_project",
      "rest-client-reactjs"             : "/courses/course-v1:IBM+GPXX0G81EN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX0G81EN+v1/courseware/guided_project/guided_project",
      "rest-hateoas"                    : "/courses/course-v1:IBM+GPXX0MP0EN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX0MP0EN+v1/courseware/guided_project/guided_project",      
-     "maven-multimodules"              : "/courses/course-v1:IBM+GPXX0J71EN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX0J71EN+v1/courseware/guided_project/guided_project"
+     "maven-multimodules"              : "/courses/course-v1:IBM+GPXX0J71EN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX0J71EN+v1/courseware/guided_project/guided_project",
+     "openliberty-operator-intro"      : "/courses/course-v1:IBM+GPXX0HAAEN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX0HAAEN+v1/courseware/guided_project/guided_project",
+     "openliberty-operator-openshift"  : "/courses/course-v1:IBM+GPXX0M5NEN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX0M5NEN+v1/courseware/guided_project/guided_project"
    }
 }
