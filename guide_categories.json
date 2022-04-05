@@ -72,11 +72,11 @@
         [
             {
                 "subcategory_name": "Kubernetes",
-                "guides": ["kubernetes-intro", "istio-intro"]
+                "guides": ["kubernetes-intro", "openliberty-operator-intro", "istio-intro"]
             },
             {
                 "subcategory_name": "Cloud deployment",
-                "guides": ["cloud-ibm", "cloud-openshift", "okd", "cloud-openshift-operator", "openshift-codeready-containers", "cloud-aws", "cloud-azure", "cloud-google"]
+                "guides": ["cloud-ibm", "okd", "openliberty-operator-openshift", "cloud-openshift-operator", "openshift-codeready-containers", "cloud-openshift", "cloud-aws", "cloud-azure", "cloud-google"]
             }
         ]
     }

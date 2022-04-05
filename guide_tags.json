@@ -29,7 +29,7 @@
             "name": "Kubernetes",
             "guides": ["cloud-aws", "cloud-azure", "cloud-ibm", "cloud-openshift", "istio-intro", "kubernetes-intro", 
                 "kubernetes-microprofile-config", "kubernetes-microprofile-health", "microprofile-istio-retry-fallback", 
-                "okd", "openshift-codeready-containers", "sessions", "cloud-google"],
+                "okd", "openshift-codeready-containers", "sessions", "cloud-google", "openliberty-operator-intro", "openliberty-operator-openshift"],
             "visible": "true"
         },
         {
@@ -43,7 +43,7 @@
         {
             "name": "Cloud",
             "guides": ["cloud-aws", "cloud-azure", "cloud-ibm", "cloud-openshift", "okd", "cloud-openshift-operator", "openshift-codeready-containers", 
-                       "cloud-google"],
+                       "cloud-google", "openliberty-operator-openshift"],
             "visible": "true"
         },
         {
