@@ -148,7 +148,7 @@
                 "contract-testing", "kubernetes-microprofile-health", "kubernetes-microprofile-config", "reactive-messaging-sse", "reactive-rest-client",
                 "spring-boot", "arquillian-managed", "bean-validation", "cors", "jpa-intro",
                 "microprofile-graphql", "maven-intro", "rest-client-angular", "rest-client-angularjs", "rest-client-reactjs", "rest-hateoas", "maven-multimodules",
-                "openliberty-operator-openshift", "openliberty-operator-openshift"
+                "openliberty-operator-intro", "openliberty-operator-openshift"
             ],
             "visible": "true"
         }
