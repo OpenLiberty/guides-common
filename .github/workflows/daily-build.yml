@@ -86,7 +86,7 @@ jobs:
       - name: Docker login for root
         run: echo $DOCKER_PASSWORD | sudo docker login -u $DOCKER_USERNAME --password-stdin
       - name: Docker pull
-        run: docker pull $DOCKER_USERNAME/olguides:${{ github.event.client_payload.build-level }}${{ github.event.inputs.build }}
+        run: docker pull guidesbot/olguides:${{ github.event.client_payload.build-level }}${{ github.event.inputs.build }}
       - name: Run tests for ${{ matrix.repos }}
         working-directory: ${{ matrix.repos }}/finish
         env:
