@@ -81,10 +81,10 @@ jobs:
           path: ${{ matrix.repos }}
       - name: Set permissions
         run: chmod +x ${{ matrix.repos }}/scripts/*.sh
-      - name: Docker login
-        run: echo $DOCKER_PASSWORD | sudo docker login -u $DOCKER_USERNAME --password-stdin
-      - name: Docker pull
-        run: docker pull guidesbot/olguides:${{ github.event.client_payload.build-level }}${{ github.event.inputs.build }}
+      - name: Docker login and pull
+        run: |
+          echo $DOCKER_PASSWORD | sudo docker login -u $DOCKER_USERNAME --password-stdin
+          sudo docker pull guidesbot/olguides:${{ github.event.client_payload.build-level }}${{ github.event.inputs.build }}
       - name: Run tests for ${{ matrix.repos }}
         working-directory: ${{ matrix.repos }}/finish
         env:
