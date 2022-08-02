@@ -46,7 +46,7 @@
             },
             {
                 "subcategory_name": "To Be Categorized",
-                "guides": ["intellij", "liberty-deepdive"]
+                "guides": ["intellij", "liberty-deep-dive", "grpc-intro"]
             }
         ]
     },
