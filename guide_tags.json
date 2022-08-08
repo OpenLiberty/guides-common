@@ -138,6 +138,10 @@
             "guides": ["retry-timeout"]
         },
         {
+            "name": "gRPC",
+            "guides": ["grpc-intro"]
+        },
+        {
             "name": "Run in cloud",
             "guides": [ 
                 "rest-client-java", "getting-started", "microprofile-openapi", "rest-intro", "microprofile-rest-client-async",
