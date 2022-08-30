@@ -46,7 +46,7 @@
             },
             {
                 "subcategory_name": "To Be Categorized",
-                "guides": ["intellij", "liberty-deep-dive"]
+                "guides": ["intellij", "liberty-deep-dive", "jakarta-websocket"]
             }
         ]
     },
