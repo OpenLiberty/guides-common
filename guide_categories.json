@@ -14,7 +14,7 @@
             },
             {
                 "subcategory_name": "REST alternatives",
-                "guides": ["microprofile-graphql"]
+                "guides": ["microprofile-graphql", "graphql-client"]
             },
             {
                 "subcategory_name": "Reactive service",
