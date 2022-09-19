@@ -18,5 +18,5 @@
     "guide-reactive-rest-client",
     "guide-sessions",
     "guide-spring-boot",
-    "graphql-client"
+    "guide-graphql-client"
 ]
