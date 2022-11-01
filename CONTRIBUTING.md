@@ -12,7 +12,7 @@ A good bug report makes it easy for everyone to understand what you were trying 
 
 ## Contributions
 
-Contributing to an Open Liberty guide is simple. All you need to do is fork from the `prod` branch, create your branch at your repository to include your contribution, and open a pull request to the `staging` (quality assurance) branch. You need to certify that the originality of the work follows the [Developer Certificate of Origin (DCO)](https://developercertificate.org) by adding a line to the end of the Git commit message to sign your work:
+Contributing to an Open Liberty guide is simple. All you need to do is fork from the `prod` branch, create a branch in your forked repository to include your contribution, and open a pull request to the `staging` (quality assurance) branch for the particular guide. You need to certify the originality of the work following the [Developer Certificate of Origin (DCO)](https://developercertificate.org) approach by adding a line to the end of the Git commit message to sign your work:
 
 ```text
 Signed-off-by: Jane Williams <jane.williams@gmail.com>
