@@ -58,6 +58,7 @@
      "openliberty-operator-openshift"  : "/courses/course-v1:IBM+GPXX0M5NEN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX0M5NEN+v1/courseware/guided_project/guided_project",
      "liberty-deep-dive"               : "/courses/course-v1:IBM+GPXX0FG5EN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX0FG5EN+v1/courseware/guided_project/guided_project",
      "mongodb-intro"                   : "/courses/course-v1:IBM+GPXX017WEN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX017WEN+v1/courseware/guided_project/guided_project",
-     "security-intro"                  : "/courses/course-v1:IBM+GPXX06JEN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX06JEN+v1/courseware/guided_project/guided_project"
+     "security-intro"                  : "/courses/course-v1:IBM+GPXX06JEN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX06JEN+v1/courseware/guided_project/guided_project",
+     "graphql-client"                  : "/courses/course-v1:IBM+GPXX04S5EN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX04S5EN+v1/courseware/guided_project/guided_project"
    }
 }
