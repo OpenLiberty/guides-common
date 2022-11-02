@@ -32,7 +32,7 @@ The team is then notified and your contribution is reviewed according to the fol
 2. If the team approves, the team will merge your PR. A full Open Liberty staging site build will be run.
 3. Based on the results of the build:
     - If further review is needed, we will let you know about a pending review from our team and discuss any necessary improvements that need to be made to your change(s).
-    - If everything is successful, the team will publish your change(s) to the `prod` branch, and update the Open Liberty production site if necessary.
+    - If everything is successful, the team will publish your change(s) to the `prod` branch and update the Open Liberty production site, if necessary.
 
 ## Questions and concerns
 
