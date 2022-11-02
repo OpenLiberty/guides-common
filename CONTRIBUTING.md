@@ -24,7 +24,7 @@ Use your real name when you sign. We can't accept pseudonyms or anonymous contri
 
 Many Git UI tools have support for adding the `Signed-off-by` line to the end of your commit message. This line can be automatically added by the `git commit` command by using the `-s` option.
 
-The team will be notified for review. Following will be the review process:
+The team is then notified and your contribution is reviewed according to the following process:
 
 1. The team will review your change(s).
     - If there are further changes to be made, the team will request changes on the pull request.
