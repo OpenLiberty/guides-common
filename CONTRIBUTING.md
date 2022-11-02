@@ -12,7 +12,8 @@ A good bug report makes it easy for everyone to understand what you were trying 
 
 ## Contributions
 
-Contributing to an Open Liberty guide is simple. Each guide is maintained in its own GitHub repository. To contribute, just fork from the `prod` branch for your chosen guide.  Then create a branch in your forked repository to include your contribution and open a pull request to the `staging` branch for the guide. Certify the originality of your work by following the [Developer Certificate of Origin (DCO)](https://developercertificate.org) approach and adding a line to the end of the Git commit message to sign your work:
+Contributing to an Open Liberty guide is simple. Each guide is maintained in its own GitHub repository. To contribute, just fork from the `prod` branch for your chosen guide.  Then create a branch in your forked repository to include your contribution and open a pull request to the `staging` branch for the guide.
+Certify the originality of your work by following the [Developer Certificate of Origin (DCO)](https://developercertificate.org) approach and adding a line to the end of the Git commit message to sign your work:
 
 ```text
 Signed-off-by: Jane Williams <jane.williams@gmail.com>
