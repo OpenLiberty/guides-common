@@ -5,11 +5,10 @@ on:
     types:
       - opened
       - transferred
-      - reopened
 
 jobs:
   add-to-project:
-    name: Add issue to project
+    name: Add issue to backlog
     runs-on: ubuntu-latest
     steps:
       - uses: actions/add-to-project@v0.4.0
