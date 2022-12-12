@@ -9,10 +9,10 @@ on:
 
 jobs:
   add-to-project:
-    name: Add issue to project by ADMIN_TOKEN
+    name: Add issue to project
     runs-on: ubuntu-latest
     steps:
       - uses: actions/add-to-project@v0.4.0
         with:
           project-url: https://github.com/orgs/OpenLiberty/projects/11
-          github-token: ${{ secrets.ADMIN_TOKEN }}
+          github-token: ${{ secrets.ADMIN_BACKLOG }}
