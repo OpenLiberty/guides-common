@@ -10,7 +10,7 @@
             "additional_search_terms": ["Java EE", "JEE"],
             "guides": ["bean-validation", "cdi-intro", "jpa-intro", "microshed-testing", "rest-client-java", "rest-intro", 
                 "security-intro", "microprofile-reactive-messaging", "microprofile-reactive-messaging-rest-integration", "reactive-messaging-sse",
-                "mongodb-intro"],
+                "mongodb-intro", "jakarta-websocket"],
             "visible": "true"
         },
         {
