@@ -22,7 +22,7 @@
                 "microprofile-rest-client-async", "microshed-testing", "rest-client-java", "rest-intro", "bulkhead", 
                 "circuit-breaker", "microprofile-config-intro", "retry-timeout", 
                 "microprofile-reactive-messaging", "reactive-service-testing", "microprofile-reactive-messaging-rest-integration", "microprofile-reactive-messaging-acknowledgment",
-                "reactive-messaging-sse", "mongodb-intro", "microprofile-graphql"],
+                "reactive-messaging-sse", "mongodb-intro", "microprofile-graphql", "codeengine-http"],
             "visible": "true"
         },
         {
@@ -37,13 +37,13 @@
             "guides": ["cloud-aws", "cloud-azure", "cloud-ibm", "cloud-openshift", "containerize", "docker", 
                 "getting-started", "istio-intro", "kubernetes-intro", "kubernetes-microprofile-config", 
                 "kubernetes-microprofile-health", "microprofile-istio-retry-fallback", "microshed-testing", "okd", 
-                "openshift-codeready-containers", "sessions", "spring-boot", "cloud-google"],
+                "openshift-codeready-containers", "sessions", "spring-boot", "cloud-google", "codeengine-http"],
             "visible": "true"
         },
         {
             "name": "Cloud",
             "guides": ["cloud-aws", "cloud-azure", "cloud-ibm", "cloud-openshift", "okd", "cloud-openshift-operator", "openshift-codeready-containers", 
-                       "cloud-google", "openliberty-operator-openshift"],
+                       "cloud-google", "openliberty-operator-openshift", "codeengine-http"],
             "visible": "true"
         },
         {

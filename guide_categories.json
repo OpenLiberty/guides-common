@@ -77,6 +77,10 @@
             {
                 "subcategory_name": "Cloud deployment",
                 "guides": ["cloud-ibm", "okd", "openliberty-operator-openshift", "cloud-openshift-operator", "openshift-codeready-containers", "cloud-openshift", "cloud-aws", "cloud-azure", "cloud-google"]
+            },
+            {
+                "subcategory_name": "Cloud serverless deployment",
+                "guides": ["codeengine-http"]
             }
         ]
     }
