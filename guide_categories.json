@@ -22,7 +22,7 @@
             },
             {
                 "subcategory_name": "Configuration",
-                "guides": ["microprofile-config-intro", "microprofile-config", "microprofile-config-profile", "kubernetes-microprofile-config"]
+                "guides": ["microprofile-config-intro", "microprofile-config", "microprofile-config-profile", "microprofile-config-apis", "kubernetes-microprofile-config"]
             },
             {
                 "subcategory_name": "Fault tolerance",
