@@ -10,7 +10,8 @@
        "containerize", "microprofile-rest-client", "kubernetes-intro", "microprofile-health", "microprofile-jwt",
        "cdi-intro", "microshed-testing", "docker",
        "microprofile-config", "microprofile-fallback", "microprofile-metrics", "microprofile-opentracing", "microprofile-opentracing-jaeger",
-       "microprofile-reactive-messaging", "reactive-service-testing", "microprofile-reactive-messaging-acknowledgment", "microprofile-reactive-messaging-rest-integration" 
+       "microprofile-reactive-messaging", "reactive-service-testing", "microprofile-reactive-messaging-acknowledgment", "microprofile-reactive-messaging-rest-integration",
+       "grpc-intro"
    ],
    "skillNetworkDomain": "https://openliberty.skillsnetwork.site",
    "stagingSkillNetworkDomain": "https://ol-staging.skillsnetwork.site",
@@ -59,6 +60,7 @@
      "liberty-deep-dive"               : "/courses/course-v1:IBM+GPXX0FG5EN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX0FG5EN+v1/courseware/guided_project/guided_project",
      "mongodb-intro"                   : "/courses/course-v1:IBM+GPXX017WEN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX017WEN+v1/courseware/guided_project/guided_project",
      "security-intro"                  : "/courses/course-v1:IBM+GPXX06JEN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX06JEN+v1/courseware/guided_project/guided_project",
-     "graphql-client"                  : "/courses/course-v1:IBM+GPXX04S5EN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX04S5EN+v1/courseware/guided_project/guided_project"
+     "graphql-client"                  : "/courses/course-v1:IBM+GPXX04S5EN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX04S5EN+v1/courseware/guided_project/guided_project",
+     "grpc-intro"                      : "/courses/course-v1:IBM+GPXX0BCEN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX0BCEN+v1/courseware/guided_project/guided_project"
    }
 }
