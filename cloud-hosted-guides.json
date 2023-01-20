@@ -10,8 +10,7 @@
        "containerize", "microprofile-rest-client", "kubernetes-intro", "microprofile-health", "microprofile-jwt",
        "cdi-intro", "microshed-testing", "docker",
        "microprofile-config", "microprofile-fallback", "microprofile-metrics", "microprofile-opentracing", "microprofile-opentracing-jaeger",
-       "microprofile-reactive-messaging", "reactive-service-testing", "microprofile-reactive-messaging-acknowledgment", "microprofile-reactive-messaging-rest-integration",
-       "grpc-intro"
+       "microprofile-reactive-messaging", "reactive-service-testing", "microprofile-reactive-messaging-acknowledgment", "microprofile-reactive-messaging-rest-integration"
    ],
    "skillNetworkDomain": "https://openliberty.skillsnetwork.site",
    "stagingSkillNetworkDomain": "https://ol-staging.skillsnetwork.site",
