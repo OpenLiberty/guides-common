@@ -17,5 +17,6 @@
     "guide-okd",
     "guide-reactive-rest-client",
     "guide-sessions",
-    "guide-spring-boot"
+    "guide-spring-boot",
+    "guide-graphql-client"
 ]

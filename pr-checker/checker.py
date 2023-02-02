@@ -3,6 +3,7 @@ import sys
 from datetime import date, datetime
 import re
 import json
+import os
 
 today = date.today()
 
@@ -32,14 +33,18 @@ def adoc_checker(file, valid_tags, rules):
     file_tags_re = re.compile("^.*(hide_tags=).*(tags=).*$")
     hotspot_re = re.compile("\[(hotspot(=[^ =\n]+)? ?)+( file(=[0-9]+)?)?\]`[^`\n]*`")
 
+    skip_list = os.environ.get('SKIP_LIST')
+    print(f"SKIP_LIST={skip_list}\n");
+    
     for line_num, line in enumerate(file):
         if len(line) > 120:
             lines.append(line_num + 1)
         # checks '- ' and suggest to switch to '* '
         if rules['-']['check']:
-            list_match = list_re.match(line)
-            if list_match != None:
-                output += f"[{rules['-']['log-level']}] [LINE {line_num + 1}] Use '* ' to enumerate items instead of '- '.\n"
+            if not skip_list:
+                list_match = list_re.match(line)
+                if list_match != None:
+                    output += f"[{rules['-']['log-level']}] [LINE {line_num + 1}] Use '* ' to enumerate items instead of '- '.\n"
         if rules['license']['check']:
             result = license_re.search(line)
             if result:
