@@ -14,7 +14,7 @@
             },
             {
                 "subcategory_name": "REST alternatives",
-                "guides": ["microprofile-graphql", "grpc-intro"]
+                "guides": ["microprofile-graphql", "graphql-client", "jakarta-websocket", "grpc-intro"]
             },
             {
                 "subcategory_name": "Reactive service",
@@ -46,7 +46,7 @@
             },
             {
                 "subcategory_name": "To Be Categorized",
-                "guides": ["intellij", "liberty-deep-dive", "jakarta-websocket"]
+                "guides": ["intellij", "liberty-deep-dive"]
             }
         ]
     },
