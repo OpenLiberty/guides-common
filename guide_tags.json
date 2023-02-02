@@ -10,7 +10,7 @@
             "additional_search_terms": ["Java EE", "JEE"],
             "guides": ["bean-validation", "cdi-intro", "jpa-intro", "microshed-testing", "rest-client-java", "rest-intro", 
                 "security-intro", "microprofile-reactive-messaging", "microprofile-reactive-messaging-rest-integration", "reactive-messaging-sse",
-                "mongodb-intro"],
+                "mongodb-intro", "jakarta-websocket"],
             "visible": "true"
         },
         {
@@ -29,7 +29,7 @@
             "name": "Kubernetes",
             "guides": ["cloud-aws", "cloud-azure", "cloud-ibm", "cloud-openshift", "istio-intro", "kubernetes-intro", 
                 "kubernetes-microprofile-config", "kubernetes-microprofile-health", "microprofile-istio-retry-fallback", 
-                "okd", "openshift-codeready-containers", "sessions", "cloud-google"],
+                "okd", "openshift-codeready-containers", "sessions", "cloud-google", "openliberty-operator-intro", "openliberty-operator-openshift"],
             "visible": "true"
         },
         {
@@ -43,7 +43,7 @@
         {
             "name": "Cloud",
             "guides": ["cloud-aws", "cloud-azure", "cloud-ibm", "cloud-openshift", "okd", "cloud-openshift-operator", "openshift-codeready-containers", 
-                       "cloud-google"],
+                       "cloud-google", "openliberty-operator-openshift"],
             "visible": "true"
         },
         {
@@ -138,10 +138,6 @@
             "guides": ["retry-timeout"]
         },
         {
-            "name": "gRPC",
-            "guides": ["grpc-intro"]
-        },
-        {
             "name": "Run in cloud",
             "guides": [ 
                 "rest-client-java", "getting-started", "microprofile-openapi", "rest-intro", "microprofile-rest-client-async",
@@ -151,8 +147,9 @@
                 "microprofile-reactive-messaging", "reactive-service-testing", "microprofile-reactive-messaging-acknowledgment", "microprofile-reactive-messaging-rest-integration",
                 "contract-testing", "kubernetes-microprofile-health", "kubernetes-microprofile-config", "reactive-messaging-sse", "reactive-rest-client",
                 "spring-boot", "arquillian-managed", "bean-validation", "cors", "jpa-intro",
-                "microprofile-graphql", "maven-intro", "rest-client-angular", "rest-client-angularjs", "rest-client-reactjs", "rest-hateoas",
-                "maven-multimodules", "openliberty-operator-openshift"
+                "microprofile-graphql", "maven-intro", "rest-client-angular", "rest-client-angularjs", "rest-client-reactjs", "rest-hateoas", "maven-multimodules",
+                "openliberty-operator-intro", "openliberty-operator-openshift",
+                "security-intro", "mongodb-intro"
             ],
             "visible": "true"
         }
