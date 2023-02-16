@@ -47,7 +47,7 @@ jobs:
     strategy:
       matrix: ${{ fromJson(needs.get-builds.outputs.matrix) }}
     env:
-      DHE_URL: http://public.dhe.ibm.com/ibmdl/export/pub/software/openliberty/runtime/nightly
+      DHE_URL: https://public.dhe.ibm.com/ibmdl/export/pub/software/openliberty/runtime/nightly
     steps:
       - name: Clone ci.docker repository
         uses: actions/checkout@v2
