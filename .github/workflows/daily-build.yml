@@ -116,6 +116,13 @@ jobs:
         with:
           name: server-logs
           path: ${{ matrix.repos }}/finish/target/liberty/wlp/usr/servers/defaultServer/logs/
+      - name: Archive npm logs if failed
+        if: failure()
+        uses: actions/upload-artifact@v2
+        with:
+          name: npm-logs
+          path: ~/.npm/_logs
+          if-no-files-found: ignore
   slack-alert:
     needs: [test-guide]
     if: failure()
