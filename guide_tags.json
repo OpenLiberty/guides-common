@@ -154,10 +154,11 @@
             "visible": "true"
         },
         {
-            "name":"deprecated",
+            "name": "deprecated",
             "guides": [
                 "microprofile-opentracing"
-            ]
+            ],
+            "visible": "true"
         }
     ]
 }
