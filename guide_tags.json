@@ -157,8 +157,7 @@
             "name": "deprecated",
             "guides": [
                 "microprofile-opentracing"
-            ],
-            "visible": "true"
+            ]
         }
     ]
 }
