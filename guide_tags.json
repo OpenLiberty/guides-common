@@ -157,6 +157,12 @@
             "name": "deprecated",
             "guides": [
                 "microprofile-opentracing"
+            ],
+            "redirects":[
+                {
+                    "old":"microprofile-opentracing",
+                    "new": "microprofile-opentracing-jaeger"
+                }
             ]
         }
     ]
