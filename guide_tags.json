@@ -160,7 +160,7 @@
             ],
             "redirects":[
                 {
-                    "old":"microprofile-opentracing",
+                    "old": "microprofile-opentracing",
                     "new": "microprofile-opentracing-jaeger"
                 }
             ]
