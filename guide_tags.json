@@ -158,7 +158,7 @@
             "guides": [
                 "microprofile-opentracing"
             ],
-            "redirects":[
+            "details":[
                 {
                     "old": "microprofile-opentracing",
                     "new": "microprofile-opentracing-jaeger"
