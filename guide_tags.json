@@ -161,8 +161,7 @@
             "details":[
                 {
                     "old": "microprofile-opentracing",
-                    "new": "microprofile-opentracing-jaeger",
-                    "date": "September 2023"
+                    "new": "microprofile-opentracing-jaeger"
                 }
             ]
         }
