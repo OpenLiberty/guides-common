@@ -14,12 +14,12 @@
             "name": "Maven",
             "link": "https://maven.apache.org/download.cgi",
             "guides": ["*"],
-            "exclude": ["gradle-intro"]
+            "exclude": ["gradle-intro", "liberty-deep-dive-gradle"]
         },
         {
             "name": "Gradle",
             "link": "https://gradle.org/install",
-            "guides": ["gradle-intro"]
+            "guides": ["gradle-intro", "liberty-deep-dive-gradle"]
         }
     ]
 }
