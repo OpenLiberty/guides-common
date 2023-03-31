@@ -108,12 +108,20 @@ jobs:
               fi
             else sudo cat $logsPath | grep Launching
           fi
-      - name: Archive server logs if failed
+      - name: Archive finish server logs if failed
         if: failure()
         uses: actions/upload-artifact@v2
         with:
-          name: server-logs
+          name: finish-server-logs
           path: ${{ matrix.repos }}/finish/**/wlp/usr/servers/defaultServer/logs/
+          if-no-files-found: ignore
+      - name: Archive start server logs if failed
+        if: failure()
+        uses: actions/upload-artifact@v2
+        with:
+          name: start-server-logs
+          path: ${{ matrix.repos }}/start/**/wlp/usr/servers/defaultServer/logs/
+          if-no-files-found: ignore
       - name: Archive npm logs if failed
         if: failure()
         uses: actions/upload-artifact@v2
