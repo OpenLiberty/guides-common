@@ -113,7 +113,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: server-logs
-          path: ${{ matrix.repos }}/finish/**/liberty/wlp/usr/servers/defaultServer/logs/
+          path: ${{ matrix.repos }}/finish/**/wlp/usr/servers/defaultServer/logs/
       - name: Archive npm logs if failed
         if: failure()
         uses: actions/upload-artifact@v2
