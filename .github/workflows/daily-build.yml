@@ -85,7 +85,7 @@ jobs:
         run: |
           if [ ${{ matrix.repos }} = "guide-liberty-deep-dive-gradle" ]
           then
-            echo $DOCKER_PASSWORD | podman login -u $DOCKER_USERNAME --password-stdin
+            echo $DOCKER_PASSWORD | podman login docker.io -u $DOCKER_USERNAME --password-stdin
           else
             echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
           fi
@@ -93,7 +93,7 @@ jobs:
         run: |
           if [ ${{ matrix.repos }} = "guide-liberty-deep-dive-gradle" ]
           then
-            echo $DOCKER_PASSWORD | sudo podman login -u $DOCKER_USERNAME --password-stdin
+            echo $DOCKER_PASSWORD | sudo podman login docker.io -u $DOCKER_USERNAME --password-stdin
           else
             echo $DOCKER_PASSWORD | sudo docker login -u $DOCKER_USERNAME --password-stdin
           fi
