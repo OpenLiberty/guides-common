@@ -82,9 +82,21 @@ jobs:
       - name: Set permissions
         run: chmod +x ${{ matrix.repos }}/scripts/*.sh
       - name: Docker login for runner
-        run: echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+        run: |
+          if [ ${{ matrix.repos }} = "guide-liberty-deep-dive-gradle" ]
+          then
+            echo $DOCKER_PASSWORD | podman login -u $DOCKER_USERNAME --password-stdin
+          else
+            echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+          fi
       - name: Docker login for root
-        run: echo $DOCKER_PASSWORD | sudo docker login -u $DOCKER_USERNAME --password-stdin
+        run: |
+          if [ ${{ matrix.repos }} = "guide-liberty-deep-dive-gradle" ]
+          then
+            echo $DOCKER_PASSWORD | sudo podman login -u $DOCKER_USERNAME --password-stdin
+          else
+            echo $DOCKER_PASSWORD | sudo docker login -u $DOCKER_USERNAME --password-stdin
+          fi
       - name: Run tests for ${{ matrix.repos }}
         working-directory: ${{ matrix.repos }}/finish
         env:
