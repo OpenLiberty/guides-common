@@ -83,18 +83,20 @@ jobs:
         run: chmod +x ${{ matrix.repos }}/scripts/*.sh
       - name: Docker login for runner
         run: |
-          if [ ${{ matrix.repos }} = "guide-liberty-deep-dive-gradle" ]
-          then
+          if [ "${{ matrix.repos }}" = "guide-liberty-deep-dive-gradle" ] then
+            echo podman login
             echo $DOCKER_PASSWORD | podman login docker.io -u $DOCKER_USERNAME --password-stdin
           else
+            echo docker login
             echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
           fi
       - name: Docker login for root
         run: |
-          if [ ${{ matrix.repos }} = "guide-liberty-deep-dive-gradle" ]
-          then
+          if [ "${{ matrix.repos }}" = "guide-liberty-deep-dive-gradle" ] then
+            echo podman login
             echo $DOCKER_PASSWORD | sudo podman login docker.io -u $DOCKER_USERNAME --password-stdin
           else
+            echo docker login
             echo $DOCKER_PASSWORD | sudo docker login -u $DOCKER_USERNAME --password-stdin
           fi
       - name: Run tests for ${{ matrix.repos }}
