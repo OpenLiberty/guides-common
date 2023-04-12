@@ -155,20 +155,8 @@
         },
         {
             "name": "deprecated",
-            "guides": [
-                "microprofile-opentracing", "microprofile-rest-client"
-            ],
-            "details":[
-                {
-                    "old": "microprofile-opentracing",
-                    "new": "microprofile-opentracing-jaeger"
-                },
-                {
-                    "old": "microprofile-rest-client",
-                    "new": "microprofile-rest-client-async",
-                    "date": "September 2023"
-                }
-            ]
+            "guides": [],
+            "details":[]
         }
     ]
 }
