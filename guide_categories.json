@@ -61,7 +61,7 @@
             },
             {
                 "subcategory_name": "Test",
-                "guides": ["microshed-testing", "reactive-service-testing", "contract-testing", "arquillian-managed"]
+                "guides": ["microshed-testing", "testcontainers", "reactive-service-testing", "contract-testing", "arquillian-managed"]
             },
             {
                 "subcategory_name": "Containerize",
