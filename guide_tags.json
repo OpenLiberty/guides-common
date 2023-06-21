@@ -8,7 +8,7 @@
         {
             "name": "Jakarta EE",
             "additional_search_terms": ["Java EE", "JEE"],
-            "guides": ["bean-validation", "cdi-intro", "jpa-intro", "microshed-testing", "rest-client-java", "rest-intro", 
+            "guides": ["bean-validation", "cdi-intro", "jpa-intro", "microshed-testing", "testcontainers", "rest-client-java", "rest-intro", 
                 "security-intro", "microprofile-reactive-messaging", "microprofile-reactive-messaging-rest-integration", "reactive-messaging-sse",
                 "mongodb-intro", "jakarta-websocket"],
             "visible": "true"
@@ -18,8 +18,8 @@
             "additional_search_terms": ["Micro Profile", "MP"],
             "guides": ["cdi-intro", "kubernetes-microprofile-config", "kubernetes-microprofile-health", "microprofile-config", 
                 "microprofile-fallback", "microprofile-health", "microprofile-istio-retry-fallback", "microprofile-jwt", 
-                "microprofile-metrics", "microprofile-openapi", "microprofile-opentracing", "microprofile-opentracing-jaeger", "microprofile-rest-client", 
-                "microprofile-rest-client-async", "microshed-testing", "rest-client-java", "rest-intro", "bulkhead", 
+                "microprofile-metrics", "microprofile-openapi", "microprofile-opentracing", "microprofile-opentracing-jaeger", "microprofile-telemetry-jaeger", "microprofile-rest-client", 
+                "microprofile-rest-client-async", "microshed-testing", "testcontainers", "rest-client-java", "rest-intro", "bulkhead", 
                 "circuit-breaker", "microprofile-config-intro", "retry-timeout", 
                 "microprofile-reactive-messaging", "reactive-service-testing", "microprofile-reactive-messaging-rest-integration", "microprofile-reactive-messaging-acknowledgment",
                 "reactive-messaging-sse", "mongodb-intro", "microprofile-graphql"],
@@ -36,7 +36,7 @@
             "name": "Docker",
             "guides": ["cloud-aws", "cloud-azure", "cloud-ibm", "cloud-openshift", "containerize", "docker", 
                 "getting-started", "istio-intro", "kubernetes-intro", "kubernetes-microprofile-config", 
-                "kubernetes-microprofile-health", "microprofile-istio-retry-fallback", "microshed-testing", "okd", 
+                "kubernetes-microprofile-health", "microprofile-istio-retry-fallback", "microshed-testing", "testcontainers", "okd", 
                 "openshift-codeready-containers", "sessions", "spring-boot", "cloud-google"],
             "visible": "true"
         },
@@ -57,7 +57,7 @@
         },
         {
             "name": "Microservices",
-            "guides": ["getting-started", "microprofile-opentracing", "circuit-breaker", "microprofile-config-intro", 
+            "guides": ["getting-started", "microprofile-telemetry-jaeger", "circuit-breaker", "microprofile-config-intro", 
             "bulkhead", "retry-timeout", "microprofile-reactive-messaging", "microprofile-reactive-messaging-rest-integration"]
         },
         {
@@ -78,8 +78,16 @@
             "guides": ["microprofile-opentracing", "microprofile-opentracing-jaeger"]
         },
         {
+            "name": "OpenTelemetry",
+            "guides": ["microprofile-telemetry-jaeger"]
+        },
+        {
+            "name": "@WithSpan",
+            "guides": ["microprofile-telemetry-jaeger"]
+        },
+        {
             "name": "Testing",
-            "guides": ["microshed-testing", "reactive-service-testing", "contract-testing"]
+            "guides": ["microshed-testing", "testcontainers", "reactive-service-testing", "contract-testing"]
         },
         {
             "name": "Interactive",

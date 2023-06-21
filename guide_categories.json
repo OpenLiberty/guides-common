@@ -22,7 +22,7 @@
             },
             {
                 "subcategory_name": "Configuration",
-                "guides": ["microprofile-config-intro", "microprofile-config", "kubernetes-microprofile-config"]
+                "guides": ["microprofile-config-intro", "microprofile-config", "microprofile-config-profile", "microprofile-config-apis", "kubernetes-microprofile-config"]
             },
             {
                 "subcategory_name": "Fault tolerance",
@@ -30,7 +30,7 @@
             },
             {
                 "subcategory_name": "Observability",
-                "guides": ["microprofile-metrics", "microprofile-opentracing", "microprofile-opentracing-jaeger", "microprofile-health", "kubernetes-microprofile-health"]
+                "guides": ["microprofile-metrics", "microprofile-telemetry-jaeger", "microprofile-health", "kubernetes-microprofile-health"]
             },
             {
                 "subcategory_name": "Security",
@@ -43,6 +43,10 @@
             {
                 "subcategory_name": "Client side",
                 "guides": ["rest-client-angular", "rest-client-angularjs", "rest-client-reactjs"]
+            },
+            {
+                "subcategory_name": "To Be Categorized",
+                "guides": ["intellij", "liberty-deep-dive"]
             }
         ]
     },
@@ -57,7 +61,7 @@
             },
             {
                 "subcategory_name": "Test",
-                "guides": ["microshed-testing", "reactive-service-testing", "contract-testing", "arquillian-managed"]
+                "guides": ["microshed-testing", "testcontainers", "reactive-service-testing", "contract-testing", "arquillian-managed"]
             },
             {
                 "subcategory_name": "Containerize",
