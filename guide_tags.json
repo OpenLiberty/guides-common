@@ -165,8 +165,7 @@
                 },
                 {
                     "old": "microprofile-rest-client",
-                    "new": "microprofile-rest-client-async",
-                    "date": "September 2023"
+                    "new": "microprofile-rest-client-async"
                 }
             ]
         }
