@@ -59,7 +59,7 @@ jobs:
       - name: Build Docker image for ${{ matrix.builds.date }}
         run: |
           cd ci.docker/releases/latest/full
-          sed -i '/&& wget -q \$LIBERTY_DOWNLOAD_URL/c\&& wget '$DHE_URL'/'${{ matrix.builds.date }}'/'${{ matrix.builds.driver_location }}' -U UA-Open-Liberty-Docker -O /tmp/wlp.zip \\' Dockerfile.ubi.openjdk11
+          sed -i "s;wget -q \$LIBERTY_DOWNLOAD_URL;wget $DHE_URL/${{ matrix.builds.date }}/${{ matrix.builds.driver_location }};g" Dockerfile.ubi.openjdk11
           sed -i '/&& sha1sum/d' Dockerfile.ubi.openjdk11
           cat Dockerfile.ubi.openjdk11
           echo "Building ${{ matrix.builds.build_level }} from ${{ matrix.builds.date }}"
