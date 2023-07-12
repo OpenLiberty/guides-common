@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        builds: [ "{'date': '${{ github.event.inputs.date }}', 'driver_location': '${{ github.event.inputs.driver }}', 'build_level': '${{ github.event.inputs.build }}'}" ]
+        builds: [ "{'date': ${{ github.event.inputs.date }}, 'driver_location': ${{ github.event.inputs.driver }}, 'build_level': ${{ github.event.inputs.build }}}" ]
     env:
       DHE_URL: https://public.dhe.ibm.com/ibmdl/export/pub/software/openliberty/runtime/nightly
     steps:
