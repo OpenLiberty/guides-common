@@ -42,6 +42,7 @@ jobs:
           docker push $DOCKER_USERNAME/olguides:${{ github.event.inputs.build_level }}
   trigger-builds:
     runs-on: ubuntu-latest
+    needs: [ build-docker-image ]
     env:
       GH_TOKEN: ${{ secrets.ADMIN_TOKEN }}
       URI: "https://api.github.com/repos/OpenLiberty/guides-common/dispatches"
