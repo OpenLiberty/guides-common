@@ -34,7 +34,7 @@ jobs:
       - name: Build Docker image for ${{ github.event.inputs.date }}
         run: |
           cd ci.docker/releases/latest/full
-          sed -i '/wget -q \$LIBERTY_DOWNLOAD_URL/wget '$DHE_URL'/'${{ github.event.inputs.date }}'/'${{ github.event.inputs.driver_location }}/  Dockerfile.ubi.openjdk11
+          sed -i "s;wget -q \$LIBERTY_DOWNLOAD_URL;wget '$DHE_URL'/'${{ github.event.inputs.date }}'/'${{ github.event.inputs.driver_location }};g" Dockerfile.ubi.openjdk11
           sed -i '/&& sha1sum/d' Dockerfile.ubi.openjdk11
           cat Dockerfile.ubi.openjdk11
           echo "Building ${{ github.event.inputs.build_level }} from ${{ github.event.inputs.date }}"
