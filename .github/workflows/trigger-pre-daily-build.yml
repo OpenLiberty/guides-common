@@ -6,10 +6,10 @@ on:
       date:
         description: Dev date as 2023-07-11_0401
         required: true
-      build:
+      build_level:
         description: Build level as cl230720230711-0401
         required: true
-      driver:
+      driver_location:
         description: Driver location like openliberty-all-23.0.0.7-cl230720230711-0401.zip
         required: true
 
@@ -21,9 +21,6 @@ env:
 jobs:
   build-docker-image:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        builds: [ "{'date': ${{ github.event.inputs.date }}, 'driver_location': ${{ github.event.inputs.driver }}, 'build_level': ${{ github.event.inputs.build }}}" ]
     env:
       DHE_URL: https://public.dhe.ibm.com/ibmdl/export/pub/software/openliberty/runtime/nightly
     steps:
@@ -34,25 +31,23 @@ jobs:
           path: ci.docker
       - name: Docker login
         run: echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
-      - name: Build Docker image for ${{ matrix.builds.date }}
+      - name: Build Docker image for ${{ github.event.inputs.date }}
         run: |
           cd ci.docker/releases/latest/full
-          sed -i '/&& wget -q \$LIBERTY_DOWNLOAD_URL/c\&& wget '$DHE_URL'/'${{ matrix.builds.date }}'/'${{ matrix.builds.driver_location }}' -U UA-Open-Liberty-Docker -O /tmp/wlp.zip \\' Dockerfile.ubi.openjdk11
+          sed -i '/&& wget -q \$LIBERTY_DOWNLOAD_URL/c\&& wget '$DHE_URL'/'${{ github.event.inputs.date }}'/'${{ github.event.inputs.driver_location }}' -U UA-Open-Liberty-Docker -O /tmp/wlp.zip \\' Dockerfile.ubi.openjdk11
           sed -i '/&& sha1sum/d' Dockerfile.ubi.openjdk11
           cat Dockerfile.ubi.openjdk11
-          echo "Building ${{ matrix.builds.build_level }} from ${{ matrix.builds.date }}"
-          docker build --build-arg LIBERTY_LICENSE_SHA=$LIBERTY_LICENSE_SHA -q -t $DOCKER_USERNAME/olguides:${{ matrix.builds.build_level }} -f Dockerfile.ubi.openjdk11 .
-          docker push $DOCKER_USERNAME/olguides:${{ matrix.builds.build_level }}
+          echo "Building ${{ github.event.inputs.build_level }} from ${{ github.event.inputs.date }}"
+          docker build --build-arg LIBERTY_LICENSE_SHA=$LIBERTY_LICENSE_SHA -q -t $DOCKER_USERNAME/olguides:${{ github.event.inputs.build_level }} -f Dockerfile.ubi.openjdk11 .
+          docker push $DOCKER_USERNAME/olguides:${{ github.event.inputs.build_level }}
   trigger-builds:
     runs-on: ubuntu-latest
-    strategy:
-      matrix: ${{ fromJson(needs.get-builds.outputs.matrix) }}
     env:
       GH_TOKEN: ${{ secrets.ADMIN_TOKEN }}
       URI: "https://api.github.com/repos/OpenLiberty/guides-common/dispatches"
       ACCEPT_HEADER: "application/vnd.github.v3+json"
       CONTENT_TYPE: "application/json"
-      PAYLOAD: '{ "dev-date": "${{ matrix.builds.date }}", "driver-location": "${{ matrix.builds.driver_location }}", "build-level": "${{ matrix.builds.build_level }}", "jdk": "11" }'
+      PAYLOAD: '{ "dev-date": "${{ github.event.inputs.date }}", "driver-location": "${{ github.event.inputs.driver_location }}", "build-level": "${{ github.event.inputs.build_level }}", "jdk": "11" }'
     steps:
       - name: Trigger daily builds
         run: |
@@ -65,7 +60,7 @@ jobs:
           docker pull "openliberty/daily:latest" -q
           IMAGEBUILDLEVEL=$(docker inspect --format "{{ index .Config.Labels \"org.opencontainers.image.revision\"}}" openliberty/daily:latest)
           echo $IMAGEBUILDLEVEL
-          if [ $IMAGEBUILDLEVEL == ${{ matrix.builds.build_level }} ]
+          if [ $IMAGEBUILDLEVEL == ${{ github.event.inputs.build_level }} ]
           then
             curl -H "Accept: $ACCEPT_HEADER" \
                  -H "Authorization: token $GH_TOKEN" \
