@@ -156,7 +156,7 @@
         {
             "name": "deprecated",
             "guides": [
-                "microprofile-opentracing", "microprofile-opentracing-jaeger", "microshed-testing"
+                "microprofile-opentracing", "microshed-testing"
             ],
             "alt_links":{
                 "microprofile-opentracing" : "microprofile-opentracing-jaeger"
