@@ -156,11 +156,10 @@
         {
             "name": "deprecated",
             "guides": [
-                "microprofile-opentracing", "microprofile-rest-client", "microprofile-metrics"
+                "microprofile-opentracing", "microprofile-opentracing-jaeger", "microshed-testing"
             ],
             "alt_links":{
-                "microprofile-opentracing" : "microprofile-opentracing-jaeger",
-                "microprofile-rest-client" : "microprofile-rest-client-async"
+                "microprofile-opentracing" : "microprofile-opentracing-jaeger"
             }
         }
     ]
