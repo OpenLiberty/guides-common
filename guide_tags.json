@@ -152,6 +152,15 @@
                 "security-intro", "mongodb-intro"
             ],
             "visible": "true"
+        },
+        {
+            "name": "deprecated",
+            "guides": [
+                "microprofile-opentracing", "microshed-testing"
+            ],
+            "alt_links":{
+                "microprofile-opentracing" : "microprofile-opentracing-jaeger"
+            }
         }
     ]
 }
