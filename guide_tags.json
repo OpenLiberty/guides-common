@@ -163,13 +163,8 @@
         },
         {
             "name": "deprecated",
-            "guides": [
-                "microprofile-opentracing", "microprofile-rest-client", "microprofile-metrics"
-            ],
-            "alt_links":{
-                "microprofile-opentracing" : "microprofile-opentracing-jaeger",
-                "microprofile-rest-client" : "microprofile-rest-client-async"
-            }
+            "guides": [],
+            "alt_links":{}
         }
     ]
 }
