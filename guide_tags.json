@@ -152,6 +152,11 @@
                 "security-intro", "mongodb-intro"
             ],
             "visible": "true"
+        },
+        {
+            "name": "deprecated",
+            "guides": [],
+            "alt_links": {}
         }
     ]
 }
