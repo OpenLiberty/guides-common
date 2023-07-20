@@ -155,12 +155,8 @@
         },
         {
             "name": "deprecated",
-            "guides": [
-                "microprofile-opentracing", "microshed-testing"
-            ],
-            "alt_links":{
-                "microprofile-opentracing" : "microprofile-opentracing-jaeger"
-            }
+            "guides": [],
+            "alt_links": {}
         }
     ]
 }
