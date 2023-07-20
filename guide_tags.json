@@ -155,10 +155,8 @@
         },
         {
             "name": "deprecated",
-            "guides": [
-            ],
-            "alt_links":{
-            }
+            "guides": [],
+            "alt_links": {}
         }
     ]
 }
