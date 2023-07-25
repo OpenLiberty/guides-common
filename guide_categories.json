@@ -80,7 +80,7 @@
             },
             {
                 "subcategory_name": "Cloud deployment",
-                "guides": ["cloud-ibm",  "okd", "cloud-openshift-operator", "openshift-codeready-containers", "openliberty-operator-openshift", "cloud-openshift", "cloud-aws", "cloud-azure", "cloud-google"]
+                "guides": ["cloud-ibm",  "okd", "cloud-openshift-operator", "openshift-codeready-containers", "openliberty-operator-openshift", "cloud-openshift", "cloud-aws", "cloud-azure", "cloud-google", "instanton-aws"]
             }
         ]
     }
