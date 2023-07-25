@@ -43,7 +43,7 @@
         {
             "name": "Cloud",
             "guides": ["cloud-aws", "cloud-azure", "cloud-ibm", "cloud-openshift", "okd", "cloud-openshift-operator", "openshift-codeready-containers", 
-                       "cloud-google", "openliberty-operator-openshift"],
+                       "cloud-google", "openliberty-operator-openshift", "instanton-aws"],
             "visible": "true"
         },
         {
@@ -163,8 +163,11 @@
         },
         {
             "name": "deprecated",
-            "guides": [],
-            "alt_links":{}
+            "guides": [ "microprofile-opentracing", "microprofile-opentracing-jaeger" ],
+            "alt_links":{
+                "microprofile-opentracing" : "microprofile-telemetry-jaeger",
+                "microprofile-opentracing-jaeger" : "microprofile-telemetry-jaeger"
+            }
         }
     ]
 }
