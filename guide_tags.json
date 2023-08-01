@@ -71,7 +71,7 @@
         },
         {
             "name": "OpenTracing",
-            "guides": [ "microprofile-opentracing", "microprofile-opentracing-jaeger"]
+            "guides": ["microprofile-opentracing", "microprofile-opentracing-jaeger"]
         },
         {
             "name": "@Traced",
