@@ -71,11 +71,19 @@
         },
         {
             "name": "OpenTracing",
-            "guides": ["microprofile-telemetry-jaeger", "microprofile-opentracing", "microprofile-opentracing-jaeger"]
+            "guides": [ "microprofile-opentracing", "microprofile-opentracing-jaeger"]
         },
         {
             "name": "@Traced",
-            "guides": ["microprofile-telemetry-jaeger", "microprofile-opentracing", "microprofile-opentracing-jaeger"]
+            "guides": ["microprofile-opentracing", "microprofile-opentracing-jaeger"]
+        },
+        {
+            "name": "OpenTelemetry",
+            "guides": ["microprofile-telemetry-jaeger"]
+        },
+        {
+            "name": "@WithSpan",
+            "guides": ["microprofile-telemetry-jaeger"]
         },
         {
             "name": "Testing",
