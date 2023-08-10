@@ -7,7 +7,7 @@
      IBM Corporation
 ////
 If you make changes to the code, use the Maven `compile` goal to rebuild the application and have the
-running Open Liberty server pick them up automatically:
+running Open Liberty instance pick them up automatically:
 
 ```
 mvn compile
