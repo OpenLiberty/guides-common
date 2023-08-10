@@ -13,7 +13,7 @@ running Open Liberty server pick them up automatically:
 mvn compile
 ```
 
-To stop the Open Liberty server, run the Maven `liberty:stop-server` goal:
+To stop the Open Liberty instance, run the Maven `liberty:stop-server` goal:
 
 ```
 mvn liberty:stop-server
