@@ -1,4 +1,4 @@
-After you are done checking out the application, stop the Open Liberty instance:
+After you are done checking out the application, stop the Liberty instance:
 
 ```
 mvn liberty:stop-server
