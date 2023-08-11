@@ -1,4 +1,4 @@
-After you are finished checking out the application, stop the Open Liberty server by pressing `CTRL+C` in the command-line session where you ran the server. Alternatively, you can run the `liberty:stop` goal from the `finish` directory in another shell session:
+After you are finished checking out the application, stop the Liberty instance by pressing `CTRL+C` in the command-line session where you ran the instance. Alternatively, you can run the `liberty:stop` goal from the `finish` directory in another shell session:
 
 [role='command']
 ```
