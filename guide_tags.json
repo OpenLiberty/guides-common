@@ -163,10 +163,11 @@
         },
         {
             "name": "deprecated",
-            "guides": [ "microprofile-opentracing", "microprofile-opentracing-jaeger" ],
+            "guides": [ "microprofile-opentracing", "microprofile-opentracing-jaeger", "okd" ],
             "alt_links": {
                 "microprofile-opentracing" : "microprofile-telemetry-jaeger",
-                "microprofile-opentracing-jaeger" : "microprofile-telemetry-jaeger"
+                "microprofile-opentracing-jaeger" : "microprofile-telemetry-jaeger",
+                "okd" : "openshift-codeready-containers"
             }
         }
     ]
