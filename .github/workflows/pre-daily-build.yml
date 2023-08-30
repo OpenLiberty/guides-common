@@ -9,7 +9,6 @@ on:
 env:
   DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
   DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-  LIBERTY_LICENSE_SHA: ${{ secrets.LIBERTY_LICENSE_SHA }}
 
 jobs:
   get-builds:
@@ -63,7 +62,7 @@ jobs:
           sed -i '/&& sha1sum/d' Dockerfile.ubi.openjdk11
           cat Dockerfile.ubi.openjdk11
           echo "Building ${{ matrix.builds.build_level }} from ${{ matrix.builds.date }}"
-          docker build --build-arg LIBERTY_LICENSE_SHA=$LIBERTY_LICENSE_SHA -q -t $DOCKER_USERNAME/olguides:${{ matrix.builds.build_level }} -f Dockerfile.ubi.openjdk11 .
+          docker build -q -t $DOCKER_USERNAME/olguides:${{ matrix.builds.build_level }} -f Dockerfile.ubi.openjdk11 .
           docker push $DOCKER_USERNAME/olguides:${{ matrix.builds.build_level }}
   trigger-builds:
     runs-on: ubuntu-latest
