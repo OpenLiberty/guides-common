@@ -112,12 +112,12 @@ jobs:
         working-directory: ${{ matrix.repos }}
         if: always()
         run: |
-          sudo chmod -R a+x finish
-          sudo chmod -R a+x start
+          sudo chmod -R a+x .
           logsPath=$(sudo find . -name "console.log");
           if [ -z "$logsPath" ]
             then 
               logsPath=$(sudo find . -name "messages.log");
+              echo $logsPath
               if [ -z "$logsPath" ]
                 then sudo docker images
                 else
