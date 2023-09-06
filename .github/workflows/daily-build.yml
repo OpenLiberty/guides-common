@@ -112,14 +112,11 @@ jobs:
         working-directory: ${{ matrix.repos }}
         if: always()
         run: |
-          pwd
           sudo chmod -R 777 .
           logsPath=$(sudo find . -name "console.log");
-          echo $logsPath
           if [ -z "$logsPath" ]
             then 
               logsPath=$(sudo find . -name "messages.log");
-              echo $logsPath
               if [ -z "$logsPath" ]
                 then sudo docker images
                 else
@@ -132,7 +129,7 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@v3
         with:
-          name: server-logs
+          name: ${{ matrix.repos }}-logs
           path: |
             ${{ matrix.repos }}/finish/target/liberty/wlp/usr/servers/defaultServer/logs/
             ${{ matrix.repos }}/start/target/liberty/wlp/usr/servers/defaultServer/logs/
@@ -143,7 +140,7 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@v3
         with:
-          name: npm-logs
+          name: ${{ matrix.repos }}-npm-logs
           path: ~/.npm/_logs
           if-no-files-found: ignore
   slack-alert:
