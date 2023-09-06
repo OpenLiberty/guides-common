@@ -130,10 +130,10 @@ jobs:
         with:
           name: server-logs
           path: |
-            finish/target/wlp/usr/servers/defaultServer/logs/
-            start/target/wlp/usr/servers/defaultServer/logs/
-            finish/**/target/wlp/usr/servers/defaultServer/logs/
-            start/**/target/wlp/usr/servers/defaultServer/logs/
+            ${{ matrix.repos }}/finish/target/liberty/wlp/usr/servers/defaultServer/logs/
+            ${{ matrix.repos }}/start/target/liberty/wlp/usr/servers/defaultServer/logs/
+            ${{ matrix.repos }}/finish/**/target/liberty/wlp/usr/servers/defaultServer/logs/
+            ${{ matrix.repos }}/start/**/target/liberty/wlp/usr/servers/defaultServer/logs/
           if-no-files-found: ignore
       - name: Archive npm logs if failed
         if: failure()
