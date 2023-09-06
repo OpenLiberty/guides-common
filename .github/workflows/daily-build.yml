@@ -112,6 +112,7 @@ jobs:
         working-directory: ${{ matrix.repos }}
         if: always()
         run: |
+          sudo chmod -R 777 .
           logsPath=$(sudo find . -name "console.log");
           if [ -z "$logsPath" ]
             then 
@@ -124,25 +125,22 @@ jobs:
               fi
             else sudo cat $logsPath | grep Launching
           fi
-      - name: Archive finish server logs if failed
+      - name: Archive server logs if failed
         if: failure()
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
-          name: finish-server-logs
-          path: ${{ matrix.repos }}/finish/**/wlp/usr/servers/defaultServer/logs/
-          if-no-files-found: ignore
-      - name: Archive start server logs if failed
-        if: failure()
-        uses: actions/upload-artifact@v2
-        with:
-          name: start-server-logs
-          path: ${{ matrix.repos }}/start/**/wlp/usr/servers/defaultServer/logs/
+          name: ${{ matrix.repos }}-logs
+          path: |
+            ${{ matrix.repos }}/finish/target/liberty/wlp/usr/servers/defaultServer/logs/
+            ${{ matrix.repos }}/start/target/liberty/wlp/usr/servers/defaultServer/logs/
+            ${{ matrix.repos }}/finish/**/target/liberty/wlp/usr/servers/defaultServer/logs/
+            ${{ matrix.repos }}/start/**/target/liberty/wlp/usr/servers/defaultServer/logs/
           if-no-files-found: ignore
       - name: Archive npm logs if failed
         if: failure()
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
-          name: npm-logs
+          name: ${{ matrix.repos }}-npm-logs
           path: ~/.npm/_logs
           if-no-files-found: ignore
   slack-alert:
