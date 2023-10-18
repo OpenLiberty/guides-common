@@ -3,7 +3,7 @@ import requests
 
 BASE_REPO_URL = "https://api.github.com/orgs/OpenLiberty/repos"
 JSON_PATH = ".github/workflows/drafts-to-test.json"
-
+DEPRECATED = [ "guide-okd" ]
 HEADERS = {
     "Accept": "application/vnd.github.v3+json"
 }
@@ -27,7 +27,8 @@ if __name__ == "__main__":
         for repo in r.json():
             repo_name = repo["name"]
             if published_guide_name(repo_name):
-                output.append(repo_name)
+                if repo_name not in DEPRECATED:
+                    output.append(repo_name)
 
     drafts = json.load(open(JSON_PATH))
     output += drafts
