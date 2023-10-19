@@ -55,15 +55,24 @@ jobs:
           path: ci.docker
       - name: Docker login
         run: echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
-      - name: Build Docker image for ${{ matrix.builds.date }}
+      - name: Build Java 11 Docker image for ${{ matrix.builds.date }}
         run: |
           cd ci.docker/releases/latest/full
           sed -i "s;wget -q \$LIBERTY_DOWNLOAD_URL;wget $DHE_URL/${{ matrix.builds.date }}/${{ matrix.builds.driver_location }};g" Dockerfile.ubi.openjdk11
           sed -i '/&& sha1sum/d' Dockerfile.ubi.openjdk11
           cat Dockerfile.ubi.openjdk11
-          echo "Building ${{ matrix.builds.build_level }} from ${{ matrix.builds.date }}"
+          echo "Building Java 11 ${{ matrix.builds.build_level }} from ${{ matrix.builds.date }}"
           docker build -q -t $DOCKER_USERNAME/olguides:${{ matrix.builds.build_level }} -f Dockerfile.ubi.openjdk11 .
           docker push $DOCKER_USERNAME/olguides:${{ matrix.builds.build_level }}
+      - name: Build Java 17 Docker image for ${{ matrix.builds.date }}
+        run: |
+          cd ci.docker/releases/latest/full
+          sed -i "s;wget -q \$LIBERTY_DOWNLOAD_URL;wget $DHE_URL/${{ matrix.builds.date }}/${{ matrix.builds.driver_location }};g" Dockerfile.ubi.openjdk17
+          sed -i '/&& sha1sum/d' Dockerfile.ubi.openjdk17
+          cat Dockerfile.ubi.openjdk17
+          echo "Building Java 17 ${{ matrix.builds.build_level }} from ${{ matrix.builds.date }}"
+          docker build -q -t $DOCKER_USERNAME/olguides:${{ matrix.builds.build_level }}-java17 -f Dockerfile.ubi.openjdk17 .
+          docker push $DOCKER_USERNAME/olguides:${{ matrix.builds.build_level }}-java17
   trigger-builds:
     runs-on: ubuntu-latest
     needs: [ build-docker-image, get-builds ]
