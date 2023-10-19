@@ -85,12 +85,19 @@ jobs:
       ACCEPT_HEADER: "application/vnd.github.v3+json"
       CONTENT_TYPE: "application/json"
       PAYLOAD: '{ "dev-date": "${{ matrix.builds.date }}", "driver-location": "${{ matrix.builds.driver_location }}", "build-level": "${{ matrix.builds.build_level }}", "jdk": "11" }'
+      PAYLOAD_JAVA17: '{ "dev-date": "${{ matrix.builds.date }}", "driver-location": "${{ matrix.builds.driver_location }}", "build-level": "${{ matrix.builds.build_level }}", "jdk": "17" }'
     steps:
-      - name: Trigger daily builds
+      - name: Trigger daily builds for Java 11
         run: |
           curl -H "Accept: $ACCEPT_HEADER" \
                -H "Authorization: token $GH_TOKEN" \
                -d "{ \"event_type\": \"daily-build\", \"client_payload\": $PAYLOAD }" \
+               -X POST $URI
+      - name: Trigger daily builds for Java 17
+        run: |
+          curl -H "Accept: $ACCEPT_HEADER" \
+               -H "Authorization: token $GH_TOKEN" \
+               -d "{ \"event_type\": \"daily-build-java17\", \"client_payload\": $PAYLOAD_JAVA17 }" \
                -X POST $URI
       - name: Trigger Docker image tests
         run: |
