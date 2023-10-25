@@ -108,6 +108,7 @@ jobs:
         working-directory: ${{ matrix.repos }}
         if: always()
         run: |
+          mvn -version
           sudo chmod -R 777 .
           logsPath=$(sudo find . -name "console.log");
           if [ -z "$logsPath" ]
