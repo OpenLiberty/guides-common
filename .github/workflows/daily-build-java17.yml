@@ -1,8 +1,8 @@
-name: Daily build testing
+name: Daily build testing - Java 17
 
 on:
   repository_dispatch:
-    types: [ daily-build ]
+    types: [ daily-build-java17 ]
   workflow_dispatch:
     inputs:
       build:
@@ -21,10 +21,6 @@ on:
       branch:
         description: Branch to test
         required: false
-      jdk_level:
-        description: JDK level to test
-        default: "11"
-        required: true
 
 env:
   DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
@@ -38,14 +34,14 @@ jobs:
       repos: ${{ steps.create-list.outputs.repos }}${{ steps.input-guide.outputs.repo }}
     steps: 
       - uses: actions/checkout@v2
-      - name: Get repos
+      - name: Get default repos
         if: ${{ github.event_name == 'repository_dispatch' || github.event_name == 'workflow_dispatch' && github.event.inputs.guide == 'all' }}
         id: create-list
-        run: echo "::set-output name=repos::$(python3 .github/workflows/get-repos.py)"
-      - name: Set repo
+        run: echo "repos=[ 'guide-spring-boot' ]" >> $GITHUB_OUTPUT
+      - name: Set input repo
         if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.guide != 'all' }}
         id: input-guide
-        run: echo "::set-output name=repo::[ '${{ github.event.inputs.guide }}' ]"
+        run: echo "repo=[ '${{ github.event.inputs.guide }}' ]" >> $GITHUB_OUTPUT
   build-level:
     runs-on: ubuntu-latest
     steps:
@@ -57,7 +53,7 @@ jobs:
           echo   driver:    ${{ github.event.inputs.driver }}
           echo   guide:     ${{ github.event.inputs.guide }}
           echo   branch:    ${{ github.event.inputs.branch }}
-          echo   jdk_level: ${{ github.event.client_payload.jdk }}${{ github.event.inputs.jdk_level }}
+          echo   jdk_level: 17
           echo "Build level: ${{ github.event.client_payload.build-level }}${{ github.event.inputs.build }}"
   test-guide:
     needs: [ get-guide-repos ]
@@ -67,7 +63,7 @@ jobs:
       max-parallel: 5
       matrix:
         repos: ${{ fromJson(needs.get-guide-repos.outputs.repos) }}
-        jdk: [ "${{ github.event.client_payload.jdk }}${{ github.event.inputs.jdk_level }}" ]
+        jdk: [ "17" ]
     steps:
       - name: Setup JDK ${{ matrix.jdk }}
         uses: actions/setup-java@v1
@@ -107,7 +103,7 @@ jobs:
           BUILDLEVEL: ${{ github.event.client_payload.build-level }}${{ github.event.inputs.build }}
           DEVDATE: ${{ github.event.client_payload.dev-date }}${{ github.event.inputs.date }}
           DRIVER: ${{ github.event.client_payload.driver-location }}${{ github.event.inputs.driver }}
-        run: sudo -E ../scripts/dailyBuild.sh -t $DEVDATE -d $DRIVER -b $BUILDLEVEL -u $DOCKER_USERNAME
+        run: sudo -E ../scripts/dailyBuild.sh -t $DEVDATE -d $DRIVER -b $BUILDLEVEL -u $DOCKER_USERNAME -j ${{ matrix.jdk }}
       - name: Post tests
         working-directory: ${{ matrix.repos }}
         if: always()

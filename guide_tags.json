@@ -1,12 +1,12 @@
 {
     "guide_tags": [
         {
-            "name": "Maven",
+            "name": "maven",
             "guides": ["arquillian-managed", "getting-started", "maven-intro", "maven-multimodules"],
             "visible": "true"
         },
         {
-            "name": "Jakarta EE",
+            "name": "jakarta-ee",
             "additional_search_terms": ["Java EE", "JEE"],
             "guides": ["bean-validation", "cdi-intro", "jpa-intro", "microshed-testing", "testcontainers", "rest-client-java", "rest-intro", 
                 "security-intro", "microprofile-reactive-messaging", "microprofile-reactive-messaging-rest-integration", "reactive-messaging-sse",
@@ -14,26 +14,26 @@
             "visible": "true"
         },
         {
-            "name": "MicroProfile",
+            "name": "microprofile",
             "additional_search_terms": ["Micro Profile", "MP"],
             "guides": ["cdi-intro", "kubernetes-microprofile-config", "kubernetes-microprofile-health", "microprofile-config", 
                 "microprofile-fallback", "microprofile-health", "microprofile-istio-retry-fallback", "microprofile-jwt", 
                 "microprofile-metrics", "microprofile-openapi", "microprofile-opentracing", "microprofile-opentracing-jaeger", "microprofile-telemetry-jaeger", "microprofile-rest-client", 
-                "microprofile-rest-client-async", "microshed-testing", "testcontainers", "rest-client-java", "rest-intro", "bulkhead", 
+                "microprofile-rest-client-async", "microshed-testing", "rest-client-java", "rest-intro", "bulkhead", "testcontainers", 
                 "circuit-breaker", "microprofile-config-intro", "retry-timeout", 
                 "microprofile-reactive-messaging", "reactive-service-testing", "microprofile-reactive-messaging-rest-integration", "microprofile-reactive-messaging-acknowledgment",
                 "reactive-messaging-sse", "mongodb-intro", "microprofile-graphql"],
             "visible": "true"
         },
         {
-            "name": "Kubernetes",
+            "name": "kubernetes",
             "guides": ["cloud-aws", "cloud-azure", "cloud-ibm", "cloud-openshift", "istio-intro", "kubernetes-intro", 
                 "kubernetes-microprofile-config", "kubernetes-microprofile-health", "microprofile-istio-retry-fallback", 
                 "okd", "openshift-codeready-containers", "sessions", "cloud-google", "openliberty-operator-intro", "openliberty-operator-openshift"],
             "visible": "true"
         },
         {
-            "name": "Docker",
+            "name": "docker",
             "guides": ["cloud-aws", "cloud-azure", "cloud-ibm", "cloud-openshift", "containerize", "docker", 
                 "getting-started", "istio-intro", "kubernetes-intro", "kubernetes-microprofile-config", 
                 "kubernetes-microprofile-health", "microprofile-istio-retry-fallback", "microshed-testing", "testcontainers", "okd", 
@@ -41,112 +41,112 @@
             "visible": "true"
         },
         {
-            "name": "Cloud",
+            "name": "cloud",
             "guides": ["cloud-aws", "cloud-azure", "cloud-ibm", "cloud-openshift", "okd", "cloud-openshift-operator", "openshift-codeready-containers", 
                        "cloud-google", "openliberty-operator-openshift", "instanton-aws"],
             "visible": "true"
         },
         {
-            "name": "Reactive",
+            "name": "reactive",
             "guides": ["microprofile-reactive-messaging", "microprofile-reactive-messaging-rest-integration", "microprofile-reactive-messaging-acknowledgment", "reactive-service-testing", "microprofile-rest-client-async", "reactive-rest-client", "reactive-messaging-sse"],
             "visible": "true"
         },
         {
-            "name": "Getting Started",
+            "name": "getting-started",
             "guides": ["getting-started", "gradle-intro", "maven-intro"]
         },
         {
-            "name": "Microservices",
+            "name": "microservices",
             "guides": ["getting-started", "microprofile-telemetry-jaeger", "circuit-breaker", "microprofile-config-intro", 
             "bulkhead", "retry-timeout", "microprofile-reactive-messaging", "microprofile-reactive-messaging-rest-integration"]
         },
         {
-            "name": "Gradle",
+            "name": "gradle",
             "guides": ["gradle-intro"]
         },
         {
-            "name": "Security",
+            "name": "security",
             "guides": ["microprofile-jwt", "security-intro", "social-media-login"],
             "visible": "true"
         },
         {
-            "name": "OpenTracing",
+            "name": "opentracing",
             "guides": ["microprofile-opentracing", "microprofile-opentracing-jaeger"]
         },
         {
-            "name": "@Traced",
+            "name": "@traced",
             "guides": ["microprofile-opentracing", "microprofile-opentracing-jaeger"]
         },
         {
-            "name": "OpenTelemetry",
+            "name": "telemetry",
             "guides": ["microprofile-telemetry-jaeger"]
         },
         {
-            "name": "@WithSpan",
+            "name": "@withspan",
             "guides": ["microprofile-telemetry-jaeger"]
         },
         {
-            "name": "Testing",
-            "guides": ["microshed-testing", "testcontainers", "reactive-service-testing", "contract-testing"]
+            "name": "testing",
+            "guides": ["microshed-testing", "reactive-service-testing", "contract-testing", "testcontainers" ]
         },
         {
-            "name": "Interactive",
+            "name": "interactive",
             "guides": ["bulkhead", "circuit-breaker", "microprofile-config-intro", "retry-timeout"]
         },
         {
-            "name": "@Bulkhead",
+            "name": "@bulkhead",
             "guides": ["bulkhead"]
         },
         {
-            "name": "@Asynchronous",
+            "name": "@asynchronous",
             "guides": ["bulkhead"]
         },
         {
-            "name": "@Fallback",
+            "name": "@fallback",
             "guides": ["bulkhead", "circuit-breaker", "microprofile-fallback", "microprofile-istio-retry-fallback"]
         },
         {
-            "name": "Concurrent requests",
+            "name": "concurrent-requests",
             "guides": ["bulkhead"]
         },
         {
-            "name": "Circuit Breaker",
+            "name": "circuit-breaker",
             "guides": ["circuit-breaker"]
         },
         {
-            "name": "@CircuitBreaker",
+            "name": "@circuitbreaker",
             "guides": ["circuit-breaker"]
         },
         {
-            "name": "Fault Tolerance",
+            "name": "fault-tolerance",
             "guides": ["circuit-breaker", "retry-timeout", "microprofile-fallback", "microprofile-istio-retry-fallback"]
         },
         {
-            "name": "Config",
+            "name": "config",
             "guides": ["microprofile-config-intro", "microprofile-config", "kubernetes-microprofile-config"]
         },
         {
-            "name": "@Inject",
+            "name": "@inject",
             "guides": ["microprofile-config-intro", "microprofile-config", "cdi-intro"]
         },
         {
-            "name": "@ConfigProperty",
+            "name": "@configproperty",
             "guides": ["microprofile-config-intro", "microprofile-config"]
         },
         {
-            "name": "ConfigSource",
+            "name": "configsource",
             "guides": ["microprofile-config-intro", "microprofile-config"]
         },
         {
-            "name": "@Retry",
+            "name": "@retry",
             "guides": ["retry-timeout"]
         },
         {
-            "name": "@Timeout",
+            "name": "@timeout",
             "guides": ["retry-timeout"]
         },
         {
-            "name": "Run in cloud",
+            "name": "run-in-cloud",
             "guides": [ 
                 "rest-client-java", "getting-started", "microprofile-openapi", "rest-intro", "microprofile-rest-client-async",
                 "containerize", "microprofile-rest-client", "kubernetes-intro", "microprofile-health", "microprofile-jwt",
@@ -157,14 +157,14 @@
                 "spring-boot", "arquillian-managed", "bean-validation", "cors", "jpa-intro",
                 "microprofile-graphql", "maven-intro", "rest-client-angular", "rest-client-angularjs", "rest-client-reactjs", "rest-hateoas", "maven-multimodules",
                 "openliberty-operator-intro", "openliberty-operator-openshift",
-                "security-intro", "mongodb-intro"
+                "security-intro", "mongodb-intro", "microprofile-telemetry-jaeger"
             ],
             "visible": "true"
         },
         {
             "name": "deprecated",
             "guides": [ "microprofile-opentracing", "microprofile-opentracing-jaeger", "okd" ],
-            "alt_links":{
+            "alt_links": {
                 "microprofile-opentracing" : "microprofile-telemetry-jaeger",
                 "microprofile-opentracing-jaeger" : "microprofile-telemetry-jaeger",
                 "okd" : "openshift-codeready-containers"
