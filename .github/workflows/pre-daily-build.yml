@@ -9,6 +9,7 @@ on:
 env:
   DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
   DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+  LIBERTY_LICENSE_SHA: ${{ secrets.LIBERTY_LICENSE_SHA }}
 
 jobs:
   get-builds:

@@ -1,7 +1,7 @@
 {
     "prereqs": [
         {
-            "name": "Java SDK",
+            "name": "Java SDK 17",
             "link": "https://developer.ibm.com/languages/java/semeru-runtimes/downloads",
             "guides": ["*"]
         },
