@@ -44,7 +44,7 @@
      "reactive-rest-client"            : "/courses/course-v1:IBM+GPXX0ZG0EN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX0ZG0EN+v1/courseware/guided_project/guided_project",
      "spring-boot"                     : "/courses/course-v1:IBM+GPXX0Z2PEN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX0Z2PEN+v1/courseware/guided_project/guided_project",
      "bean-validation"                 : "/courses/course-v1:IBM+GPXX0A1YEN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX0A1YEN+v1/courseware/guided_project/guided_project",
-     "arquillian-managed"              : "/courses/course-v1:IBM+GPXX0SDXEN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX0SDXEN+v1/courseware/guided_project/guided_project",
+     "arquillian-managed"              : "/courses/course-v1:IBM+GPXX0SDXEN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX0SDXEN+v1/courseware/welcome/get_started",
      "cors"                            : "/courses/course-v1:IBM+GPXX0QJFEN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX0QJFEN+v1/courseware/guided_project/guided_project",
      "jpa-intro"                       : "/courses/course-v1:IBM+GPXX0G31EN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX0G31EN+v1/courseware/guided_project/guided_project",
      "microprofile-graphql"            : "/courses/course-v1:IBM+GPXX0BSAEN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX0BSAEN+v1/courseware/guided_project/guided_project",
