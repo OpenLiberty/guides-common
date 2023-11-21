@@ -9,7 +9,8 @@ on:
 env:
   DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
   DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-
+  CP_STG_USERNAME: ${{ secrets.CP_STG_USERNAME }}
+  CP_STG_PASSWORD: ${{ secrets.CP_STG_PASSWORD }}
 jobs:
   get-builds:
     runs-on: ubuntu-latest
@@ -101,8 +102,9 @@ jobs:
                -X POST $URI
       - name: Trigger Docker image tests
         run: |
-          docker pull "openliberty/daily:latest" -q
-          IMAGEBUILDLEVEL=$(docker inspect --format "{{ index .Config.Labels \"org.opencontainers.image.revision\"}}" openliberty/daily:latest)
+          echo $CP_STG_PASSWORD | docker login -u $CP_STG_USERNAME --password-stdin cp.stg.icr.io
+          docker pull "cp.stg.icr.io/cp/olc/open-liberty-daily:full-java11-openj9-ubi" -q
+          IMAGEBUILDLEVEL=$(docker inspect --format "{{ index .Config.Labels \"org.opencontainers.image.revision\"}}" cp.stg.icr.io/cp/olc/open-liberty-daily:full-java11-openj9-ubi)
           echo $IMAGEBUILDLEVEL
           if [ $IMAGEBUILDLEVEL == ${{ matrix.builds.build_level }} ]
           then
