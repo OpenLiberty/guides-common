@@ -24,8 +24,8 @@ on:
         required: true
 
 env:
-  DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-  DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+  DOCKER_USERNAME: ${{ secrets.CP_STG_USERNAME }}
+  DOCKER_PASSWORD: ${{ secrets.CP_STG_PASSWORD }}
   CHANGE_MINIKUBE_NONE_USER: true
 
 jobs:
@@ -77,7 +77,7 @@ jobs:
       - name: Set permissions
         run: chmod +x ${{ matrix.repos }}/scripts/*.sh
       - name: Docker login
-        run: echo $DOCKER_PASSWORD | sudo docker login -u $DOCKER_USERNAME --password-stdin
+        run: echo $DOCKER_PASSWORD | sudo docker login -u $DOCKER_USERNAME --password-stdin cp.stg.icr.io
       - name: Run tests for ${{ matrix.repos }}
         working-directory: ${{ matrix.repos }}/finish
         env:
