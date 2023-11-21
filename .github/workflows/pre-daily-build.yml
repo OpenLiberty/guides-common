@@ -104,7 +104,7 @@ jobs:
         run: |
           echo $CP_STG_PASSWORD | docker login -u $CP_STG_USERNAME --password-stdin cp.stg.icr.io
           docker pull "cp.stg.icr.io/cp/olc/open-liberty-daily:full-java11-openj9-ubi" -q
-          IMAGEBUILDLEVEL=$(docker inspect --format "{{ index .Config.Labels \"org.opencontainers.image.revision\"}}" openliberty/daily:latest)
+          IMAGEBUILDLEVEL=$(docker inspect --format "{{ index .Config.Labels \"org.opencontainers.image.revision\"}}" cp.stg.icr.io/cp/olc/open-liberty-daily:full-java11-openj9-ubi)
           echo $IMAGEBUILDLEVEL
           if [ $IMAGEBUILDLEVEL == ${{ matrix.builds.build_level }} ]
           then
