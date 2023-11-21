@@ -24,8 +24,8 @@ on:
         required: true
 
 env:
-  DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-  DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+  DOCKER_USERNAME: ${{ secrets.CP_STG_USERNAME }}
+  DOCKER_PASSWORD: ${{ secrets.CP_STG_PASSWORD }}
   CHANGE_MINIKUBE_NONE_USER: true
 
 jobs:
