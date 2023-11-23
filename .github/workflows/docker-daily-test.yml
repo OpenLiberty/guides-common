@@ -76,14 +76,14 @@ jobs:
           path: ${{ matrix.repos }}
       - name: Set permissions
         run: chmod +x ${{ matrix.repos }}/scripts/*.sh
-      - name: Docker login
-        run: echo $DOCKER_PASSWORD | sudo docker login -u $DOCKER_USERNAME --password-stdin cp.stg.icr.io
+      # - name: Docker login
+      #  run: echo $DOCKER_PASSWORD | sudo docker login -u $DOCKER_USERNAME --password-stdin cp.stg.icr.io
       - name: Run tests for ${{ matrix.repos }}
         working-directory: ${{ matrix.repos }}/finish
         env:
           DEVDATE: ${{ github.event.client_payload.dev-date }}${{ github.event.inputs.date }}
           DRIVER: ${{ github.event.client_payload.driver-location }}${{ github.event.inputs.driver }}
-        run: sudo -E ../scripts/dockerImageTest.sh -t $DEVDATE -d $DRIVER
+        run: sudo -E echo $DOCKER_PASSWORD | sudo docker login -u $DOCKER_USERNAME --password-stdin cp.stg.icr.io; ../scripts/dockerImageTest.sh -t $DEVDATE -d $DRIVER
       - name: Post tests
         working-directory: ${{ matrix.repos }}
         if: always()
