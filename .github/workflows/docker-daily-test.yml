@@ -6,13 +6,13 @@ on:
   workflow_dispatch:
     inputs:
       build:
-        description: Build level
+        description: Build level as cl231220231122-1901
         required: true
       date:
-        description: Dev date
+        description: Dev date as 2023-11-22_1901
         required: true
       driver:
-        description: Driver location
+        description: Driver location as openliberty-all-23.0.0.12-cl231220231122-1901.zip
         required: true
       guide:
         description: Guide to build
