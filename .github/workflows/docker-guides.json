@@ -2,7 +2,6 @@
     "guide-cloud-google",
     "guide-cloud-aws",
     "guide-cloud-ibm",
-    "guide-cloud-openshift",
     "guide-docker",
     "guide-getting-started",
     "guide-istio-intro",
