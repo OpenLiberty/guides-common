@@ -38,7 +38,7 @@ jobs:
     steps:
       - name: No builds found
         run: echo "No builds found for $(date -d 'yesterday' '+%Y-%m-%d')"
-  trigger-builds:
+  trigger-test:
     runs-on: ubuntu-latest
     needs: [ get-builds ]
     if: ${{ needs.get-builds.outputs.empty == 'false' }}
@@ -63,4 +63,6 @@ jobs:
                  -H "Authorization: token $GH_TOKEN" \
                  -d "{ \"event_type\": \"docker-image-test\", \"client_payload\": $PAYLOAD }" \
                  -X POST $URI
+          else
+            echo Skip test because "$IMAGEBUILDLEVEL" and "${{ matrix.builds.build_level }}" do not match!
           fi
