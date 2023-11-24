@@ -1,0 +1,66 @@
+name: Trigger Docker Daily Build Test Action
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 12 = 12 PM UTC or 6 AM EST
+    - cron: 0 12 * * *
+
+env:
+  CP_STG_USERNAME: ${{ secrets.CP_STG_USERNAME }}
+  CP_STG_PASSWORD: ${{ secrets.CP_STG_PASSWORD }}
+jobs:
+  get-builds:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.create-matrix.outputs.matrix }}
+      empty: ${{ steps.create-matrix.outputs.empty }}
+    steps: 
+      - uses: actions/checkout@v2
+      - name: Get build matrix
+        id: create-matrix
+        run: |
+          BUILDS=$(python3 .github/workflows/get-builds.py)
+          echo "Builds found"
+          echo $BUILDS
+          matrix="{ \"builds\":$BUILDS }"
+          echo "::set-output name=matrix::$matrix" 
+          if [ "$BUILDS" = "[]" ]
+          then
+            echo "::set-output name=empty::true"
+          else
+            echo "::set-output name=empty::false"
+          fi
+  no-builds:
+    runs-on: ubuntu-latest
+    needs: get-builds
+    if: ${{ needs.get-builds.outputs.empty == 'true' }}
+    steps:
+      - name: No builds found
+        run: echo "No builds found for $(date -d 'yesterday' '+%Y-%m-%d')"
+  trigger-builds:
+    runs-on: ubuntu-latest
+    needs: [ get-builds ]
+    if: ${{ needs.get-builds.outputs.empty == 'false' }}
+    strategy:
+      matrix: ${{ fromJson(needs.get-builds.outputs.matrix) }}
+    env:
+      GH_TOKEN: ${{ secrets.ADMIN_TOKEN }}
+      URI: "https://api.github.com/repos/OpenLiberty/guides-common/dispatches"
+      ACCEPT_HEADER: "application/vnd.github.v3+json"
+      PAYLOAD: '{ "dev-date": "${{ matrix.builds.date }}", "driver-location": "${{ matrix.builds.driver_location }}", "build-level": "${{ matrix.builds.build_level }}", "jdk": "11" }'
+      PAYLOAD_JAVA17: '{ "dev-date": "${{ matrix.builds.date }}", "driver-location": "${{ matrix.builds.driver_location }}", "build-level": "${{ matrix.builds.build_level }}", "jdk": "17" }'
+    steps:
+      - name: Trigger Docker image tests
+        run: |
+          echo $CP_STG_PASSWORD | docker login -u $CP_STG_USERNAME --password-stdin cp.stg.icr.io
+          docker pull "cp.stg.icr.io/cp/olc/open-liberty-daily:full-java11-openj9-ubi" -q
+          IMAGEBUILDLEVEL=$(docker inspect --format "{{ index .Config.Labels \"org.opencontainers.image.revision\"}}" cp.stg.icr.io/cp/olc/open-liberty-daily:full-java11-openj9-ubi)
+          echo $IMAGEBUILDLEVEL
+          if [ $IMAGEBUILDLEVEL == ${{ matrix.builds.build_level }} ]
+          then
+            curl -H "Accept: $ACCEPT_HEADER" \
+                 -H "Authorization: token $GH_TOKEN" \
+                 -d "{ \"event_type\": \"docker-image-test\", \"client_payload\": $PAYLOAD }" \
+                 -X POST $URI
+          fi
