@@ -63,6 +63,10 @@ jobs:
                  -H "Authorization: token $GH_TOKEN" \
                  -d "{ \"event_type\": \"docker-image-test\", \"client_payload\": $PAYLOAD_JAVA17 }" \
                  -X POST $URI
+            curl -H "Accept: $ACCEPT_HEADER" \
+                 -H "Authorization: token $GH_TOKEN" \
+                 -d "{ \"event_type\": \"docker-image-test-java17\", \"client_payload\": $PAYLOAD_JAVA17 }" \
+                 -X POST $URI
           else
             echo Skip test because "$IMAGEBUILDLEVEL" and "${{ matrix.builds.build_level }}" do not match!
           fi
