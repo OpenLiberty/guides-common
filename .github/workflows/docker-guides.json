@@ -13,7 +13,6 @@
     "guide-microprofile-reactive-messaging-rest-integration",
     "guide-microprofile-rest-client-async",
     "guide-microprofile-istio-retry-fallback",
-    "guide-okd",
     "guide-reactive-rest-client",
     "guide-sessions",
     "guide-graphql-client"
