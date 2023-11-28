@@ -48,7 +48,7 @@ jobs:
       URI: "https://api.github.com/repos/OpenLiberty/guides-common/dispatches"
       ACCEPT_HEADER: "application/vnd.github.v3+json"
       CONTENT_TYPE: "application/json"
-      PAYLOAD: '{ "dev-date": "${{ github.event.inputs.date }}", "driver-location": "${{ github.event.inputs.driver_location }}", "build-level": "${{ github.event.inputs.build_level }}", "jdk": "11" }'
+      PAYLOAD: '{ "dev-date": "${{ github.event.inputs.date }}", "driver-location": "${{ github.event.inputs.driver_location }}", "build-level": "${{ github.event.inputs.build_level }}", "jdk": "17" }'
     steps:
       - name: Trigger daily builds
         run: |
