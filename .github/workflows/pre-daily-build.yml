@@ -85,6 +85,7 @@ jobs:
       CONTENT_TYPE: "application/json"
       PAYLOAD: '{ "dev-date": "${{ matrix.builds.date }}", "driver-location": "${{ matrix.builds.driver_location }}", "build-level": "${{ matrix.builds.build_level }}", "jdk": "11" }'
       PAYLOAD_JAVA17: '{ "dev-date": "${{ matrix.builds.date }}", "driver-location": "${{ matrix.builds.driver_location }}", "build-level": "${{ matrix.builds.build_level }}", "jdk": "17" }'
+      PAYLOAD_JAVA21: '{ "dev-date": "${{ matrix.builds.date }}", "driver-location": "${{ matrix.builds.driver_location }}", "build-level": "${{ matrix.builds.build_level }}", "jdk": "21" }'
     steps:
       - name: Trigger daily builds for Java 11
         run: |
@@ -97,4 +98,10 @@ jobs:
           curl -H "Accept: $ACCEPT_HEADER" \
                -H "Authorization: token $GH_TOKEN" \
                -d "{ \"event_type\": \"daily-build-java17\", \"client_payload\": $PAYLOAD_JAVA17 }" \
+               -X POST $URI
+      - name: Trigger daily builds for Java 21
+        run: |
+          curl -H "Accept: $ACCEPT_HEADER" \
+               -H "Authorization: token $GH_TOKEN" \
+               -d "{ \"event_type\": \"daily-build-java21\", \"client_payload\": $PAYLOAD_JAVA21 }" \
                -X POST $URI
