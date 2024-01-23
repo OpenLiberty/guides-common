@@ -1,0 +1,123 @@
+name: Test Docker Daily Build - Java 21
+
+on:
+  repository_dispatch:
+    types: [ docker-image-test-java21 ]
+  workflow_dispatch:
+    inputs:
+      build:
+        description: Build level as cl231220231122-1901
+        required: true
+      date:
+        description: Dev date as 2023-11-22_1901
+        required: true
+      driver:
+        description: Driver location as openliberty-all-23.0.0.12-cl231220231122-1901.zip
+        required: true
+      guide:
+        description: Guide to build
+        default: "all"
+        required: true
+      branch:
+        description: Branch to test
+        required: false
+
+env:
+  DOCKER_USERNAME: ${{ secrets.CP_STG_USERNAME }}
+  DOCKER_PASSWORD: ${{ secrets.CP_STG_PASSWORD }}
+  CHANGE_MINIKUBE_NONE_USER: true
+
+jobs:
+  get-repos:
+    runs-on: ubuntu-latest
+    outputs:
+      repos: ${{ steps.create-list.outputs.repos }}${{ steps.input-guide.outputs.repo }}
+    steps: 
+      - uses: actions/checkout@v2
+      - name: Get repos
+        if: ${{ github.event_name == 'repository_dispatch' || github.event_name == 'workflow_dispatch' && github.event.inputs.guide == 'all' }}
+        id: create-list
+        run: echo "repos=[ 'guide-jpa-intro' ]" >> $GITHUB_OUTPUT
+      - name: Set repo
+        if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.guide != 'all' }}
+        id: input-guide
+        run: echo "::set-output name=repo::[ '${{ github.event.inputs.guide }}' ]"
+  build-level:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Starting daily build tests for ${{ github.event.client_payload.build-level }}${{ github.event.inputs.build }}
+        run: |
+          echo "Inputs: "
+          echo   build:     ${{ github.event.inputs.build }}
+          echo   date:      ${{ github.event.inputs.date }}
+          echo   driver:    ${{ github.event.inputs.driver }}
+          echo   guide:     ${{ github.event.inputs.guide }}
+          echo   branch:    ${{ github.event.inputs.branch }}
+          echo "Build level: ${{ github.event.client_payload.build-level }}${{ github.event.inputs.build }}"
+  test-guide:
+    needs: [ get-repos ]
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 5
+      matrix:
+        repos: ${{ fromJson(needs.get-repos.outputs.repos) }}
+        jdk: [ "21" ]
+    steps:
+      - name: Setup JDK ${{ matrix.jdk }}
+        uses: actions/setup-java@v1
+        with:
+          java-version: ${{ matrix.jdk }}
+      - name: Clone ${{ matrix.repos }}
+        uses: actions/checkout@v2
+        with:
+          repository: OpenLiberty/${{ matrix.repos }}
+          ref: ${{ github.event.inputs.branch }}
+          path: ${{ matrix.repos }}
+      - name: Set permissions
+        run: chmod +x ${{ matrix.repos }}/scripts/*.sh
+      - name: Docker login
+        run: echo $DOCKER_PASSWORD | sudo docker login -u $DOCKER_USERNAME --password-stdin cp.stg.icr.io
+      - name: Run tests for ${{ matrix.repos }}
+        working-directory: ${{ matrix.repos }}/finish
+        env:
+          DEVDATE: ${{ github.event.client_payload.dev-date }}${{ github.event.inputs.date }}
+          DRIVER: ${{ github.event.client_payload.driver-location }}${{ github.event.inputs.driver }}
+        run: sudo -E ../scripts/dockerImageTest.sh -t $DEVDATE -d $DRIVER
+      - name: Post tests
+        working-directory: ${{ matrix.repos }}
+        if: always()
+        run: |
+          logsPath=$(sudo find . -name "console.log");
+          if [ -z "$logsPath" ]
+            then 
+              logsPath=$(sudo find . -name "messages.log");
+              if [ ! -z "$logsPath" ]
+                then
+                  sudo cat $logsPath | grep product
+                  sudo cat $logsPath | grep java.runtime
+              fi
+            else sudo cat $logsPath | grep Launching
+          fi;
+          sudo docker images
+      - name: Archive server logs if failed
+        if: failure()
+        uses: actions/upload-artifact@v2
+        with:
+          name: server-logs
+          path: ${{ matrix.repos }}/finish/target/liberty/wlp/usr/servers/defaultServer/logs/
+  slack-alert:
+    needs: [ test-guide ]
+    if: failure()
+    runs-on: ubuntu-latest
+    env:
+      BUILDLEVEL: ${{ github.event.client_payload.build-level }}${{ github.event.inputs.build }}
+      DEVDATE: ${{ github.event.client_payload.dev-date }}${{ github.event.inputs.date }}
+      DRIVER: ${{ github.event.client_payload.driver-location }}${{ github.event.inputs.driver }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: send-status
+        run: |
+          python3 .github/workflows/slack-alert.py ${{ env.BUILDLEVEL }} ${{ env.DRIVER }} ${{ env.DEVDATE }} ${{ needs.test-guide.result }} \
+          ${{ github.repository }} ${{ github.run_id }} ${{ secrets.SLACK_HOOK }} 
+          echo ${{ needs.test-guide.result }}
