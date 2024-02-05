@@ -15,5 +15,6 @@
     "guide-microprofile-istio-retry-fallback",
     "guide-reactive-rest-client",
     "guide-sessions",
-    "guide-graphql-client"
+    "guide-graphql-client",
+    "guide-testcontainers"
 ]
