@@ -62,6 +62,6 @@
      "graphql-client"                  : "/courses/course-v1:IBM+GPXX04S5EN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX04S5EN+v1/courseware/guided_project/guided_project",
      "grpc-intro"                      : "/courses/course-v1:IBM+GPXX0BCEN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX0BCEN+v1/courseware/guided_project/guided_project",
      "microprofile-telemetry-jaeger"   : "/courses/course-v1:IBM+GPXX0SXIEN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX0SXIEN+v1/courseware/guided_project/guided_project",
-     "testcontainers"                  : "/courses/course-v1:OpenLiberty+GPXX0LEREN+v1/auto_enroll?next=/courses/course-v1:OpenLiberty+GPXX0LEREN+v1/courseware/guided_project/guided_project"
+     "testcontainers"                  : "/courses/course-v1:OpenLiberty+GPXX0LEREN+v1/auto_enroll?next=/courses/course-v1:OpenLiberty+GPXX0LEREN+v1/courseware"
    }
 }
