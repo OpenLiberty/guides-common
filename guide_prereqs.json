@@ -4,7 +4,12 @@
             "name": "Java SDK",
             "link": "https://developer.ibm.com/languages/java/semeru-runtimes/downloads",
             "guides": ["*"], 
-            "exclude": ["jpa-intro"]
+            "exclude": ["jpa-intro", "contract-testing"]
+        },
+        {
+            "name": "Java SDK 17+",
+            "link": "https://developer.ibm.com/languages/java/semeru-runtimes/downloads",
+            "guides": ["contract-testing"]
         },
         {
             "name": "Java SDK 21",
