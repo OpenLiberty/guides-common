@@ -22,6 +22,9 @@ elif [ $(echo $ALL_FILES | jq 'length') = 1 ] && [ $(echo $ALL_FILES | jq '.[0]'
 elif [ $(echo $ALL_FILES | jq 'length') = 1 ] && [ $(echo $ALL_FILES | jq '.[0]' | tr -d '"') = "scripts/dockerImageTest.sh" ]; then
     echo "Test can be skipped because only dockerImageTest.sh was updated"
     echo "::set-output name=canSkip::true"
+elif [ $(echo $ALL_FILES | jq 'length') = 1 ] && [ $(echo $ALL_FILES | jq '.[0]' | tr -d '"') = ".github/dependabot.yml" ]; then
+    echo "Test can be skipped because only dependabot.yml was updated"
+    echo "::set-output name=canSkip::true"
 else
     echo "Need to run test"
     echo "::set-output name=canSkip::false"
