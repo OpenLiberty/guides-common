@@ -44,6 +44,6 @@ jobs:
           GH_TOKEN: ${{ secrets.ADMIN_BACKLOG  }}
           MAX_REPO: 50
         run: |
-          gh auth login --with-token < echo ${{ secrets.ADMIN_BACKLOG }}
+          echo ${{ secrets.ADMIN_BACKLOG }} | gh auth login --with-token
           pr_urls=$(gh search prs --repo ${{ matrix.repos }} label:dependencies --state open --json 'url' | jq -c '[.[].url]')
           echo "pr_urls=${pr_urls}" >> $GITHUB_OUTPUT
