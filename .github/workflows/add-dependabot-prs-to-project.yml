@@ -1,0 +1,48 @@
+name: Add PRs to Dependabot PRs dashboard
+
+on:
+  workflow_dispatch:
+    inputs:
+       guide:
+         description: Guide to build
+         default: "all"
+         required: true
+
+jobs:
+  get-guide-repos:
+    runs-on: ubuntu-latest
+    outputs:
+      repos: ${{ steps.create-list.outputs.repos }}${{ steps.input-guide.outputs.repo }}
+    steps: 
+      - uses: actions/checkout@v2
+      - name: Get event name
+        run: echo ${{github.event_name}}
+      - name: Get repos
+        if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.guide == 'all' }}
+        id: create-list
+        run: echo "::set-output name=repos::$(python3 .github/workflows/get-repos.py)"
+      - name: Set repo
+        if: ${{ github.event.inputs.guide != 'all' }}
+        id: input-guide
+        run: echo "::set-output name=repo::[ '${{ github.event.inputs.guide }}' ]"
+        
+  get_prs:
+    name: Get dependabot PRs
+    needs: [ get-guide-repos ]
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 5
+      matrix:
+        repos: ${{ fromJson(needs.get-guide-repos.outputs.repos) }}
+    outputs:
+      urls: ${{ steps.get_pr.outputs.pr_urls }}
+    steps:
+      - name: Get current repositories
+        id: get_pr
+        env:
+          GH_TOKEN: ${{ secrets.ADMIN_BACKLOG  }}
+          MAX_REPO: 50
+        run: |
+          pr_urls=$(gh search prs --repo ${{ matrix.repos }} label:dependencies --state open --json 'url' | jq -c '[.[].url]')
+          echo "pr_urls=${pr_urls}" >> $GITHUB_OUTPUT
