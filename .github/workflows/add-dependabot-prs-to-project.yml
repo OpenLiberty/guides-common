@@ -41,7 +41,6 @@ jobs:
       - name: Get current repositories
         id: get_pr
         env:
-          GH_TOKEN: ${{ secrets.ADMIN_BACKLOG  }}
           MAX_REPO: 50
         run: |
           echo ${{ secrets.ADMIN_BACKLOG }} | gh auth login --with-token
