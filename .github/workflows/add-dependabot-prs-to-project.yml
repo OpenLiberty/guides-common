@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
        guide:
-         description: Guide to build
+         description: Guide to check
          default: "all"
          required: true
 
@@ -43,6 +43,6 @@ jobs:
         env:
           MAX_REPO: 50
         run: |
-          echo ${{ secrets.ADMIN_BACKLOG }} | gh auth login --with-token
+          echo ${{ secrets.ADMIN_TOKEN }} | gh auth login --with-token
           pr_urls=$(gh search prs --repo ${{ matrix.repos }} label:dependencies --state open --json 'url' | jq -c '[.[].url]')
           echo "pr_urls=${pr_urls}" >> $GITHUB_OUTPUT
