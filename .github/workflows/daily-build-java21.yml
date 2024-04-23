@@ -23,8 +23,8 @@ on:
         required: false
 
 env:
-  DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-  DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+  #DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+  #DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
   CHANGE_MINIKUBE_NONE_USER: true
 
 jobs:
@@ -77,33 +77,33 @@ jobs:
           path: ${{ matrix.repos }}
       - name: Set permissions
         run: chmod +x ${{ matrix.repos }}/scripts/*.sh
-      - name: Docker login for runner
-        run: |
-          if [ "${{ matrix.repos }}" = "guide-liberty-deep-dive-gradle" ]
-          then
-            echo podman login
-            echo $DOCKER_PASSWORD | podman login docker.io -u $DOCKER_USERNAME --password-stdin
-          else
-            echo docker login
-            echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
-          fi
-      - name: Docker login for root
-        run: |
-          if [ "${{ matrix.repos }}" = "guide-liberty-deep-dive-gradle" ]
-          then
-            echo podman login
-            echo $DOCKER_PASSWORD | sudo podman login docker.io -u $DOCKER_USERNAME --password-stdin
-          else
-            echo docker login
-            echo $DOCKER_PASSWORD | sudo docker login -u $DOCKER_USERNAME --password-stdin
-          fi
+      #- name: Docker login for runner
+      #  run: |
+      #    if [ "${{ matrix.repos }}" = "guide-liberty-deep-dive-gradle" ]
+      #    then
+      #      echo podman login
+      #      echo $DOCKER_PASSWORD | podman login docker.io -u $DOCKER_USERNAME --password-stdin
+      #    else
+      #      echo docker login
+      #      echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+      #    fi
+      #- name: Docker login for root
+      #  run: |
+      #    if [ "${{ matrix.repos }}" = "guide-liberty-deep-dive-gradle" ]
+      #    then
+      #      echo podman login
+      #      echo $DOCKER_PASSWORD | sudo podman login docker.io -u $DOCKER_USERNAME --password-stdin
+      #    else
+      #      echo docker login
+      #      echo $DOCKER_PASSWORD | sudo docker login -u $DOCKER_USERNAME --password-stdin
+      #    fi
       - name: Run tests for ${{ matrix.repos }}
         working-directory: ${{ matrix.repos }}/finish
         env:
           BUILDLEVEL: ${{ github.event.client_payload.build-level }}${{ github.event.inputs.build }}
           DEVDATE: ${{ github.event.client_payload.dev-date }}${{ github.event.inputs.date }}
           DRIVER: ${{ github.event.client_payload.driver-location }}${{ github.event.inputs.driver }}
-        run: sudo -E ../scripts/dailyBuild.sh -t $DEVDATE -d $DRIVER -b $BUILDLEVEL -u $DOCKER_USERNAME -j ${{ matrix.jdk }}
+        run: sudo -E ../scripts/dailyBuild.sh -t $DEVDATE -d $DRIVER -b $BUILDLEVEL -j ${{ matrix.jdk }}
       - name: Post tests
         working-directory: ${{ matrix.repos }}
         if: always()
