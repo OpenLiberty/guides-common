@@ -14,8 +14,9 @@
     "guide-microprofile-reactive-messaging-rest-integration",
     "guide-microprofile-rest-client-async",
     "guide-microprofile-istio-retry-fallback",
-    "guide-reactive-rest-client",
     "guide-reactive-messaging-sse",
+    "guide-reactive-rest-client",
+    "guide-reactive-service-testing",
     "guide-sessions",
     "guide-testcontainers"
 ]
