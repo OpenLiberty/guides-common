@@ -4,6 +4,7 @@
     "guide-cloud-ibm",
     "guide-cloud-openshift-operator ",
     "guide-containerize",
+    "guide-containerize-podman",
     "guide-docker",
     "guide-getting-started",
     "guide-graphql-client",
