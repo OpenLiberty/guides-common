@@ -1,9 +1,10 @@
 [
-    "guide-cloud-google",
     "guide-cloud-aws",
+    "guide-cloud-google",
     "guide-cloud-ibm",
     "guide-docker",
     "guide-getting-started",
+    "guide-graphql-client",
     "guide-istio-intro",
     "guide-kubernetes-intro",
     "guide-kubernetes-microprofile-config",
@@ -14,7 +15,7 @@
     "guide-microprofile-rest-client-async",
     "guide-microprofile-istio-retry-fallback",
     "guide-reactive-rest-client",
+    "guide-reactive-messaging-sse",
     "guide-sessions",
-    "guide-graphql-client",
     "guide-testcontainers"
 ]
