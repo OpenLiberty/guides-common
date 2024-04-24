@@ -2,6 +2,7 @@
     "guide-cloud-aws",
     "guide-cloud-google",
     "guide-cloud-ibm",
+    "guide-containerize",
     "guide-docker",
     "guide-getting-started",
     "guide-graphql-client",
