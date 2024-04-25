@@ -2,7 +2,7 @@
     "guide-cloud-aws",
     "guide-cloud-google",
     "guide-cloud-ibm",
-    "guide-cloud-openshift-operator ",
+    "guide-cloud-openshift-operator",
     "guide-containerize",
     "guide-containerize-podman",
     "guide-docker",
