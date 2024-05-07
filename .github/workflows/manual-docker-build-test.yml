@@ -1,0 +1,161 @@
+name: Manual docker build test
+
+on:
+  repository_dispatch:
+    types: [ daily-build ]
+  workflow_dispatch:
+    inputs:
+      build:
+        description: Build level
+        required: true
+      date:
+        description: Dev date
+        required: true
+      driver:
+        description: Driver location
+        required: true
+      guide:
+        description: Guide to build
+        default: "all"
+        required: true
+      branch:
+        description: Branch to test
+        required: false
+      jdk_level:
+        description: JDK level to test
+        default: "11"
+        required: true
+
+env:
+  DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+  DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+  CHANGE_MINIKUBE_NONE_USER: true
+
+jobs:
+  get-guide-repos:
+    runs-on: ubuntu-latest
+    outputs:
+      repos: ${{ steps.create-list.outputs.repos }}${{ steps.input-guide.outputs.repo }}
+    steps: 
+      - uses: actions/checkout@v2
+      - name: Get repos
+        if: ${{ github.event_name == 'repository_dispatch' || github.event_name == 'workflow_dispatch' && github.event.inputs.guide == 'all' }}
+        id: create-list
+        run: echo "::set-output name=repos::$(python3 .github/workflows/get-docker-guides.py)"
+      - name: Set repo
+        if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.guide != 'all' }}
+        id: input-guide
+        run: echo "::set-output name=repo::[ '${{ github.event.inputs.guide }}' ]"
+  build-level:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Starting daily build tests for ${{ github.event.client_payload.build-level }}${{ github.event.inputs.build }}
+        run: |
+          echo "Inputs: "
+          echo   build:     ${{ github.event.inputs.build }}
+          echo   date:      ${{ github.event.inputs.date }}
+          echo   driver:    ${{ github.event.inputs.driver }}
+          echo   guide:     ${{ github.event.inputs.guide }}
+          echo   branch:    ${{ github.event.inputs.branch }}
+          echo   jdk_level: ${{ github.event.client_payload.jdk }}${{ github.event.inputs.jdk_level }}
+          echo "Build level: ${{ github.event.client_payload.build-level }}${{ github.event.inputs.build }}"
+  test-guide:
+    needs: [ get-guide-repos ]
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 5
+      matrix:
+        repos: ${{ fromJson(needs.get-guide-repos.outputs.repos) }}
+        jdk: [ "${{ github.event.client_payload.jdk }}${{ github.event.inputs.jdk_level }}" ]
+    steps:
+      - name: Setup JDK ${{ matrix.jdk }}
+        uses: actions/setup-java@v1
+        with:
+          java-version: ${{ matrix.jdk }}
+      - name: Clone ${{ matrix.repos }}
+        uses: actions/checkout@v2
+        with:
+          repository: OpenLiberty/${{ matrix.repos }}
+          ref: ${{ github.event.inputs.branch }}
+          path: ${{ matrix.repos }}
+      - name: Set permissions
+        run: chmod +x ${{ matrix.repos }}/scripts/*.sh
+      - name: Docker login for runner
+        run: |
+          if [ "${{ matrix.repos }}" = "guide-liberty-deep-dive-gradle" ]
+          then
+            echo podman login
+            echo $DOCKER_PASSWORD | podman login docker.io -u $DOCKER_USERNAME --password-stdin
+          else
+            echo docker login
+            echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+          fi
+      - name: Docker login for root
+        run: |
+          if [ "${{ matrix.repos }}" = "guide-liberty-deep-dive-gradle" ]
+          then
+            echo podman login
+            echo $DOCKER_PASSWORD | sudo podman login docker.io -u $DOCKER_USERNAME --password-stdin
+          else
+            echo docker login
+            echo $DOCKER_PASSWORD | sudo docker login -u $DOCKER_USERNAME --password-stdin
+          fi
+      - name: Run tests for ${{ matrix.repos }}
+        working-directory: ${{ matrix.repos }}/finish
+        env:
+          BUILDLEVEL: ${{ github.event.client_payload.build-level }}${{ github.event.inputs.build }}
+          DEVDATE: ${{ github.event.client_payload.dev-date }}${{ github.event.inputs.date }}
+          DRIVER: ${{ github.event.client_payload.driver-location }}${{ github.event.inputs.driver }}
+        run: sudo -E ../scripts/dailyBuild.sh -t $DEVDATE -d $DRIVER -b $BUILDLEVEL -u $DOCKER_USERNAME -j ${{ matrix.jdk }}
+      - name: Post tests
+        working-directory: ${{ matrix.repos }}
+        if: always()
+        run: |
+          mvn -version
+          sudo chmod -R 777 .
+          logsPath=$(sudo find . -name "console.log");
+          if [ -z "$logsPath" ]
+            then 
+              logsPath=$(sudo find . -name "messages.log");
+              if [ -z "$logsPath" ]
+                then sudo docker images
+                else
+                  sudo cat $logsPath | grep product
+                  sudo cat $logsPath | grep java.runtime
+              fi
+            else sudo cat $logsPath | grep Launching
+          fi
+      - name: Archive server logs if failed
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ matrix.repos }}-logs
+          path: |
+            ${{ matrix.repos }}/finish/target/liberty/wlp/usr/servers/defaultServer/logs/
+            ${{ matrix.repos }}/start/target/liberty/wlp/usr/servers/defaultServer/logs/
+            ${{ matrix.repos }}/finish/**/target/liberty/wlp/usr/servers/defaultServer/logs/
+            ${{ matrix.repos }}/start/**/target/liberty/wlp/usr/servers/defaultServer/logs/
+          if-no-files-found: ignore
+      - name: Archive npm logs if failed
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ matrix.repos }}-npm-logs
+          path: ~/.npm/_logs
+          if-no-files-found: ignore
+  slack-alert:
+    needs: [test-guide]
+    if: failure()
+    runs-on: ubuntu-latest
+    env:
+      BUILDLEVEL: ${{ github.event.client_payload.build-level }}${{ github.event.inputs.build }}
+      DEVDATE: ${{ github.event.client_payload.dev-date }}${{ github.event.inputs.date }}
+      DRIVER: ${{ github.event.client_payload.driver-location }}${{ github.event.inputs.driver }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: send-status
+        run: |
+          python3 .github/workflows/slack-alert.py ${{ env.BUILDLEVEL }} ${{ env.DRIVER }} ${{ env.DEVDATE }} ${{ needs.test-guide.result }} \
+          ${{ github.repository }} ${{ github.run_id }} ${{ secrets.SLACK_HOOK }} 
+          echo ${{ needs.test-guide.result }}
