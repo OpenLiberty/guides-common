@@ -2,7 +2,7 @@ name: Manual docker build test
 
 on:
   repository_dispatch:
-    types: [ daily-build ]
+    types: [ manual-daily-build ]
   workflow_dispatch:
     inputs:
       build:
