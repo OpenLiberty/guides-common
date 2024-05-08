@@ -65,3 +65,9 @@ jobs:
                -H "Authorization: token $GH_TOKEN" \
                -d "{ \"event_type\": \"manual-daily-build\", \"client_payload\": $PAYLOAD }" \
                -X POST $URI
+      - name: Trigger daily builds for Java 17
+        run: |
+          curl -H "Accept: $ACCEPT_HEADER" \
+               -H "Authorization: token $GH_TOKEN" \
+               -d "{ \"event_type\": \"manual-daily-build-java17\", \"client_payload\": $PAYLOAD }" \
+               -X POST $URI
