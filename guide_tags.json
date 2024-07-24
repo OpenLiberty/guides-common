@@ -16,7 +16,7 @@
         {
             "name": "microprofile",
             "additional_search_terms": ["Micro Profile", "MP"],
-            "guides": ["cdi-intro", "kubernetes-microprofile-config", "kubernetes-microprofile-health", "microprofile-config", 
+            "guides": ["cdi-intro", "kubernetes-microprofile-config", "kubernetes-microprofile-health", "microprofile-config", "microprofile-config-profile",
                 "microprofile-fallback", "microprofile-health", "microprofile-istio-retry-fallback", "microprofile-jwt", 
                 "microprofile-metrics", "microprofile-openapi", "microprofile-telemetry-jaeger", "microprofile-opentracing", "microprofile-opentracing-jaeger", "microprofile-rest-client", 
                 "microprofile-rest-client-async", "microshed-testing", "rest-client-java", "rest-intro", "bulkhead", 
@@ -123,7 +123,7 @@
         },
         {
             "name": "config",
-            "guides": ["microprofile-config-intro", "microprofile-config", "kubernetes-microprofile-config"]
+            "guides": ["microprofile-config-intro", "microprofile-config", "kubernetes-microprofile-config", "microprofile-config-profile"]
         },
         {
             "name": "@inject",
