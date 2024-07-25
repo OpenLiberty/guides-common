@@ -12,6 +12,7 @@
     "guide-kubernetes-intro",
     "guide-kubernetes-microprofile-config",
     "guide-kubernetes-microprofile-health",
+    "guide-microprofile-config-profile",
     "guide-microprofile-reactive-messaging",
     "guide-microprofile-reactive-messaging-acknowledgment",
     "guide-microprofile-reactive-messaging-rest-integration",
