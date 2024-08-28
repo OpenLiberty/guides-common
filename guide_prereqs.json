@@ -1,9 +1,20 @@
 {
     "prereqs": [
         {
-            "name": "Java SDK 17",
+            "name": "Java SDK",
             "link": "https://developer.ibm.com/languages/java/semeru-runtimes/downloads",
-            "guides": ["*"]
+            "guides": ["*"], 
+            "exclude": ["jpa-intro", "contract-testing"]
+        },
+        {
+            "name": "Java SDK 17+",
+            "link": "https://developer.ibm.com/languages/java/semeru-runtimes/downloads",
+            "guides": ["contract-testing"]
+        },
+        {
+            "name": "Java SDK 21",
+            "link": "https://developer.ibm.com/languages/java/semeru-runtimes/downloads",
+            "guides": ["jpa-intro"]
         },
         {
             "name": "Git",
