@@ -1,4 +1,4 @@
-name: Manual docker build test
+name: (Deprecated) Manual docker build test
 
 on:
   repository_dispatch:
