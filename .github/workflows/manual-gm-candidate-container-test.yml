@@ -1,18 +1,16 @@
-name:  (Deprecated) Manual docker build test - Java 17
+name: Manual GM candidate container test
 
 on:
-  repository_dispatch:
-    types: [ manual-daily-build-java17 ]
   workflow_dispatch:
     inputs:
       build:
-        description: Build level
+        description: Build level as cl241020240923-1638
         required: true
       date:
-        description: Dev date
+        description: Dev date as 2024-09-23_1638
         required: true
-      driver:
-        description: Driver location
+      ol_version:
+        description: OL version as 24.0.0.10
         required: true
       guide:
         description: Guide to build
@@ -21,10 +19,14 @@ on:
       branch:
         description: Branch to test
         required: false
+      jdk_level:
+        description: JDK level to test
+        default: "11"
+        required: true
 
 env:
-  DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-  DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+  DOCKER_USERNAME: ${{ secrets.CP_STG_USERNAME }}
+  DOCKER_PASSWORD: ${{ secrets.CP_STG_PASSWORD }}
   CHANGE_MINIKUBE_NONE_USER: true
 
 jobs:
@@ -37,7 +39,7 @@ jobs:
       - name: Get repos
         if: ${{ github.event_name == 'repository_dispatch' || github.event_name == 'workflow_dispatch' && github.event.inputs.guide == 'all' }}
         id: create-list
-        run: echo "repos=[ 'guide-spring-boot', 'guide-liberty-deep-dive' ]" >> $GITHUB_OUTPUT
+        run: echo "::set-output name=repos::$(python3 .github/workflows/get-docker-guides.py)"
       - name: Set repo
         if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.guide != 'all' }}
         id: input-guide
@@ -45,16 +47,16 @@ jobs:
   build-level:
     runs-on: ubuntu-latest
     steps:
-      - name: Starting daily build tests for ${{ github.event.client_payload.build-level }}${{ github.event.inputs.build }}
+      - name: Starting GM candidate container tests for ${{ github.event.inputs.build }}
         run: |
           echo "Inputs: "
-          echo   build:     ${{ github.event.inputs.build }}
-          echo   date:      ${{ github.event.inputs.date }}
-          echo   driver:    ${{ github.event.inputs.driver }}
-          echo   guide:     ${{ github.event.inputs.guide }}
-          echo   branch:    ${{ github.event.inputs.branch }}
-          echo   jdk_level: ${{ github.event.client_payload.jdk }}${{ github.event.inputs.jdk_level }}
-          echo "Build level: ${{ github.event.client_payload.build-level }}${{ github.event.inputs.build }}"
+          echo   build:      ${{ github.event.inputs.build }}
+          echo   date:       ${{ github.event.inputs.date }}
+          echo   ol_version: ${{ github.event.inputs.ol_version }}
+          echo   driver:     openliberty-all-${{ github.event.inputs.ol_version }}-${{ github.event.inputs.build }}.zip
+          echo   guide:      ${{ github.event.inputs.guide }}
+          echo   branch:     ${{ github.event.inputs.branch }}
+          echo   jdk_level:  ${{ github.event.inputs.jdk_level }}
   test-guide:
     needs: [ get-guide-repos ]
     runs-on: ubuntu-latest
@@ -63,7 +65,7 @@ jobs:
       max-parallel: 5
       matrix:
         repos: ${{ fromJson(needs.get-guide-repos.outputs.repos) }}
-        jdk: [ "17" ]
+        jdk: [ "${{ github.event.inputs.jdk_level }}" ]
     steps:
       - name: Setup JDK ${{ matrix.jdk }}
         uses: actions/setup-java@v1
@@ -77,33 +79,15 @@ jobs:
           path: ${{ matrix.repos }}
       - name: Set permissions
         run: chmod +x ${{ matrix.repos }}/scripts/*.sh
-      - name: Docker login for runner
-        run: |
-          if [ "${{ matrix.repos }}" = "guide-liberty-deep-dive-gradle" ]
-          then
-            echo podman login
-            echo $DOCKER_PASSWORD | podman login docker.io -u $DOCKER_USERNAME --password-stdin
-          else
-            echo docker login
-            echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
-          fi
-      - name: Docker login for root
-        run: |
-          if [ "${{ matrix.repos }}" = "guide-liberty-deep-dive-gradle" ]
-          then
-            echo podman login
-            echo $DOCKER_PASSWORD | sudo podman login docker.io -u $DOCKER_USERNAME --password-stdin
-          else
-            echo docker login
-            echo $DOCKER_PASSWORD | sudo docker login -u $DOCKER_USERNAME --password-stdin
-          fi
+      - name: Docker login
+        run: echo $DOCKER_PASSWORD | sudo docker login -u $DOCKER_USERNAME --password-stdin cp.stg.icr.io
       - name: Run tests for ${{ matrix.repos }}
         working-directory: ${{ matrix.repos }}/finish
         env:
-          BUILDLEVEL: ${{ github.event.client_payload.build-level }}${{ github.event.inputs.build }}
-          DEVDATE: ${{ github.event.client_payload.dev-date }}${{ github.event.inputs.date }}
-          DRIVER: ${{ github.event.client_payload.driver-location }}${{ github.event.inputs.driver }}
-        run: sudo -E ../scripts/dailyBuild.sh -t $DEVDATE -d $DRIVER -b $BUILDLEVEL -u $DOCKER_USERNAME -j ${{ matrix.jdk }}
+          DEVDATE: ${{ github.event.inputs.date }}
+          DRIVER: openliberty-all-${{ github.event.inputs.ol_version }}-${{ github.event.inputs.build }}.zip
+          OL_VERSION: ${{ github.event.inputs.ol_version }}
+        run: sudo -E ../scripts/dockerImageTest.sh -t $DEVDATE -d $DRIVER -v $OL_VERSION
       - name: Post tests
         working-directory: ${{ matrix.repos }}
         if: always()
@@ -124,30 +108,21 @@ jobs:
           fi
       - name: Archive server logs if failed
         if: failure()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.repos }}-logs
           path: |
             ${{ matrix.repos }}/finish/target/liberty/wlp/usr/servers/defaultServer/logs/
-            ${{ matrix.repos }}/start/target/liberty/wlp/usr/servers/defaultServer/logs/
             ${{ matrix.repos }}/finish/**/target/liberty/wlp/usr/servers/defaultServer/logs/
-            ${{ matrix.repos }}/start/**/target/liberty/wlp/usr/servers/defaultServer/logs/
-          if-no-files-found: ignore
-      - name: Archive npm logs if failed
-        if: failure()
-        uses: actions/upload-artifact@v3
-        with:
-          name: ${{ matrix.repos }}-npm-logs
-          path: ~/.npm/_logs
           if-no-files-found: ignore
   slack-alert:
     needs: [test-guide]
     if: failure()
     runs-on: ubuntu-latest
     env:
-      BUILDLEVEL: ${{ github.event.client_payload.build-level }}${{ github.event.inputs.build }}
-      DEVDATE: ${{ github.event.client_payload.dev-date }}${{ github.event.inputs.date }}
-      DRIVER: ${{ github.event.client_payload.driver-location }}${{ github.event.inputs.driver }}
+      BUILDLEVEL: ${{ github.event.inputs.build }}
+      DEVDATE: ${{ github.event.inputs.date }}
+      DRIVER: openliberty-all-${{ github.event.inputs.ol_version }}-${{ github.event.inputs.build }}.zip
     steps:
       - uses: actions/checkout@v2
       - name: send-status
