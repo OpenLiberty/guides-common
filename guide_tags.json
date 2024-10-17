@@ -123,7 +123,7 @@
         },
         {
             "name": "config",
-            "guides": ["microprofile-config-intro", "microprofile-config", "kubernetes-microprofile-config"]
+            "guides": ["microprofile-config-intro", "microprofile-config", "microprofile-config-profile", "kubernetes-microprofile-config"]
         },
         {
             "name": "@inject",
@@ -135,7 +135,7 @@
         },
         {
             "name": "configsource",
-            "guides": ["microprofile-config-intro", "microprofile-config"]
+            "guides": ["microprofile-config-intro", "microprofile-config", "microprofile-config-profile"]
         },
         {
             "name": "@retry",
@@ -157,7 +157,7 @@
                 "spring-boot", "arquillian-managed", "bean-validation", "cors", "jpa-intro",
                 "microprofile-graphql", "maven-intro", "rest-client-angular", "rest-client-angularjs", "rest-client-reactjs", "rest-hateoas", "maven-multimodules",
                 "openliberty-operator-intro", "openliberty-operator-openshift",
-                "security-intro", "mongodb-intro", "microprofile-telemetry-jaeger"
+                "security-intro", "mongodb-intro", "microprofile-telemetry-jaeger", "microprofile-config-profile"
             ],
             "visible": "true"
         },
