@@ -6,16 +6,16 @@ on:
   workflow_dispatch:
     inputs:
       build:
-        description: Build level
+        description: Build level as cl231220231122-1901
         required: true
       date:
-        description: Dev date
+        description: Dev date as 2023-11-22_1901
         required: true
       driver:
-        description: Driver location
+        description: Driver location as openliberty-all-23.0.0.12-cl231220231122-1901.zip
         required: true
       guide:
-        description: Guide to build
+        description: Guide to build as guide-...
         default: "all"
         required: true
       branch:
@@ -37,7 +37,7 @@ jobs:
       - name: Get default repos
         if: ${{ github.event_name == 'repository_dispatch' || github.event_name == 'workflow_dispatch' && github.event.inputs.guide == 'all' }}
         id: create-list
-        run: echo "repos=[ 'guide-spring-boot', 'guide-liberty-deep-dive', 'guide-liberty-deep-dive-gradle', 'guide-contract-testing' ]" >> $GITHUB_OUTPUT
+        run: echo "repos=[ 'guide-spring-boot', 'guide-liberty-deep-dive', 'guide-liberty-deep-dive-gradle', 'guide-contract-testing', 'guide-jms-intro' ]" >> $GITHUB_OUTPUT
       - name: Set input repo
         if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.guide != 'all' }}
         id: input-guide
