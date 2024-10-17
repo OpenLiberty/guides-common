@@ -8,15 +8,15 @@
         {
             "name": "jakarta-ee",
             "additional_search_terms": ["Java EE", "JEE"],
-            "guides": ["bean-validation", "cdi-intro", "jpa-intro", "microshed-testing", "testcontainers", "rest-client-java", "rest-intro", 
+            "guides": ["bean-validation", "cdi-intro", "jpa-intro", "microshed-testing", "rest-client-java", "rest-intro", 
                 "security-intro", "microprofile-reactive-messaging", "microprofile-reactive-messaging-rest-integration", "reactive-messaging-sse",
-                "mongodb-intro", "jakarta-websocket"],
+                "mongodb-intro", "jakarta-websocket", "jms-intro", "testcontainers"],
             "visible": "true"
         },
         {
             "name": "microprofile",
             "additional_search_terms": ["Micro Profile", "MP"],
-            "guides": ["cdi-intro", "kubernetes-microprofile-config", "kubernetes-microprofile-health", "microprofile-config", 
+            "guides": ["cdi-intro", "kubernetes-microprofile-config", "kubernetes-microprofile-health", "microprofile-config", "microprofile-config-profile"
                 "microprofile-fallback", "microprofile-health", "microprofile-istio-retry-fallback", "microprofile-jwt", 
                 "microprofile-metrics", "microprofile-openapi", "microprofile-opentracing", "microprofile-opentracing-jaeger", "microprofile-telemetry-jaeger", "microprofile-rest-client", 
                 "microprofile-rest-client-async", "microshed-testing", "rest-client-java", "rest-intro", "bulkhead", "testcontainers", 
