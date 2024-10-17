@@ -14,11 +14,11 @@
             },
             {
                 "subcategory_name": "REST alternatives",
-                "guides": ["microprofile-graphql", "graphql-client", "jakarta-websocket", "grpc-intro"]
+                "guides": ["microprofile-graphql", "graphql-client", "jakarta-websocket", "jms-intro", "grpc-intro"]
             },
             {
                 "subcategory_name": "Reactive service",
-                "guides": ["microprofile-reactive-messaging", "microprofile-reactive-messaging-rest-integration", "microprofile-reactive-messaging-acknowledgment", "reactive-rest-client", "reactive-messaging-sse"]
+                "guides": ["concurrency-intro", "microprofile-reactive-messaging", "microprofile-reactive-messaging-rest-integration", "microprofile-reactive-messaging-acknowledgment", "reactive-rest-client", "reactive-messaging-sse"]
             },
             {
                 "subcategory_name": "Configuration",
