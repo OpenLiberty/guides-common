@@ -10,7 +10,7 @@
             "additional_search_terms": ["Java EE", "JEE"],
             "guides": ["bean-validation", "cdi-intro", "jpa-intro", "microshed-testing", "rest-client-java", "rest-intro", 
                 "security-intro", "microprofile-reactive-messaging", "microprofile-reactive-messaging-rest-integration", "reactive-messaging-sse",
-                "mongodb-intro", "jakarta-websocket", "testcontainers"],
+                "mongodb-intro", "jakarta-websocket", "jms-intro", "testcontainers"],
             "visible": "true"
         },
         {
@@ -123,7 +123,7 @@
         },
         {
             "name": "config",
-            "guides": ["microprofile-config-intro", "microprofile-config", "kubernetes-microprofile-config", "microprofile-config-profile"]
+            "guides": ["microprofile-config-intro", "microprofile-config", "microprofile-config-profile", "kubernetes-microprofile-config", "microprofile-config-profile"]
         },
         {
             "name": "@inject",
@@ -135,7 +135,7 @@
         },
         {
             "name": "configsource",
-            "guides": ["microprofile-config-intro", "microprofile-config"]
+            "guides": ["microprofile-config-intro", "microprofile-config", "microprofile-config-profile"]
         },
         {
             "name": "@retry",
@@ -157,7 +157,7 @@
                 "spring-boot", "arquillian-managed", "bean-validation", "cors", "jpa-intro",
                 "microprofile-graphql", "maven-intro", "rest-client-angular", "rest-client-angularjs", "rest-client-reactjs", "rest-hateoas", "maven-multimodules",
                 "openliberty-operator-intro", "openliberty-operator-openshift",
-                "security-intro", "mongodb-intro", "microprofile-telemetry-jaeger"
+                "security-intro", "mongodb-intro", "microprofile-telemetry-jaeger", "microprofile-config-profile", "testcontainers"
             ],
             "visible": "true"
         },
