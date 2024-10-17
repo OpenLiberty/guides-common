@@ -9,7 +9,7 @@
         {
             "name": "Java SDK 17+",
             "link": "https://developer.ibm.com/languages/java/semeru-runtimes/downloads",
-            "guides": ["contract-testing", "jms-intro"]
+            "guides": ["contract-testing", "jms-intro", "spring-boot"]
         },
         {
             "name": "Java SDK 21",
