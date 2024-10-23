@@ -1,4 +1,4 @@
-name: Manual Pre-Daily Build Action
+name: (Deprecated) Manual Pre-Daily Build Action
 
 on:
   workflow_dispatch:
