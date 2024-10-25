@@ -1,8 +1,8 @@
-name: Test Docker Daily Build
+name: Test Docker Daily Build - Java 17
 
 on:
   repository_dispatch:
-    types: [ docker-image-test ]
+    types: [ docker-image-test-java17 ]
   workflow_dispatch:
     inputs:
       build:
@@ -21,10 +21,6 @@ on:
       branch:
         description: Branch to test
         required: false
-      jdk_level:
-        description: JDK level to test
-        default: "11"
-        required: true
 
 env:
   DOCKER_USERNAME: ${{ secrets.CP_STG_USERNAME }}
@@ -41,7 +37,7 @@ jobs:
       - name: Get repos
         if: ${{ github.event_name == 'repository_dispatch' || github.event_name == 'workflow_dispatch' && github.event.inputs.guide == 'all' }}
         id: create-list
-        run: echo "::set-output name=repos::$(python3 .github/workflows/get-docker-guides.py)"
+        run: echo "repos=[ 'guide-spring-boot', 'guide-liberty-deep-dive' ]" >> $GITHUB_OUTPUT
       - name: Set repo
         if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.guide != 'all' }}
         id: input-guide
@@ -57,7 +53,6 @@ jobs:
           echo   driver:    ${{ github.event.inputs.driver }}
           echo   guide:     ${{ github.event.inputs.guide }}
           echo   branch:    ${{ github.event.inputs.branch }}
-          echo   jdk_level: ${{ github.event.client_payload.jdk }}${{ github.event.inputs.jdk_level }}
           echo "Build level: ${{ github.event.client_payload.build-level }}${{ github.event.inputs.build }}"
   test-guide:
     needs: [ get-repos ]
@@ -67,7 +62,7 @@ jobs:
       max-parallel: 5
       matrix:
         repos: ${{ fromJson(needs.get-repos.outputs.repos) }}
-        jdk: [ "${{ github.event.client_payload.jdk }}${{ github.event.inputs.jdk_level }}" ]
+        jdk: [ "17" ]
     steps:
       - name: Setup JDK ${{ matrix.jdk }}
         uses: actions/setup-java@v1

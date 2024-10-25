@@ -6,11 +6,9 @@ on:
     # 6 AM UTC or 1 AM EST
     - cron: 0 6 * * *
 
-env:
-  DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-  DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-  LIBERTY_LICENSE_SHA: ${{ secrets.LIBERTY_LICENSE_SHA }}
-
+#env:
+#  DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+#  DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 jobs:
   get-builds:
     runs-on: ubuntu-latest
@@ -27,7 +25,7 @@ jobs:
           echo $BUILDS
           matrix="{ \"builds\":$BUILDS }"
           echo "::set-output name=matrix::$matrix" 
-          if [ $BUILDS = "[]" ]
+          if [ "$BUILDS" = "[]" ]
           then
             echo "::set-output name=empty::true"
           else
@@ -40,34 +38,43 @@ jobs:
     steps:
       - name: No builds found
         run: echo "No builds found for $(date -d 'yesterday' '+%Y-%m-%d')"
-  build-docker-image:
-    runs-on: ubuntu-latest
-    needs: get-builds
-    if: ${{ needs.get-builds.outputs.empty == 'false' }}
-    strategy:
-      matrix: ${{ fromJson(needs.get-builds.outputs.matrix) }}
-    env:
-      DHE_URL: https://public.dhe.ibm.com/ibmdl/export/pub/software/openliberty/runtime/nightly
-    steps:
-      - name: Clone ci.docker repository
-        uses: actions/checkout@v2
-        with:
-          repository: OpenLiberty/ci.docker
-          path: ci.docker
-      - name: Docker login
-        run: echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
-      - name: Build Docker image for ${{ matrix.builds.date }}
-        run: |
-          cd ci.docker/releases/latest/full
-          sed -i "s;wget -q \$LIBERTY_DOWNLOAD_URL;wget $DHE_URL/${{ matrix.builds.date }}/${{ matrix.builds.driver_location }};g" Dockerfile.ubi.openjdk11
-          sed -i '/&& sha1sum/d' Dockerfile.ubi.openjdk11
-          cat Dockerfile.ubi.openjdk11
-          echo "Building ${{ matrix.builds.build_level }} from ${{ matrix.builds.date }}"
-          docker build -q -t $DOCKER_USERNAME/olguides:${{ matrix.builds.build_level }} -f Dockerfile.ubi.openjdk11 .
-          docker push $DOCKER_USERNAME/olguides:${{ matrix.builds.build_level }}
+#  build-docker-image:
+#    runs-on: ubuntu-latest
+#    needs: get-builds
+#    if: ${{ needs.get-builds.outputs.empty == 'false' }}
+#    strategy:
+#      matrix: ${{ fromJson(needs.get-builds.outputs.matrix) }}
+#    env:
+#      DHE_URL: https://public.dhe.ibm.com/ibmdl/export/pub/software/openliberty/runtime/nightly
+#    steps:
+#      - name: Clone ci.docker repository
+#        uses: actions/checkout@v2
+#        with:
+#          repository: OpenLiberty/ci.docker
+#          path: ci.docker
+#      - name: Docker login
+#        run: echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+#      - name: Build Java 11 Docker image for ${{ matrix.builds.date }}
+#        run: |
+#          cd ci.docker/releases/latest/full
+#          sed -i "s;wget -q \$LIBERTY_DOWNLOAD_URL;wget $DHE_URL/${{ matrix.builds.date }}/${{ matrix.builds.driver_location }};g" Dockerfile.ubi.openjdk11
+#          sed -i '/&& sha1sum/d' Dockerfile.ubi.openjdk11
+#          cat Dockerfile.ubi.openjdk11
+#          echo "Building Java 11 ${{ matrix.builds.build_level }} from ${{ matrix.builds.date }}"
+#          docker build -q -t $DOCKER_USERNAME/olguides:${{ matrix.builds.build_level }} -f Dockerfile.ubi.openjdk11 .
+#          docker push $DOCKER_USERNAME/olguides:${{ matrix.builds.build_level }}
+#      - name: Build Java 17 Docker image for ${{ matrix.builds.date }}
+#        run: |
+#          cd ci.docker/releases/latest/full
+#          sed -i "s;wget -q \$LIBERTY_DOWNLOAD_URL;wget $DHE_URL/${{ matrix.builds.date }}/${{ matrix.builds.driver_location }};g" Dockerfile.ubi.openjdk17
+#          sed -i '/&& sha1sum/d' Dockerfile.ubi.openjdk17
+#          cat Dockerfile.ubi.openjdk17
+#          echo "Building Java 17 ${{ matrix.builds.build_level }} from ${{ matrix.builds.date }}"
+#          docker build -q -t $DOCKER_USERNAME/olguides:${{ matrix.builds.build_level }}-java17 -f Dockerfile.ubi.openjdk17 .
+#          docker push $DOCKER_USERNAME/olguides:${{ matrix.builds.build_level }}-java17
   trigger-builds:
     runs-on: ubuntu-latest
-    needs: [ build-docker-image, get-builds ]
+    needs: [ get-builds ]
     if: ${{ needs.get-builds.outputs.empty == 'false' }}
     strategy:
       matrix: ${{ fromJson(needs.get-builds.outputs.matrix) }}
@@ -77,22 +84,24 @@ jobs:
       ACCEPT_HEADER: "application/vnd.github.v3+json"
       CONTENT_TYPE: "application/json"
       PAYLOAD: '{ "dev-date": "${{ matrix.builds.date }}", "driver-location": "${{ matrix.builds.driver_location }}", "build-level": "${{ matrix.builds.build_level }}", "jdk": "11" }'
+      PAYLOAD_JAVA17: '{ "dev-date": "${{ matrix.builds.date }}", "driver-location": "${{ matrix.builds.driver_location }}", "build-level": "${{ matrix.builds.build_level }}", "jdk": "17" }'
+      PAYLOAD_JAVA21: '{ "dev-date": "${{ matrix.builds.date }}", "driver-location": "${{ matrix.builds.driver_location }}", "build-level": "${{ matrix.builds.build_level }}", "jdk": "21" }'
     steps:
-      - name: Trigger daily builds
+      - name: Trigger daily builds for Java 11
         run: |
           curl -H "Accept: $ACCEPT_HEADER" \
                -H "Authorization: token $GH_TOKEN" \
                -d "{ \"event_type\": \"daily-build\", \"client_payload\": $PAYLOAD }" \
                -X POST $URI
-      - name: Trigger Docker image tests
+      - name: Trigger daily builds for Java 17
         run: |
-          docker pull "openliberty/daily:latest" -q
-          IMAGEBUILDLEVEL=$(docker inspect --format "{{ index .Config.Labels \"org.opencontainers.image.revision\"}}" openliberty/daily:latest)
-          echo $IMAGEBUILDLEVEL
-          if [ $IMAGEBUILDLEVEL == ${{ matrix.builds.build_level }} ]
-          then
-            curl -H "Accept: $ACCEPT_HEADER" \
-                 -H "Authorization: token $GH_TOKEN" \
-                 -d "{ \"event_type\": \"docker-image-test\", \"client_payload\": $PAYLOAD }" \
-                 -X POST $URI
-          fi
+          curl -H "Accept: $ACCEPT_HEADER" \
+               -H "Authorization: token $GH_TOKEN" \
+               -d "{ \"event_type\": \"daily-build-java17\", \"client_payload\": $PAYLOAD_JAVA17 }" \
+               -X POST $URI
+      - name: Trigger daily builds for Java 21
+        run: |
+          curl -H "Accept: $ACCEPT_HEADER" \
+               -H "Authorization: token $GH_TOKEN" \
+               -d "{ \"event_type\": \"daily-build-java21\", \"client_payload\": $PAYLOAD_JAVA21 }" \
+               -X POST $URI
