@@ -41,7 +41,7 @@ jobs:
       - name: Set input repo
         if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.guide != 'all' }}
         id: input-guide
-        run: echo "repos=$(python3 .github/workflows/get-guides-java17.py)" >> $GITHUB_OUTPUT
+        run: echo "::set-output name=repos::$(python3 .github/workflows/get-guides-java17.py)"
   build-level:
     runs-on: ubuntu-latest
     steps:
