@@ -18,7 +18,7 @@
             },
             {
                 "subcategory_name": "Reactive service",
-                "guides": ["concurrency-intro", "microprofile-reactive-messaging", "microprofile-reactive-messaging-rest-integration", "microprofile-reactive-messaging-acknowledgment", "reactive-rest-client", "reactive-messaging-sse"]
+                "guides": ["jakarta-concurrency", "microprofile-reactive-messaging", "microprofile-reactive-messaging-rest-integration", "microprofile-reactive-messaging-acknowledgment", "reactive-rest-client", "reactive-messaging-sse"]
             },
             {
                 "subcategory_name": "Configuration",
