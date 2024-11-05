@@ -1,6 +1,8 @@
 #!/bin/sh
 set -o pipefail
 
+python3 -m pip install lxml
+
 repo=$1
 pr_number=$2
 
