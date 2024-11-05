@@ -1,6 +1,7 @@
 import argparse
 import sys
 from datetime import date, datetime
+from lxml import etree
 import re
 import json
 import os
@@ -133,6 +134,34 @@ def check_vocabulary(file, deny_list, warning_list):
     return output
 
 
+def check_artifact_id(file, guide_id):
+    """
+    Checks if the artifactId in pom.xml starts with the guide's ID
+    """
+    guide_id = "guide-" + guide_id[len("guide-"):]
+    output = ''
+
+    try:
+        tree = etree.parse(file)
+        root = tree.getroot()
+        namespace = root.nsmap.get(None)
+        namespaces = {'m': namespace} if namespace else {}
+        artifact_id_element = root.find('m:artifactId', namespaces=namespaces)
+        if artifact_id_element is None or artifact_id_element.text is None:
+            output += f"[ERROR] Project's artifactId not found.\n"
+            return output
+
+        artifact_id = artifact_id_element.text.strip()
+        line_number = artifact_id_element.sourceline
+        if not artifact_id.startswith(guide_id):
+            output += f"[ERROR] [LINE {line_number}] Project's artifactId '{artifact_id}' does not start with '{guide_id}'.\n"
+    
+    except etree.XMLSyntaxError as e:
+        print(f"something went wrong when parsing {file} at line {e.lineno}", e)
+
+    return output
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--deny', nargs=1,
@@ -195,8 +224,16 @@ if __name__ == "__main__":
 
     for i, f in enumerate(file_extensions):
         if f == 'adoc':
-            output += adoc_checker(args.infile[i], tags, rules)
-            output += check_vocabulary(args.infile[i], deny_list, warning_list)
+            result = adoc_checker(args.infile[i], tags, rules) + check_vocabulary(args.infile[i], deny_list, warning_list)
+            if result != '':
+                output += f"[INFO] File:[{args.infile[i].name}]\n{result}"
+
+    for i, file in enumerate(args.infile):
+        if os.path.basename(file.name) == 'pom.xml':
+            result = check_artifact_id(file.name, repo)
+            if result:
+                output += f"[INFO] File:[{file.name}]\n{result}"
+
     if output != '':
         print(output.rstrip())
         if 'ERROR' in output:
