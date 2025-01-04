@@ -1,0 +1,12 @@
+{
+    "main_directory": [
+        "start",
+        "finish",
+        "ibmmq"
+    ],
+    "skip": [
+      "guide-liberty-deep-dive",
+      "guide-liberty-deep-dive-gradle"
+    ]
+  }
+  
