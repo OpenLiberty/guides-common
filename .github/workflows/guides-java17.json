@@ -3,7 +3,6 @@
   "guide-jakarta-websocket",
   "guide-jms-intro",
   "guide-liberty-deep-dive",
-  "guide-liberty-deep-dive-gradle",
-  "guide-spring-boot"
+  "guide-liberty-deep-dive-gradle"
 ]
 

@@ -50,6 +50,7 @@ jobs:
       ACCEPT_HEADER: "application/vnd.github.v3+json"
       PAYLOAD: '{ "dev-date": "${{ matrix.builds.date }}", "driver-location": "${{ matrix.builds.driver_location }}", "build-level": "${{ matrix.builds.build_level }}", "jdk": "11" }'
       PAYLOAD_JAVA17: '{ "dev-date": "${{ matrix.builds.date }}", "driver-location": "${{ matrix.builds.driver_location }}", "build-level": "${{ matrix.builds.build_level }}", "jdk": "17" }'
+      PAYLOAD_JAVA21: '{ "dev-date": "${{ matrix.builds.date }}", "driver-location": "${{ matrix.builds.driver_location }}", "build-level": "${{ matrix.builds.build_level }}", "jdk": "21" }'
     steps:
       - name: Trigger Docker image tests
         run: |
@@ -66,6 +67,10 @@ jobs:
             curl -H "Accept: $ACCEPT_HEADER" \
                  -H "Authorization: token $GH_TOKEN" \
                  -d "{ \"event_type\": \"docker-image-test-java17\", \"client_payload\": $PAYLOAD_JAVA17 }" \
+                 -X POST $URI
+            curl -H "Accept: $ACCEPT_HEADER" \
+                 -H "Authorization: token $GH_TOKEN" \
+                 -d "{ \"event_type\": \"docker-image-test-java21\", \"client_payload\": $PAYLOAD_JAVA21 }" \
                  -X POST $URI
           else
             echo Skip test because "$IMAGEBUILDLEVEL" and "${{ matrix.builds.build_level }}" do not match!
