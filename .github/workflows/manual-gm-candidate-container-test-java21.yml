@@ -1,4 +1,4 @@
-name: Manual GM candidate container test - Java 17
+name: Manual GM candidate container test - Java 21
 
 on:
   workflow_dispatch:
@@ -35,7 +35,7 @@ jobs:
       - name: Get repos
         if: ${{ github.event_name == 'repository_dispatch' || github.event_name == 'workflow_dispatch' && github.event.inputs.guide == 'all' }}
         id: create-list
-        run: echo "repos=[ 'guide-liberty-deep-dive' ]" >> $GITHUB_OUTPUT
+        run: echo "repos=[ 'guide-spring-boot' ]" >> $GITHUB_OUTPUT
       - name: Set repo
         if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.guide != 'all' }}
         id: input-guide
@@ -60,7 +60,7 @@ jobs:
       max-parallel: 5
       matrix:
         repos: ${{ fromJson(needs.get-guide-repos.outputs.repos) }}
-        jdk: [ "17" ]
+        jdk: [ "21" ]
     steps:
       - name: Setup JDK ${{ matrix.jdk }}
         uses: actions/setup-java@v1

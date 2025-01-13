@@ -1,16 +1,18 @@
-name: Manual GM candidate container test - Java 17
+name: Test Docker Daily Build - Java 21
 
 on:
+  repository_dispatch:
+    types: [ docker-image-test-java21 ]
   workflow_dispatch:
     inputs:
       build:
-        description: Build level as cl241020240923-1638
+        description: Build level as cl231220231122-1901
         required: true
       date:
-        description: Dev date as 2024-09-23_1638
+        description: Dev date as 2023-11-22_1901
         required: true
-      ol_version:
-        description: OL version as 24.0.0.10
+      driver:
+        description: Driver location as openliberty-all-23.0.0.12-cl231220231122-1901.zip
         required: true
       guide:
         description: Guide to build
@@ -26,7 +28,7 @@ env:
   CHANGE_MINIKUBE_NONE_USER: true
 
 jobs:
-  get-guide-repos:
+  get-repos:
     runs-on: ubuntu-latest
     outputs:
       repos: ${{ steps.create-list.outputs.repos }}${{ steps.input-guide.outputs.repo }}
@@ -35,7 +37,7 @@ jobs:
       - name: Get repos
         if: ${{ github.event_name == 'repository_dispatch' || github.event_name == 'workflow_dispatch' && github.event.inputs.guide == 'all' }}
         id: create-list
-        run: echo "repos=[ 'guide-liberty-deep-dive' ]" >> $GITHUB_OUTPUT
+        run: echo "repos=[ 'guide-spring-boot' ]" >> $GITHUB_OUTPUT
       - name: Set repo
         if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.guide != 'all' }}
         id: input-guide
@@ -43,24 +45,24 @@ jobs:
   build-level:
     runs-on: ubuntu-latest
     steps:
-      - name: Starting GM candidate container tests for ${{ github.event.inputs.build }}
+      - name: Starting daily build tests for ${{ github.event.client_payload.build-level }}${{ github.event.inputs.build }}
         run: |
           echo "Inputs: "
-          echo   build:      ${{ github.event.inputs.build }}
-          echo   date:       ${{ github.event.inputs.date }}
-          echo   ol_version: ${{ github.event.inputs.ol_version }}
-          echo   driver:     openliberty-all-${{ github.event.inputs.ol_version }}-${{ github.event.inputs.build }}.zip
-          echo   guide:      ${{ github.event.inputs.guide }}
-          echo   branch:     ${{ github.event.inputs.branch }}
+          echo   build:     ${{ github.event.inputs.build }}
+          echo   date:      ${{ github.event.inputs.date }}
+          echo   driver:    ${{ github.event.inputs.driver }}
+          echo   guide:     ${{ github.event.inputs.guide }}
+          echo   branch:    ${{ github.event.inputs.branch }}
+          echo "Build level: ${{ github.event.client_payload.build-level }}${{ github.event.inputs.build }}"
   test-guide:
-    needs: [ get-guide-repos ]
+    needs: [ get-repos ]
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       max-parallel: 5
       matrix:
-        repos: ${{ fromJson(needs.get-guide-repos.outputs.repos) }}
-        jdk: [ "17" ]
+        repos: ${{ fromJson(needs.get-repos.outputs.repos) }}
+        jdk: [ "21" ]
     steps:
       - name: Setup JDK ${{ matrix.jdk }}
         uses: actions/setup-java@v1
@@ -79,45 +81,39 @@ jobs:
       - name: Run tests for ${{ matrix.repos }}
         working-directory: ${{ matrix.repos }}/finish
         env:
-          DEVDATE: ${{ github.event.inputs.date }}
-          DRIVER: openliberty-all-${{ github.event.inputs.ol_version }}-${{ github.event.inputs.build }}.zip
-          OL_VERSION: ${{ github.event.inputs.ol_version }}
-        run: sudo -E ../scripts/dockerImageTest.sh -t $DEVDATE -d $DRIVER -v $OL_VERSION
+          DEVDATE: ${{ github.event.client_payload.dev-date }}${{ github.event.inputs.date }}
+          DRIVER: ${{ github.event.client_payload.driver-location }}${{ github.event.inputs.driver }}
+        run: sudo -E ../scripts/dockerImageTest.sh -t $DEVDATE -d $DRIVER
       - name: Post tests
         working-directory: ${{ matrix.repos }}
         if: always()
         run: |
-          mvn -version
-          sudo chmod -R 777 .
           logsPath=$(sudo find . -name "console.log");
           if [ -z "$logsPath" ]
             then 
               logsPath=$(sudo find . -name "messages.log");
-              if [ -z "$logsPath" ]
-                then sudo docker images
-                else
+              if [ ! -z "$logsPath" ]
+                then
                   sudo cat $logsPath | grep product
                   sudo cat $logsPath | grep java.runtime
               fi
             else sudo cat $logsPath | grep Launching
-          fi
+          fi;
+          sudo docker images
       - name: Archive server logs if failed
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.repos }}-logs
-          path: |
-            ${{ matrix.repos }}/finish/target/liberty/wlp/usr/servers/defaultServer/logs/
-            ${{ matrix.repos }}/finish/**/target/liberty/wlp/usr/servers/defaultServer/logs/
-          if-no-files-found: ignore
+          name: server-logs
+          path: ${{ matrix.repos }}/finish/target/liberty/wlp/usr/servers/defaultServer/logs/
   slack-alert:
-    needs: [test-guide]
+    needs: [ test-guide ]
     if: failure()
     runs-on: ubuntu-latest
     env:
-      BUILDLEVEL: ${{ github.event.inputs.build }}
-      DEVDATE: ${{ github.event.inputs.date }}
-      DRIVER: openliberty-all-${{ github.event.inputs.ol_version }}-${{ github.event.inputs.build }}.zip
+      BUILDLEVEL: ${{ github.event.client_payload.build-level }}${{ github.event.inputs.build }}
+      DEVDATE: ${{ github.event.client_payload.dev-date }}${{ github.event.inputs.date }}
+      DRIVER: ${{ github.event.client_payload.driver-location }}${{ github.event.inputs.driver }}
     steps:
       - uses: actions/checkout@v2
       - name: send-status
