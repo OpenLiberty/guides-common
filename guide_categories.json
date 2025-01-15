@@ -57,7 +57,7 @@
         [
             {
                 "subcategory_name": "Build",
-                "guides": ["maven-intro", "gradle-intro", "maven-multimodules", "docker"]
+                "guides": ["maven-intro", "gradle-intro", "maven-multimodules", "gradle-multimodules", "docker"]
             },
             {
                 "subcategory_name": "Test",
