@@ -33,7 +33,7 @@ jobs:
     outputs:
       repos: ${{ steps.create-list.outputs.repos }}${{ steps.input-guide.outputs.repo }}
     steps: 
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Get default repos
         if: ${{ github.event_name == 'repository_dispatch' || github.event_name == 'workflow_dispatch' && github.event.inputs.guide == 'all' }}
         id: create-list
@@ -70,7 +70,7 @@ jobs:
         with:
           java-version: ${{ matrix.jdk }}
       - name: Clone ${{ matrix.repos }}
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           repository: OpenLiberty/${{ matrix.repos }}
           ref: ${{ github.event.inputs.branch }}
@@ -124,7 +124,7 @@ jobs:
           fi
       - name: Archive server logs if failed
         if: failure()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.repos }}-logs
           path: |
@@ -135,7 +135,7 @@ jobs:
           if-no-files-found: ignore
       - name: Archive npm logs if failed
         if: failure()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.repos }}-npm-logs
           path: ~/.npm/_logs
@@ -149,7 +149,7 @@ jobs:
       DEVDATE: ${{ github.event.client_payload.dev-date }}${{ github.event.inputs.date }}
       DRIVER: ${{ github.event.client_payload.driver-location }}${{ github.event.inputs.driver }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: send-status
         run: |
           python3 .github/workflows/slack-alert.py ${{ env.BUILDLEVEL }} ${{ env.DRIVER }} ${{ env.DEVDATE }} ${{ needs.test-guide.result }} \

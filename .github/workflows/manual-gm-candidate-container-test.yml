@@ -35,7 +35,7 @@ jobs:
     outputs:
       repos: ${{ steps.create-list.outputs.repos }}${{ steps.input-guide.outputs.repo }}
     steps: 
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Get repos
         if: ${{ github.event_name == 'repository_dispatch' || github.event_name == 'workflow_dispatch' && github.event.inputs.guide == 'all' }}
         id: create-list
@@ -72,7 +72,7 @@ jobs:
         with:
           java-version: ${{ matrix.jdk }}
       - name: Clone ${{ matrix.repos }}
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           repository: OpenLiberty/${{ matrix.repos }}
           ref: ${{ github.event.inputs.branch }}
@@ -124,7 +124,7 @@ jobs:
       DEVDATE: ${{ github.event.inputs.date }}
       DRIVER: openliberty-all-${{ github.event.inputs.ol_version }}-${{ github.event.inputs.build }}.zip
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: send-status
         run: |
           python3 .github/workflows/slack-alert.py ${{ env.BUILDLEVEL }} ${{ env.DRIVER }} ${{ env.DEVDATE }} ${{ needs.test-guide.result }} \
