@@ -15,7 +15,7 @@
    "skillNetworkDomain": "https://openliberty.skillsnetwork.site",
    "stagingSkillNetworkDomain": "https://ol-staging.skillsnetwork.site",
    "courses" : {
-     "kubernetes-intro"                : "/courses/course-v1:IBM+GPXX0HZ2EN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX0HZ2EN+v1/courseware/guided_project/guided_project",
+     "kubernetes-intro"                : "/courses/course-v1:IBM+GPXX0HZ2EN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX0HZ2EN+v1/courseware",
      "kubernetes-microprofile-health"  : "/courses/course-v1:IBM+GPXX0QU9EN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX0QU9EN+v1/courseware/guided_project/guided_project",
      "kubernetes-microprofile-config"  : "/courses/course-v1:IBM+GPXX07YGEN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX07YGEN+v1/courseware/guided_project/guided_project",
      "microprofile-health"             : "/courses/course-v1:IBM+GPXX0QTEEN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX0QTEEN+v1/courseware/guided_project/guided_project",
