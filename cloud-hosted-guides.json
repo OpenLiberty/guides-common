@@ -28,7 +28,7 @@
      "getting-started"                 : "/courses/course-v1:IBM+GPXX04TNEN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX04TNEN+v1/courseware",
      "microprofile-opentracing-jaeger" : "/courses/course-v1:IBM+GPXX0JLHEN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX0JLHEN+v1/courseware/guided_project/guided_project",
      "microprofile-fallback"           : "/courses/course-v1:IBM+GPXX0E3QEN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX0E3QEN+v1/courseware/guided_project/guided_project",
-     "microprofile-openapi"            : "/courses/course-v1:IBM+GPXX0YBFEN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX0YBFEN+v1/courseware/guided_project/guided_project",
+     "microprofile-openapi"            : "/courses/course-v1:IBM+GPXX0YBFEN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX0YBFEN+v1/courseware",
      "containerize"                    : "/courses/course-v1:IBM+GPXX01AVEN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX01AVEN+v1/courseware/guided_project/guided_project",
      "microprofile-metrics"            : "/courses/course-v1:IBM+GPXX0QS6EN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX0QS6EN+v1/courseware/guided_project/guided_project",
      "microprofile-rest-client"        : "/courses/course-v1:IBM+GPXX0XV3EN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX0XV3EN+v1/courseware/guided_project/guided_project",
