@@ -149,7 +149,7 @@
             "name": "kafka",
             "guides": ["cloud-openshift-operator", "microprofile-reactive-messaging", "microprofile-reactive-messaging-acknowledgment",
                 "microprofile-reactive-messaging-rest-integration", "microprofile-rest-client-async",
-                "reactive-messaging-sse", "reactive-rest-client", reactive-service-testing
+                "reactive-messaging-sse", "reactive-rest-client", "reactive-service-testing"
             ]
         },
         {
