@@ -146,6 +146,13 @@
             "guides": ["retry-timeout"]
         },
         {
+            "name": "kafka",
+            "guides": ["cloud-openshift-operator", "microprofile-reactive-messaging", "microprofile-reactive-messaging-acknowledgment",
+                "microprofile-reactive-messaging-rest-integration", "microprofile-rest-client-async",
+                "reactive-messaging-sse", "reactive-rest-client", "reactive-service-testing"
+            ]
+        },
+        {
             "name": "run-in-cloud",
             "guides": [ 
                 "rest-client-java", "getting-started", "microprofile-openapi", "rest-intro", "microprofile-rest-client-async",
