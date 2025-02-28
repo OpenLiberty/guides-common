@@ -64,6 +64,7 @@
      "microprofile-telemetry-jaeger"   : "/courses/course-v1:IBM+GPXX0SXIEN+v1/auto_enroll?next=/courses/course-v1:IBM+GPXX0SXIEN+v1/courseware",
      "testcontainers"                  : "/courses/course-v1:OpenLiberty+GPXX0LEREN+v1/auto_enroll?next=/courses/course-v1:OpenLiberty+GPXX0LEREN+v1/courseware",
      "microprofile-config-profile"     : "/courses/course-v1:OpenLiberty+GPXX0EZCEN+v1/auto_enroll?next=/courses/course-v1:OpenLiberty+GPXX0EZCEN+v1/courseware",
-     "jms-intro"                       : "/courses/course-v1:OpenLiberty+GPXX0XDOEN+v1/auto_enroll?next=/courses/course-v1:OpenLiberty+GPXX0XDOEN+v1/courseware" 
+     "jms-intro"                       : "/courses/course-v1:OpenLiberty+GPXX0XDOEN+v1/auto_enroll?next=/courses/course-v1:OpenLiberty+GPXX0XDOEN+v1/courseware",
+     "jakarta-faces"                   : "/courses/course-v1:OpenLiberty+GPXX0KQTEN+v1/auto_enroll?next=/courses/course-v1:OpenLiberty+GPXX0KQTEN+v1/courseware"
    }
 }
