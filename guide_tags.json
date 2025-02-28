@@ -164,7 +164,8 @@
                 "spring-boot", "arquillian-managed", "bean-validation", "cors", "jpa-intro",
                 "microprofile-graphql", "maven-intro", "rest-client-angular", "rest-client-angularjs", "rest-client-reactjs", "rest-hateoas", "maven-multimodules",
                 "openliberty-operator-intro", "openliberty-operator-openshift",
-                "security-intro", "mongodb-intro", "microprofile-telemetry-jaeger", "microprofile-config-profile"
+                "security-intro", "mongodb-intro", "microprofile-telemetry-jaeger", "microprofile-config-profile", "testcontainers",
+                "graphql-client", "grpc-intro", "jms-intro", "jakarta-faces"
             ],
             "visible": "true"
         },
