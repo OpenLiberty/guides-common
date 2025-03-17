@@ -1,5 +1,5 @@
 ////
- Copyright (c) 2021 IBM Corporation and others.
+ Copyright (c) 2021, 2025 IBM Corporation and others.
  Licensed under Creative Commons Attribution-NoDerivatives
  4.0 International (CC BY-ND 4.0)
    https://creativecommons.org/licenses/by-nd/4.0/
@@ -9,9 +9,9 @@
 == Getting started
 
 To open a new command-line session,
-select **Terminal** > **New Terminal** from the menu of the IDE.
+select ***Terminal*** > ***New Terminal*** from the menu of the IDE.
 
-Run the following command to navigate to the **/home/project** directory:
+Run the following command to navigate to the ***/home/project*** directory:
 
 ```bash
 cd /home/project
