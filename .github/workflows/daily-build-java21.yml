@@ -19,7 +19,7 @@ on:
         default: "all"
         required: true
       branch:
-        description: Branch to test as prod
+        description: Branch to test
         required: false
 
 env:
