@@ -6,20 +6,20 @@ on:
   workflow_dispatch:
     inputs:
       build:
-        description: Build level
+        description: Build level as cl250420250407-1902
         required: true
       date:
-        description: Dev date
+        description: Dev date as 2025-04-07_1902
         required: true
       driver:
-        description: Driver location
+        description: Driver location as openliberty-all-25.0.0.4-cl250420250407-1902.zip
         required: true
       guide:
         description: Guide to build
         default: "all"
         required: true
       branch:
-        description: Branch to test
+        description: Branch to test as prod
         required: false
 
 env:
