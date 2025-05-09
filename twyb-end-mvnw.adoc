@@ -6,7 +6,6 @@ include::{common-includes}/os-tabs.adoc[]
 --
 [role='command']
 ```
-cd start
 mvnw.cmd liberty:stop
 ```
 --
@@ -15,7 +14,6 @@ mvnw.cmd liberty:stop
 --
 [role='command']
 ```
-cd start
 ./mvnw liberty:stop
 ```
 --
@@ -24,7 +22,6 @@ cd start
 --
 [role='command']
 ```
-cd start
 ./mvnw liberty:stop
 ```
 --
