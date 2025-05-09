@@ -1,0 +1,40 @@
+When you run Open Liberty in https://openliberty.io/docs/latest/development-mode.html[dev mode^], dev mode listens for file changes and automatically recompiles and deploys your updates whenever you save a new change. Run the following goal to start Open Liberty in dev mode:
+
+include::{common-includes}/os-tabs.adoc[]
+
+[.tab_content.windows_section]
+--
+[role='command']
+```
+cd start
+mvnw.cmd liberty:dev
+```
+--
+
+[.tab_content.mac_section]
+--
+[role='command']
+```
+cd start
+./mvnw liberty:dev
+```
+--
+
+[.tab_content.linux_section]
+--
+[role='command']
+```
+cd start
+./mvnw liberty:dev
+```
+--
+
+After you see the following message, your Liberty instance is ready in dev mode:
+
+[role="no_copy"]
+----
+**************************************************************
+*    Liberty is running in dev mode.
+----
+
+Dev mode holds your command-line session to listen for file changes. Open another command-line session to continue, or open the project in your editor.
