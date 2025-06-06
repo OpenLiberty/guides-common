@@ -62,7 +62,7 @@
         },
         {
             "name": "gradle",
-            "guides": ["gradle-intro"]
+            "guides": ["gradle-intro", "gradle-multimodules"]
         },
         {
             "name": "security",
