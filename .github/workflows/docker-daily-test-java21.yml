@@ -41,7 +41,7 @@ jobs:
       - name: Set repo
         if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.guide != 'all' }}
         id: input-guide
-        run: echo "::set-output name=repo::[ '${{ github.event.inputs.guide }}' ]"
+        run: echo "repo=[ '${{ github.event.inputs.guide }}' ]" >> $GITHUB_OUTPUT
   build-level:
     runs-on: ubuntu-latest
     steps:
