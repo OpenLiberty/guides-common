@@ -15,22 +15,22 @@ ALL_FILES="$(curl -s -X GET -G $URL | jq -r '[ .[] |  .filename ]' | tr -d '\n')
 echo "$UPDATED_FILES"
 if [ $(echo $ALL_FILES | jq 'length') = 1 ] && [ $(echo $ALL_FILES | jq '.[0]' | tr -d '"') = "README.adoc" ]; then
     echo "Test can be skipped because only README.adoc was updated"
-    echo "::set-output name=canSkip::true"
+    echo "canSkip=true" >> $GITHUB_OUTPUT
 elif [ $(echo $ALL_FILES | jq 'length') = 1 ] && [ $(echo $ALL_FILES | jq '.[0]' | tr -d '"') = "CONTRIBUTING.md" ]; then
     echo "Test can be skipped because only CONTRIBUTING.md was updated"
-    echo "::set-output name=canSkip::true"
+    echo "canSkip=true" >> $GITHUB_OUTPUT
 elif [ $(echo $ALL_FILES | jq 'length') = 1 ] && [ $(echo $ALL_FILES | jq '.[0]' | tr -d '"') = "LICENSE" ]; then
     echo "Test can be skipped because only LICENSE was updated"
-    echo "::set-output name=canSkip::true"
+    echo "canSkip=true" >> $GITHUB_OUTPUT
 elif [ $(echo $ALL_FILES | jq 'length') = 1 ] && [ $(echo $ALL_FILES | jq '.[0]' | tr -d '"') = "scripts/dockerImageTest.sh" ]; then
     echo "Test can be skipped because only dockerImageTest.sh was updated"
-    echo "::set-output name=canSkip::true"
+    echo "canSkip=true" >> $GITHUB_OUTPUT
 elif [ $(echo $ALL_FILES | jq 'length') = 1 ] && [ $(echo $ALL_FILES | jq '.[0]' | tr -d '"') = ".github/dependabot.yml" ]; then
     echo "Test can be skipped because only dependabot.yml was updated"
-    echo "::set-output name=canSkip::true"
+    echo "canSkip=true" >> $GITHUB_OUTPUT
 else
     echo "Need to run test"
-    echo "::set-output name=canSkip::false"
+    echo "canSkip=false" >> $GITHUB_OUTPUT
 fi
 
 python3 "$SCRIPTPATH"/checker.py --deny "$SCRIPTPATH"/deny_list.json --warn "$SCRIPTPATH"/warning_list.json --tags "$SCRIPTPATH"/../guide_tags.json --repo "$repo" --rules "$SCRIPTPATH"/rules.json $(echo $UPDATED_FILES | jq '.[]' | tr -d '"')
