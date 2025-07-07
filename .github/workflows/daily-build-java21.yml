@@ -37,11 +37,11 @@ jobs:
       - name: Get default repos
         if: ${{ github.event_name == 'repository_dispatch' || github.event_name == 'workflow_dispatch' && github.event.inputs.guide == 'all' }}
         id: create-list
-        run: echo "::set-output name=repos::$(python3 .github/workflows/get-guides-java21.py)"
+        run: echo "repos=$(python3 .github/workflows/get-guides-java21.py)" >> $GITHUB_OUTPUT
       - name: Set input repo
         if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.guide != 'all' }}
         id: input-guide
-        run: echo "::set-output name=repo::[ '${{ github.event.inputs.guide }}' ]"
+        run: echo "repo=[ '${{ github.event.inputs.guide }}' ]" >> $GITHUB_OUTPUT
   build-level:
     runs-on: ubuntu-latest
     steps:
