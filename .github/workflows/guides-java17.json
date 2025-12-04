@@ -4,6 +4,8 @@
   "guide-jakarta-websocket",
   "guide-jms-intro",
   "guide-liberty-deep-dive",
-  "guide-liberty-deep-dive-gradle"
+  "guide-liberty-deep-dive-gradle",
+  "guide-microprofile-telemetry-grafana-automatic",
+  "guide-microprofile-telemetry-grafana-custom"
 ]
 
