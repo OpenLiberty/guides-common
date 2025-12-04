@@ -18,8 +18,9 @@
             "additional_search_terms": ["Micro Profile", "MP"],
             "guides": ["cdi-intro", "kubernetes-microprofile-config", "kubernetes-microprofile-health", "microprofile-config", "microprofile-config-profile",
                 "microprofile-fallback", "microprofile-health", "microprofile-istio-retry-fallback", "microprofile-jwt", 
-                "microprofile-metrics", "microprofile-openapi", "microprofile-telemetry-jaeger", "microprofile-opentracing", "microprofile-opentracing-jaeger", "microprofile-rest-client", 
-                "microprofile-rest-client-async", "microshed-testing", "rest-client-java", "rest-intro", "bulkhead", 
+                "microprofile-metrics", "microprofile-openapi", "microprofile-telemetry-jaeger", "microprofile-opentracing", "microprofile-opentracing-jaeger",
+                "microprofile-telemetry-grafana-automatic", "microprofile-telemetry-grafana-custom",
+                "microprofile-rest-client", "microprofile-rest-client-async", "microshed-testing", "rest-client-java", "rest-intro", "bulkhead",
                 "circuit-breaker", "microprofile-config-intro", "retry-timeout", 
                 "microprofile-reactive-messaging", "reactive-service-testing", "microprofile-reactive-messaging-rest-integration", "microprofile-reactive-messaging-acknowledgment",
                 "reactive-messaging-sse", "mongodb-intro", "microprofile-graphql", "testcontainers"],
@@ -79,11 +80,11 @@
         },
         {
             "name": "telemetry",
-            "guides": ["microprofile-telemetry-jaeger"]
+            "guides": ["microprofile-telemetry-jaeger", "microprofile-telemetry-grafana-automatic", "microprofile-telemetry-grafana-custom"]
         },
         {
             "name": "@withspan",
-            "guides": ["microprofile-telemetry-jaeger"]
+            "guides": ["microprofile-telemetry-jaeger", "microprofile-telemetry-grafana-custom"]
         },
         {
             "name": "testing",
