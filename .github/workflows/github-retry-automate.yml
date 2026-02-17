@@ -1,7 +1,6 @@
 name: Retry Daily Build 
 
-on: 
-  push:
+on:
   workflow_run:
     workflows: ["Test", "Daily build testing - Java 17", "Daily build testing - Java 21", "Daily build testing", "Test Docker Daily Build - Java 17", "Test Docker Daily Build - Java 21", "Test Docker Daily Build", "Manual GM candidate container test - Java 17", "Manual GM candidate container test - Java 21", "Manual GM candidate container test", "Pre-Daily Build Actions", "Trigger Docker Daily Build Test Action"]
     types: [completed]
