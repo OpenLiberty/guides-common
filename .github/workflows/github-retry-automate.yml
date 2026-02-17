@@ -1,0 +1,35 @@
+name: Retry Daily Build 
+
+on: 
+  push:
+  workflow_run:
+    workflows: ["Test", "Daily build testing - Java 17", "Daily build testing - Java 21", "Daily build testing", "Test Docker Daily Build - Java 17", "Test Docker Daily Build - Java 21", "Test Docker Daily Build", "Manual GM candidate container test - Java 17", "Manual GM candidate container test - Java 21", "Manual GM candidate container test", "Pre-Daily Build Actions", "Trigger Docker Daily Build Test Action"]
+    types: [completed]
+
+permissions:
+  actions: write 
+  contents: read
+
+jobs: 
+  retry-on-failure: 
+    runs-on: ubuntu-latest
+    env: 
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+    if: ${{ contains('failure,cancelled,timed_out', github.event.workflow_run.conclusion) && github.event.workflow_run.run_attempt <= 3 }}
+    steps: 
+      - uses: actions/checkout@v4
+      - name: Info
+        run: | 
+          echo "Workflow Name: ${{ github.event.workflow_run.name }}"          
+          echo "Head branch: ${{ github.event.workflow_run.head_branch }}"          
+          echo "Conclusion: ${{ github.event.workflow_run.conclusion }}"
+          echo "Target Workflow run ID: ${{ github.event.workflow_run.id }}"  
+          echo "Num of re-run attempts: ${{ github.event.workflow_run.run_attempt }}"
+          echo "Logs of the last run id for the run-attempt" 
+          gh run view ${{ github.event.workflow_run.id }} --log
+      - name: Delay
+        run: sleep 10
+      - name: Re-run failed jobs
+        run: | 
+          echo "Re-running workflow run ID: ${{ github.event.workflow_run.id }}"
+          gh run rerun ${{ github.event.workflow_run.id }} --failed
