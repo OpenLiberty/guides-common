@@ -107,7 +107,16 @@ jobs:
           BUILDLEVEL: ${{ github.event.client_payload.build-level }}${{ github.event.inputs.build }}
           DEVDATE: ${{ github.event.client_payload.dev-date }}${{ github.event.inputs.date }}
           DRIVER: ${{ github.event.client_payload.driver-location }}${{ github.event.inputs.driver }}
-        run: sudo -E ../scripts/dailyBuild.sh -t $DEVDATE -d $DRIVER -b $BUILDLEVEL -j ${{ matrix.jdk }}
+        run: | 
+          SERVER_VERSION=$(docker version --format '{{.Server.APIVersion}}')
+          CLIENT_VERSION=$(docker version --format '{{.Client.APIVersion}}')
+          if [[ "$CLIENT_VERSION" < "$SERVER_VERSION" || "$CLIENT_VERSION" == "$SERVER_VERSION" ]]; then
+            SUPPORTED_VERSION="$CLIENT_VERSION"
+          else 
+            SUPPORTED_VERSION="$SERVER_VERSION"
+          fi
+          echo "api.version=$SUPPORTED_VERSION" >> ~/.docker-java.properties
+          sudo -E ../scripts/dailyBuild.sh -t $DEVDATE -d $DRIVER -b $BUILDLEVEL -j ${{ matrix.jdk }}
       - name: Post tests
         working-directory: ${{ matrix.repos }}
         if: always()
