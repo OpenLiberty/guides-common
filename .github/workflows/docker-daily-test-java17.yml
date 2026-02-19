@@ -94,7 +94,8 @@ jobs:
           supported_version_for_client=${SUPPORTED_VERSION//\\/\\\\}
           supported_version_for_client=${supported_version_for_client//&/\\&}
           line="echo \"api.version=$supported_version_for_client\" >> ~/.docker-java.properties"
-          sed -i "1{/^#!.*\bbash\b/ s|\$|\\n\\n$line|}" ../scripts/testApp.sh
+          sed -i "1s|\$|\\n\\n$line|" ../scripts/testApp.sh
+          cat ../scripts/testApp.sh
           sudo -E ../scripts/dockerImageTest.sh -t $DEVDATE -d $DRIVER
       - name: Post tests
         working-directory: ${{ matrix.repos }}
