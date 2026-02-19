@@ -91,9 +91,7 @@ jobs:
           else 
             SUPPORTED_VERSION="$SERVER_VERSION"
           fi
-          supported_version_for_client=${SUPPORTED_VERSION//\\/\\\\}
-          supported_version_for_client=${supported_version_for_client//&/\\&}
-          line="echo \"api.version=$supported_version_for_client\" >> ~/.docker-java.properties"
+          line="echo api.version=$SUPPORTED_VERSION >> ~/.docker-java.properties"
           sed -i "/^set -euxo pipefail$/ s|\$|\\n\\n$line|" ../scripts/testApp.sh          
           cat ../scripts/testApp.sh
           sudo -E ../scripts/dockerImageTest.sh -t $DEVDATE -d $DRIVER
