@@ -116,10 +116,12 @@ jobs:
             SUPPORTED_VERSION="$SERVER_VERSION"
           fi
           SCRIPT_TEST = "../scripts/testApp.sh"
-          if [ -f "$FILE" ]; then
+          if [ -f "$SCRIPT_TEST" ]; then
             CHANGE_API_VERSION="echo api.version=$SUPPORTED_VERSION >> ~/.docker-java.properties"
-            sed -i "/^set -euxo pipefail$/ s|\$|\\n\\n$CHANGE_API_VERSION|" ../scripts/testApp.sh      
+            sed -i "/^set -euxo pipefail$/ s|\$|\\n\\n$CHANGE_API_VERSION|" ../scripts/testApp.sh  
+            sudo cat /root/.docker-java.properties || echo "Root has NO config file!"    
           fi
+          sed -i '2iexport JAVA_OPTS="${JAVA_OPTS} -Ddocker.api.version=$SUPPORTED_VERSION"' ../scripts/dailyBuild.sh
           sudo -E ../scripts/dailyBuild.sh -t $DEVDATE -d $DRIVER -b $BUILDLEVEL -j ${{ matrix.jdk }}
       - name: Post tests
         working-directory: ${{ matrix.repos }}

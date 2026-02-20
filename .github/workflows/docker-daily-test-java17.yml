@@ -91,7 +91,7 @@ jobs:
           else 
             SUPPORTED_VERSION="$SERVER_VERSION"
           fi
-          sed -i '2iexport JAVA_OPTS="${JAVA_OPTS} -Ddocker.api.version=1.44"' ../scripts/dockerImageTest.sh
+          sed -i '2iexport JAVA_OPTS="${JAVA_OPTS} -Ddocker.api.version=$SUPPORTED_VERSION"' ../scripts/dockerImageTest.sh
           sudo -E ../scripts/dockerImageTest.sh -t $DEVDATE -d $DRIVER
       - name: Post tests
         working-directory: ${{ matrix.repos }}
