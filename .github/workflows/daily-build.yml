@@ -115,8 +115,7 @@ jobs:
           else 
             SUPPORTED_VERSION="$SERVER_VERSION"
           fi
-          echo "api.version=$SUPPORTED_VERSION" >> ~/.docker-java.properties
-          sudo cp ~/.docker-java.properties /root/.docker-java.properties
+          sed -i '2iexport JAVA_OPTS="${JAVA_OPTS} -Ddocker.api.version=$SUPPORTED_VERSION"' ../scripts/dailyBuild.sh
           sudo -E ../scripts/dailyBuild.sh -t $DEVDATE -d $DRIVER -b $BUILDLEVEL -j ${{ matrix.jdk }}
       - name: Post tests
         working-directory: ${{ matrix.repos }}
