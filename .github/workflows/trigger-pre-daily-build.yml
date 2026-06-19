@@ -25,7 +25,7 @@ jobs:
       DHE_URL: https://public.dhe.ibm.com/ibmdl/export/pub/software/openliberty/runtime/nightly
     steps:
       - name: Clone ci.docker repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v6
         with:
           repository: OpenLiberty/ci.docker
           path: ci.docker

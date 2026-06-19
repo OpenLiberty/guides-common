@@ -17,7 +17,7 @@ jobs:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
     if: ${{ contains('failure,cancelled,timed_out', github.event.workflow_run.conclusion) && github.event.workflow_run.run_attempt <= 3 }}
     steps: 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Info
         run: | 
           echo "Workflow Name: ${{ github.event.workflow_run.name }}"          
