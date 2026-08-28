@@ -63,6 +63,9 @@ jobs:
       matrix:
         repos: ${{ fromJson(needs.get-repos.outputs.repos) }}
         jdk: [ "17" ]
+    env:
+      ARTIFACTORY_USER: ${{ secrets.ARTIFACTORY_USER }}
+      ARTIFACTORY_TOKEN: ${{ secrets.ARTIFACTORY_TOKEN }}
     steps:
       - name: Setup JDK ${{ matrix.jdk }}
         uses: actions/setup-java@v5
@@ -75,8 +78,72 @@ jobs:
           repository: OpenLiberty/${{ matrix.repos }}
           ref: ${{ github.event.inputs.branch }}
           path: ${{ matrix.repos }}
+      - name: Cache Maven local repository
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ matrix.jdk }}-${{ hashFiles(format('{0}/**/pom.xml', matrix.repos)) }}
+          restore-keys: |
+            ${{ runner.os }}-maven-${{ matrix.jdk }}-
+            ${{ runner.os }}-maven-
       - name: Set permissions
         run: chmod +x ${{ matrix.repos }}/scripts/*.sh
+      - name: Configure Maven settings
+        run: |
+          mkdir -p ~/.m2
+          sudo mkdir -p /root/.m2
+          python3 -c "
+          import textwrap
+          xml = textwrap.dedent('''
+          <?xml version=\"1.0\" encoding=\"UTF-8\"?>
+          <settings xmlns=\"http://maven.apache.org/SETTINGS/1.0.0\"
+                    xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+                    xsi:schemaLocation=\"http://maven.apache.org/SETTINGS/1.0.0
+                                        http://maven.apache.org/xsd/settings-1.0.0.xsd\">
+            <mirrors>
+              <mirror>
+                <id>ibm-artifactory</id>
+                <name>IBM Artifactory Maven Central Mirror</name>
+                <url>https://na.artifactory.swg-devops.com:443/artifactory/wasliberty-maven-remote</url>
+                <mirrorOf>central</mirrorOf>
+              </mirror>
+            </mirrors>
+            <servers>
+              <server>
+                <id>ibm-artifactory</id>
+                <username>\${env.ARTIFACTORY_USER}</username>
+                <password>\${env.ARTIFACTORY_TOKEN}</password>
+              </server>
+            </servers>
+            <profiles>
+              <profile>
+                <id>artifactory</id>
+                <activation><activeByDefault>true</activeByDefault></activation>
+                <repositories>
+                  <repository>
+                    <id>ibm-artifactory</id>
+                    <name>IBM Artifactory Maven Central Mirror</name>
+                    <url>https://na.artifactory.swg-devops.com:443/artifactory/wasliberty-maven-remote</url>
+                    <releases><enabled>true</enabled></releases>
+                    <snapshots><enabled>false</enabled></snapshots>
+                  </repository>
+                </repositories>
+                <pluginRepositories>
+                  <pluginRepository>
+                    <id>ibm-artifactory</id>
+                    <name>IBM Artifactory Maven Central Mirror</name>
+                    <url>https://na.artifactory.swg-devops.com:443/artifactory/wasliberty-maven-remote</url>
+                    <releases><enabled>true</enabled></releases>
+                    <snapshots><enabled>false</enabled></snapshots>
+                  </pluginRepository>
+                </pluginRepositories>
+              </profile>
+            </profiles>
+          </settings>
+          ''').strip()
+          open('/home/runner/.m2/settings.xml', 'w').write(xml)
+          "
+          sudo cp ~/.m2/settings.xml /root/.m2/settings.xml
       - name: Docker login
         run: echo $DOCKER_PASSWORD | sudo docker login -u $DOCKER_USERNAME --password-stdin cp.stg.icr.io
       - name: Run tests for ${{ matrix.repos }}
