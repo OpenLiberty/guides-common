@@ -38,7 +38,7 @@
             },
             {
                 "subcategory_name": "Persistence",
-                "guides": ["jpa-intro", "mongodb-intro", "sessions"]
+                "guides": ["jpa-intro", "mongodb-intro", "sessions", "jakarta-data"]
             },
             {
                 "subcategory_name": "Client side",
