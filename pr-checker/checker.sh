@@ -1,6 +1,8 @@
 #!/bin/sh
 set -o pipefail
 
+python3 -m pip install lxml
+
 repo=$1
 pr_number=$2
 
@@ -33,4 +35,4 @@ else
     echo "canSkip=false" >> $GITHUB_OUTPUT
 fi
 
-python3 "$SCRIPTPATH"/checker.py --deny "$SCRIPTPATH"/deny_list.json --warn "$SCRIPTPATH"/warning_list.json --tags "$SCRIPTPATH"/../guide_tags.json --repo "$repo" --rules "$SCRIPTPATH"/rules.json $(echo $UPDATED_FILES | jq '.[]' | tr -d '"')
+python3 "$SCRIPTPATH"/checker.py --deny "$SCRIPTPATH"/deny_list.json --warn "$SCRIPTPATH"/warning_list.json --tags "$SCRIPTPATH"/../guide_tags.json --repo "$repo" --adoc-rules "$SCRIPTPATH"/adoc_rules.json --xml-rules "$SCRIPTPATH"/xml_rules.json $(echo $UPDATED_FILES | jq '.[]' | tr -d '"')
