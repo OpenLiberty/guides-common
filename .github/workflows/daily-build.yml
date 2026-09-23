@@ -108,6 +108,7 @@ jobs:
           BUILDLEVEL: ${{ github.event.client_payload.build-level }}${{ github.event.inputs.build }}
           DEVDATE: ${{ github.event.client_payload.dev-date }}${{ github.event.inputs.date }}
           DRIVER: ${{ github.event.client_payload.driver-location }}${{ github.event.inputs.driver }}
+          DOCKER_BUILDKIT: 0
         run: | 
           SERVER_VERSION=$(docker version --format '{{.Server.APIVersion}}')
           CLIENT_VERSION=$(docker version --format '{{.Client.APIVersion}}')
@@ -117,6 +118,7 @@ jobs:
             SUPPORTED_VERSION="$SERVER_VERSION"
           fi
           sed -i '2iexport JAVA_OPTS="${JAVA_OPTS} -Ddocker.api.version=$SUPPORTED_VERSION"' ../scripts/dailyBuild.sh
+          sed -i '2iexport DOCKER_BUILDKIT=0' ../scripts/dailyBuild.sh
           sudo -E ../scripts/dailyBuild.sh -t $DEVDATE -d $DRIVER -b $BUILDLEVEL -j ${{ matrix.jdk }}
       - name: Post tests
         working-directory: ${{ matrix.repos }}
