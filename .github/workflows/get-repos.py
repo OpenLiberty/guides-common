@@ -3,7 +3,9 @@ import requests
 
 BASE_REPO_URL = "https://api.github.com/orgs/OpenLiberty/repos"
 JSON_PATH = ".github/workflows/drafts-to-test.json"
-DEPRECATED = [ "guide-okd" ]
+# guide-gradle-multimodules requires Java 17 minimum (production content was updated);
+# it is tested under guides-java17.json instead to avoid false failures under Java 11
+DEPRECATED = [ "guide-okd", "guide-gradle-multimodules" ]
 HEADERS = {
     "Accept": "application/vnd.github.v3+json"
 }
