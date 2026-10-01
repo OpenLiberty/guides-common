@@ -120,6 +120,7 @@ jobs:
           sed -i '2iexport JAVA_OPTS="${JAVA_OPTS} -Ddocker.api.version=$SUPPORTED_VERSION"' ../scripts/dailyBuild.sh
           sed -i '2iexport DOCKER_BUILDKIT=0' ../scripts/dailyBuild.sh
           if [ -f ../scripts/testApp.sh ]; then
+            sed -i '/minikube docker-env/,$ s/docker build --no-cache/minikube image build/g' ../scripts/testApp.sh
             sed -i '/minikube docker-env/,$ s/docker build/minikube image build/g' ../scripts/testApp.sh
           fi
           sudo -E -u runner ../scripts/dailyBuild.sh -t $DEVDATE -d $DRIVER -b $BUILDLEVEL -j ${{ matrix.jdk }}
