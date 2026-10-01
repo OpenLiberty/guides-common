@@ -119,6 +119,10 @@ jobs:
           fi
           sed -i '2iexport JAVA_OPTS="${JAVA_OPTS} -Ddocker.api.version=$SUPPORTED_VERSION"' ../scripts/dailyBuild.sh
           sed -i '2iexport DOCKER_BUILDKIT=0' ../scripts/dailyBuild.sh
+          if [ -f ../scripts/testApp.sh ]; then
+            sed -i 's/eval \"\$(minikube docker-env)\"/eval \"\$(minikube docker-env)\"\nssh-keyscan -p 32768 127.0.0.1 >> ~\/.ssh\/known_hosts 2>\/dev\/null || true/g' ../scripts/testApp.sh
+            sed -i 's/docker build/minikube image build/g' ../scripts/testApp.sh
+          fi
           sudo -E -u runner ../scripts/dailyBuild.sh -t $DEVDATE -d $DRIVER -b $BUILDLEVEL -j ${{ matrix.jdk }}
       - name: Post tests
         working-directory: ${{ matrix.repos }}
