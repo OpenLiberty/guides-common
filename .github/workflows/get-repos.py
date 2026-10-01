@@ -3,7 +3,7 @@ import requests
 
 BASE_REPO_URL = "https://api.github.com/orgs/OpenLiberty/repos"
 JSON_PATH = ".github/workflows/drafts-to-test.json"
-DEPRECATED = [ "guide-okd" ]
+DEPRECATED = [ "guide-okd", "guide-gradle-multimodules" ]
 HEADERS = {
     "Accept": "application/vnd.github.v3+json"
 }
