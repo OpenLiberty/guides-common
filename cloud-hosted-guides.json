@@ -8,7 +8,7 @@
    "guides": [
        "rest-client-java", "getting-started", "microprofile-openapi", "rest-intro", "microprofile-rest-client-async",
        "containerize", "microprofile-rest-client", "kubernetes-intro", "microprofile-health", "microprofile-jwt",
-       "cdi-intro", "microshed-testing", "docker",
+       "cdi-intro", "docker",
        "microprofile-config", "microprofile-fallback", "microprofile-metrics", "microprofile-opentracing", "microprofile-opentracing-jaeger",
        "microprofile-reactive-messaging", "reactive-service-testing", "microprofile-reactive-messaging-acknowledgment", "microprofile-reactive-messaging-rest-integration"
    ],
@@ -23,7 +23,6 @@
      "microprofile-opentracing"        : "/courses/course-v1:IBM+GPXX0QR3EN+v1",
      "reactive-service-testing"        : "/courses/course-v1:IBM+GPXX07UGEN+v1",
      "microprofile-reactive-messaging" : "/courses/course-v1:IBM+GPXX0I4FEN+v1",
-     "microshed-testing"               : "/courses/course-v1:IBM+GPXX0YXHEN+v1",
      "docker"                          : "/courses/course-v1:IBM+GPXX0FTCEN+v1",
      "getting-started"                 : "/courses/course-v1:IBM+GPXX04TNEN+v1",
      "microprofile-opentracing-jaeger" : "/courses/course-v1:IBM+GPXX0JLHEN+v1",
