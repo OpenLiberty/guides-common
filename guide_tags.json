@@ -8,7 +8,7 @@
         {
             "name": "jakarta-ee",
             "additional_search_terms": ["Java EE", "JEE"],
-            "guides": ["bean-validation", "cdi-intro", "jpa-intro", "microshed-testing", "rest-client-java", "rest-intro", 
+            "guides": ["bean-validation", "cdi-intro", "jpa-intro", "rest-client-java", "rest-intro",
                 "security-intro", "microprofile-reactive-messaging", "microprofile-reactive-messaging-rest-integration", "reactive-messaging-sse",
                 "mongodb-intro", "jakarta-websocket", "jms-intro", "testcontainers", "jakarta-faces", "jakarta-data"],
             "visible": "true"
@@ -20,7 +20,7 @@
                 "microprofile-fallback", "microprofile-health", "microprofile-istio-retry-fallback", "microprofile-jwt", 
                 "microprofile-metrics", "microprofile-openapi", "microprofile-telemetry-jaeger", "microprofile-opentracing", "microprofile-opentracing-jaeger",
                 "microprofile-telemetry-grafana-automatic", "microprofile-telemetry-grafana-custom",
-                "microprofile-rest-client", "microprofile-rest-client-async", "microshed-testing", "rest-client-java", "rest-intro", "bulkhead",
+                "microprofile-rest-client", "microprofile-rest-client-async", "rest-client-java", "rest-intro", "bulkhead",
                 "circuit-breaker", "microprofile-config-intro", "retry-timeout", 
                 "microprofile-reactive-messaging", "reactive-service-testing", "microprofile-reactive-messaging-rest-integration", "microprofile-reactive-messaging-acknowledgment",
                 "reactive-messaging-sse", "mongodb-intro", "microprofile-graphql", "testcontainers"],
@@ -37,7 +37,7 @@
             "name": "docker",
             "guides": ["cloud-aws", "cloud-azure", "cloud-ibm", "cloud-openshift", "containerize", "docker", 
                 "getting-started", "istio-intro", "kubernetes-intro", "kubernetes-microprofile-config", 
-                "kubernetes-microprofile-health", "microprofile-istio-retry-fallback", "microshed-testing", "okd", 
+                "kubernetes-microprofile-health", "microprofile-istio-retry-fallback", "okd",
                 "openshift-codeready-containers", "sessions", "spring-boot", "cloud-google", "testcontainers"],
             "visible": "true"
         },
@@ -88,7 +88,7 @@
         },
         {
             "name": "testing",
-            "guides": ["microshed-testing", "testcontainers", "reactive-service-testing", "contract-testing"]
+            "guides": ["testcontainers", "reactive-service-testing", "contract-testing"]
         },
         {
             "name": "interactive",
@@ -158,7 +158,7 @@
             "guides": [ 
                 "rest-client-java", "getting-started", "microprofile-openapi", "rest-intro", "microprofile-rest-client-async",
                 "containerize", "microprofile-rest-client", "kubernetes-intro", "microprofile-health", "microprofile-jwt",
-                "cdi-intro", "microshed-testing", "docker",
+                "cdi-intro", "docker",
                 "microprofile-config", "microprofile-fallback", "microprofile-metrics", "microprofile-opentracing", "microprofile-opentracing-jaeger",
                 "microprofile-reactive-messaging", "reactive-service-testing", "microprofile-reactive-messaging-acknowledgment", "microprofile-reactive-messaging-rest-integration",
                 "contract-testing", "kubernetes-microprofile-health", "kubernetes-microprofile-config", "reactive-messaging-sse", "reactive-rest-client",
@@ -172,12 +172,11 @@
         },
         {
             "name": "deprecated",
-            "guides": [ "microprofile-opentracing", "microprofile-opentracing-jaeger", "okd", "microshed-testing" ],
+            "guides": [ "microprofile-opentracing", "microprofile-opentracing-jaeger", "okd" ],
             "alt_links": {
                 "microprofile-opentracing" : "microprofile-telemetry-jaeger",
                 "microprofile-opentracing-jaeger" : "microprofile-telemetry-jaeger",
-                "okd" : "openshift-codeready-containers",
-                "microshed-testing": "testcontainers"
+                "okd" : "openshift-codeready-containers"
             }
         }
     ]
