@@ -3,9 +3,26 @@ import requests
 
 BASE_REPO_URL = "https://api.github.com/orgs/OpenLiberty/repos"
 JSON_PATH = ".github/workflows/drafts-to-test.json"
-# guide-gradle-multimodules requires Java 17 minimum (production content was updated);
-# it is tested under guides-java17.json instead to avoid false failures under Java 11
-DEPRECATED = [ "guide-okd", "guide-gradle-multimodules" ]
+# Guides listed here require Java 17 or 21 and are tested in daily-build-java17.yml /
+# daily-build-java21.yml instead. Keeping them here causes "invalid target release"
+# compile failures when the Java 11 runner tries to build them.
+DEPRECATED = [
+    "guide-okd",
+    # Java 17 guides (tested in guides-java17.json / daily-build-java17.yml)
+    "guide-contract-testing",
+    "guide-gradle-multimodules",
+    "guide-jakarta-faces",
+    "guide-jakarta-websocket",
+    "guide-jms-intro",
+    "guide-liberty-deep-dive",
+    "guide-liberty-deep-dive-gradle",
+    "guide-microprofile-telemetry-grafana-automatic",
+    "guide-microprofile-telemetry-grafana-custom",
+    "guide-jakarta-data",
+    # Java 21 guides (tested in guides-java21.json / daily-build-java21.yml)
+    "guide-jpa-intro",
+    "guide-spring-boot",
+]
 HEADERS = {
     "Accept": "application/vnd.github.v3+json"
 }
