@@ -28,14 +28,14 @@
         },
         {
             "name": "kubernetes",
-            "guides": ["cloud-aws", "cloud-azure", "cloud-ibm", "cloud-openshift", "istio-intro", "kubernetes-intro", 
+            "guides": ["cloud-aws", "cloud-azure", "cloud-ibm", "istio-intro", "kubernetes-intro", 
                 "kubernetes-microprofile-config", "kubernetes-microprofile-health", "microprofile-istio-retry-fallback", 
                 "okd", "openshift-codeready-containers", "sessions", "cloud-google", "openliberty-operator-intro", "openliberty-operator-openshift"],
             "visible": "true"
         },
         {
             "name": "docker",
-            "guides": ["cloud-aws", "cloud-azure", "cloud-ibm", "cloud-openshift", "containerize", "docker", 
+            "guides": ["cloud-aws", "cloud-azure", "cloud-ibm", "containerize", "docker", 
                 "getting-started", "istio-intro", "kubernetes-intro", "kubernetes-microprofile-config", 
                 "kubernetes-microprofile-health", "microprofile-istio-retry-fallback", "okd",
                 "openshift-codeready-containers", "sessions", "spring-boot", "cloud-google", "testcontainers"],
@@ -43,7 +43,7 @@
         },
         {
             "name": "cloud",
-            "guides": ["cloud-aws", "cloud-azure", "cloud-ibm", "cloud-openshift", "okd", "cloud-openshift-operator", "openshift-codeready-containers", 
+            "guides": ["cloud-aws", "cloud-azure", "cloud-ibm", "okd", "cloud-openshift-operator", "openshift-codeready-containers", 
                        "cloud-google", "openliberty-operator-openshift"],
             "visible": "true"
         },
