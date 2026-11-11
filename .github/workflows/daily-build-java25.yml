@@ -15,7 +15,7 @@ on:
         description: Driver name as openliberty-all-25.0.0.4-cl250420250407-1902.zip
         required: true
       guide:
-        description: 'Guide to build: all, one guide, or a list. Example: ["guide-rest-intro","guide-cdi-intro"]'
+        description: 'Guide to build (all, a single guide, or a list such as ["guide-rest-intro","guide-cdi-intro"])'
         default: "all"
         required: true
       branch:
