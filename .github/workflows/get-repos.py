@@ -22,6 +22,21 @@ DEPRECATED = [
     # Java 21 guides (tested in guides-java21.json / daily-build-java21.yml)
     "guide-jpa-intro",
     "guide-spring-boot",
+    # Java 25 guides (tested in guides-java25.json / daily-build-java25.yml)
+    "guide-rest-intro",
+    "guide-bean-validation",
+    "guide-cdi-intro",
+    "guide-cors",
+    "guide-microprofile-config",
+    "guide-microprofile-fallback",
+    "guide-microprofile-health",
+    "guide-microprofile-metrics",
+    "guide-microprofile-openapi",
+    "guide-rest-hateoas",
+    "guide-rest-client-java",
+    "guide-security-intro",
+    "guide-arquillian-managed",
+    "guide-social-media-login",
 ]
 HEADERS = {
     "Accept": "application/vnd.github.v3+json"
