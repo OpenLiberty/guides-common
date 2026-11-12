@@ -1,1 +1,16 @@
-[]
+[
+  "guide-rest-intro",
+  "guide-bean-validation",
+  "guide-cdi-intro",
+  "guide-cors",
+  "guide-microprofile-config",
+  "guide-microprofile-fallback",
+  "guide-microprofile-health",
+  "guide-microprofile-metrics",
+  "guide-microprofile-openapi",
+  "guide-rest-hateoas",
+  "guide-rest-client-java",
+  "guide-security-intro",
+  "guide-arquillian-managed",
+  "guide-social-media-login"
+]
